@@ -1,16 +1,39 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "masterThesis.html",
     "href": "masterThesis.html",
-    "title": "masterThesis",
+    "title": "About",
     "section": "",
-    "text": "Master Thesis\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.2     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n#Let’s goooooooOO000"
+    "text": "This is a compiled report of my Master’s thesis data analysis and results. Work in progress."
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html",
+    "href": "plateReader/004-BS_BSPP_dil_series/report.html",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "",
+    "text": "Toggle Outline",
+    "crumbs": [
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html#import",
+    "href": "plateReader/004-BS_BSPP_dil_series/report.html#import",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "Import",
+    "text": "Import\n\n# Load, sort and arrange ---- \n## Load Excel file into datasets ----\n## First timeset \nOD &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B122:CU146\", col_names = TRUE)  \nG &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B176:CU200\", col_names = TRUE) # GFP70\nR &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B203:CU227\", col_names = TRUE) # RFP90\n\n## Second timeset\nOD2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B122:CU144\", col_names = TRUE)  \nG2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B172:CU194\", col_names = TRUE) # GFP70\nR2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B197:CU219\", col_names = TRUE) # RFP90\n\n# Add time difference from starting point of first dataset\nOD2$`Time [s]` &lt;- OD2$`Time [s]` + 85278\nG2$`Time [s]` &lt;- G2$`Time [s]` + 85278\nR2$`Time [s]` &lt;- R2$`Time [s]` + 85278\n\n## Third timeset\nOD3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B122:CU141\", col_names = TRUE)\nG3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B166:CU185\", col_names = TRUE) # GFP70\nR3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B188:CU207\", col_names = TRUE) # RFP90\n\n# Add time difference from starting point of first dataset\nOD3$`Time [s]` &lt;- OD3$`Time [s]` + 177074\nG3$`Time [s]` &lt;- G3$`Time [s]` + 177074\nR3$`Time [s]` &lt;- R3$`Time [s]` + 177074\n\n# Combine all three parts of dataset\nOD &lt;- bind_rows(OD, OD2, OD3)\nG &lt;- bind_rows(G, G2, G3)\nR &lt;- bind_rows(R, R2, R3)\n\n## Reshape from wide to long format ----\nOD &lt;- OD[-2]                 # Remove Temp column\nOD_long &lt;- pivot_longer(\n  data = OD,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"OD600\"\n)\n\nG &lt;- G[-2]                 # Remove Temp column\nG_long &lt;- pivot_longer(\n  data = G,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"G\"\n)\n\nR &lt;- R[-2]                 # Remove Temp column\nR_long &lt;- pivot_longer(\n  data = R,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"R\"\n)\n\n# Rename first column to \"time\" \ncolnames(OD_long)[1] &lt;- \"time\"\ncolnames(G_long)[1] &lt;- \"time\"\ncolnames(R_long)[1] &lt;- \"time\"\n\n# Convert time to numeric and to hours\nOD_long$time &lt;- as.numeric(OD_long$time)\nG_long$time &lt;- as.numeric(G_long$time)\nR_long$time &lt;- as.numeric(R_long$time)\n\nOD_long$time &lt;- OD_long$time/3600\nG_long$time &lt;- G_long$time/3600\nR_long$time &lt;- R_long$time/3600\n\n# Merge different wavelength into one df\ndf &lt;- OD_long\ndf$G70 &lt;- G_long$G\ndf$R90 &lt;- R_long$R\n\n# Scale GFP70 and RFP90 to 100%\n# df$G &lt;- df$G70 * (100/70)\n# df$R &lt;- df$R90 * (100/90)\n\n# Rename G70 to G and R90 to R\ndf &lt;- df %&gt;% rename_at('G70', ~'G')\ndf &lt;- df %&gt;% rename_at('R90', ~'R')\n\n# Convert 'well' column to numeric \ndf &lt;- df %&gt;%\n  mutate(\n    column = as.numeric(str_extract(well, \"\\\\d+\")) \n  ) \n\n## Specify conditions ----\ndf &lt;- df %&gt;%\n  mutate(\n    dilution = case_when(\n      column %in% 1  ~ \"10^-2\",\n      column %in% 2  ~ \"10^-3\",\n      column %in% 3  ~ \"10^-4\",\n      column %in% 4  ~ \"10^-5\",\n      column %in% 5  ~ \"10^-6\",\n      column %in% 6  ~ \"10^-7\",\n      column %in% 7  ~ \"10^-2\",\n      column %in% 8  ~ \"10^-3\",\n      column %in% 9  ~ \"10^-4\",\n      column %in% 10  ~ \"10^-5\",\n      column %in% 11  ~ \"10^-6\",\n      column %in% 12  ~ \"10^-7\"\n    )\n  )\n\ndf &lt;- df %&gt;%\n  mutate(\n    species = case_when(\n      column %in% 1:6  ~ \"B.subtilis\",\n      column %in% 7:12  ~ \"B.s. + P. putida\"\n    )\n  )\n\n## Summary stats ----\nsummary_df &lt;- df %&gt;%\n  group_by(time, species, dilution) %&gt;%\n  summarise(\n    mean_OD = mean(OD600, na.rm = TRUE),\n    sd_OD   = sd(OD600, na.rm = TRUE),\n    n       = n(),\n    se_OD   = sd_OD / sqrt(n),\n    mean_G = mean(G, na.rm = TRUE),\n    sd_G   = sd(G, na.rm = TRUE),\n    se_G   = sd_G / sqrt(n),\n    mean_R = mean(R, na.rm = TRUE),\n    sd_R   = sd(R, na.rm = TRUE),\n    se_R   = sd_R / sqrt(n),\n    .groups = \"drop\"\n  )\n\nsummary_df &lt;- summary_df %&gt;%\n  mutate(condition = paste(species, dilution, sep = \" \"))\n\n# Make dilution a properly ordered factor\nsummary_df$dilution &lt;- factor(summary_df$dilution,\n                              levels = sort(unique(summary_df$dilution)))",
+    "crumbs": [
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html#first-plot",
+    "href": "plateReader/004-BS_BSPP_dil_series/report.html#first-plot",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "First Plot",
+    "text": "First Plot",
+    "crumbs": [
+      "004-BS_BSPP_dil_series"
+    ]
   }
 ]

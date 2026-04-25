@@ -1,0 +1,202 @@
+---
+title: "004-BS_BSPP_dil_series"
+format: html
+---
+
+<button id="toggle-toc" onclick="toggleTOC()">Toggle Outline</button>
+
+# Short description
+
+# Data Loading and arranging
+
+- Import libraries and set the working directory.
+```{r}
+#| echo: false
+#| output: false
+
+library(tidyverse)
+library(readxl)
+library(stringr)
+library(patchwork)
+library(RColorBrewer)
+library(ggnested)
+library(growthcurver)
+library(ggtext)
+library(plotly)
+```
+
+
+## Import
+
+```{r}
+# Load, sort and arrange ---- 
+## Load Excel file into datasets ----
+## First timeset 
+OD <- read_excel("4-BS_BSPP_dil-series_20260408_151627.xlsx", range = "B122:CU146", col_names = TRUE)  
+G <- read_excel("4-BS_BSPP_dil-series_20260408_151627.xlsx", range = "B176:CU200", col_names = TRUE) # GFP70
+R <- read_excel("4-BS_BSPP_dil-series_20260408_151627.xlsx", range = "B203:CU227", col_names = TRUE) # RFP90
+
+## Second timeset
+OD2 <- read_excel("4-BS_BSPP_dil-series_20260409_130939.xlsx", range = "B122:CU144", col_names = TRUE)  
+G2 <- read_excel("4-BS_BSPP_dil-series_20260409_130939.xlsx", range = "B172:CU194", col_names = TRUE) # GFP70
+R2 <- read_excel("4-BS_BSPP_dil-series_20260409_130939.xlsx", range = "B197:CU219", col_names = TRUE) # RFP90
+
+# Add time difference from starting point of first dataset
+OD2$`Time [s]` <- OD2$`Time [s]` + 85278
+G2$`Time [s]` <- G2$`Time [s]` + 85278
+R2$`Time [s]` <- R2$`Time [s]` + 85278
+
+## Third timeset
+OD3 <- read_excel("4-BS_BSPP_dil-series_20260410_120536.xlsx", range = "B122:CU141", col_names = TRUE)
+G3 <- read_excel("4-BS_BSPP_dil-series_20260410_120536.xlsx", range = "B166:CU185", col_names = TRUE) # GFP70
+R3 <- read_excel("4-BS_BSPP_dil-series_20260410_120536.xlsx", range = "B188:CU207", col_names = TRUE) # RFP90
+
+# Add time difference from starting point of first dataset
+OD3$`Time [s]` <- OD3$`Time [s]` + 177074
+G3$`Time [s]` <- G3$`Time [s]` + 177074
+R3$`Time [s]` <- R3$`Time [s]` + 177074
+
+# Combine all three parts of dataset
+OD <- bind_rows(OD, OD2, OD3)
+G <- bind_rows(G, G2, G3)
+R <- bind_rows(R, R2, R3)
+
+## Reshape from wide to long format ----
+OD <- OD[-2]                 # Remove Temp column
+OD_long <- pivot_longer(
+  data = OD,
+  cols = -1,                 # All columns except the first (time)
+  names_to = "well",
+  values_to = "OD600"
+)
+
+G <- G[-2]                 # Remove Temp column
+G_long <- pivot_longer(
+  data = G,
+  cols = -1,                 # All columns except the first (time)
+  names_to = "well",
+  values_to = "G"
+)
+
+R <- R[-2]                 # Remove Temp column
+R_long <- pivot_longer(
+  data = R,
+  cols = -1,                 # All columns except the first (time)
+  names_to = "well",
+  values_to = "R"
+)
+
+# Rename first column to "time" 
+colnames(OD_long)[1] <- "time"
+colnames(G_long)[1] <- "time"
+colnames(R_long)[1] <- "time"
+
+# Convert time to numeric and to hours
+OD_long$time <- as.numeric(OD_long$time)
+G_long$time <- as.numeric(G_long$time)
+R_long$time <- as.numeric(R_long$time)
+
+OD_long$time <- OD_long$time/3600
+G_long$time <- G_long$time/3600
+R_long$time <- R_long$time/3600
+
+# Merge different wavelength into one df
+df <- OD_long
+df$G70 <- G_long$G
+df$R90 <- R_long$R
+
+# Scale GFP70 and RFP90 to 100%
+# df$G <- df$G70 * (100/70)
+# df$R <- df$R90 * (100/90)
+
+# Rename G70 to G and R90 to R
+df <- df %>% rename_at('G70', ~'G')
+df <- df %>% rename_at('R90', ~'R')
+
+# Convert 'well' column to numeric 
+df <- df %>%
+  mutate(
+    column = as.numeric(str_extract(well, "\\d+")) 
+  ) 
+
+## Specify conditions ----
+df <- df %>%
+  mutate(
+    dilution = case_when(
+      column %in% 1  ~ "10^-2",
+      column %in% 2  ~ "10^-3",
+      column %in% 3  ~ "10^-4",
+      column %in% 4  ~ "10^-5",
+      column %in% 5  ~ "10^-6",
+      column %in% 6  ~ "10^-7",
+      column %in% 7  ~ "10^-2",
+      column %in% 8  ~ "10^-3",
+      column %in% 9  ~ "10^-4",
+      column %in% 10  ~ "10^-5",
+      column %in% 11  ~ "10^-6",
+      column %in% 12  ~ "10^-7"
+    )
+  )
+
+df <- df %>%
+  mutate(
+    species = case_when(
+      column %in% 1:6  ~ "B.subtilis",
+      column %in% 7:12  ~ "B.s. + P. putida"
+    )
+  )
+
+## Summary stats ----
+summary_df <- df %>%
+  group_by(time, species, dilution) %>%
+  summarise(
+    mean_OD = mean(OD600, na.rm = TRUE),
+    sd_OD   = sd(OD600, na.rm = TRUE),
+    n       = n(),
+    se_OD   = sd_OD / sqrt(n),
+    mean_G = mean(G, na.rm = TRUE),
+    sd_G   = sd(G, na.rm = TRUE),
+    se_G   = sd_G / sqrt(n),
+    mean_R = mean(R, na.rm = TRUE),
+    sd_R   = sd(R, na.rm = TRUE),
+    se_R   = sd_R / sqrt(n),
+    .groups = "drop"
+  )
+
+summary_df <- summary_df %>%
+  mutate(condition = paste(species, dilution, sep = " "))
+
+# Make dilution a properly ordered factor
+summary_df$dilution <- factor(summary_df$dilution,
+                              levels = sort(unique(summary_df$dilution)))
+
+```
+
+# Plotting
+## First Plot
+```{r}
+#| echo: false
+
+# PLOTS ----
+## OD all, facet ---- 
+#(004-BS_BSPP_dil-series.facet)
+OD.all <- ggplot(summary_df, aes(
+  x = time, 
+  y = mean_OD, 
+  color = dilution,
+  #linetype = species
+  )) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(
+    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +
+  scale_color_discrete(labels = function(x) parse(text = x)) +
+  theme_minimal() +
+  labs(y= expression("OD"[600]), x="Time [h]", title = "OD<sub>600</sub> of *P. putida* and *B. subtilis* for a serial dilution of *B.s.* starting densities") + 
+  facet_wrap(~ species) +
+  theme(plot.title = element_markdown())
+
+ggplotly(OD.all)
+```
+
+

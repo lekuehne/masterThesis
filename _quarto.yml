@@ -5,11 +5,37 @@ project:
   
 website: 
   title: "Master Thesis Results of Leander Kühne"
+  #favicon: <.png>
   navbar: 
+    background: secondary
+    search: true
     left: 
-      - href: masterThesis.qmd
-        text: Home
-      - about.qmd 
+      - masterThesis.qmd
+      - NI enrichment and extraction.qmd
+      - sidebar:plateReader
+      - sidebar:mazeChips
+    right: 
+     - href: "https://github.com/lekuehne/masterThesis"
+       text: "GitHub"
+       icon: github
+       
+  sidebar:
+    - id: plateReader
+      title: "Plate Reader"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents: 
+        - plateReader/004-BS_BSPP_dil_series/report.qmd
+        
+    - id: mazeChips
+      title: "Fractal Maze Chips"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents: 
+        - mazeChips/experiment.qmd
+      
     
 format: 
   html:
@@ -18,3 +44,4 @@ format:
     - brady
     css: styles.css
     toc: true
+    include-in-header: toggle.js

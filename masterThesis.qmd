@@ -1,12 +1,6 @@
 ---
-title: "masterThesis"
+title: "About"
 bibliography: references.bib
 ---
 
-# Master Thesis
-
-```{r}
-library(tidyverse)
-```
-
-#Let's goooooooOO000
+This is a compiled report of my Master's thesis data analysis and results. Work in progress. 
