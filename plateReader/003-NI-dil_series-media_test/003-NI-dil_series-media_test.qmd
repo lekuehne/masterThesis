@@ -9,6 +9,10 @@ lightbox: auto
 
 # Short Description
 
+This experiment tried to investigate in the effect of pre-culturing the soil samples in LB and M9 media, respectively on growth rates of subsequently isolated natural soil communities.
+
+1 g of soil was incubated overnight in either LB or M9. 4 soil replicates for each medium. After o/n culture media were vacuum filtered to obtain bacterial communities and serial dilutions ranging from 10^-2^ to 10^-6^ were incubated on 96-well-plates (8 technical replicates). For \~1.5 days.
+
 # Data loading and `df` arrangement
 
 ```{r}
