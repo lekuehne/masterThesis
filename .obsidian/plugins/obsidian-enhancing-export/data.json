@@ -1,0 +1,79 @@
+{
+  "items": [
+    {
+      "name": "Markdown"
+    },
+    {
+      "name": "Markdown (Hugo)"
+    },
+    {
+      "name": "Html"
+    },
+    {
+      "name": "TextBundle"
+    },
+    {
+      "name": "Typst"
+    },
+    {
+      "name": "PDF",
+      "customArguments": "--pdf-engine=pdflatex --resource-path=\"${vaultDir}/Templates\" --resource-path=${pluginDir} --resource-path=\"/home/bert/zotero/styles\" --bibliography=Library.bib"
+    },
+    {
+      "name": "Word (.docx)"
+    },
+    {
+      "name": "OpenOffice"
+    },
+    {
+      "name": "RTF"
+    },
+    {
+      "name": "Epub"
+    },
+    {
+      "name": "Latex"
+    },
+    {
+      "name": "Media Wiki"
+    },
+    {
+      "name": "reStructuredText"
+    },
+    {
+      "name": "Textile"
+    },
+    {
+      "name": "OPML"
+    },
+    {
+      "name": "Bibliography"
+    },
+    {
+      "name": "PowerPoint (.pptx)"
+    },
+    {
+      "name": "PDF (Template YAML)",
+      "type": "pandoc",
+      "arguments": "-f ${fromFormat} --resource-path=\"${currentDir}\" --resource-path=\"${attachmentFolderPath}\" --lua-filter=\"${luaDir}/pdf.lua\" ${ options.textemplate ? `--resource-path=\"${pluginDir}/textemplate\" --template=\"${options.textemplate}\"` : ` ` } -o \"${outputPath}\" -t pdf",
+      "customArguments": "--pdf-engine=pdflatex --resource-path=\"${vaultDir}/Templates\" --template \"Pandoc/${metadata.template}.tex\"  --bibliography=Library.bib --citeproc",
+      "optionsMeta": {
+        "textemplate": "preset:textemplate"
+      },
+      "extension": ".pdf"
+    }
+  ],
+  "defaultExportDirectoryMode": "Same",
+  "openExportedFile": false,
+  "env": {
+    "linux": {
+      "TEXINPUTS": "${pluginDir}/textemplate/;${vaultDir}/Templates;${vaultDir}/Templates/Pandoc;"
+    }
+  },
+  "showExportProgressBar": true,
+  "lastExportDirectory": {
+    "linux": "/home/bert/Obsidian/Main-Vault/Daily"
+  },
+  "lastExportType": "PDF",
+  "lastEditName": "PDF (Template YAML)"
+}

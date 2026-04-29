@@ -1,0 +1,14 @@
+{
+  "accentColor": "",
+  "theme": "system",
+  "cssTheme": "Minimal",
+  "enabledCssSnippets": [
+    "reveal-chatGPT-snippet",
+    "justified-text_inReadingView"
+  ],
+  "showRibbon": false,
+  "nativeMenus": false,
+  "showViewHeader": false,
+  "baseFontSizeAction": true,
+  "baseFontSize": 20
+}

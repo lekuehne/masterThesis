@@ -1,0 +1,13 @@
+{
+  "accentColor": "",
+  "theme": "system",
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "image_center"
+  ],
+  "showRibbon": false,
+  "nativeMenus": false,
+  "showViewHeader": false,
+  "baseFontSizeAction": true,
+  "baseFontSize": 16
+}

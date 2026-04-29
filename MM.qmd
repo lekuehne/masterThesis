@@ -1,0 +1,87 @@
+---
+title: "Materials and Methods"
+author: "Leander Kühne"
+format: html
+bibliography: references.bib
+---
+
+# Media Preparation
+
+## LB Stock
+
+For 500 ml
+
+| Compound      | weight | w/v   |
+|---------------|--------|-------|
+| Peptone       | 5 g    | 1 %   |
+| NaCl          | 5 g    | 1 %   |
+| Yeast Extract | 2.5 g  | 0.5 % |
+| Agar          | 7.5 g  | 1.5 % |
+
+: Autoclave for 20 min.
+
+## M9 Stock Solution
+
+| Compound                          | For 1x     | For 2.5 x                    |
+|-----------------------------|------------------|-------------------------|
+| Na2HPO4.7H2O                      | 1.28 g     | 6.4                          |
+| KH2PO4                            | 300 mg     | 1.5 g                        |
+| NaCl                              | 50 mg      | 250 mg                       |
+| NH4Cl                             | 100 mg     | 500 mg                       |
+| MgSO4                             | 12 mg      | 60 mg                        |
+| D-Glucose                         | 400 mg     | 2 g                          |
+| CaCl2 Stock Solution              | 1 ml       | 5 ml (or 5.55 mg CaCl2)      |
+| FeCl2 Stock Solution              | 1 ml       | 5 ml (or 6.75 mg FeCl2.6H2O) |
+| Trace Element Stock Solution 100x | 1 ml       | 5 ml                         |
+| **Total Volume**                  | **100 ml** |                              |
+|                                   |            |                              |
+|                                   |            |                              |
+
+: M9. Adjust to pH 7.4.
+
+## CaCl2 Stock solution
+
+|                  |         |
+|------------------|---------|
+| For 10 ml stock: |         |
+| CaCl2            | 11.1 mg |
+
+: CaCl2 Stock Solution for 10 ml.
+
+## FeCl2 2.6 H2O Stock Solution
+
+|                  |         |
+|------------------|---------|
+| For 10 ml stock: |         |
+| FeCl2.6H2O       | 13.5 mg |
+
+## Trace Element Solution 100x
+
+|                                           |         |
+|-------------------------------------------|---------|
+| For 100 ml stock. Feeze in 1 ml aliquots. |         |
+| MgCl2.6H2O                                | 1.25 mg |
+| CaCl2                                     | 55 mg   |
+| MnCl2.4H2O                                | 10 mg   |
+| ZnCl2                                     | 17 mg   |
+| CuCl~2~.2H2O                              | 4.3 mg  |
+| CoCl2.6H2O                                | 6 mg    |
+| Na2MoO4.2H2O                              | 6 mg    |
+
+# Culturing and strains
+
+## *Bacillus subtilis* & *Pseudomonas putida*
+
+## Soil Natural Inoculum (NI)
+
+### Extraction and Filtering of NI
+
+# Fabrication of Microfluidic Chips
+
+# Plate Reader
+
+# Microscopy
+
+# Sequencing
+
+# Data analysis

@@ -3,13 +3,12 @@ title: "004-BS_BSPP_dil_series"
 format: html
 ---
 
-<button id="toggle-toc" onclick="toggleTOC()">Toggle Outline</button>
-
 # Short description
 
 # Data Loading and arranging
 
-- Import libraries and set the working directory.
+-   Import libraries and set the working directory.
+
 ```{r}
 #| echo: false
 #| output: false
@@ -24,7 +23,6 @@ library(growthcurver)
 library(ggtext)
 library(plotly)
 ```
-
 
 ## Import
 
@@ -172,14 +170,64 @@ summary_df$dilution <- factor(summary_df$dilution,
 
 ```
 
+> \[!OUTPUT\]+ {#output-59e19706}
+>
+> ```         
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260408​_151627.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260408​_151627.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260408​_151627.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260409​_130939.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260409​_130939.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260409​_130939.xlsx’
+> Error: object 'OD2' not found
+> Error: object 'G2' not found
+> Error: object 'R2' not found
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260410​_120536.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260410​_120536.xlsx’
+> Error: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260410​_120536.xlsx’
+> Error: object 'OD3' not found
+> Error: object 'G3' not found
+> Error: object 'R3' not found
+> Error: object 'OD' not found
+> Error: object 'G' not found
+> Error: object 'R' not found
+> Error: object 'OD' not found
+> Error: object 'OD' not found
+> Error: object 'G' not found
+> Error: object 'G' not found
+> Error: object 'R' not found
+> Error: object 'R' not found
+> Error: object 'OD​_long' not found
+> Error: object 'G​_long' not found
+> Error: object 'R​_long' not found
+> Error: object 'OD​_long' not found
+> Error: object 'G​_long' not found
+> Error: object 'R​_long' not found
+> Error: object 'OD​_long' not found
+> Error: object 'G​_long' not found
+> Error: object 'R​_long' not found
+> Error: object 'OD​_long' not found
+> Error: object 'G​_long' not found
+> Error: object 'R​_long' not found
+> Error: no applicable method for 'tbl​_vars' applied to an object of class "function"
+> Error: no applicable method for 'tbl​_vars' applied to an object of class "function"
+> Error: no applicable method for 'mutate' applied to an object of class "function"
+> Error: no applicable method for 'mutate' applied to an object of class "function"
+> Error: no applicable method for 'mutate' applied to an object of class "function"
+> Error: no applicable method for 'group​_by' applied to an object of class "function"
+> Error: object 'summary​_df' not found
+> Error: object 'summary​_df' not found
+> ```
+
 # Plotting
-## First Plot
+
+## OD all, facet
+
+#(004-BS_BSPP_dil-series.facet)
+
 ```{r}
 #| echo: false
 
-# PLOTS ----
-## OD all, facet ---- 
-#(004-BS_BSPP_dil-series.facet)
 OD.all <- ggplot(summary_df, aes(
   x = time, 
   y = mean_OD, 
@@ -199,4 +247,32 @@ OD.all <- ggplot(summary_df, aes(
 ggplotly(OD.all)
 ```
 
+## OD all, with ggnested
 
+#(004-BS_BSPP_dil-series.ggnested)
+
+```{r}
+#| echo: false
+
+ggnested(summary_df, aes(
+  x = time, 
+  y = mean_OD, 
+  main_group = species,
+  sub_group = dilution ), 
+  legend_labeling = "join",
+  join_str = ": ",
+  legend_title = "Species: Starting Frequencies",
+  main_keys = F,
+  base_clr = "green",
+  gradient_type = "shades"
+  ) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(
+    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +
+  #scale_colour_discrete(labels = scales::label_parse()) +
+  theme_minimal() +
+  labs(y= expression("OD"[600]), x="Time [h]", title = "OD<sub>600</sub> of *B. subtilis* and *P. putida* growing together for different starting frequencies of *B.s*.") +
+  # scale_color_discrete(labels = function(x) parse(text = x)) +
+  theme(plot.title = element_markdown())
+```

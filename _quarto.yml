@@ -11,6 +11,7 @@ website:
     search: true
     left: 
       - masterThesis.qmd
+      - MM.qmd
       - NI enrichment and extraction.qmd
       - sidebar:plateReader
       - sidebar:mazeChips
@@ -26,6 +27,7 @@ website:
       background: light
       collapse-level: 2
       contents: 
+        - plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.qmd
         - plateReader/004-BS_BSPP_dil_series/report.qmd
         
     - id: mazeChips
@@ -44,4 +46,3 @@ format:
     - brady
     css: styles.css
     toc: true
-    include-in-header: toggle.js
