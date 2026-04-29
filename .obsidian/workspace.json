@@ -85,8 +85,12 @@
               "title": "Tag Folder"
             }
           }
+<<<<<<< HEAD
         ],
         "currentTab": 3
+=======
+        ]
+>>>>>>> 82e5f7ebbd8c304c2de078bb7780a4511534f061
       }
     ],
     "direction": "horizontal",
@@ -175,6 +179,19 @@
             }
           },
           {
+<<<<<<< HEAD
+=======
+            "id": "fbd2fe74db9cf256",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+>>>>>>> 82e5f7ebbd8c304c2de078bb7780a4511534f061
             "id": "8d87fb979a0677a4",
             "type": "leaf",
             "state": {
@@ -185,7 +202,11 @@
             }
           }
         ],
+<<<<<<< HEAD
         "currentTab": 5
+=======
+        "currentTab": 6
+>>>>>>> 82e5f7ebbd8c304c2de078bb7780a4511534f061
       },
       {
         "id": "5eedef3c2669cb0e",
@@ -216,8 +237,16 @@
       "slides-extended:Show slide preview": false,
       "obsidian-shellcommands:Shell commands: Custom variables": false,
       "mxmind:Mxmind": false,
+<<<<<<< HEAD
       "obsidian-full-calendar:Open Full Calendar": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
+=======
+      "obsidian-git:Open Git source control": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "rss-dashboard:RSS dashboard": false,
+      "rss-dashboard:RSS discover": false,
+>>>>>>> 82e5f7ebbd8c304c2de078bb7780a4511534f061
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,

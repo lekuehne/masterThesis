@@ -15,6 +15,10 @@
   "list-table-converter",
   "highlightr-plugin",
   "obsidian-hider",
+<<<<<<< HEAD
+=======
+  "obsidian-full-calendar",
+>>>>>>> 82e5f7ebbd8c304c2de078bb7780a4511534f061
   "obsidian-emoji-toolbar",
   "dataview",
   "obsidian-csv-table",
@@ -27,5 +31,9 @@
   "obsidian-enhancing-export",
   "obsidian-style-settings",
   "frontmatter-modified-date",
+<<<<<<< HEAD
+=======
+  "calendar",
+>>>>>>> 82e5f7ebbd8c304c2de078bb7780a4511534f061
   "qmd-as-md-obsidian"
 ]
