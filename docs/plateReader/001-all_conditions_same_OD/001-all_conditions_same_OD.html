@@ -200,6 +200,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
         <li class="sidebar-item">
+ <span class="menu-text">plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.qmd</span>
+  </li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../plateReader/004-BS_BSPP_dil_series/report.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">004-BS_BSPP_dil_series</span></a>
@@ -227,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#od600-for-all-bacillus" id="toc-od600-for-all-bacillus" class="nav-link" data-scroll-target="#od600-for-all-bacillus">OD600 for all Bacillus</a></li>
   <li><a href="#od600-for-all-pseudomonas" id="toc-od600-for-all-pseudomonas" class="nav-link" data-scroll-target="#od600-for-all-pseudomonas">OD600 for all Pseudomonas</a></li>
-  <li><a href="#plot-gfp" id="toc-plot-gfp" class="nav-link" data-scroll-target="#plot-gfp">Plot GFP</a></li>
+  <li><a href="#gfp-rfp" id="toc-gfp-rfp" class="nav-link" data-scroll-target="#gfp-rfp">GFP &amp; RFP</a></li>
   <li><a href="#facet-per-condition" id="toc-facet-per-condition" class="nav-link" data-scroll-target="#facet-per-condition">Facet per condition</a></li>
   <li><a href="#b.-subtilis-od-rfp" id="toc-b.-subtilis-od-rfp" class="nav-link" data-scroll-target="#b.-subtilis-od-rfp">B. subtilis OD &amp; RFP</a></li>
   <li><a href="#p.-putida-od-rfp" id="toc-p.-putida-od-rfp" class="nav-link" data-scroll-target="#p.-putida-od-rfp">P. putida OD &amp; RFP</a></li>
@@ -301,516 +304,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="define-data-loading-and-processing-function" class="level1">
 <h1>Define data loading and processing function</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.0     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.2     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:data.table':
+Attaching package: 'data.table'
 
-    between, first, last</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
+The following objects are masked from 'package:lubridate':
 
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
+    hour, isoweek, isoyear, mday, minute, month, quarter, second, wday,
+    week, yday, year
 
-    intersect, setdiff, setequal, union</code></pre>
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+The following object is masked from 'package:purrr':
+
+    transpose</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>process_plate <span class="ot">&lt;-</span> <span class="cf">function</span>(file_path) {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract plate sections</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  OD600  <span class="ot">&lt;-</span> raw[<span class="dv">25</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  GFP100 <span class="ot">&lt;-</span> raw[<span class="dv">57</span><span class="sc">:</span><span class="dv">64</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  GFP80  <span class="ot">&lt;-</span> raw[<span class="dv">89</span><span class="sc">:</span><span class="dv">96</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  RFP100 <span class="ot">&lt;-</span> raw[<span class="dv">121</span><span class="sc">:</span><span class="dv">128</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  RFP80  <span class="ot">&lt;-</span> raw[<span class="dv">153</span><span class="sc">:</span><span class="dv">160</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert to long format</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  to_long <span class="ot">&lt;-</span> <span class="cf">function</span>(df, name) {</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.table</span>(<span class="fu">as.matrix</span>(df)))</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    out<span class="sc">$</span>wavelength <span class="ot">&lt;-</span> name</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(out)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  OD600  <span class="ot">&lt;-</span> <span class="fu">to_long</span>(OD600,  <span class="st">"OD600"</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  GFP100 <span class="ot">&lt;-</span> <span class="fu">to_long</span>(GFP100, <span class="st">"GFP100"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  GFP80  <span class="ot">&lt;-</span> <span class="fu">to_long</span>(GFP80,  <span class="st">"GFP80"</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  RFP100 <span class="ot">&lt;-</span> <span class="fu">to_long</span>(RFP100, <span class="st">"RFP100"</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  RFP80  <span class="ot">&lt;-</span> <span class="fu">to_long</span>(RFP80,  <span class="st">"RFP80"</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  plate_concat <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(<span class="fu">list</span>(OD600, GFP100, GFP80, RFP100, RFP80))</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setnames</span>(plate_concat, <span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>, <span class="st">"value"</span>, <span class="st">"wavelength"</span>))</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(plate_concat<span class="sc">$</span>value))</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>well <span class="ot">&lt;-</span> <span class="fu">paste0</span>(plate_concat<span class="sc">$</span>row, plate_concat<span class="sc">$</span>col)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Date + time from same file</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  date <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path, <span class="at">range =</span> <span class="st">"B5"</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  time <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path, <span class="at">range =</span> <span class="st">"B6"</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>datetime <span class="ot">&lt;-</span> <span class="fu">strptime</span>(</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(date, time),</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"%Y-%m-%d %I:%M:%S %p"</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Conditions</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>condition <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    plate_concat<span class="sc">$</span>row,</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span> <span class="ot">=</span> <span class="st">"Bs"</span>, <span class="st">"B"</span> <span class="ot">=</span> <span class="st">"Bs+Soil"</span>, <span class="st">"C"</span> <span class="ot">=</span> <span class="st">"Soil"</span>,</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span> <span class="ot">=</span> <span class="st">"Bs+Pp"</span>, <span class="st">"E"</span> <span class="ot">=</span> <span class="st">"Bs+Pp+Soil"</span>,</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F"</span> <span class="ot">=</span> <span class="st">"Pp"</span>, <span class="st">"G"</span> <span class="ot">=</span> <span class="st">"Pp+Soil"</span>, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"M9"</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Final tidy</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  plate_concat <span class="ot">&lt;-</span> plate_concat[, .(well, datetime, condition, wavelength, value)]</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plate_concat)</span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>process_plate <span class="ot">&lt;-</span> <span class="cf">function</span>(file_path) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract plate sections</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  OD600  <span class="ot">&lt;-</span> raw[<span class="dv">25</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  GFP100 <span class="ot">&lt;-</span> raw[<span class="dv">57</span><span class="sc">:</span><span class="dv">64</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  GFP80  <span class="ot">&lt;-</span> raw[<span class="dv">89</span><span class="sc">:</span><span class="dv">96</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  RFP100 <span class="ot">&lt;-</span> raw[<span class="dv">121</span><span class="sc">:</span><span class="dv">128</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  RFP80  <span class="ot">&lt;-</span> raw[<span class="dv">153</span><span class="sc">:</span><span class="dv">160</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>]</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert to long format</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  to_long <span class="ot">&lt;-</span> <span class="cf">function</span>(df, name) {</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.table</span>(<span class="fu">as.matrix</span>(df)))</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    out<span class="sc">$</span>wavelength <span class="ot">&lt;-</span> name</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(out)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  OD600  <span class="ot">&lt;-</span> <span class="fu">to_long</span>(OD600,  <span class="st">"OD600"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  GFP100 <span class="ot">&lt;-</span> <span class="fu">to_long</span>(GFP100, <span class="st">"GFP100"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  GFP80  <span class="ot">&lt;-</span> <span class="fu">to_long</span>(GFP80,  <span class="st">"GFP80"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  RFP100 <span class="ot">&lt;-</span> <span class="fu">to_long</span>(RFP100, <span class="st">"RFP100"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  RFP80  <span class="ot">&lt;-</span> <span class="fu">to_long</span>(RFP80,  <span class="st">"RFP80"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  plate_concat <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(<span class="fu">list</span>(OD600, GFP100, GFP80, RFP100, RFP80))</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setnames</span>(plate_concat, <span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>, <span class="st">"value"</span>, <span class="st">"wavelength"</span>))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(plate_concat<span class="sc">$</span>value))</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>well <span class="ot">&lt;-</span> <span class="fu">paste0</span>(plate_concat<span class="sc">$</span>row, plate_concat<span class="sc">$</span>col)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Date + time from same file</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  date <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path, <span class="at">range =</span> <span class="st">"B5"</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  time <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path, <span class="at">range =</span> <span class="st">"B6"</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>datetime <span class="ot">&lt;-</span> <span class="fu">strptime</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(date, time),</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"%Y-%m-%d %I:%M:%S %p"</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Conditions</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  plate_concat<span class="sc">$</span>condition <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    plate_concat<span class="sc">$</span>row,</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span> <span class="ot">=</span> <span class="st">"Bs"</span>, <span class="st">"B"</span> <span class="ot">=</span> <span class="st">"Bs+Soil"</span>, <span class="st">"C"</span> <span class="ot">=</span> <span class="st">"Soil"</span>,</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span> <span class="ot">=</span> <span class="st">"Bs+Pp"</span>, <span class="st">"E"</span> <span class="ot">=</span> <span class="st">"Bs+Pp+Soil"</span>,</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F"</span> <span class="ot">=</span> <span class="st">"Pp"</span>, <span class="st">"G"</span> <span class="ot">=</span> <span class="st">"Pp+Soil"</span>, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"M9"</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Final tidy</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  plate_concat <span class="ot">&lt;-</span> plate_concat[, .(well, datetime, condition, wavelength, value)]</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plate_concat)</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apply-to-all-files-and-concatenate" class="level1">
 <h1>Apply to all files and concatenate</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-12-26_1605_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-12-26_1737_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1133_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1341_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1530_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1746_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1930_BsPpSoil.xlsx"</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-14-26_1602_BsPpSoil.xlsx"</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(<span class="fu">lapply</span>(files, process_plate))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-12-26_1605_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-12-26_1737_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1133_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1341_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1530_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1746_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-13-26_1930_BsPpSoil.xlsx"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"001-03-14-26_1602_BsPpSoil.xlsx"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(<span class="fu">lapply</span>(files, process_plate))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="add-timepoint-labels-and-elapsed-time" class="level1">
 <h1>Add timepoint labels and elapsed time</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>timepoints <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"t0"</span>,<span class="st">"t1.5"</span>,<span class="st">"t19.5"</span>,<span class="st">"t21.5"</span>,<span class="st">"t23.5"</span>,<span class="st">"t25.5"</span>,<span class="st">"t27.5"</span>,<span class="st">"t48"</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Map</span>(<span class="cf">function</span>(f, tp) {</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    dt <span class="ot">&lt;-</span> <span class="fu">process_plate</span>(f)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    dt<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> tp</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    dt</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  }, files, timepoints)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-New names:
-New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`
-• `` -&gt; `...5`
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in set(x, j = name, value = value): Values of type POSIXlt detected and
-converted to POSIXct. We do not recommend the use of POSIXlt at all because it
-typically takes more than 6 times the storage as an equivalent POSIXct column.
-Use as.POSIXct() to avoid this warning.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># elapsed time in hours (first value = 0)</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(all_data<span class="sc">$</span>datetime, all_data<span class="sc">$</span>datetime[<span class="dv">1</span>], <span class="at">units =</span> <span class="st">"hours"</span>) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>timepoints <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"t0"</span>,<span class="st">"t1.5"</span>,<span class="st">"t19.5"</span>,<span class="st">"t21.5"</span>,<span class="st">"t23.5"</span>,<span class="st">"t25.5"</span>,<span class="st">"t27.5"</span>,<span class="st">"t48"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Map</span>(<span class="cf">function</span>(f, tp) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    dt <span class="ot">&lt;-</span> <span class="fu">process_plate</span>(f)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    dt<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> tp</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    dt</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  }, files, timepoints)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># elapsed time in hours (first value = 0)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(all_data<span class="sc">$</span>datetime, all_data<span class="sc">$</span>datetime[<span class="dv">1</span>], <span class="at">units =</span> <span class="st">"hours"</span>) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="write-to-csv" class="level1">
 <h1>Write to CSV</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all_data, <span class="st">"all_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#all_data &lt;- read.csv ("all_data.csv") # Import CSV</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(all_data, <span class="st">"all_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#all_data &lt;- read.csv ("all_data.csv") # Import CSV</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="summary-statistics" class="level1">
 <h1>Summary statistics</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> all_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(condition, wavelength, time) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>( <span class="at">mean_value =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd =</span> <span class="fu">sd</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n =</span> <span class="fu">n</span>(), <span class="at">se =</span> sd <span class="sc">/</span> <span class="fu">sqrt</span>(n), <span class="at">.groups =</span> <span class="st">"drop"</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> all_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(condition, wavelength, time) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>( <span class="at">mean_value =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd =</span> <span class="fu">sd</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n =</span> <span class="fu">n</span>(), <span class="at">se =</span> sd <span class="sc">/</span> <span class="fu">sqrt</span>(n), <span class="at">.groups =</span> <span class="st">"drop"</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="data-visualization" class="level1">
@@ -818,16 +447,16 @@ Use as.POSIXct() to avoid this warning.</code></pre>
 <section id="plot-od600" class="level2">
 <h2 class="anchored" data-anchor-id="plot-od600">Plot OD600</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"OD 600"</span>, <span class="at">x=</span><span class="st">"Time"</span>, <span class="at">title =</span> <span class="st">"OD 600 of all conditions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"OD 600"</span>, <span class="at">x=</span><span class="st">"Time"</span>, <span class="at">title =</span> <span class="st">"OD 600 of all conditions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/001-Plot_OD600-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -837,16 +466,16 @@ Use as.POSIXct() to avoid this warning.</code></pre>
 <section id="od600-for-all-bacillus" class="level1">
 <h1>OD600 for all Bacillus</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bs"</span>, <span class="st">"Bs. + Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) ), <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>, <span class="at">title =</span> <span class="st">"OD 600 of Bacillus containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bs"</span>, <span class="st">"Bs. + Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) ), <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>, <span class="at">title =</span> <span class="st">"OD 600 of Bacillus containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/001-OD600_all_Bacillus-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -855,47 +484,48 @@ Use as.POSIXct() to avoid this warning.</code></pre>
 <section id="od600-for-all-pseudomonas" class="level1">
 <h1>OD600 for all Pseudomonas</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pp"</span>, <span class="st">"Pp+Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) ), <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>, <span class="at">title =</span> <span class="st">"OD 600 of Pseudomonas containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a> <span class="co">#| label: 001-OD600_all_ Pseudomonas</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pp"</span>, <span class="st">"Pp+Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) ), <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>, <span class="at">title =</span> <span class="st">"OD 600 of Pseudomonas containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="plot-gfp" class="level1">
-<h1>Plot GFP</h1>
+<section id="gfp-rfp" class="level1">
+<h1>GFP &amp; RFP</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"GFP100"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"GFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot RFP</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RFP100"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"RFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>)</span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>p3 <span class="sc">+</span> p4 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"GFP and RFP intensities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"GFP100"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"GFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot RFP</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RFP100"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"RFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>p3 <span class="sc">+</span> p4 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"GFP and RFP intensities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/001-plot_GFP_RFP-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -904,29 +534,29 @@ Use as.POSIXct() to avoid this warning.</code></pre>
 <section id="facet-per-condition" class="level1">
 <h1>Facet per condition</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>pGFP <span class="ot">&lt;-</span>summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"GFP100"</span>, <span class="st">"GFP80"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(time, mean_value, <span class="at">color =</span> wavelength)) <span class="sc">+</span> </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.2</span> ) <span class="sc">+</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"GFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>) <span class="sc">+</span></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> condition)</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>pRFP <span class="ot">&lt;-</span>summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"RFP100"</span>, <span class="st">"RFP80"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(time, mean_value, <span class="at">color =</span> wavelength)) <span class="sc">+</span> </span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.2</span> ) <span class="sc">+</span></span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span>  </span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"RFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>) <span class="sc">+</span></span>
-<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> condition)</span>
-<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>pGFP <span class="sc">+</span> pRFP</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pGFP <span class="ot">&lt;-</span>summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"GFP100"</span>, <span class="st">"GFP80"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(time, mean_value, <span class="at">color =</span> wavelength)) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.2</span> ) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"GFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> condition)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>pRFP <span class="ot">&lt;-</span>summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"RFP100"</span>, <span class="st">"RFP80"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(time, mean_value, <span class="at">color =</span> wavelength)) <span class="sc">+</span> </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.2</span> ) <span class="sc">+</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span>  </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"RFP"</span>, <span class="at">x=</span><span class="st">"Time"</span>) <span class="sc">+</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> condition)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>pGFP <span class="sc">+</span> pRFP</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/001-facet_per_condition-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -935,33 +565,33 @@ Use as.POSIXct() to avoid this warning.</code></pre>
 <section id="b.-subtilis-od-rfp" class="level1">
 <h1>B. subtilis OD &amp; RFP</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (p1 | p2) / (p3 | p4) # For patchwork 2x2 grid</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative widths/heights can be adjusted:</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># p1 + p2 + plot_layout(widths = c(2,1)) # makes first plot wider</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Overall annotation:</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (p1 | p2) / (p3 | p4) + plot_annotation(title="Fluorescence Plate Analysis")</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>( summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bs"</span>, <span class="st">"Bs. + Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) ), <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span> </span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bs"</span>, <span class="st">"Bs. + Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RFP100"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"RFP intensity"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"OD 600 and RFP of Bacillus containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (p1 | p2) / (p3 | p4) # For patchwork 2x2 grid</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative widths/heights can be adjusted:</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># p1 + p2 + plot_layout(widths = c(2,1)) # makes first plot wider</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Overall annotation:</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (p1 | p2) / (p3 | p4) + plot_annotation(title="Fluorescence Plate Analysis")</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>( summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bs"</span>, <span class="st">"Bs. + Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) ), <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span> </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bs"</span>, <span class="st">"Bs. + Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RFP100"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"RFP intensity"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"OD 600 and RFP of Bacillus containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/001-BS_OD_and_RFP-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -970,28 +600,28 @@ Use as.POSIXct() to avoid this warning.</code></pre>
 <section id="p.-putida-od-rfp" class="level1">
 <h1>P. putida OD &amp; RFP</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pp"</span>, <span class="st">"Pp+Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span> </span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pp"</span>, <span class="st">"Pp+Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"GFP100"</span>) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span></span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"GFP intensity"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>p5 <span class="sc">+</span> p6 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"OD 600 and RFP of Pseudomonas containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pp"</span>, <span class="st">"Pp+Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"OD 600"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> summary_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>( condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pp"</span>, <span class="st">"Pp+Soil"</span>, <span class="st">"Bs+Pp"</span>, <span class="st">"Bs+Pp+Soil"</span>) <span class="sc">&amp;</span> wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"GFP100"</span>) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition) ) <span class="sc">+</span> </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"GFP intensity"</span>, <span class="at">x =</span> <span class="st">"Time"</span>) <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>p5 <span class="sc">+</span> p6 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"OD 600 and RFP of Pseudomonas containing communities"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="001-all_conditions_same_OD_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="001-all_conditions_same_OD_files/figure-html/001-PP_OD_and_RFP-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

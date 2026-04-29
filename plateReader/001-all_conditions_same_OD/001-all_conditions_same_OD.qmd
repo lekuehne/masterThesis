@@ -25,10 +25,9 @@ This is the first 96-well-plate experiment. All combinations of monoculture, and
 
 # Define data loading and processing function
 ```{r}
+library(tidyverse)
 library(readxl)
 library(data.table)
-library(dplyr)
-library(ggplot2)
 library(patchwork)
 ```
 
@@ -91,7 +90,7 @@ process_plate <- function(file_path) {
 # Apply to all files and concatenate
 
 ```{r}
-#| echo: false
+#| output: false
 
 files <- c(
   "001-03-12-26_1605_BsPpSoil.xlsx",
@@ -110,6 +109,7 @@ all_data <- rbindlist(lapply(files, process_plate))
 # Add timepoint labels and elapsed time
 
 ```{r}
+#| output: false
 timepoints <- c("t0","t1.5","t19.5","t21.5","t23.5","t25.5","t27.5","t48")
 
 all_data <- rbindlist(
@@ -143,6 +143,7 @@ summary_df <- all_data %>% group_by(condition, wavelength, time) %>% summarise( 
 ## Plot OD600
 
 ```{r}
+#| label: 001-Plot_OD600
 summary_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
   geom_line() + 
   geom_point() + 
@@ -154,6 +155,7 @@ summary_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = m
 # OD600 for all Bacillus
 
 ```{r}
+#| label: 001-OD600_all_Bacillus
 ggplot( summary_df %>% filter( condition %in% c("Bs", "Bs. + Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600") ), aes(x = time, y = mean_value, color = condition) ) + 
   geom_line() + 
   geom_point() + 
@@ -165,6 +167,7 @@ ggplot( summary_df %>% filter( condition %in% c("Bs", "Bs. + Soil", "Bs+Pp", "Bs
 # OD600 for all Pseudomonas
 
 ```{r}
+ #| label: 001-OD600_all_ Pseudomonas
 ggplot( summary_df %>% filter( condition %in% c("Pp", "Pp+Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600") ), aes(x = time, y = mean_value, color = condition) ) + 
   geom_line() + 
   geom_point() + 
@@ -173,9 +176,10 @@ ggplot( summary_df %>% filter( condition %in% c("Pp", "Pp+Soil", "Bs+Pp", "Bs+Pp
   labs(y = "OD 600", x = "Time", title = "OD 600 of Pseudomonas containing communities")
 ```
 
-# Plot GFP
+# GFP & RFP
 
 ```{r}
+#| label: 001-plot_GFP_RFP
 p3 <- summary_df %>% filter(wavelength %in% c("GFP100")) %>% 
   ggplot(aes(x = time, y = mean_value, color = condition)) + 
   geom_line() + 
@@ -200,7 +204,7 @@ p3 + p4 + plot_annotation(title="GFP and RFP intensities")
 # Facet per condition
 
 ```{r}
-
+#| label: 001-facet_per_condition
 pGFP <-summary_df %>% filter(wavelength == c("GFP100", "GFP80")) %>%
 ggplot(aes(time, mean_value, color = wavelength)) + 
   geom_line() + 
@@ -224,6 +228,7 @@ pGFP + pRFP
 
 # B. subtilis OD & RFP
 ```{r}
+#| label: 001-BS_OD_and_RFP
 # (p1 | p2) / (p3 | p4) # For patchwork 2x2 grid
 # Relative widths/heights can be adjusted:
 # p1 + p2 + plot_layout(widths = c(2,1)) # makes first plot wider
@@ -252,6 +257,7 @@ p1 + p2 + plot_annotation(title="OD 600 and RFP of Bacillus containing communiti
 # P. putida OD & RFP
 
 ```{r}
+#| label: 001-PP_OD_and_RFP
 p5 <- summary_df %>% filter(condition %in% c("Pp", "Pp+Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600")) %>%
   ggplot(aes(x = time, y = mean_value, color = condition) ) + 
   geom_line() + 

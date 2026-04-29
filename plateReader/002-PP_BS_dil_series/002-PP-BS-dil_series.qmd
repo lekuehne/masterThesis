@@ -1,0 +1,635 @@
+---
+title: "002-PP-BS-dil_series"
+format: html
+identifier: "002"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Short Description
+
+This is a the batch culture well plate experiment, with serial dilutions of starting densities of *B. subtilis* and *P. putida* monocultures. Starting densities ranged from 10^-1^ to 10^-6^ and 10^-2^ to 10^-7^ OD~600~, respectively. Culturing was carried out on plate reader with continuous measurements (every 1h) for \~24 h.
+
+# Data loading and `df` arrangement
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(readxl)
+library(data.table)
+library(patchwork)
+library(stringr)
+library(RColorBrewer)
+library(ggnested)
+library(growthcurver)
+library(ggtext)
+```
+
+```{r}
+#| output: false
+
+# Step 1: Load your Excel file
+OD <- read_excel("002-PP_BS_dil_series_24h_031826.xlsx", range = "B122:CU147", col_names = TRUE)  
+G <- read_excel("002-PP_BS_dil_series_24h_031826.xlsx", range = "B178:CU203", col_names = TRUE) # GFP70
+R <- read_excel("002-PP_BS_dil_series_24h_031826.xlsx", range = "B206:CU231", col_names = TRUE) # RFP90
+
+# Step 2: Reshape from wide to long format
+OD <- OD[-2]                 # Remove Temp column
+OD_long <- pivot_longer(
+  data = OD,
+  cols = -1,                 # All columns except the first (time)
+  names_to = "well",
+  values_to = "OD600"
+)
+
+G <- G[-2]                 # Remove Temp column
+G_long <- pivot_longer(
+  data = G,
+  cols = -1,                 # All columns except the first (time)
+  names_to = "well",
+  values_to = "G"
+)
+
+R <- R[-2]                 # Remove Temp column
+R_long <- pivot_longer(
+  data = R,
+  cols = -1,                 # All columns except the first (time)
+  names_to = "well",
+  values_to = "R"
+)
+
+# Step 3: Rename first column to "time" 
+colnames(OD_long)[1] <- "time"
+colnames(G_long)[1] <- "time"
+colnames(R_long)[1] <- "time"
+
+# Step 4 (optional): Convert time to numeric and to hours
+OD_long$time <- as.numeric(OD_long$time)
+G_long$time <- as.numeric(G_long$time)
+R_long$time <- as.numeric(R_long$time)
+
+OD_long$time <- OD_long$time/3600
+G_long$time <- G_long$time/3600
+R_long$time <- R_long$time/3600
+
+OD_long$G <- G_long$G
+OD_long$R <- R_long$R
+
+OD_long <- OD_long %>%
+  mutate(
+    column = as.numeric(str_extract(well, "\\d+"))
+  )
+
+OD_long <- OD_long %>%
+  mutate(
+    dilution = case_when(
+      column %in% 1  ~ "10^-1",
+      column %in% 2  ~ "10^-2",
+      column %in% 3  ~ "10^-3",
+      column %in% 4  ~ "10^-4",
+      column %in% 5  ~ "10^-5",
+      column %in% 6  ~ "10^-6",
+      column %in% 7  ~ "10^-2",
+      column %in% 8  ~ "10^-3",
+      column %in% 9  ~ "10^-4",
+      column %in% 10  ~ "10^-5",
+      column %in% 11  ~ "10^-6",
+      column %in% 12  ~ "10^-7"
+    )
+  )
+
+OD_long <- OD_long %>%
+  mutate(
+    species = case_when(
+      column %in% 1:6  ~ "Pp",
+      column %in% 7:12  ~ "Bs"
+    )
+  )
+
+
+OD_long <- OD_long %>%
+  mutate(condition = paste(species, dilution, sep = " "))
+
+# Make dilution a properly ordered factor
+OD_long$dilution <- factor(OD_long$dilution, levels = sort(unique(OD_long$dilution)))
+```
+
+## Summary stats
+
+```{r}
+summary_df <- OD_long %>%
+  group_by(time, species, dilution) %>%
+  summarise(
+    mean_OD = mean(OD600, na.rm = TRUE),
+    sd_OD   = sd(OD600, na.rm = TRUE),
+    n       = n(),
+    se_OD   = sd_OD / sqrt(n),
+    mean_G = mean(G, na.rm = TRUE),
+    sd_G   = sd(G, na.rm = TRUE),
+    se_G   = sd_G / sqrt(n),
+    mean_R = mean(R, na.rm = TRUE),
+    sd_R   = sd(R, na.rm = TRUE),
+    se_R   = sd_R / sqrt(n),
+    .groups = "drop"
+  )
+
+# Make dilution a properly ordered factor (AGAIN)
+summary_df$dilution <- factor(summary_df$dilution, levels = sort(unique(summary_df$dilution)))
+```
+
+## Write/Load CSV
+
+```{r}
+write.csv(summary_df, "summary_df.csv", row.names = FALSE)
+write.csv(OD_long, "df.csv", row.names = FALSE)
+
+```
+
+**Load df and summary_df from CSV:**
+
+```{r}
+df <- read.csv ("df.csv") 
+summary_df <- read.csv ("summary_df.csv") 
+```
+
+# Data Visualization
+
+## OD~600~
+
+### OD all, facetted
+
+```{r}
+#| label: 002-PPBS_allOD.facet
+
+ggplot(summary_df, aes( x = time, y = mean_OD, color = dilution, linetype = species )) + 
+  geom_line() +
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme_minimal() + 
+  labs(
+  y=expression("OD"[600]), 
+  x="Time [h]", 
+  title = "OD<sub>600</sub> of *P. putida* and *B. subtilis* for a serial dilution of starting densities") + 
+  facet_wrap(~ species, scales = "free_y") +
+  theme(plot.title = element_markdown())
+```
+
+### OD selected dilutions
+
+```{r}
+#| label: 002-PPBS_selectedDilutions
+
+summary_df %>% filter( (dilution %in% c("10^-6") & species %in% c("Pp")) | (dilution %in% c("10^-2") &
+species %in% c("Bs")) ) %>% 
+  ggplot(aes(x = time, y = mean_OD, color = dilution, linetype = species, group = interaction(species, dilution))) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar(aes(ymin = mean_OD - se_OD,
+ymax = mean_OD + se_OD), width = 0.2 ) + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme_minimal() + labs(
+    y= expression("OD"[600]), 
+    x="Time [h]", 
+    title = "OD<sub>600</sub> of *P. putida* and *B. subtilis* comparison for the biggest diference in starting densities") +
+  theme(plot.title = element_markdown())
+```
+
+### OD all, with ggnested
+
+```{r}
+#| label: 002-allOD.ggnested
+
+ggnested(summary_df, aes( x = time, y = mean_OD, main_group = species, sub_group = dilution ),
+         #legend_labeling = "join", #join_str = ": ",
+         legend_title = "Species: Starting Frequencies", main_keys = F, base_clr = "green", gradient_type = "shades" ) + 
+  geom_line() + 
+  geom_point() +
+  geom_errorbar( aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +
+  #scale_colour_discrete(labels = scales::label_parse()) +
+  # scale_color_discrete(labels = function(x) parse(text = x)) +
+  theme_minimal() + 
+  labs(y= expression("OD"[600]), x="Time [h]", 
+       title = expression("OD"[600]*" of Pp and Bs for different starting frequencies")) 
+```
+
+## PP Plot calculations for different wavelength
+
+```{r}
+PPOD <- summary_df %>% filter(species == "Pp") %>% 
+  ggplot(aes(x = time, y = mean_OD, color = dilution)) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) + 
+  theme_minimal() +
+  labs(y= expression("OD"[600]), x="Time [h]") + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme(plot.title = element_markdown())
+
+PPG <- summary_df %>% filter(species == "Pp") %>% 
+  ggplot(aes(x = time, y = mean_G, color = dilution)) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar( aes(ymin = mean_G - se_G, ymax = mean_G + se_G), width = 0.2 ) +
+  theme_minimal() + theme(legend.position = 'none') +
+  labs(y= "GFP", x="Time [h]") + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme(plot.title = element_markdown())
+
+BSR <- summary_df %>% filter(species == "Pp") %>% 
+  ggplot(aes(x = time, y = mean_R, color = dilution)) + 
+  geom_line() + 
+  geom_point() +
+  geom_errorbar( aes(ymin = mean_R - se_R, ymax = mean_R + se_R), width = 0.2 ) + 
+  theme_minimal() + 
+  theme(legend.position = "none") + 
+  labs(y= "RFP", x="Time [h]") + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme(plot.title = element_markdown())
+```
+
+## BS Plot calculations for different wavelength
+
+```{r}
+BSOD <- summary_df %>% filter(species == "Bs") %>% 
+  ggplot(aes(x = time, y = mean_OD, color = dilution)) + 
+  geom_line() + 
+  geom_point() +
+  geom_errorbar(aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) + 
+  theme_minimal() +
+  labs(y= expression("OD"[600]), x="Time [h]") + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme(plot.title = element_markdown())
+
+BSR <- summary_df %>% filter(species == "Bs") %>% 
+  ggplot(aes(x = time, y = mean_R, color = dilution)) + 
+  geom_line() + 
+  geom_point() +
+  geom_errorbar( aes(ymin = mean_R - se_R, ymax = mean_R + se_R), width = 0.2 ) + 
+  theme_minimal() + 
+  theme(legend.position = "none") + 
+  labs(y= "RFP", x="Time [h]") + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme(plot.title = element_markdown())
+
+BSG <- summary_df %>% filter(species == "Bs") %>% 
+  ggplot(aes(x = time, y = mean_G, color = dilution)) + 
+  geom_line() + 
+  geom_point() + 
+  theme_minimal() + 
+  geom_errorbar( aes(ymin = mean_G - se_G, ymax = mean_G + se_G), width = 0.2 ) + 
+  theme(legend.position = "none") + labs(y= "GFP", x="Time [h]") + 
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  theme(plot.title = element_markdown())
+```
+
+## *P. putida* OD & GFP
+
+```{r}
+#| label: 002-PP_OD_GFP.facet
+
+PPOD + PPG + 
+  plot_annotation( title = "Growth of *P. putida* by OD<sub>600</sub> turbidity (A) and GFP intensity (B) for different inoculation frequencies", tag_levels = "A") + 
+  plot_layout(guides = 'collect') & 
+  theme( plot.title = element_markdown(), legend.position = 'bottom') & labs(color = expression("OD"[600]*" at inoculation"))
+```
+
+### *B. subtilis* OD & RFP
+
+```{r}
+#| label: 002-BS_OD_RFP.facet
+
+BSOD + BSR + 
+  plot_annotation( title = "Growth of *B. subtilis* by OD<sub>600</sub> turbidity (A) and RFP intensity (B) for different inoculation frequencies", tag_levels = "A") + 
+  plot_layout(guides = 'collect') & 
+  theme( plot.title = element_markdown(), legend.position = 'bottom') & 
+  guides(color = guide_legend(nrow = 1)) & 
+  labs(color = expression("OD"[600]*" at inoculation"))
+```
+
+### *B. subtilis* OD, RFP & GFP
+
+```{r}
+#| label: 002-BS_OF_RFP_GFP.facet
+
+BSOD + BSR + BSG + 
+  plot_annotation(
+  title = "Growth of *B. subtilis* by OD<sub>600</sub> turbidity (A), RFP (B) and GFP (C) intensity for different inoculation frequencies", tag_levels = "A") +
+  plot_layout(guides = 'collect') & 
+  theme( plot.title = element_markdown(), legend.position = 'bottom' )
+```
+
+## Fluorescence per OD
+
+Calculate fluorescence per OD:
+
+```{r}
+summary_df$`GFP/OD` <- summary_df$mean_G / summary_df$mean_OD
+summary_df$`RFP/OD` <- summary_df$mean_R / summary_df$mean_OD
+```
+
+### *P. putida* GFP/OD with growth phase indicators
+
+```{r}
+#|label: 002-PP_GFP_per_OD
+
+summary_df %>% filter(species == "Pp") %>% 
+  ggplot(aes(x=time, y=`GFP/OD`, colour = dilution)) + 
+  geom_point() + 
+  geom_line() +
+  theme_minimal() + 
+  theme(plot.title = element_markdown()) +
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  labs( title = "GFP fluorescence per cell density (OD<sub>600</sub>) of a *P. putida* serial dilution", subtitle = "Growth phase indicators according to 10^-1 dilution", 
+        x = "Time [h]", y = expression("GFP"/"OD"[600]), 
+        color = expression("Initial OD"[600]) ) + 
+  
+  # Growth phase indicators
+  geom_vline(xintercept = c(4.5, 11), linetype = "dashed", color = "#8C8C8C") + annotate("text", x = 2.25, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(lag), color = "#8C8C8C") +
+  annotate("text", x = 8, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(log), color = "#8C8C8C") + 
+  annotate("text", x = 16, y = min(summary_df$`GFP/OD`) * 1.1, label = "stationary", color = "#8C8C8C")
+```
+
+### *P. putida* RFP/OD with growth phase indicators
+
+```{r}
+#| label: 002-PP_RFP_per_OD
+
+summary_df %>% filter(species == "Pp") %>% 
+  ggplot(aes(x=time, y=`RFP/OD`, colour = dilution)) + 
+  geom_point() + 
+  geom_line() +
+  theme_minimal() + 
+  theme(plot.title = element_markdown()) +
+  scale_color_discrete(labels = function(x) parse(text = x)) + 
+  labs(
+    title = "RFP fluorescence per cell density (OD<sub>600</sub>) of a *P. putida* serial dilution",
+    subtitle = "Growth phase indicators according to 10^-1 dilution", 
+    x = "Time [h]", y = expression("RFP"/"OD"[600]), color = expression("Initial OD"[600]) ) + 
+  
+  # Growth phase indicators
+  geom_vline(xintercept = c(4.5, 11), linetype = "dashed", color = "#8C8C8C") + 
+  annotate("text", x = 2.25, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(lag), color = "#8C8C8C") +
+  annotate("text", x = 8, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(log), color = "#8C8C8C") + 
+  annotate("text", x = 16, y = min(summary_df$`GFP/OD`) * 1.1, label = "stationary", color = "#8C8C8C")
+```
+
+# Growth Rates
+
+```{r}
+fit_gc <- function(df) {
+  tryCatch({
+    growthcurver::SummarizeGrowth(
+      data_t = as.numeric(df$time),
+      data_n = as.numeric(df$mean_OD),
+      bg_correct = "min"
+    )
+  }, error = function(e) {
+    message("Failed fit")
+    return(NULL)
+  })
+}
+
+gc_fits <- summary_df %>%
+  group_by(species, dilution) %>%
+  nest() %>%
+  mutate(gc = map(data, fit_gc))
+```
+
+## Apply per group
+
+```{r}
+gc_params <- summary_df %>%
+  group_by(species, dilution) %>%
+  nest() %>%
+  mutate(
+    gc = map(data, fit_gc),
+    t_mid = map_dbl(gc, ~ ifelse(is.null(.x), NA, .x$vals$t_mid)),
+    r     = map_dbl(gc, ~ ifelse(is.null(.x), NA, .x$vals$r)),
+    k     = map_dbl(gc, ~ ifelse(is.null(.x), NA, .x$vals$k))
+  ) %>%
+  ungroup()
+
+
+bg_df <- summary_df %>%
+  group_by(species, dilution) %>%
+  summarise(bg = min(mean_OD, na.rm = TRUE), .groups = "drop")
+
+gc_params <- gc_params %>%
+  left_join(bg_df, by = c("species", "dilution"))
+```
+
+## Generate smooth fitted curves
+
+```{r}
+predict_growth <- function(species_name) {
+  gc_params %>%
+    filter(species == species_name) %>%
+    filter(!is.na(k), !is.na(r), !is.na(t_mid)) %>%
+    rowwise() %>%
+    mutate(
+      pred = list({
+        time_seq <- seq(0, max(summary_df$time), length.out = 100)
+        pred_vals <- k / (1 + exp(-r * (time_seq - t_mid)))
+        tibble(time = time_seq, pred_OD = pred_vals + bg)
+      })
+    ) %>%
+    ungroup() %>%
+    select(dilution, pred) %>%
+    unnest(pred)
+}
+
+PP_pred <- predict_growth("Pp")
+BS_pred <- predict_growth("Bs")
+```
+
+## Plot: raw data + fitted curves
+
+### PP
+
+```{r}
+#| output: false
+
+PPfit <- summary_df %>%
+  filter(species == "Pp") %>%
+  ggplot(aes(x = time, y = mean_OD, color = dilution)) +
+  geom_line(alpha = 0.4) +
+  geom_point() +
+  geom_errorbar(
+    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD),
+    width = 0.2
+  ) +
+  geom_line(
+    data = PP_pred,
+    aes(x = time, y = pred_OD, color = dilution),
+    # linetype = "dashed",
+    linewidth = 0.9
+  ) +
+  scale_color_discrete(labels = parse(text = unique(summary_df$dilution))) +
+  theme_minimal() +
+  labs(y = expression("OD"[600]), 
+       x = "Time [h]",
+       title = "Logistic growth curve fit"
+       ) +
+  theme(plot.title = element_markdown()) +
+  scale_color_discrete(labels = function(x) parse(text = x))
+```
+
+### BS
+
+```{r}
+#| output: false
+
+BSfit <- summary_df %>%
+  filter(species == "Bs") %>%
+  ggplot(aes(x = time, y = mean_OD, color = dilution)) +
+  geom_line(alpha = 0.4) +
+  geom_point() +
+  geom_errorbar(
+    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD),
+    width = 0.2
+  ) +
+  geom_line(
+    data = BS_pred,
+    aes(x = time, y = pred_OD, color = dilution),
+    # linetype = "dashed",
+    linewidth = 0.9
+  ) +
+  scale_color_discrete(labels = parse(text = unique(summary_df$dilution))) +
+  theme_minimal() +
+  labs(y = expression("OD"[600]), 
+       x = "Time [h]",
+       title = "Logistic growth curve fit"
+  ) +
+  theme(plot.title = element_markdown()) +
+  scale_color_discrete(labels = function(x) parse(text = x)) 
+```
+
+## Extract time of max growth rate (t₀)
+
+```{r}
+analysis_df <- gc_params %>%
+  select(species, dilution, t_mid) %>%
+  rename(t0 = t_mid)   # optional: keep old naming if you like
+
+t0_points <- gc_params %>%
+  filter(species == "Pp") %>%
+  filter(!is.na(k), !is.na(r), !is.na(t_mid)) %>%
+  rowwise() %>%
+  mutate(
+    OD_t0 = list({
+      # Predicted OD at t_mid
+      pred_OD <- k / (1 + exp(-r * (t_mid - t_mid))) + bg
+      pred_OD
+    }),
+    start_OD_theoretical = 10^as.numeric(gsub("10\\^", "", dilution))
+  ) %>%
+  ungroup() %>%
+  select(dilution, t_mid, OD_t0, start_OD_theoretical)
+
+# Get starting OD per group
+start_od <- summary_df %>%
+  filter(time == 0) %>%
+  select(species, dilution, start_OD = mean_OD)
+
+# Combine
+analysis_df <- analysis_df %>%
+  left_join(start_od, by = c("species", "dilution"))
+
+## Add theoretical calculated starting OD
+analysis_df <- analysis_df %>%
+  mutate(
+    start_OD_theoretical = 10^as.numeric(gsub("10\\^", "", dilution))
+  )
+```
+
+## Calculate plots and linear regression
+
+### PP
+
+```{r}
+PPtime <- analysis_df %>%
+  filter(species == "Pp") %>%
+  ggplot(aes(x = start_OD_theoretical, y = t0, color = species)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_x_log10() +  # optional, since dilutions span orders of magnitude
+  labs(
+    y = "Time [h] until max. growth rate",
+    x = expression("Theoretical Starting OD"[600]),
+    # title = "*P. putida*"
+    title = "Growth timing for different starting density"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none", 
+        plot.title = element_markdown()
+        ) +
+  scale_color_discrete(labels = function(x) parse(text = x))
+```
+
+### BS
+
+```{r}
+BStime <- analysis_df %>%
+  filter(species == "Bs", dilution != "10^-7") %>%
+  ggplot(aes(x = t0, y = start_OD_theoretical, color = species)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_log10() +  # optional, since dilutions span orders of magnitude
+  labs(
+    x = "Time [h] until max. growth rate",
+    y = expression("Theoretical Starting OD"[600]),
+    # title = "*B. subtilis*"
+    title = "Growth timing for different starting density"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none",
+        plot.title = element_markdown()
+        ) +
+  scale_color_discrete(labels = function(x) parse(text = x))
+```
+
+Fit regression explicitly:
+
+```{r}
+lm_model <- lm(t0 ~ start_OD_theoretical, data = analysis_df %>% filter(species == "Pp"))
+summary(lm_model)
+```
+
+## Plot with patchwork
+
+```{r}
+#| label: 002-PP_logistic_fit-max_growth_rates.facet
+
+PPfit + PPtime + plot_annotation(
+  title = "***P. putida***: Time until max. growth rate for serial dilution of strating density", 
+  tag_levels = "A") &
+  theme(
+    plot.title = element_markdown()
+  )
+```
+
+```{r}
+#| label: 002-BS_logistic_fit-max_growth_rates.facet
+
+BSfit + BStime + plot_annotation(
+  title = "***B. subtilis*: Time until max. growth rate for serial dilution of starting density**", 
+  tag_levels = "A") &
+  theme(
+    plot.title = element_markdown()
+  )
+```
+
+```{r}
+#| label: 002-PP-BS-max_growth_rates.facet
+
+PPtime + BStime + plot_annotation(
+  title = "**Time until max. growth rate for serial dilution of starting density**", 
+  tag_levels = "A") &
+  theme(
+    plot.title = element_markdown()
+  )
+```
+
