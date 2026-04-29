@@ -76,6 +76,96 @@
     ]
   },
   {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-2",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-2",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plate 2",
+    "text": "Plate 2",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-3",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-3",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plate 3",
+    "text": "Plate 3",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-4",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-4",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plate 4",
+    "text": "Plate 4",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#writeload-csv",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#writeload-csv",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Write/Load CSV",
+    "text": "Write/Load CSV\n\nwrite.csv(df, \"df.csv\", row.names = FALSE)\nwrite.csv(df_stat, \"df_stat.csv\", row.names = FALSE)\nwrite.csv(media_stat, \"media_stat.csv\", row.names = FALSE)\n\nLoad df’s from CSV:\n\ndf &lt;- read.csv (\"df.csv\") \ndf_stat &lt;- read.csv(\"df_stat.csv\")\nmedia_stat &lt;- read.csv (\"media_stat.csv\")",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-10-3-all-samples",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-10-3-all-samples",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD600 10-3 all samples",
+    "text": "OD600 10-3 all samples\n\ndf_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\") &\n           dilution %in% c(\"10^-3\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = sample)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  # scale_color_discrete(labels = parse(text = unique(df_stat$dilution))) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" of all 10\"^\"-3\"*\" Dilutions\"))\n\n\n\n\n\n\n\n## OD600 10^-2 by media\n\n\nmedia_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = media)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  # scale_color_discrete(labels = parse(text = unique(df_stat$dilution))) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" of all Dilutions grouped by media type\")) +\n  theme(plot.caption = element_markdown()) +\n  facet_wrap(~dilution)",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-all-samples-facet-dilutions",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-all-samples-facet-dilutions",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD600 all samples, facet dilutions",
+    "text": "OD600 all samples, facet dilutions\n\ndf_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = sample)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" Of All Soil Samples At Different Starting Dilutions\")) +\n  facet_wrap(~ dilution)",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plotting-for-lb-and-m9",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plotting-for-lb-and-m9",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plotting for LB and M9",
+    "text": "Plotting for LB and M9\n\nmedia_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = media)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" Of All Soil Samples At Different Starting Dilutions\")) +\n  facet_wrap(~ dilution)",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od-all-grouped-by-media-and-dilution",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od-all-grouped-by-media-and-dilution",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD all grouped by media and dilution",
+    "text": "OD all grouped by media and dilution\n\nmedia_stat %&gt;% filter(wavelength %in% c(\"OD600\")) %&gt;% \n  ggnested(\n    aes(x = elapsed_hours, y = mean_value, main_group = media, sub_group = dilution), \n    legend_title = \"Starting Density\", \n    main_keys = T, \n    base_clr = \"darkgreen\", \n    gradient_type = \"tints\" ) +\n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) + \n  theme_minimal() + \n  labs(y= expression(\"OD\"[600]*\" absorbance\"), x=\"Time [h]\", title = \"OD&lt;sub&gt;600&lt;/sub&gt; Growth Curves by Media Type and Serial Dilution of Starting Density\") + \n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#everything-else",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#everything-else",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Everything else",
+    "text": "Everything else\n\ndf_stat %&gt;% filter(dilution == \"10^-3\" & wavelength == \"OD600\") %&gt;% \n  ggnested(\n    aes(x = elapsed_hours, y = mean_value, main_group = media, sub_group = sample), \n    legend_title = \"Starting Density\", \n    main_keys = T, \n    base_clr = \"darkgreen\", \n    gradient_type = \"tints\" ) +\n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) + \n  theme_minimal() + \n  labs(\n    y= expression(\"OD\"[600]), \n    x=\"Time [h]\", \n    title = \"OD&lt;sub&gt;600&lt;/sub&gt; Growth Curves by Media Type for 10&lt;sup&gt;-3&lt;/sup&gt; Starting Density\") + \n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
     "objectID": "plateReader/004-BS_BSPP_dil_series/report.html#import",
     "href": "plateReader/004-BS_BSPP_dil_series/report.html#import",
     "title": "004-BS_BSPP_dil_series",

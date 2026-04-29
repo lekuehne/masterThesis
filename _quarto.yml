@@ -29,6 +29,7 @@ website:
       contents: 
         - plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.qmd
         - plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.qmd
+        - plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.qmd
         - plateReader/004-BS_BSPP_dil_series/report.qmd
         
     - id: mazeChips
