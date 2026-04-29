@@ -1,0 +1,49 @@
+{
+  "database": "Zotero",
+  "noteImportFolder": "Literature",
+  "pdfExportImageDPI": 120,
+  "pdfExportImageFormat": "png",
+  "pdfExportImageQuality": 90,
+  "citeFormats": [
+    {
+      "name": "Pandoc",
+      "format": "pandoc",
+      "brackets": true
+    },
+    {
+      "name": "Bibliography",
+      "format": "formatted-bibliography",
+      "cslStyle": "apa"
+    }
+  ],
+  "exportFormats": [
+    {
+      "name": "Reveal.js",
+      "outputPathTemplate": "Literature/slides/{{citekey}}_SLIDES.md",
+      "imageOutputPathTemplate": "Literature/slides/media/{{citekey}}/",
+      "imageBaseNameTemplate": "{{citekey}}-image",
+      "templatePath": "Templates/reveal.js/ZoteroReveal.js_FiguresToSlides.md",
+      "cslStyle": "apa"
+    },
+    {
+      "name": "zotero-source-notes",
+      "outputPathTemplate": "Literature/{{citekey}}.md",
+      "imageOutputPathTemplate": "Literature/media/{{citekey}}/",
+      "imageBaseNameTemplate": "{{citekey}}-image",
+      "templatePath": "Templates/Zotero/zotero-source-notes.md",
+      "cslStyle": "apa"
+    },
+    {
+      "name": "Create Literature Note",
+      "outputPathTemplate": "Literature/highlights/{{citekey}}.md",
+      "imageOutputPathTemplate": "Literature/images/{{citekey}}/",
+      "imageBaseNameTemplate": "{{citekey}}-image",
+      "templatePath": "Templates/Zotero/zotero_template_CreateLiteratureNotes.md",
+      "cslStyle": "apa"
+    }
+  ],
+  "citeSuggestTemplate": "[[{{citekey}}]]",
+  "openNoteAfterImport": true,
+  "whichNotesToOpenAfterImport": "first-imported-note",
+  "pdfExportImageOCR": false
+}

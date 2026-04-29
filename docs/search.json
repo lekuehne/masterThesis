@@ -1,19 +1,78 @@
 [
   {
-    "objectID": "masterThesis.html",
-    "href": "masterThesis.html",
-    "title": "About",
+    "objectID": "MM.html",
+    "href": "MM.html",
+    "title": "Materials and Methods",
     "section": "",
-    "text": "This is a compiled report of my Master’s thesis data analysis and results. Work in progress."
+    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %\n\n\n\n\n\n\n\nM9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg\n\n\n\n\n\n\n\n\n\nFor 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg\n\n\n\n\n\n\n\n\n\nFor 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg"
   },
   {
-    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html",
-    "href": "plateReader/004-BS_BSPP_dil_series/report.html",
-    "title": "004-BS_BSPP_dil_series",
+    "objectID": "MM.html#lb-stock",
+    "href": "MM.html#lb-stock",
+    "title": "Materials and Methods",
     "section": "",
-    "text": "Toggle Outline",
+    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %"
+  },
+  {
+    "objectID": "MM.html#m9-stock-solution",
+    "href": "MM.html#m9-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "M9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml"
+  },
+  {
+    "objectID": "MM.html#cacl2-stock-solution",
+    "href": "MM.html#cacl2-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "CaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg"
+  },
+  {
+    "objectID": "MM.html#fecl2-2.6-h2o-stock-solution",
+    "href": "MM.html#fecl2-2.6-h2o-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg"
+  },
+  {
+    "objectID": "MM.html#trace-element-solution-100x",
+    "href": "MM.html#trace-element-solution-100x",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg"
+  },
+  {
+    "objectID": "MM.html#bacillus-subtilis-pseudomonas-putida",
+    "href": "MM.html#bacillus-subtilis-pseudomonas-putida",
+    "title": "Materials and Methods",
+    "section": "Bacillus subtilis & Pseudomonas putida",
+    "text": "Bacillus subtilis & Pseudomonas putida"
+  },
+  {
+    "objectID": "MM.html#soil-natural-inoculum-ni",
+    "href": "MM.html#soil-natural-inoculum-ni",
+    "title": "Materials and Methods",
+    "section": "Soil Natural Inoculum (NI)",
+    "text": "Soil Natural Inoculum (NI)\n\nExtraction and Filtering of NI"
+  },
+  {
+    "objectID": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html",
+    "href": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html",
+    "title": "001-all_conditions_same_OD",
+    "section": "",
+    "text": "This is the first 96-well-plate experiment. All combinations of monoculture, and 2/3 species co-culture were tested with an initial starting OD600 of 0.001. Total well volume was 250 µl. Master mixes (MM) with OD of 0.005 were set up from overnight pre-culture and 50 µl MM used per well. 12 replicates (columns on plate) per condition. Order of conditions as follows:\n\nRows of 96-well-plate\n\n\nA\nB.s.\n\n\nB\nB.s. + NI\n\n\nC\nNI\n\n\nD\nP.p + B.s. + NI\n\n\nE\nP.p + B.s.\n\n\nF\nP.p + NI\n\n\nG\nP.p\n\n\nH\ncontrol (M9)\n\n\n\nSoil Preparation for NI was done in H2O only. No Preculturing of natural inocoulum, no centrifugation. 1g soil (form TER lab course ’26) + 10ml H2O were vortexted for 10 min and subsequently vacuum filtered through filter paper. Yield was very low. Cells were pelleted and resuspended in 2 ml M9 media.",
     "crumbs": [
-      "004-BS_BSPP_dil_series"
+      "001-all_conditions_same_OD"
+    ]
+  },
+  {
+    "objectID": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html#plot-od600",
+    "href": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html#plot-od600",
+    "title": "001-all_conditions_same_OD",
+    "section": "Plot OD600",
+    "text": "Plot OD600\n\nsummary_df %&gt;% filter(wavelength %in% c(\"OD600\")) %&gt;% ggplot(aes(x = time, y = mean_value, color = condition)) + \n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + \n  theme_classic() + \n  labs(y=\"OD 600\", x=\"Time\", title = \"OD 600 of all conditions\")",
+    "crumbs": [
+      "001-all_conditions_same_OD"
     ]
   },
   {
@@ -21,19 +80,36 @@
     "href": "plateReader/004-BS_BSPP_dil_series/report.html#import",
     "title": "004-BS_BSPP_dil_series",
     "section": "Import",
-    "text": "Import\n\n# Load, sort and arrange ---- \n## Load Excel file into datasets ----\n## First timeset \nOD &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B122:CU146\", col_names = TRUE)  \nG &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B176:CU200\", col_names = TRUE) # GFP70\nR &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B203:CU227\", col_names = TRUE) # RFP90\n\n## Second timeset\nOD2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B122:CU144\", col_names = TRUE)  \nG2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B172:CU194\", col_names = TRUE) # GFP70\nR2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B197:CU219\", col_names = TRUE) # RFP90\n\n# Add time difference from starting point of first dataset\nOD2$`Time [s]` &lt;- OD2$`Time [s]` + 85278\nG2$`Time [s]` &lt;- G2$`Time [s]` + 85278\nR2$`Time [s]` &lt;- R2$`Time [s]` + 85278\n\n## Third timeset\nOD3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B122:CU141\", col_names = TRUE)\nG3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B166:CU185\", col_names = TRUE) # GFP70\nR3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B188:CU207\", col_names = TRUE) # RFP90\n\n# Add time difference from starting point of first dataset\nOD3$`Time [s]` &lt;- OD3$`Time [s]` + 177074\nG3$`Time [s]` &lt;- G3$`Time [s]` + 177074\nR3$`Time [s]` &lt;- R3$`Time [s]` + 177074\n\n# Combine all three parts of dataset\nOD &lt;- bind_rows(OD, OD2, OD3)\nG &lt;- bind_rows(G, G2, G3)\nR &lt;- bind_rows(R, R2, R3)\n\n## Reshape from wide to long format ----\nOD &lt;- OD[-2]                 # Remove Temp column\nOD_long &lt;- pivot_longer(\n  data = OD,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"OD600\"\n)\n\nG &lt;- G[-2]                 # Remove Temp column\nG_long &lt;- pivot_longer(\n  data = G,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"G\"\n)\n\nR &lt;- R[-2]                 # Remove Temp column\nR_long &lt;- pivot_longer(\n  data = R,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"R\"\n)\n\n# Rename first column to \"time\" \ncolnames(OD_long)[1] &lt;- \"time\"\ncolnames(G_long)[1] &lt;- \"time\"\ncolnames(R_long)[1] &lt;- \"time\"\n\n# Convert time to numeric and to hours\nOD_long$time &lt;- as.numeric(OD_long$time)\nG_long$time &lt;- as.numeric(G_long$time)\nR_long$time &lt;- as.numeric(R_long$time)\n\nOD_long$time &lt;- OD_long$time/3600\nG_long$time &lt;- G_long$time/3600\nR_long$time &lt;- R_long$time/3600\n\n# Merge different wavelength into one df\ndf &lt;- OD_long\ndf$G70 &lt;- G_long$G\ndf$R90 &lt;- R_long$R\n\n# Scale GFP70 and RFP90 to 100%\n# df$G &lt;- df$G70 * (100/70)\n# df$R &lt;- df$R90 * (100/90)\n\n# Rename G70 to G and R90 to R\ndf &lt;- df %&gt;% rename_at('G70', ~'G')\ndf &lt;- df %&gt;% rename_at('R90', ~'R')\n\n# Convert 'well' column to numeric \ndf &lt;- df %&gt;%\n  mutate(\n    column = as.numeric(str_extract(well, \"\\\\d+\")) \n  ) \n\n## Specify conditions ----\ndf &lt;- df %&gt;%\n  mutate(\n    dilution = case_when(\n      column %in% 1  ~ \"10^-2\",\n      column %in% 2  ~ \"10^-3\",\n      column %in% 3  ~ \"10^-4\",\n      column %in% 4  ~ \"10^-5\",\n      column %in% 5  ~ \"10^-6\",\n      column %in% 6  ~ \"10^-7\",\n      column %in% 7  ~ \"10^-2\",\n      column %in% 8  ~ \"10^-3\",\n      column %in% 9  ~ \"10^-4\",\n      column %in% 10  ~ \"10^-5\",\n      column %in% 11  ~ \"10^-6\",\n      column %in% 12  ~ \"10^-7\"\n    )\n  )\n\ndf &lt;- df %&gt;%\n  mutate(\n    species = case_when(\n      column %in% 1:6  ~ \"B.subtilis\",\n      column %in% 7:12  ~ \"B.s. + P. putida\"\n    )\n  )\n\n## Summary stats ----\nsummary_df &lt;- df %&gt;%\n  group_by(time, species, dilution) %&gt;%\n  summarise(\n    mean_OD = mean(OD600, na.rm = TRUE),\n    sd_OD   = sd(OD600, na.rm = TRUE),\n    n       = n(),\n    se_OD   = sd_OD / sqrt(n),\n    mean_G = mean(G, na.rm = TRUE),\n    sd_G   = sd(G, na.rm = TRUE),\n    se_G   = sd_G / sqrt(n),\n    mean_R = mean(R, na.rm = TRUE),\n    sd_R   = sd(R, na.rm = TRUE),\n    se_R   = sd_R / sqrt(n),\n    .groups = \"drop\"\n  )\n\nsummary_df &lt;- summary_df %&gt;%\n  mutate(condition = paste(species, dilution, sep = \" \"))\n\n# Make dilution a properly ordered factor\nsummary_df$dilution &lt;- factor(summary_df$dilution,\n                              levels = sort(unique(summary_df$dilution)))",
+    "text": "Import\n\n# Load, sort and arrange ---- \n## Load Excel file into datasets ----\n## First timeset \nOD &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B122:CU146\", col_names = TRUE)  \nG &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B176:CU200\", col_names = TRUE) # GFP70\nR &lt;- read_excel(\"4-BS_BSPP_dil-series_20260408_151627.xlsx\", range = \"B203:CU227\", col_names = TRUE) # RFP90\n\n## Second timeset\nOD2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B122:CU144\", col_names = TRUE)  \nG2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B172:CU194\", col_names = TRUE) # GFP70\nR2 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260409_130939.xlsx\", range = \"B197:CU219\", col_names = TRUE) # RFP90\n\n# Add time difference from starting point of first dataset\nOD2$`Time [s]` &lt;- OD2$`Time [s]` + 85278\nG2$`Time [s]` &lt;- G2$`Time [s]` + 85278\nR2$`Time [s]` &lt;- R2$`Time [s]` + 85278\n\n## Third timeset\nOD3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B122:CU141\", col_names = TRUE)\nG3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B166:CU185\", col_names = TRUE) # GFP70\nR3 &lt;- read_excel(\"4-BS_BSPP_dil-series_20260410_120536.xlsx\", range = \"B188:CU207\", col_names = TRUE) # RFP90\n\n# Add time difference from starting point of first dataset\nOD3$`Time [s]` &lt;- OD3$`Time [s]` + 177074\nG3$`Time [s]` &lt;- G3$`Time [s]` + 177074\nR3$`Time [s]` &lt;- R3$`Time [s]` + 177074\n\n# Combine all three parts of dataset\nOD &lt;- bind_rows(OD, OD2, OD3)\nG &lt;- bind_rows(G, G2, G3)\nR &lt;- bind_rows(R, R2, R3)\n\n## Reshape from wide to long format ----\nOD &lt;- OD[-2]                 # Remove Temp column\nOD_long &lt;- pivot_longer(\n  data = OD,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"OD600\"\n)\n\nG &lt;- G[-2]                 # Remove Temp column\nG_long &lt;- pivot_longer(\n  data = G,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"G\"\n)\n\nR &lt;- R[-2]                 # Remove Temp column\nR_long &lt;- pivot_longer(\n  data = R,\n  cols = -1,                 # All columns except the first (time)\n  names_to = \"well\",\n  values_to = \"R\"\n)\n\n# Rename first column to \"time\" \ncolnames(OD_long)[1] &lt;- \"time\"\ncolnames(G_long)[1] &lt;- \"time\"\ncolnames(R_long)[1] &lt;- \"time\"\n\n# Convert time to numeric and to hours\nOD_long$time &lt;- as.numeric(OD_long$time)\nG_long$time &lt;- as.numeric(G_long$time)\nR_long$time &lt;- as.numeric(R_long$time)\n\nOD_long$time &lt;- OD_long$time/3600\nG_long$time &lt;- G_long$time/3600\nR_long$time &lt;- R_long$time/3600\n\n# Merge different wavelength into one df\ndf &lt;- OD_long\ndf$G70 &lt;- G_long$G\ndf$R90 &lt;- R_long$R\n\n# Scale GFP70 and RFP90 to 100%\n# df$G &lt;- df$G70 * (100/70)\n# df$R &lt;- df$R90 * (100/90)\n\n# Rename G70 to G and R90 to R\ndf &lt;- df %&gt;% rename_at('G70', ~'G')\ndf &lt;- df %&gt;% rename_at('R90', ~'R')\n\n# Convert 'well' column to numeric \ndf &lt;- df %&gt;%\n  mutate(\n    column = as.numeric(str_extract(well, \"\\\\d+\")) \n  ) \n\n## Specify conditions ----\ndf &lt;- df %&gt;%\n  mutate(\n    dilution = case_when(\n      column %in% 1  ~ \"10^-2\",\n      column %in% 2  ~ \"10^-3\",\n      column %in% 3  ~ \"10^-4\",\n      column %in% 4  ~ \"10^-5\",\n      column %in% 5  ~ \"10^-6\",\n      column %in% 6  ~ \"10^-7\",\n      column %in% 7  ~ \"10^-2\",\n      column %in% 8  ~ \"10^-3\",\n      column %in% 9  ~ \"10^-4\",\n      column %in% 10  ~ \"10^-5\",\n      column %in% 11  ~ \"10^-6\",\n      column %in% 12  ~ \"10^-7\"\n    )\n  )\n\ndf &lt;- df %&gt;%\n  mutate(\n    species = case_when(\n      column %in% 1:6  ~ \"B.subtilis\",\n      column %in% 7:12  ~ \"B.s. + P. putida\"\n    )\n  )\n\n## Summary stats ----\nsummary_df &lt;- df %&gt;%\n  group_by(time, species, dilution) %&gt;%\n  summarise(\n    mean_OD = mean(OD600, na.rm = TRUE),\n    sd_OD   = sd(OD600, na.rm = TRUE),\n    n       = n(),\n    se_OD   = sd_OD / sqrt(n),\n    mean_G = mean(G, na.rm = TRUE),\n    sd_G   = sd(G, na.rm = TRUE),\n    se_G   = sd_G / sqrt(n),\n    mean_R = mean(R, na.rm = TRUE),\n    sd_R   = sd(R, na.rm = TRUE),\n    se_R   = sd_R / sqrt(n),\n    .groups = \"drop\"\n  )\n\nsummary_df &lt;- summary_df %&gt;%\n  mutate(condition = paste(species, dilution, sep = \" \"))\n\n# Make dilution a properly ordered factor\nsummary_df$dilution &lt;- factor(summary_df$dilution,\n                              levels = sort(unique(summary_df$dilution)))\n\n\n[!OUTPUT]+ {#output-59e19706}\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260408​_151627.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260408​_151627.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260408​_151627.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260409​_130939.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260409​_130939.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260409​_130939.xlsx’\nError: object 'OD2' not found\nError: object 'G2' not found\nError: object 'R2' not found\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260410​_120536.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260410​_120536.xlsx’\nError: ​`path​` does not exist: ‘4​-BS​_BSPP​_dil​-series​_20260410​_120536.xlsx’\nError: object 'OD3' not found\nError: object 'G3' not found\nError: object 'R3' not found\nError: object 'OD' not found\nError: object 'G' not found\nError: object 'R' not found\nError: object 'OD' not found\nError: object 'OD' not found\nError: object 'G' not found\nError: object 'G' not found\nError: object 'R' not found\nError: object 'R' not found\nError: object 'OD​_long' not found\nError: object 'G​_long' not found\nError: object 'R​_long' not found\nError: object 'OD​_long' not found\nError: object 'G​_long' not found\nError: object 'R​_long' not found\nError: object 'OD​_long' not found\nError: object 'G​_long' not found\nError: object 'R​_long' not found\nError: object 'OD​_long' not found\nError: object 'G​_long' not found\nError: object 'R​_long' not found\nError: no applicable method for 'tbl​_vars' applied to an object of class \"function\"\nError: no applicable method for 'tbl​_vars' applied to an object of class \"function\"\nError: no applicable method for 'mutate' applied to an object of class \"function\"\nError: no applicable method for 'mutate' applied to an object of class \"function\"\nError: no applicable method for 'mutate' applied to an object of class \"function\"\nError: no applicable method for 'group​_by' applied to an object of class \"function\"\nError: object 'summary​_df' not found\nError: object 'summary​_df' not found",
     "crumbs": [
       "004-BS_BSPP_dil_series"
     ]
   },
   {
-    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html#first-plot",
-    "href": "plateReader/004-BS_BSPP_dil_series/report.html#first-plot",
+    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html#od-all-facet",
+    "href": "plateReader/004-BS_BSPP_dil_series/report.html#od-all-facet",
     "title": "004-BS_BSPP_dil_series",
-    "section": "First Plot",
-    "text": "First Plot",
+    "section": "OD all, facet",
+    "text": "OD all, facet\n#(004-BS_BSPP_dil-series.facet)",
     "crumbs": [
       "004-BS_BSPP_dil_series"
     ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil_series/report.html#od-all-with-ggnested",
+    "href": "plateReader/004-BS_BSPP_dil_series/report.html#od-all-with-ggnested",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "OD all, with ggnested",
+    "text": "OD all, with ggnested\n#(004-BS_BSPP_dil-series.ggnested)",
+    "crumbs": [
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "masterThesis.html",
+    "href": "masterThesis.html",
+    "title": "About",
+    "section": "",
+    "text": "This is a compiled report of my Master’s thesis data analysis and results. Work in progress."
   }
 ]

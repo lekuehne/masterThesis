@@ -1,0 +1,6 @@
+/* Reduce left/right margins in reading & editing mode */
+.markdown-preview-view, 
+.markdown-source-view { 
+	padding-left: 40px !important;
+	padding-right: 40px !important;
+}

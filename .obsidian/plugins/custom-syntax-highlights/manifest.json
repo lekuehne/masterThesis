@@ -1,0 +1,10 @@
+{
+	"id": "custom-syntax-highlights",
+	"name": "Custom Syntax Highlights",
+	"version": "0.5.4",
+	"minAppVersion": "1.0.0",
+	"description": "Display files with custom extensions as syntax-highlighted code blocks in reading view with configurable extension-to-language mappings.",
+	"author": "Outsiders17711",
+	"authorUrl": "https://github.com/Outsiders17711",
+	"isDesktopOnly": false
+}

@@ -1,0 +1,274 @@
+---
+title: "001-all_conditions_same_OD"
+format: html
+identifier: "001"
+---
+
+# Short Description
+
+This is the first 96-well-plate experiment. All combinations of monoculture, and 2/3 species co-culture were tested with an initial starting OD600 of 0.001. Total well volume was 250 µl. Master mixes (MM) with OD of 0.005 were set up from overnight pre-culture and 50 µl MM used per well. 12 replicates (columns on plate) per condition. Order of conditions as follows:
+
+|     |                 |
+|-----|-----------------|
+| A   | B.s.            |
+| B   | B.s. + NI       |
+| C   | NI              |
+| D   | P.p + B.s. + NI |
+| E   | P.p + B.s.      |
+| F   | P.p + NI        |
+| G   | P.p             |
+| H   | control (M9)    |
+
+: Rows of 96-well-plate
+
+**Soil Preparation for NI** was done in H2O only. No Preculturing of natural inocoulum, no centrifugation. 1g soil (form TER lab course '26) + 10ml H2O were vortexted for 10 min and subsequently vacuum filtered through filter paper. Yield was very low. Cells were pelleted and resuspended in 2 ml M9 media.
+
+# Define data loading and processing function
+```{r}
+library(readxl)
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+```
+
+```{r}
+process_plate <- function(file_path) {
+  
+  raw <- read_excel(file_path, col_names = FALSE)
+  
+  # Extract plate sections
+  OD600  <- raw[25:32, 2:13]
+  GFP100 <- raw[57:64, 2:13]
+  GFP80  <- raw[89:96, 2:13]
+  RFP100 <- raw[121:128, 2:13]
+  RFP80  <- raw[153:160, 2:13]
+  
+  # Convert to long format
+  to_long <- function(df, name) {
+    out <- as.data.frame(as.table(as.matrix(df)))
+    out$wavelength <- name
+    return(out)
+  }
+  
+  OD600  <- to_long(OD600,  "OD600")
+  GFP100 <- to_long(GFP100, "GFP100")
+  GFP80  <- to_long(GFP80,  "GFP80")
+  RFP100 <- to_long(RFP100, "RFP100")
+  RFP80  <- to_long(RFP80,  "RFP80")
+  
+  # Combine
+  plate_concat <- rbindlist(list(OD600, GFP100, GFP80, RFP100, RFP80))
+  setnames(plate_concat, c("row", "col", "value", "wavelength"))
+  
+  plate_concat$value <- as.numeric(as.character(plate_concat$value))
+  plate_concat$well <- paste0(plate_concat$row, plate_concat$col)
+  
+  # Date + time from same file
+  date <- read_excel(file_path, range = "B5", col_names = FALSE)[[1]]
+  time <- read_excel(file_path, range = "B6", col_names = FALSE)[[1]]
+  
+  plate_concat$datetime <- strptime(
+    paste(date, time),
+    format = "%Y-%m-%d %I:%M:%S %p"
+  )
+  
+  # Conditions
+  plate_concat$condition <- dplyr::recode(
+    plate_concat$row,
+    "A" = "Bs", "B" = "Bs+Soil", "C" = "Soil",
+    "D" = "Bs+Pp", "E" = "Bs+Pp+Soil",
+    "F" = "Pp", "G" = "Pp+Soil", "H" = "M9"
+  )
+  
+  # Final tidy
+  plate_concat <- plate_concat[, .(well, datetime, condition, wavelength, value)]
+  
+  return(plate_concat)
+}
+```
+
+# Apply to all files and concatenate
+
+```{r}
+files <- c(
+  "001-03-12-26_1605_BsPpSoil.xlsx",
+  "001-03-12-26_1737_BsPpSoil.xlsx",
+  "001-03-13-26_1133_BsPpSoil.xlsx",
+  "001-03-13-26_1341_BsPpSoil.xlsx",
+  "001-03-13-26_1530_BsPpSoil.xlsx",
+  "001-03-13-26_1746_BsPpSoil.xlsx",
+  "001-03-13-26_1930_BsPpSoil.xlsx",
+  "001-03-14-26_1602_BsPpSoil.xlsx"
+)
+
+all_data <- rbindlist(lapply(files, process_plate))
+```
+
+# Add timepoint labels and elapsed time
+
+```{r}
+timepoints <- c("t0","t1.5","t19.5","t21.5","t23.5","t25.5","t27.5","t48")
+
+all_data <- rbindlist(
+  Map(function(f, tp) {
+    dt <- process_plate(f)
+    dt$timepoint <- tp
+    dt
+  }, files, timepoints)
+)
+
+# elapsed time in hours (first value = 0)
+all_data$time <- as.numeric(
+  difftime(all_data$datetime, all_data$datetime[1], units = "hours") )
+```
+
+# Write to CSV
+
+```{r}
+write.csv(all_data, "all_data.csv", row.names = FALSE)
+#all_data <- read.csv ("all_data.csv") # Import CSV
+```
+
+# Summary statistics
+
+```{r}
+summary_df <- all_data %>% group_by(condition, wavelength, time) %>% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = "drop" )
+```
+
+# Data Visualization
+
+## Plot OD600
+
+```{r}
+summary_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y="OD 600", x="Time", title = "OD 600 of all conditions")
+```
+
+# OD600 for all Bacillus
+
+```{r}
+ggplot( summary_df %>% filter( condition %in% c("Bs", "Bs. + Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600") ), aes(x = time, y = mean_value, color = condition) ) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y = "OD 600", x = "Time", title = "OD 600 of Bacillus containing communities")
+```
+
+# OD600 for all Pseudomonas
+
+```{r}
+ggplot( summary_df %>% filter( condition %in% c("Pp", "Pp+Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600") ), aes(x = time, y = mean_value, color = condition) ) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y = "OD 600", x = "Time", title = "OD 600 of Pseudomonas containing communities")
+```
+
+# Plot GFP
+
+```{r}
+p3 <- summary_df %>% filter(wavelength %in% c("GFP100")) %>% 
+  ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y="GFP", x="Time") + theme(legend.position = "none")
+
+# Plot RFP
+
+p4 <- summary_df %>% filter(wavelength %in% c("RFP100")) %>% 
+  ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y="RFP", x="Time")
+
+p3 + p4 + plot_annotation(title="GFP and RFP intensities")
+```
+
+# Facet per condition
+
+```{r}
+
+pGFP <-summary_df %>% filter(wavelength == c("GFP100", "GFP80")) %>%
+ggplot(aes(time, mean_value, color = wavelength)) + 
+  geom_line() + 
+  geom_point() +
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) +
+  theme_classic() + 
+  labs(y="GFP", x="Time") +
+  facet_wrap(~ condition)
+
+pRFP <-summary_df %>% filter(wavelength == c("RFP100", "RFP80")) %>%
+ggplot(aes(time, mean_value, color = wavelength)) + 
+  geom_line() + 
+  geom_point() +
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) +
+  theme_classic() +  
+  labs(y="RFP", x="Time") +
+  facet_wrap(~ condition)
+
+pGFP + pRFP
+```
+
+# B. subtilis OD & RFP
+```{r}
+# (p1 | p2) / (p3 | p4) # For patchwork 2x2 grid
+# Relative widths/heights can be adjusted:
+# p1 + p2 + plot_layout(widths = c(2,1)) # makes first plot wider
+#
+# Overall annotation:
+# (p1 | p2) / (p3 | p4) + plot_annotation(title="Fluorescence Plate Analysis")
+
+p1 <- ggplot( summary_df %>% filter( condition %in% c("Bs", "Bs. + Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600") ), aes(x = time, y = mean_value, color = condition) ) + 
+  geom_line() + geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  labs(y = "OD 600", x = "Time") + 
+  theme_classic() +
+  theme(legend.position = "none")
+
+p2 <- summary_df %>% filter(condition %in% c("Bs", "Bs. + Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("RFP100")) %>%
+  ggplot(aes(x = time, y = mean_value, color = condition) ) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  labs(y = "RFP intensity", x = "Time") +
+  theme_classic()
+
+p1 + p2 + plot_annotation(title="OD 600 and RFP of Bacillus containing communities")
+```
+
+# P. putida OD & RFP
+
+```{r}
+p5 <- summary_df %>% filter(condition %in% c("Pp", "Pp+Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("OD600")) %>%
+  ggplot(aes(x = time, y = mean_value, color = condition) ) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  labs(y = "OD 600", x = "Time") + 
+  theme(legend.position = "none") +
+  theme_classic()
+
+p6 <- summary_df %>% filter( condition %in% c("Pp", "Pp+Soil", "Bs+Pp", "Bs+Pp+Soil") & wavelength %in% c("GFP100") ) %>% 
+  ggplot(aes(x = time, y = mean_value, color = condition) ) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) +
+  labs(y = "GFP intensity", x = "Time") +
+  theme_classic()
+
+p5 + p6 + plot_annotation(title="OD 600 and RFP of Pseudomonas containing communities")
+```
+
+
+
