@@ -2,9 +2,7 @@
 title: "003-NI-dil_series-media_test"
 format: html
 identifier: "003"
-filters:
-   - lightbox
-lightbox: auto
+lightbox: true
 ---
 
 # Short Description
@@ -644,22 +642,22 @@ media_stat <- df %>%
 ## Write/Load CSV
 
 ```{r}
-write.csv(df, "df.csv", row.names = FALSE)
-write.csv(df_stat, "df_stat.csv", row.names = FALSE)
-write.csv(media_stat, "media_stat.csv", row.names = FALSE)
+# write.csv(df, "df.csv", row.names = FALSE)
+# write.csv(df_stat, "df_stat.csv", row.names = FALSE)
+# write.csv(media_stat, "media_stat.csv", row.names = FALSE)
 ```
 
 **Load `df`'s from CSV:**
 
 ```{r}
-df <- read.csv ("df.csv") 
-df_stat <- read.csv("df_stat.csv")
-media_stat <- read.csv ("media_stat.csv") 
+# df <- read.csv ("df.csv") 
+# df_stat <- read.csv("df_stat.csv")
+# media_stat <- read.csv ("media_stat.csv") 
 ```
 
 # Data Visualization
 
-## OD600 10^-3^ all samples
+## OD600 10^-3^ all dilutions
 
 ```{r}
 #| label: 003-NI-diff_media_OD
@@ -673,15 +671,34 @@ df_stat %>%
   geom_errorbar(
     aes(ymin = mean_value - se, ymax = mean_value + se),
     width = 0.5 ) +
-  # scale_color_discrete(labels = parse(text = unique(df_stat$dilution))) +
   theme_minimal() +
   labs(y= expression("OD"[600]), x="Time", title = expression("OD"[600]*" of all 10"^"-3"*" Dilutions"))
 
-## OD600 10^-2 by media
-
-
 ```
 
+
+```{r}
+#| label: 003-OD_10^-3_by_media
+
+df_stat %>% filter(dilution == "10^-3" & wavelength == "OD600") %>% 
+  ggnested(
+    aes(x = elapsed_hours, y = mean_value, main_group = media, sub_group = sample), 
+    legend_title = "Starting Density", 
+    main_keys = T, 
+    base_clr = "darkgreen", 
+    gradient_type = "tints" ) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) + 
+  theme_minimal() + 
+  labs(
+    y= expression("OD"[600]), 
+    x="Time [h]", 
+    title = "OD<sub>600</sub> Growth Curves by Media Type for 10<sup>-3</sup> Starting Density") + 
+  theme(plot.title = element_markdown())
+```
+
+## OD~600~ grouped by media
 ```{r}
 #| label: 003-OD_grouped_by_media.facet
 
@@ -756,25 +773,3 @@ media_stat %>% filter(wavelength %in% c("OD600")) %>%
   theme(plot.title = element_markdown())
 ```
 
-## Everything else
-
-```{r}
-#| label: 003-OD_10^-3_by_media
-
-df_stat %>% filter(dilution == "10^-3" & wavelength == "OD600") %>% 
-  ggnested(
-    aes(x = elapsed_hours, y = mean_value, main_group = media, sub_group = sample), 
-    legend_title = "Starting Density", 
-    main_keys = T, 
-    base_clr = "darkgreen", 
-    gradient_type = "tints" ) +
-  geom_line() + 
-  geom_point() + 
-  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) + 
-  theme_minimal() + 
-  labs(
-    y= expression("OD"[600]), 
-    x="Time [h]", 
-    title = "OD<sub>600</sub> Growth Curves by Media Type for 10<sup>-3</sup> Starting Density") + 
-  theme(plot.title = element_markdown())
-```

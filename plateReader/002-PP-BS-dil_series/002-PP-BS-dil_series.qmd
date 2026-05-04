@@ -2,9 +2,7 @@
 title: "002-PP-BS-dil_series"
 format: html
 identifier: "002"
-filters:
-   - lightbox
-lightbox: auto
+lightbox: true
 ---
 
 # Short Description

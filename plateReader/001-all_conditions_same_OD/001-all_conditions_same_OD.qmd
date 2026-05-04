@@ -2,9 +2,7 @@
 title: "001-all_conditions_same_OD"
 format: html
 identifier: "001"
-filters:
-   - lightbox
-lightbox: auto
+lightbox: true
 ---
 
 # Short Description
@@ -28,6 +26,7 @@ This is the first 96-well-plate experiment. All combinations of monoculture, and
 
 # Define data loading and processing function
 ```{r}
+#| output: false
 library(tidyverse)
 library(readxl)
 library(data.table)

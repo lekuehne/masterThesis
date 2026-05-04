@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../<favmonster.png>" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -111,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -150,12 +151,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">001-all_conditions_same_OD</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html">
+ <span class="dropdown-text">002-PP-BS-dil_series</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html">
  <span class="dropdown-text">003-NI-dil_series-media_test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../plateReader/004-BS_BSPP_dil_series/report.html">
- <span class="dropdown-text">004-BS_BSPP_dil_series</span></a>
+    <a class="dropdown-item" href="../../plateReader/008-Media_replenishment/008-Media_replenishment.html">
+ <span class="dropdown-text">008-Media_replenishment</span></a>
   </li>  
     </ul>
   </li>
@@ -183,63 +188,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html">002-PP-BS-dil_series</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#short-description" id="toc-short-description" class="nav-link active" data-scroll-target="#short-description">Short Description</a></li>
-  <li><a href="#data-loading-and-df-arrangement" id="toc-data-loading-and-df-arrangement" class="nav-link" data-scroll-target="#data-loading-and-df-arrangement">Data loading and <code>df</code> arrangement</a>
-  <ul class="collapse">
-  <li><a href="#summary-stats" id="toc-summary-stats" class="nav-link" data-scroll-target="#summary-stats">Summary stats</a></li>
-  <li><a href="#writeload-csv" id="toc-writeload-csv" class="nav-link" data-scroll-target="#writeload-csv">Write/Load CSV</a></li>
-  </ul></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a>
-  <ul class="collapse">
-  <li><a href="#od600" id="toc-od600" class="nav-link" data-scroll-target="#od600">OD<sub>600</sub></a>
-  <ul class="collapse">
-  <li><a href="#od-all-facetted" id="toc-od-all-facetted" class="nav-link" data-scroll-target="#od-all-facetted">OD all, facetted</a></li>
-  <li><a href="#od-selected-dilutions" id="toc-od-selected-dilutions" class="nav-link" data-scroll-target="#od-selected-dilutions">OD selected dilutions</a></li>
-  <li><a href="#od-all-with-ggnested" id="toc-od-all-with-ggnested" class="nav-link" data-scroll-target="#od-all-with-ggnested">OD all, with ggnested</a></li>
-  </ul></li>
-  <li><a href="#pp-plot-calculations-for-different-wavelength" id="toc-pp-plot-calculations-for-different-wavelength" class="nav-link" data-scroll-target="#pp-plot-calculations-for-different-wavelength">PP Plot calculations for different wavelength</a></li>
-  <li><a href="#bs-plot-calculations-for-different-wavelength" id="toc-bs-plot-calculations-for-different-wavelength" class="nav-link" data-scroll-target="#bs-plot-calculations-for-different-wavelength">BS Plot calculations for different wavelength</a></li>
-  <li><a href="#p.-putida-od-gfp" id="toc-p.-putida-od-gfp" class="nav-link" data-scroll-target="#p.-putida-od-gfp"><em>P. putida</em> OD &amp; GFP</a>
-  <ul class="collapse">
-  <li><a href="#b.-subtilis-od-rfp" id="toc-b.-subtilis-od-rfp" class="nav-link" data-scroll-target="#b.-subtilis-od-rfp"><em>B. subtilis</em> OD &amp; RFP</a></li>
-  <li><a href="#b.-subtilis-od-rfp-gfp" id="toc-b.-subtilis-od-rfp-gfp" class="nav-link" data-scroll-target="#b.-subtilis-od-rfp-gfp"><em>B. subtilis</em> OD, RFP &amp; GFP</a></li>
-  </ul></li>
-  <li><a href="#fluorescence-per-od" id="toc-fluorescence-per-od" class="nav-link" data-scroll-target="#fluorescence-per-od">Fluorescence per OD</a>
-  <ul class="collapse">
-  <li><a href="#p.-putida-gfpod-with-growth-phase-indicators" id="toc-p.-putida-gfpod-with-growth-phase-indicators" class="nav-link" data-scroll-target="#p.-putida-gfpod-with-growth-phase-indicators"><em>P. putida</em> GFP/OD with growth phase indicators</a></li>
-  <li><a href="#p.-putida-rfpod-with-growth-phase-indicators" id="toc-p.-putida-rfpod-with-growth-phase-indicators" class="nav-link" data-scroll-target="#p.-putida-rfpod-with-growth-phase-indicators"><em>P. putida</em> RFP/OD with growth phase indicators</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#growth-rates" id="toc-growth-rates" class="nav-link" data-scroll-target="#growth-rates">Growth Rates</a>
-  <ul class="collapse">
-  <li><a href="#apply-per-group" id="toc-apply-per-group" class="nav-link" data-scroll-target="#apply-per-group">Apply per group</a></li>
-  <li><a href="#generate-smooth-fitted-curves" id="toc-generate-smooth-fitted-curves" class="nav-link" data-scroll-target="#generate-smooth-fitted-curves">Generate smooth fitted curves</a></li>
-  <li><a href="#plot-raw-data-fitted-curves" id="toc-plot-raw-data-fitted-curves" class="nav-link" data-scroll-target="#plot-raw-data-fitted-curves">Plot: raw data + fitted curves</a>
-  <ul class="collapse">
-  <li><a href="#pp" id="toc-pp" class="nav-link" data-scroll-target="#pp">PP</a></li>
-  <li><a href="#bs" id="toc-bs" class="nav-link" data-scroll-target="#bs">BS</a></li>
-  </ul></li>
-  <li><a href="#extract-time-of-max-growth-rate-t₀" id="toc-extract-time-of-max-growth-rate-t₀" class="nav-link" data-scroll-target="#extract-time-of-max-growth-rate-t₀">Extract time of max growth rate (t₀)</a></li>
-  <li><a href="#calculate-plots-and-linear-regression" id="toc-calculate-plots-and-linear-regression" class="nav-link" data-scroll-target="#calculate-plots-and-linear-regression">Calculate plots and linear regression</a>
-  <ul class="collapse">
-  <li><a href="#pp-1" id="toc-pp-1" class="nav-link" data-scroll-target="#pp-1">PP</a></li>
-  <li><a href="#bs-1" id="toc-bs-1" class="nav-link" data-scroll-target="#bs-1">BS</a></li>
-  </ul></li>
-  <li><a href="#plot-with-patchwork" id="toc-plot-with-patchwork" class="nav-link" data-scroll-target="#plot-with-patchwork">Plot with patchwork</a></li>
-  </ul></li>
-  </ul>
-</nav>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">001-all_conditions_same_OD</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">002-PP-BS-dil_series</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">003-NI-dil_series-media_test</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">plateReader/004-BS-BSPP-dil_series/004-BS-BSPP-dil_series.qmd</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../plateReader/008-Media_replenishment/008-Media_replenishment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">008-Media_replenishment</span></a>
+  </div>
+</li>
+    </ul>
     </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 

@@ -5,7 +5,7 @@ project:
   
 website: 
   title: "Master Thesis Results of Leander Kühne"
-  #favicon: <.png>
+  favicon: <favmonster.png>
   navbar: 
     background: secondary
     search: true
@@ -26,12 +26,13 @@ website:
       style: "docked"
       background: light
       collapse-level: 2
-      contents: 
+      contents:
         - plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.qmd
         - plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.qmd
         - plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.qmd
-        - plateReader/004-BS_BSPP_dil_series/report.qmd
-        
+        - plateReader/004-BS-BSPP-dil_series/004-BS-BSPP-dil_series.qmd
+        - plateReader/008-Media_replenishment/008-Media_replenishment.qmd
+       
     - id: mazeChips
       title: "Fractal Maze Chips"
       style: "docked"
@@ -47,4 +48,3 @@ format:
     - cosmo
     - brady
     css: styles.css
-    toc: true

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../<favmonster.png>" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -111,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -150,12 +151,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">001-all_conditions_same_OD</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html">
+ <span class="dropdown-text">002-PP-BS-dil_series</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html">
  <span class="dropdown-text">003-NI-dil_series-media_test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../plateReader/004-BS_BSPP_dil_series/report.html">
- <span class="dropdown-text">004-BS_BSPP_dil_series</span></a>
+    <a class="dropdown-item" href="../../plateReader/008-Media_replenishment/008-Media_replenishment.html">
+ <span class="dropdown-text">008-Media_replenishment</span></a>
   </li>  
     </ul>
   </li>
@@ -207,8 +212,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
         <li class="sidebar-item">
- <span class="menu-text">plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">002-PP-BS-dil_series</span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html" class="sidebar-item-text sidebar-link active">
@@ -216,9 +224,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
         <li class="sidebar-item">
+ <span class="menu-text">plateReader/004-BS-BSPP-dil_series/004-BS-BSPP-dil_series.qmd</span>
+  </li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../plateReader/004-BS_BSPP_dil_series/report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">004-BS_BSPP_dil_series</span></a>
+  <a href="../../plateReader/008-Media_replenishment/008-Media_replenishment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">008-Media_replenishment</span></a>
   </div>
 </li>
     </ul>
@@ -226,35 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#short-description" id="toc-short-description" class="nav-link active" data-scroll-target="#short-description">Short Description</a></li>
-  <li><a href="#data-loading-and-df-arrangement" id="toc-data-loading-and-df-arrangement" class="nav-link" data-scroll-target="#data-loading-and-df-arrangement">Data loading and <code>df</code> arrangement</a></li>
-  <li><a href="#plate-1" id="toc-plate-1" class="nav-link" data-scroll-target="#plate-1">Plate 1</a>
-  <ul class="collapse">
-  <li><a href="#plate-2" id="toc-plate-2" class="nav-link" data-scroll-target="#plate-2">Plate 2</a></li>
-  <li><a href="#plate-3" id="toc-plate-3" class="nav-link" data-scroll-target="#plate-3">Plate 3</a></li>
-  <li><a href="#plate-4" id="toc-plate-4" class="nav-link" data-scroll-target="#plate-4">Plate 4</a></li>
-  </ul></li>
-  <li><a href="#combine-dataframes-from-different-96-well-plates" id="toc-combine-dataframes-from-different-96-well-plates" class="nav-link" data-scroll-target="#combine-dataframes-from-different-96-well-plates">Combine dataframes from different 96-well-plates</a></li>
-  <li><a href="#calculate-summary-statistics-mean-and-standard-deviation" id="toc-calculate-summary-statistics-mean-and-standard-deviation" class="nav-link" data-scroll-target="#calculate-summary-statistics-mean-and-standard-deviation">Calculate summary statistics (mean and standard deviation)</a>
-  <ul class="collapse">
-  <li><a href="#writeload-csv" id="toc-writeload-csv" class="nav-link" data-scroll-target="#writeload-csv">Write/Load CSV</a></li>
-  </ul></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a>
-  <ul class="collapse">
-  <li><a href="#od600-10-3-all-samples" id="toc-od600-10-3-all-samples" class="nav-link" data-scroll-target="#od600-10-3-all-samples">OD600 10<sup>-3</sup> all samples</a></li>
-  <li><a href="#od600-all-samples-facet-dilutions" id="toc-od600-all-samples-facet-dilutions" class="nav-link" data-scroll-target="#od600-all-samples-facet-dilutions">OD600 all samples, facet dilutions</a></li>
-  <li><a href="#plotting-for-lb-and-m9" id="toc-plotting-for-lb-and-m9" class="nav-link" data-scroll-target="#plotting-for-lb-and-m9">Plotting for LB and M9</a></li>
-  <li><a href="#od-all-grouped-by-media-and-dilution" id="toc-od-all-grouped-by-media-and-dilution" class="nav-link" data-scroll-target="#od-all-grouped-by-media-and-dilution">OD all grouped by media and dilution</a></li>
-  <li><a href="#everything-else" id="toc-everything-else" class="nav-link" data-scroll-target="#everything-else">Everything else</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -279,6 +262,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="short-description" class="level1">
 <h1>Short Description</h1>
+<p>This experiment tried to investigate in the effect of pre-culturing the soil samples in LB and M9 media, respectively on growth rates of subsequently isolated natural soil communities.</p>
+<p>1 g of soil was incubated overnight in either LB or M9. 4 soil replicates for each medium. After o/n culture media were vacuum filtered to obtain bacterial communities and serial dilutions ranging from 10<sup>-2</sup> to 10<sup>-6</sup> were incubated on 96-well-plates (8 technical replicates). For ~1.5 days.</p>
 </section>
 <section id="data-loading-and-df-arrangement" class="level1">
 <h1>Data loading and <code>df</code> arrangement</h1>
@@ -483,22 +468,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="writeload-csv" class="level2">
 <h2 class="anchored" data-anchor-id="writeload-csv">Write/Load CSV</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">"df.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df_stat, <span class="st">"df_stat.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(media_stat, <span class="st">"media_stat.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(df, "df.csv", row.names = FALSE)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(df_stat, "df_stat.csv", row.names = FALSE)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(media_stat, "media_stat.csv", row.names = FALSE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Load <code>df</code>’s from CSV:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span> (<span class="st">"df.csv"</span>) </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_stat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"df_stat.csv"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>media_stat <span class="ot">&lt;-</span> <span class="fu">read.csv</span> (<span class="st">"media_stat.csv"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read.csv ("df.csv") </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df_stat &lt;- read.csv("df_stat.csv")</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># media_stat &lt;- read.csv ("media_stat.csv") </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="data-visualization" class="level1">
 <h1>Data Visualization</h1>
-<section id="od600-10-3-all-samples" class="level2">
-<h2 class="anchored" data-anchor-id="od600-10-3-all-samples">OD600 10<sup>-3</sup> all samples</h2>
+<section id="od600-10-3-all-dilutions" class="level2">
+<h2 class="anchored" data-anchor-id="od600-10-3-all-dilutions">OD600 10<sup>-3</sup> all dilutions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_stat <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>) <span class="sc">&amp;</span></span>
@@ -509,9 +494,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se),</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_color_discrete(labels = parse(text = unique(df_stat$dilution))) +</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="fu">expression</span>(<span class="st">"OD"</span>[<span class="dv">600</span>]), <span class="at">x=</span><span class="st">"Time"</span>, <span class="at">title =</span> <span class="fu">expression</span>(<span class="st">"OD"</span>[<span class="dv">600</span>]<span class="sc">*</span><span class="st">" of all 10"</span><span class="sc">^</span><span class="st">"-3"</span><span class="sc">*</span><span class="st">" Dilutions"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="fu">expression</span>(<span class="st">"OD"</span>[<span class="dv">600</span>]), <span class="at">x=</span><span class="st">"Time"</span>, <span class="at">title =</span> <span class="fu">expression</span>(<span class="st">"OD"</span>[<span class="dv">600</span>]<span class="sc">*</span><span class="st">" of all 10"</span><span class="sc">^</span><span class="st">"-3"</span><span class="sc">*</span><span class="st">" Dilutions"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -519,8 +503,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## OD600 10^-2 by media</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_stat <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dilution <span class="sc">==</span> <span class="st">"10^-3"</span> <span class="sc">&amp;</span> wavelength <span class="sc">==</span> <span class="st">"OD600"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggnested</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> elapsed_hours, <span class="at">y =</span> mean_value, <span class="at">main_group =</span> media, <span class="at">sub_group =</span> sample), </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend_title =</span> <span class="st">"Starting Density"</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">main_keys =</span> T, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_clr =</span> <span class="st">"darkgreen"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">gradient_type =</span> <span class="st">"tints"</span> ) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.2</span> ) <span class="sc">+</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span> <span class="fu">expression</span>(<span class="st">"OD"</span>[<span class="dv">600</span>]), </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Time [h]"</span>, </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"OD&lt;sub&gt;600&lt;/sub&gt; Growth Curves by Media Type for 10&lt;sup&gt;-3&lt;/sup&gt; Starting Density"</span>) <span class="sc">+</span> </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_markdown</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_10^-3_by_media-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_10^-3_by_media-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="od600-grouped-by-media" class="level2">
+<h2 class="anchored" data-anchor-id="od600-grouped-by-media">OD<sub>600</sub> grouped by media</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>media_stat <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span></span>
@@ -538,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media.facet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media.facet-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media.facet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media.facet-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -561,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_by_different_dil.facet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_by_different_dil.facet-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_by_different_dil.facet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_by_different_dil.facet-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -584,7 +595,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.facet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.facet-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.facet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.facet-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -609,35 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.ggnested-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.ggnested-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="everything-else" class="level2">
-<h2 class="anchored" data-anchor-id="everything-else">Everything else</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_stat <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dilution <span class="sc">==</span> <span class="st">"10^-3"</span> <span class="sc">&amp;</span> wavelength <span class="sc">==</span> <span class="st">"OD600"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggnested</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> elapsed_hours, <span class="at">y =</span> mean_value, <span class="at">main_group =</span> media, <span class="at">sub_group =</span> sample), </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend_title =</span> <span class="st">"Starting Density"</span>, </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">main_keys =</span> T, </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_clr =</span> <span class="st">"darkgreen"</span>, </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">gradient_type =</span> <span class="st">"tints"</span> ) <span class="sc">+</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.2</span> ) <span class="sc">+</span> </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span> <span class="fu">expression</span>(<span class="st">"OD"</span>[<span class="dv">600</span>]), </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Time [h]"</span>, </span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"OD&lt;sub&gt;600&lt;/sub&gt; Growth Curves by Media Type for 10&lt;sup&gt;-3&lt;/sup&gt; Starting Density"</span>) <span class="sc">+</span> </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_markdown</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_10^-3_by_media-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_10^-3_by_media-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.ggnested-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="003-NI-dil_series-media_test_files/figure-html/003-OD_grouped_by_media_and_dil.ggnested-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>

@@ -1,0 +1,199 @@
+---
+title: "008-Media_replenishment"
+format: html
+identifier: "004"
+lightbox: true
+---
+
+# Short description
+
+
+# Data loading combining
+
+```{r}
+#| echo: false
+#| output: false
+
+library(tidyverse)
+library(readxl)
+library(stringr)
+library(patchwork)
+library(RColorBrewer)
+library(ggnested)
+library(growthcurver)
+library(ggtext)
+library(plotly)
+library(data.table)
+```
+
+
+```{r}
+process_plate <- function(file_path) {
+  
+  raw <- read_excel(file_path, col_names = FALSE)
+  
+  # Extract plate sections
+  OD600  <- raw[37:44, 2:13]
+  GFP70 <- raw[70:77, 2:13]
+  RFP85 <- raw[103:110, 2:13]
+  RFP90  <- raw[136:143, 2:13]
+  
+  # Convert to long format
+  to_long <- function(df, name) {
+    out <- as.data.frame(as.table(as.matrix(df)))
+    out$wavelength <- name
+    return(out)
+  }
+  
+  OD600  <- to_long(OD600,  "OD600")
+  GFP70 <- to_long(GFP70, "GFP70")
+  RFP85 <- to_long(RFP85, "RFP85")
+  RFP90  <- to_long(RFP90,  "RFP90")
+  
+  # Combine
+  plate_concat <- rbindlist(list(OD600, GFP70, RFP85, RFP90))
+  setnames(plate_concat, c("row", "col", "value", "wavelength"))
+  
+  plate_concat$value <- as.numeric(as.character(plate_concat$value))
+  plate_concat$well <- paste0(plate_concat$row, plate_concat$col)
+  
+  # Date + time from same file
+  date <- read_excel(file_path, range = "E6", col_names = FALSE)[[1]]
+  time <- read_excel(file_path, range = "E7", col_names = FALSE)[[1]]
+  
+  plate_concat$datetime <- as.POSIXct(paste(date, time))
+  
+  # Conditions
+  plate_concat$condition <- dplyr::recode(
+    plate_concat$row,
+    "A" = "Bs",
+    "B" = "Bs+NI",
+    "C" = "NI",
+    "D" = "Bs+Pp+NI",
+    "E" = "Bs+Pp",
+    "F" = "Pp+NI",
+    "G" = "Pp",
+    "H" = "M9"
+  )
+  
+  # Final tidy
+  plate_concat <- plate_concat[, .(well, datetime, condition, wavelength, value)]
+  
+  return(plate_concat)
+}
+```
+
+# Apply to all files and concatenate
+
+```{r}
+#| output: false
+
+files <- c(
+  "008.0-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.1A-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.1B-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.2A-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.2B-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.3A-PP BS Growth single point_20260430_174232.xlsx",
+  "008.3B-PP BS Growth single point_20260430_181943.xlsx",
+  "008.4A-PP BS Growth single point_20260502_234619.xlsx",
+  "008.4B-PP BS Growth single point_20260503_011632.xlsx"
+)
+
+all_data <- rbindlist(lapply(files, process_plate))
+
+# elapsed time in hours (first value = 0)
+all_data$time <- as.numeric(
+  difftime(all_data$datetime, all_data$datetime[1], units = "hours") )
+```
+
+# Apply to only the "A" files and concatenate
+
+```{r}
+#| output: false
+
+files <- c(
+  "008.0-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.1A-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.2A-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.3A-PP BS Growth single point_20260430_174232.xlsx",
+  "008.4A-PP BS Growth single point_20260502_234619.xlsx"
+)
+
+all_A_data <- rbindlist(lapply(files, process_plate))
+
+# elapsed time in hours (first value = 0)
+all_A_data$time <- as.numeric(
+  difftime(all_A_data$datetime, all_data$datetime[1], units = "hours") )
+```
+
+# Apply to only the "B" files and concatenate
+
+```{r}
+#| output: false
+
+files <- c(
+  "008.0-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.1B-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.2B-PP BS Growth single point (Modified)_20260424_160703.xlsx",
+  "008.3B-PP BS Growth single point_20260430_181943.xlsx",
+  "008.4B-PP BS Growth single point_20260503_011632.xlsx"
+)
+
+all_B_data <- rbindlist(lapply(files, process_plate))
+
+# elapsed time in hours (first value = 0)
+all_B_data$time <- as.numeric(
+  difftime(all_B_data$datetime, all_B_data$datetime[1], units = "hours") )
+```
+
+# Write to CSV
+
+```{r}
+write.csv(all_data, "all_data.csv", row.names = FALSE)
+#all_data <- read.csv ("all_data.csv") # Import CSV
+```
+
+# Summary statistics
+
+```{r}
+summary_df <- all_data %>% group_by(condition, wavelength, time) %>% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = "drop" )
+```
+
+```{r}
+summary_B_df <- all_B_data %>% group_by(condition, wavelength, time) %>% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = "drop" )
+```
+
+```{r}
+summary_A_df <- all_A_data %>% group_by(condition, wavelength, time) %>% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = "drop" )
+```
+
+# Data Visualization
+
+## Plot OD600 of all conditions BEFORE media replenishment
+
+```{r}
+#| label: 008-Plot_OD600_all_A
+summary_A_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y="OD 600", x="Time")
+```
+
+## Plot OD600 of all conditions AFTER media replenishment
+
+```{r}
+#| label: 008-Plot_OD600_all_B
+summary_B_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  labs(y="OD 600", x="Time")
+```
+
+
+
+
