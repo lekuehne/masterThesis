@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -237,7 +237,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#short-description" id="toc-short-description" class="nav-link active" data-scroll-target="#short-description">Short description</a></li>
+  <li><a href="#data-loading-combining" id="toc-data-loading-combining" class="nav-link" data-scroll-target="#data-loading-combining">Data loading combining</a></li>
+  <li><a href="#apply-to-all-files-and-concatenate" id="toc-apply-to-all-files-and-concatenate" class="nav-link" data-scroll-target="#apply-to-all-files-and-concatenate">Apply to all files and concatenate</a></li>
+  <li><a href="#apply-to-only-the-a-files-and-concatenate" id="toc-apply-to-only-the-a-files-and-concatenate" class="nav-link" data-scroll-target="#apply-to-only-the-a-files-and-concatenate">Apply to only the “A” files and concatenate</a></li>
+  <li><a href="#apply-to-only-the-b-files-and-concatenate" id="toc-apply-to-only-the-b-files-and-concatenate" class="nav-link" data-scroll-target="#apply-to-only-the-b-files-and-concatenate">Apply to only the “B” files and concatenate</a></li>
+  <li><a href="#write-to-csv" id="toc-write-to-csv" class="nav-link" data-scroll-target="#write-to-csv">Write to CSV</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary statistics</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a>
+  <ul class="collapse">
+  <li><a href="#plot-od600-of-all-conditions-before-media-replenishment" id="toc-plot-od600-of-all-conditions-before-media-replenishment" class="nav-link" data-scroll-target="#plot-od600-of-all-conditions-before-media-replenishment">Plot OD600 of all conditions BEFORE media replenishment</a></li>
+  <li><a href="#plot-od600-of-all-conditions-after-media-replenishment" id="toc-plot-od600-of-all-conditions-after-media-replenishment" class="nav-link" data-scroll-target="#plot-od600-of-all-conditions-after-media-replenishment">Plot OD600 of all conditions AFTER media replenishment</a></li>
+  <li><a href="#plot-gfp-of-all-conditions-after-media-replenishment" id="toc-plot-gfp-of-all-conditions-after-media-replenishment" class="nav-link" data-scroll-target="#plot-gfp-of-all-conditions-after-media-replenishment">Plot GFP of all conditions AFTER media replenishment</a></li>
+  <li><a href="#plot-rfp-of-all-conditions-after-media-replenishment" id="toc-plot-rfp-of-all-conditions-after-media-replenishment" class="nav-link" data-scroll-target="#plot-rfp-of-all-conditions-after-media-replenishment">Plot RFP of all conditions AFTER media replenishment</a></li>
+  <li><a href="#to-do" id="toc-to-do" class="nav-link" data-scroll-target="#to-do">TO DO:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -402,17 +424,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Data Visualization</h1>
 <section id="plot-od600-of-all-conditions-before-media-replenishment" class="level2">
 <h2 class="anchored" data-anchor-id="plot-od600-of-all-conditions-before-media-replenishment">Plot OD600 of all conditions BEFORE media replenishment</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>summary_A_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"OD 600"</span>, <span class="at">x=</span><span class="st">"Time"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell" title="OD<sub>600</sub> of all conditions BEFORE media replenishment">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="008-Media_replenishment_files/figure-html/008-Plot_OD600_all_A-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="008-Media_replenishment_files/figure-html/008-Plot_OD600_all_A-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="008-Media_replenishment_files/figure-html/008-plot_all_OD600_before-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="008-Media_replenishment_files/figure-html/008-plot_all_OD600_before-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -421,20 +437,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plot-od600-of-all-conditions-after-media-replenishment" class="level2">
 <h2 class="anchored" data-anchor-id="plot-od600-of-all-conditions-after-media-replenishment">Plot OD600 of all conditions AFTER media replenishment</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>summary_B_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(wavelength <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OD600"</span>)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_value, <span class="at">color =</span> condition)) <span class="sc">+</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.5</span> ) <span class="sc">+</span> </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"OD 600"</span>, <span class="at">x=</span><span class="st">"Time"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="008-Media_replenishment_files/figure-html/008-Plot_OD600_all_B-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="008-Media_replenishment_files/figure-html/008-Plot_OD600_all_B-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="008-Media_replenishment_files/figure-html/008-plot_all_OD600_after-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="008-Media_replenishment_files/figure-html/008-plot_all_OD600_after-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="plot-gfp-of-all-conditions-after-media-replenishment" class="level2">
+<h2 class="anchored" data-anchor-id="plot-gfp-of-all-conditions-after-media-replenishment">Plot GFP of all conditions AFTER media replenishment</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="008-Media_replenishment_files/figure-html/008-plot_all_GFP70_after-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="008-Media_replenishment_files/figure-html/008-plot_all_GFP70_after-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-rfp-of-all-conditions-after-media-replenishment" class="level2">
+<h2 class="anchored" data-anchor-id="plot-rfp-of-all-conditions-after-media-replenishment">Plot RFP of all conditions AFTER media replenishment</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="008-Media_replenishment_files/figure-html/008-plot_all_RFP_after-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="008-Media_replenishment_files/figure-html/008-plot_all_RFP_after-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="to-do" class="level2">
+<h2 class="anchored" data-anchor-id="to-do">TO DO:</h2>
+<ul>
+<li>Substract M9 mean from values to normalize</li>
+<li>Calculate RFP/GFP per OD and compare Pp alone vs.&nbsp;Pp+NI to see how much NI is contributing to the OD</li>
+</ul>
 
 
 </section>

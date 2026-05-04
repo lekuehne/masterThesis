@@ -173,26 +173,74 @@ summary_A_df <- all_A_data %>% group_by(condition, wavelength, time) %>% summari
 ## Plot OD600 of all conditions BEFORE media replenishment
 
 ```{r}
-#| label: 008-Plot_OD600_all_A
+#| echo: false
+#| label: 008-plot_all_OD600_before
+#| title: "OD<sub>600</sub> of all conditions BEFORE media replenishment"
 summary_A_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
   geom_line() + 
   geom_point() + 
   geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
   theme_classic() + 
-  labs(y="OD 600", x="Time")
+  theme(title = element_markdown()) +
+  labs(y="OD 600", x="time [h]", title = "OD<sub>600</sub> of all conditions BEFORE media replenishment")
 ```
 
 ## Plot OD600 of all conditions AFTER media replenishment
 
 ```{r}
-#| label: 008-Plot_OD600_all_B
+#| echo: false
+#| label: 008-plot_all_OD600_after
+
 summary_B_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
   geom_line() + 
   geom_point() + 
   geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
   theme_classic() + 
-  labs(y="OD 600", x="Time")
+  theme(title = element_markdown()) +
+  labs(y = expression("OD"[600]),
+       x ="time [h]", 
+       title = "OD<sub>600</sub> of all conditions AFTER media replenishment")
 ```
+
+## Plot GFP of all conditions AFTER media replenishment
+
+```{r}
+#| echo: false
+#| label: 008-plot_all_GFP70_after
+
+summary_B_df %>% filter(wavelength %in% c("GFP70")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  theme(title = element_markdown()) +
+  labs(y = "GFP",
+       x ="time [h]", 
+       title = "GFP intensity of all conditions AFTER media replenishment")
+```
+
+## Plot RFP of all conditions AFTER media replenishment
+
+```{r}
+#| echo: false
+#| label: 008-plot_all_RFP_after
+
+summary_B_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y = mean_value, color = condition)) + 
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() + 
+  theme(title = element_markdown()) +
+  labs(y = "RFP",
+       x ="time [h]", 
+       title = "RFP of all conditions AFTER media replenishment")
+```
+
+## TO DO: 
+- Substract M9 mean from values to normalize
+- Calculate RFP/GFP per OD and compare Pp alone vs. Pp+NI to see how much NI is contributing to the OD
+
+
 
 
 

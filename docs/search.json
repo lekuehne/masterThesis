@@ -60,7 +60,7 @@
     "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-od600-of-all-conditions-before-media-replenishment",
     "title": "008-Media_replenishment",
     "section": "Plot OD600 of all conditions BEFORE media replenishment",
-    "text": "Plot OD600 of all conditions BEFORE media replenishment\n\nsummary_A_df %&gt;% filter(wavelength %in% c(\"OD600\")) %&gt;% ggplot(aes(x = time, y = mean_value, color = condition)) + \n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + \n  theme_classic() + \n  labs(y=\"OD 600\", x=\"Time\")",
+    "text": "Plot OD600 of all conditions BEFORE media replenishment",
     "crumbs": [
       "008-Media_replenishment"
     ]
@@ -70,7 +70,37 @@
     "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-od600-of-all-conditions-after-media-replenishment",
     "title": "008-Media_replenishment",
     "section": "Plot OD600 of all conditions AFTER media replenishment",
-    "text": "Plot OD600 of all conditions AFTER media replenishment\n\nsummary_B_df %&gt;% filter(wavelength %in% c(\"OD600\")) %&gt;% ggplot(aes(x = time, y = mean_value, color = condition)) + \n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + \n  theme_classic() + \n  labs(y=\"OD 600\", x=\"Time\")",
+    "text": "Plot OD600 of all conditions AFTER media replenishment",
+    "crumbs": [
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-gfp-of-all-conditions-after-media-replenishment",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-gfp-of-all-conditions-after-media-replenishment",
+    "title": "008-Media_replenishment",
+    "section": "Plot GFP of all conditions AFTER media replenishment",
+    "text": "Plot GFP of all conditions AFTER media replenishment",
+    "crumbs": [
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-rfp-of-all-conditions-after-media-replenishment",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-rfp-of-all-conditions-after-media-replenishment",
+    "title": "008-Media_replenishment",
+    "section": "Plot RFP of all conditions AFTER media replenishment",
+    "text": "Plot RFP of all conditions AFTER media replenishment",
+    "crumbs": [
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#to-do",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#to-do",
+    "title": "008-Media_replenishment",
+    "section": "TO DO:",
+    "text": "TO DO:\n\nSubstract M9 mean from values to normalize\nCalculate RFP/GFP per OD and compare Pp alone vs. Pp+NI to see how much NI is contributing to the OD",
     "crumbs": [
       "008-Media_replenishment"
     ]

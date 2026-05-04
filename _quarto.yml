@@ -48,3 +48,4 @@ format:
     - cosmo
     - brady
     css: styles.css
+    toc: true
