@@ -1,1 +1,15 @@
-[]
+[
+  "obsidian-pandoc",
+  "obsidian-pandoc-reference-list",
+  "obsidian-minimal-settings",
+  "list-table-converter",
+  "qmd-as-md-obsidian",
+  "url-into-selection",
+  "ridian",
+  "obsidian-shellcommands",
+  "terminal",
+  "templater-obsidian",
+  "vscode-editor",
+  "obsidian-zotero-desktop-connector",
+  "slides-extended"
+]

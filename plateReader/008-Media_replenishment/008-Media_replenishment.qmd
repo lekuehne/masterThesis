@@ -6,13 +6,16 @@ lightbox: true
 ---
 
 # Short description
+In this experiment 7 different conditions — consisting of all possible combinations of *P. putida*, *B. subtilis* and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 
+12 biological replicates. 
+After the third cycle, cross-contamination between conditions and replicates was introduced and experiment was subsequently aborted. 
 
-
-# Data loading combining
+# Data Loading and Process Function
 
 ```{r}
 #| echo: false
 #| output: false
+#| label: 8527a891
 
 library(tidyverse)
 library(readxl)
@@ -28,6 +31,7 @@ library(data.table)
 
 
 ```{r}
+#| label: e29c9c18
 process_plate <- function(file_path) {
   
   raw <- read_excel(file_path, col_names = FALSE)
@@ -87,6 +91,7 @@ process_plate <- function(file_path) {
 
 ```{r}
 #| output: false
+#| label: 1da51b8d
 
 files <- c(
   "008.0-PP BS Growth single point (Modified)_20260424_160703.xlsx",
@@ -111,6 +116,7 @@ all_data$time <- as.numeric(
 
 ```{r}
 #| output: false
+#| label: e5b861a6
 
 files <- c(
   "008.0-PP BS Growth single point (Modified)_20260424_160703.xlsx",

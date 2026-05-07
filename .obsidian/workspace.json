@@ -11,10 +11,30 @@
             "id": "d7f96aa54caab771",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Git_HOWTO.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Git_HOWTO"
+            }
+          },
+          {
+            "id": "a7ee61b2c68c8619",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -123,8 +143,8 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
+                "showSearch": true,
+                "searchQuery": "lisc"
               },
               "icon": "lucide-tags",
               "title": "Tags"
@@ -143,6 +163,33 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "241e524d1bce8663",
+            "type": "leaf",
+            "state": {
+              "type": "r-environment-view",
+              "state": {},
+              "icon": "table",
+              "title": "R Environment"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "2305f16a6f12fdb1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0dd9bd3a78a4ee5a",
+            "type": "leaf",
+            "state": {
+              "type": "r-help-view",
+              "state": {},
+              "icon": "info",
+              "title": "R Help"
+            }
           }
         ]
       }
@@ -160,9 +207,46 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "zk-prefixer:Create new unique note": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "qmd-as-md-obsidian:Toggle Quarto Preview": false,
+      "obsidian-shellcommands:Shell commands: Custom variables": false,
+      "terminal:Open terminal": false,
+      "templater-obsidian:Templater": false,
+      "vscode-editor:Create Code File": false,
+      "slides-extended:Show slide preview": false
     }
   },
   "active": "d7f96aa54caab771",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.rmarkdown",
+    "tests.R",
+    "git-howto.qmd",
+    "README.md",
+    "imageJ_pipeline/README.md",
+    "Git_HOWTO.md",
+    "imageJ_pipeline/microfluidics_pipeline.ijm",
+    "imageJ_pipeline/microfluidics_pipeline (1).ijm",
+    "imageJ_pipeline/microfluidics_pipeline_v2.ijm",
+    "imageJ_pipeline/microfluidics_pipeline_v1.ijm",
+    "plateReader/008-Media_replenishment/008-Media_replenishment.qmd",
+    "imageJ_pipeline/run_pipeline.sh",
+    "imageJ_pipeline",
+    "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series_files/figure-html/unnamed-chunk-11-1.png",
+    "site_libs/quarto-contrib/glightbox/lightbox.css",
+    "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series_files/figure-html/unnamed-chunk-13-1.png",
+    "plateReader/008-Media_replenishment/008-Media_replenishment.knit.md",
+    "plateReader/008-Media_replenishment/008-Media_replenishment_files/figure-html/008-plot_all_RFP_after-1.png",
+    "plateReader/008-Media_replenishment/008-Media_replenishment_files/figure-html/008-plot_all_GFP70_after-1.png",
+    "plateReader/008-Media_replenishment/008-Media_replenishment_files/figure-html/008-plot_all_OD600_after-1.png",
+    "plateReader/008-Media_replenishment/008-Media_replenishment_files/figure-html/008-plot_all_OD600_before-1.png",
+    "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.knit.md",
+    "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD_files/figure-html/001-PP_OD_and_RFP-1.png",
+    "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD_files/figure-html/001-BS_OD_and_RFP-1.png",
+    "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD_files/figure-html/001-facet_per_condition-1.png",
+    "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD_files/figure-html/001-plot_GFP_RFP-1.png",
+    "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.knit.md",
+    "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.knit.md",
+    "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.knit.md",
+    "plateReader/004-BS-BSPP-dil_series/004-BS-BSPP-dil-series.knit.md"
+  ]
 }

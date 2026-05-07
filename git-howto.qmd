@@ -1,0 +1,81 @@
+---
+title: "How to setup GitHub within R Studio"
+author: "Leander Kühne"
+format: 
+  revealjs:
+    theme: blood
+---
+
+# Steps
+
+
+---
+# Slide title
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+Right column
+:::
+
+::::
+
+
+---
+## Slide with speaker notes
+
+Slide content
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+
+---
+## Slide Title
+
+Slide content
+
+::: aside
+Some additional commentary of more peripheral interest.
+:::
+
+
+---
+## Slide Title
+
+- Green ^[A footnote]
+- Brown
+- Purple
+
+::: aside
+Some additional commentary of more peripheral interest.
+:::
+
+
+---
+## Footer and Logo in YAML:
+format:
+  revealjs:
+    logo: logo.png
+    footer: "Footer text"
+---
+
+Tabsets
+
+You can add tabbed content to slides using the standard Quarto syntax for tabsets. For example:
+
+::: {.panel-tabset}
+
+### Tab A
+
+Content for `Tab A`
+
+### Tab B
+
+Content for `Tab B`
+
+:::
