@@ -22,7 +22,7 @@ library(readxl)
 library(stringr)
 library(patchwork)
 library(RColorBrewer)
-library(ggnested)
+# library(ggnested)
 library(growthcurver)
 library(ggtext)
 library(plotly)
@@ -247,7 +247,14 @@ summary_B_df %>% filter(wavelength %in% c("OD600")) %>% ggplot(aes(x = time, y =
 - Calculate RFP/GFP per OD and compare Pp alone vs. Pp+NI to see how much NI is contributing to the OD
 
 
+::: panel-tabset
+### Tab A
 
+Content for `Tab A`
 
+### Tab B
+
+Content for `Tab B`
+:::
 
 

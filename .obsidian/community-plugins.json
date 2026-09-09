@@ -11,5 +11,7 @@
   "templater-obsidian",
   "vscode-editor",
   "obsidian-zotero-desktop-connector",
-  "slides-extended"
+  "slides-extended",
+  "obsidian-hider",
+  "execute-code"
 ]

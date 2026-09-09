@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "git-howto.html#slide-with-speaker-notes",
+    "href": "git-howto.html#slide-with-speaker-notes",
+    "title": "How to setup GitHub within R Studio",
+    "section": "Slide with speaker notes",
+    "text": "Slide with speaker notes\nSlide content\n\nSpeaker notes go here."
+  },
+  {
+    "objectID": "git-howto.html#slide-title-1",
+    "href": "git-howto.html#slide-title-1",
+    "title": "How to setup GitHub within R Studio",
+    "section": "Slide Title",
+    "text": "Slide Title\nSlide content\n\n\nSome additional commentary of more peripheral interest."
+  },
+  {
+    "objectID": "git-howto.html#slide-title-2",
+    "href": "git-howto.html#slide-title-2",
+    "title": "How to setup GitHub within R Studio",
+    "section": "Slide Title",
+    "text": "Slide Title\n\nGreen 1\nBrown\nPurple\n\n\n\nSome additional commentary of more peripheral interest.\nA footnote"
+  },
+  {
+    "objectID": "git-howto.html#footer-and-logo-in-yaml",
+    "href": "git-howto.html#footer-and-logo-in-yaml",
+    "title": "How to setup GitHub within R Studio",
+    "section": "Footer and Logo in YAML:",
+    "text": "Footer and Logo in YAML:\nformat:\n  revealjs:\n    logo: logo.png\n    footer: \"Footer text\""
+  },
+  {
+    "objectID": "masterThesis.html#references",
+    "href": "masterThesis.html#references",
+    "title": "About",
+    "section": "",
+    "text": "This is a compiled report of my Master’s thesis data analysis and results. Work in progress. (Arellano-Caicedo et al. 2023).\n\n\n\n\nArellano-Caicedo, Carlos, Pelle Ohlsson, Martin Bengtsson, Jason P. Beech, and Edith C. Hammer. 2023. “Habitat Complexity Affects Microbial Growth in Fractal Maze.” Current Biology 33 (8): 1448–1458.e4. https://doi.org/10.1016/j.cub.2023.02.064."
+  },
+  {
+    "objectID": "masterThesis.html#how-microhabitat-complexity-and-community-context-shape-bacterial-interactions",
+    "href": "masterThesis.html#how-microhabitat-complexity-and-community-context-shape-bacterial-interactions",
+    "title": "Introduction",
+    "section": "How Microhabitat Complexity And Community Context Shape Bacterial Interactions",
+    "text": "How Microhabitat Complexity And Community Context Shape Bacterial Interactions"
+  },
+  {
+    "objectID": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy-1",
+    "href": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy-1",
+    "title": "Introduction",
+    "section": "Microorganisms shape the foundation of ecosystems and macroecolgy [^1]",
+    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy [^1]\n\nInteractions drive functional properties of microbiomes\nDiversity maintains microbiome function — but how?\nEmergent properties of microbial communities\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat and therefore hard to simplify to ecological principles\n\n==Picture of different microbial systems (i.e. terrestrial, maritime, gut) maybe figure on functional & genomic diversity Figure on emergent properties==\n\n(Arellano-Caicedo et al. 2023), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
+  },
+  {
+    "objectID": "masterThesis.html#the-dilemma-of-cooperation-and-diversity-2",
+    "href": "masterThesis.html#the-dilemma-of-cooperation-and-diversity-2",
+    "title": "Introduction",
+    "section": "The Dilemma of Cooperation and Diversity [^2]",
+    "text": "The Dilemma of Cooperation and Diversity [^2]\n\nSelection against costly cooperative traits – unless mechanisms maintain them\n\nCooperation can be driver of destabilizing effects by causing dependencies.\nCompetition can be stabilizing by creating negative feedback\nMany species that coexist stably in complex community fail to coexist in pairwise co-culture\nParadoxical bc of dilemma of cooperation (diversity of soils, taxa)\n\n\n\nCooperative traits are costly so if there are no mechanistics maintaing them there would be a selection against them\nCoexistence as an emergent phenomenon: Many species that coexist stably in complex community fail to coexist in pairwise co-culture\nDebate about reductionist approach vs. emergence\nMicroscopic heterogeneity -&gt; higher microbial density, genomic diversity, substrate preservation\nCostly cooperative traits should be selected against unless mechanisms exist that maintain them\nMany species that coexist stably in complex community fail to coexist in pairwise co-culture, suggesting that coexistence is an emergent phenomenon\nCooperation can be driver of destabilizing effects by causing dependencies. Competition can be stabilizing by creating negative feedback %%-  “Soil Microbiome Predictability Increases with Spatial and Taxonomic Scale” %%\nInvasibility, Coexistence & Exclusion, Competition & Attraction"
+  },
+  {
+    "objectID": "masterThesis.html#chang-et-al.-2023-coyte-et-al.-2015-cremer-et-al.-2019-palmer-foster-2022",
+    "href": "masterThesis.html#chang-et-al.-2023-coyte-et-al.-2015-cremer-et-al.-2019-palmer-foster-2022",
+    "title": "Introduction",
+    "section": "[^2]: Chang et al. (2023), Coyte et al. (2015), Cremer et al. (2019), Palmer & Foster (2022)",
+    "text": "[^2]: Chang et al. (2023), Coyte et al. (2015), Cremer et al. (2019), Palmer & Foster (2022)"
+  },
+  {
+    "objectID": "masterThesis.html#section",
+    "href": "masterThesis.html#section",
+    "title": "Introduction",
+    "section": "",
+    "text": "Possible causes of this in experimental setups\nniche differences (homogenous) \nnutrient\n\npredators\n\ntemperature\n\npH\n\neverything else (O2, water availability, electron donor/acceptor)\n\nfluctuation of the prior(in space and time) → boosts diversity\n→ Diversification of these factors does not retain high diversity (as compared to soil)\n\n→ Orr et al, Tillmann et al\n\nSpace can theoretically maintain (infinite) diversity\nAssumptions: dispersion vs. growth rate: Weak competitors colonize empty spaces fast enough (also death reate of fast grower is important to free up space)\nSpatial structure has not been widely studied (Kerr et al/ RockPaperScissor) \nSingle cell resolution (in space & time), dynamic system, replenishment of nutrients, defined spatial structure"
+  },
+  {
+    "objectID": "masterThesis.html#spatial-structure-allows-coexistence-between-b.-subtilis-and-p.-putida",
+    "href": "masterThesis.html#spatial-structure-allows-coexistence-between-b.-subtilis-and-p.-putida",
+    "title": "Introduction",
+    "section": "Spatial structure allows coexistence between B. subtilis and P. putida",
+    "text": "Spatial structure allows coexistence between B. subtilis and P. putida\n\nWe don’t know if it applies to more complex community\n\nHow meaningful/translatable are the results\n\nReflection of in situ??"
+  },
+  {
+    "objectID": "masterThesis.html#research-questions",
+    "href": "masterThesis.html#research-questions",
+    "title": "Introduction",
+    "section": "Research questions",
+    "text": "Research questions\n\nHow is the growth rate and spatial distribution (in a fractal maze) of B. subtilis & P. putida affected by an increase in community complexity from monoculture to pairwise co-culture to co-culture with a complex soil community?\nIs B. subtilis and/or P. putida able to invade into a community of the other leading to stable coexistence, even from low starting frequencies?\n\nDoes an increased habitat complexity alter their invasibility fitness?"
+  },
+  {
+    "objectID": "masterThesis.html#experimental-approach",
+    "href": "masterThesis.html#experimental-approach",
+    "title": "Introduction",
+    "section": "Experimental Approach",
+    "text": "Experimental Approach\nStepwise increase of complexity to get closer to modeling in situ conditions"
+  },
+  {
+    "objectID": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
+    "href": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
+    "title": "Introduction",
+    "section": "Microorganisms shape the foundation of ecosystems and macroecolgy",
+    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy\n\n\n\nInteractions drive functional properties of microbiomes\nEmergent properties of microbial communities\n\n\nPicture\n\nDiversity maintains microbiome function — but how?\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat — therefore hard to simplify to ecological principles\n\n\n\n(Arellano-Caicedo et al. 2023), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
+  },
+  {
+    "objectID": "Git_HOWTO.html",
+    "href": "Git_HOWTO.html",
+    "title": "How to setup GitHub within R Studio",
+    "section": "",
+    "text": "abstract: tags: - masterThesis - microbialEcology - microfluidics created: 2026-05-06 date: 2026-05-06 format: revealjs\n#documentclass: slides #template: blood #toc: true #numbersections: true #link-citations: true #colorlinks: true"
+  },
+  {
+    "objectID": "Git_HOWTO.html#install-git-if-needed",
+    "href": "Git_HOWTO.html#install-git-if-needed",
+    "title": "How to setup GitHub within R Studio",
+    "section": "Install git if needed:",
+    "text": "Install git if needed:\nLinux: apt-get install git **Windows**: https://git-scm.com/install/windows  **Mac**: Install [homebrew](https://brew.sh/) if you don't already have it, then:$ brew install git`"
+  }
+]

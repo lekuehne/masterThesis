@@ -8,11 +8,11 @@ format:
 
 # Steps
 
-
 ---
-# Slide title
-:::: {.columns}
 
+# Slide title
+
+::::: columns
 ::: {.column width="40%"}
 Left column
 :::
@@ -20,21 +20,20 @@ Left column
 ::: {.column width="60%"}
 Right column
 :::
-
-::::
-
+:::::
 
 ---
+
 ## Slide with speaker notes
 
 Slide content
 
-::: {.notes}
+::: notes
 Speaker notes go here.
 :::
 
-
 ---
+
 ## Slide Title
 
 Slide content
@@ -43,33 +42,37 @@ Slide content
 Some additional commentary of more peripheral interest.
 :::
 
-
 ---
+
 ## Slide Title
 
-- Green ^[A footnote]
+- Green [^1]
 - Brown
 - Purple
+
+[^1]: A footnote
 
 ::: aside
 Some additional commentary of more peripheral interest.
 :::
 
-
 ---
+
 ## Footer and Logo in YAML:
+```{qmd}
 format:
   revealjs:
     logo: logo.png
     footer: "Footer text"
+```
+
 ---
 
 Tabsets
 
 You can add tabbed content to slides using the standard Quarto syntax for tabsets. For example:
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Tab A
 
 Content for `Tab A`
@@ -77,5 +80,4 @@ Content for `Tab A`
 ### Tab B
 
 Content for `Tab B`
-
 :::
