@@ -1,14 +1,10 @@
----
-title: "How to setup GitHub within R Studio"
-author: "Leander Kühne"
-format: 
-  revealjs:
-    theme: blood
----
+# ---
+
+title: "How to setup GitHub within R Studio" author: "Leander Kühne" format: revealjs: theme: blood ---
 
 # Steps
 
----
+------------------------------------------------------------------------
 
 # Slide title
 
@@ -22,7 +18,7 @@ Right column
 :::
 :::::
 
----
+------------------------------------------------------------------------
 
 ## Slide with speaker notes
 
@@ -32,7 +28,7 @@ Slide content
 Speaker notes go here.
 :::
 
----
+------------------------------------------------------------------------
 
 ## Slide Title
 
@@ -42,23 +38,24 @@ Slide content
 Some additional commentary of more peripheral interest.
 :::
 
----
+------------------------------------------------------------------------
 
 ## Slide Title
 
-- Green [^1]
+- Green [^git-howto-1]
 - Brown
 - Purple
 
-[^1]: A footnote
+[^git-howto-1]: A footnote
 
 ::: aside
 Some additional commentary of more peripheral interest.
 :::
 
----
+------------------------------------------------------------------------
 
 ## Footer and Logo in YAML:
+
 ```{qmd}
 format:
   revealjs:
@@ -66,7 +63,7 @@ format:
     footer: "Footer text"
 ```
 
----
+------------------------------------------------------------------------
 
 Tabsets
 

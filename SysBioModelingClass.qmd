@@ -1,0 +1,138 @@
+---
+title: "Lotka-Volterra modeling three species interaction using the `gauseR` package"
+format: pdf
+toc: true
+bibliography: references.bib
+---
+
+# Introduction
+
+## Aim and project overview
+
+This is a project for the "Practical Course in Modelling and Systems Biology" (2026S 300332-1). The aim of the project is to implement a Lotka-Volterra model using the `gauseR` to model a three species interaction experiment in spatial microbiology.
+
+The experiment consists of a co-culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity. The species used for co-culturing the two bacterial species *Pseudomonas putida* and *Bacillus subtilis* and the fungal species *Trichoderma ssp (?)*. All species are commonly found and co-isolated from soil habitats and are therefore thought to be coexisting in those ecosystems.
+
+> I originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with *P. putida*, *B. subtilis* and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with *Trichoderma* as the third species.
+
+The overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.\
+From the literature it is known, that P.p. and B.s. are frequently co-isolated from soils but cannot coexist in a well mixed environment under lab conditions. Prior experiments (not published) on microfluidic chips have shown that the introduction of a spatial structure allows for stable coexistence of these two species by niche differentiation.\
+The underlying question of these experiments specifically are if *Trichoderma* alters the interactions between P.p and B.s. facilitating or hindering coexistence, by suppression or support of one or either of the species.\
+On the broader scope of theoretical ecology the objective is to understand how community composition and (spatial) habitat complexity possibly facilitates coexistence allowing for the high diversity we can observe in nature. Micro-scale spatial structure is a key part of this framework since it is reducing interactions between (microbial) species (and organisms) and can thereby theoretically infinitely create niche differentiation overcoming potential fitness differences that would otherwise prohibit coexistence [@orrCoexistenceTheoryMicrobial2025]
+
+In this setup we are tackling two shortcomings of most experimental microbial ecology research: Most research is focused on two species interactions exclusively but it is unclear how these results translate into more complex communities, since higher order interactions might be leading to emergent properties of microbial communities. Secondly, most experiments are carried out in well-mixed liquid cultures, omitting the importance of spatial structure as outlined above.\
+Underrepresentation of these approaches might be one explanation to the unculturability problem that microbiological research faces since it's very beginings.
+
+With the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.\
+The Lotka-Volterra equation is while being a mathematically relatively straight forward model still a very powerful approach in ecology that can account for very complex and multi-layered network of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level.
+
+# Methods
+
+## Construction of dataframe
+
+Import dependencies.
+
+```{r}
+#| output: false
+
+library(tidyr)
+library(readxl)
+```
+
+Process pipeline to create, sort and rearrange df from raw excel files.
+
+```{r}
+
+rep1 <- read_excel("~/Documents/MSc_MMEI/MA/data/maryam_data/rep1.xlsx")
+rep1$rep <- 1
+rep2 <- read_excel("~/Documents/MSc_MMEI/MA/data/maryam_data/rep2.xlsx")
+rep2$rep <- 2
+rep3 <- read_excel("~/Documents/MSc_MMEI/MA/data/maryam_data/rep3.xlsx")
+rep3$rep <- 3
+rep4 <- read_excel("~/Documents/MSc_MMEI/MA/data/maryam_data/rep4.xlsx")
+rep4$rep <- 4
+
+df <- rbindlist(list(rep1, rep2, rep3, rep4))
+setnames(df, c("position", "area", "mean", "min", "max", "ch", "time", "chip", "fractal", "rep"))
+
+# Set Conditions
+df$species <- dplyr::recode(
+  df$chip,
+  "1" = "",
+  "2" = "",
+  "3" = "",
+  "4" = "",
+  "5" = "",
+  "6" = "",
+  "7" = "",
+  "8" = "",
+  "9" = "",
+  "10" = "",
+  "11" = "",
+  "12" = "",
+  "13" = "",
+  "14" = "",
+  "15" = "",
+  "16" = "",
+  "17" = "",
+  "18" = "",
+  "19" = "",
+  "20" = "",
+  "21" = "",
+  "22" = "",
+  "23" = "",
+  "24" = "",
+  "25" = ""
+)
+
+#  plate_concat$value <- as.numeric(as.character(plate_concat$value))
+#  plate_concat$well <- paste0(plate_concat$row, plate_concat$col)
+  
+  # Date + time from same file
+#  date <- read_excel(file_path, range = "E6", col_names = FALSE)[[1]]
+#  time <- read_excel(file_path, range = "E7", col_names = FALSE)[[1]]
+  
+#  plate_concat$datetime <- as.POSIXct(paste(date, time))
+  
+#  # Final tidy
+#  plate_concat <- plate_concat[, .(well, datetime, condition, wavelength, value)]
+#  
+#  return(plate_concat)
+#
+# # elapsed time in hours (first value = 0)
+# all_data$time <- as.numeric(
+#  difftime(all_data$datetime, all_data$datetime[1], units = "hours") )
+```
+
+Export
+
+## Dataset from raw excel files
+
+## Arrangement of dataframe for use with `gauseR` library
+
+## LV modeling
+
+Import dependencies.
+
+```{r}
+#| output: false
+
+library(gauseR)
+```
+
+Basic `gauseR` wrapper function:
+
+```{r}
+
+gause_wrapper(
+  time,
+  species,
+  N_starting = NULL,
+  r_starting = NULL,
+  A_starting = NULL,
+  doplot = TRUE,
+  keeptimes = FALSE,
+  parm_signs = NULL,
+  doopt = TRUE,
+)
+```
