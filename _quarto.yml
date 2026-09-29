@@ -5,7 +5,7 @@ project:
   
 website: 
   title: "Master Thesis Results of Leander Kühne"
-  favicon: <favmonster.png>
+  favicon: favmonster.png
   bread-crumbs: true
   page-navigation: true
   navbar: 

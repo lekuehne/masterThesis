@@ -2,30 +2,30 @@
   {
     "objectID": "git-howto.html#slide-with-speaker-notes",
     "href": "git-howto.html#slide-with-speaker-notes",
-    "title": "How to setup GitHub within R Studio",
+    "title": "—",
     "section": "Slide with speaker notes",
     "text": "Slide with speaker notes\nSlide content\n\nSpeaker notes go here."
   },
   {
     "objectID": "git-howto.html#slide-title-1",
     "href": "git-howto.html#slide-title-1",
-    "title": "How to setup GitHub within R Studio",
+    "title": "—",
     "section": "Slide Title",
     "text": "Slide Title\nSlide content\n\n\nSome additional commentary of more peripheral interest."
   },
   {
     "objectID": "git-howto.html#slide-title-2",
     "href": "git-howto.html#slide-title-2",
-    "title": "How to setup GitHub within R Studio",
+    "title": "—",
     "section": "Slide Title",
-    "text": "Slide Title\n\nGreen 1\nBrown\nPurple\n\n\n\nSome additional commentary of more peripheral interest.\nA footnote"
+    "text": "Slide Title\n\nGreen 1\nBrown\nPurple\n\n\n\nSome additional commentary of more peripheral interest."
   },
   {
     "objectID": "git-howto.html#footer-and-logo-in-yaml",
     "href": "git-howto.html#footer-and-logo-in-yaml",
-    "title": "How to setup GitHub within R Studio",
+    "title": "—",
     "section": "Footer and Logo in YAML:",
-    "text": "Footer and Logo in YAML:\nformat:\n  revealjs:\n    logo: logo.png\n    footer: \"Footer text\""
+    "text": "Footer and Logo in YAML:\nformat:\n  revealjs:\n    logo: logo.png\n    footer: \"Footer text\"\n\nTabsets\nYou can add tabbed content to slides using the standard Quarto syntax for tabsets. For example:\n\nTab ATab B\n\n\nContent for Tab A\n\n\nContent for Tab B"
   },
   {
     "objectID": "masterThesis.html#references",
@@ -88,14 +88,14 @@
     "href": "masterThesis.html#experimental-approach",
     "title": "Introduction",
     "section": "Experimental Approach",
-    "text": "Experimental Approach\nStepwise increase of complexity to get closer to modeling in situ conditions"
+    "text": "Experimental Approach\n\nStepwise increase of complexity to get closer to modeling in situ conditions"
   },
   {
     "objectID": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
     "href": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
     "title": "Introduction",
     "section": "Microorganisms shape the foundation of ecosystems and macroecolgy",
-    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy\n\n\n\nInteractions drive functional properties of microbiomes\nEmergent properties of microbial communities\n\n\nPicture\n\nDiversity maintains microbiome function — but how?\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat — therefore hard to simplify to ecological principles\n\n\n\n(Arellano-Caicedo et al. 2023), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
+    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy\n\n\n\nInteractions drive functional properties of microbiomes\nEmergent properties of microbial communities\n\n\nPicture\n\nDiversity maintains microbiome function — but how?\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat — therefore hard to simplify to ecological principles\n\n\n\n\n(arellano-caicedo2023?), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
   },
   {
     "objectID": "Git_HOWTO.html",
@@ -110,5 +110,145 @@
     "title": "How to setup GitHub within R Studio",
     "section": "Install git if needed:",
     "text": "Install git if needed:\nLinux: apt-get install git **Windows**: https://git-scm.com/install/windows  **Mac**: Install [homebrew](https://brew.sh/) if you don't already have it, then:$ brew install git`"
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html",
+    "title": "013-BPN_48h-replenish",
+    "section": "",
+    "text": "Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed."
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#short-description",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#short-description",
+    "title": "013-BPN_48h-replenish",
+    "section": "",
+    "text": "Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed."
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#data-import-and-processing",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#data-import-and-processing",
+    "title": "013-BPN_48h-replenish",
+    "section": "Data import and processing",
+    "text": "Data import and processing\nLoad dependencies.\nProcess function for excel raw data from Tecan Spark plate reader (Toxic Lab):\n\nprocess_plate &lt;- function(file_path) {\n  raw &lt;- read_excel(file_path, col_names = FALSE)\n  \n  # Extract plate sections\n  OD600  &lt;- raw[37:44, 2:13]\n  GFP70 &lt;- raw[70:77, 2:13]\n  RFP85 &lt;- raw[103:110, 2:13]\n  RFP90  &lt;- raw[136:143, 2:13]\n  \n  # Convert to long format\n  to_long &lt;- function(df, name) {\n    out &lt;- as.data.frame(as.table(as.matrix(df)))\n    out$wavelength &lt;- name\n    return(out)\n  }\n  \n  OD600  &lt;- to_long(OD600,  \"OD600\")\n  GFP70 &lt;- to_long(GFP70, \"GFP70\")\n  RFP85 &lt;- to_long(RFP85, \"RFP85\")\n  RFP90  &lt;- to_long(RFP90,  \"RFP90\")\n  \n  # Combine\n  plate_concat &lt;- rbind(OD600, GFP70, RFP85, RFP90)\n  plate_concat &lt;- setNames(\n    plate_concat,\n    c(\"row\", \"col\", \"value\", \"wavelength\")\n    )\n  \n  plate_concat$value &lt;- as.numeric(as.character(plate_concat$value))\n  plate_concat$well &lt;- paste0(plate_concat$row, plate_concat$col)\n  \n  # Date + time from same file\n  date &lt;- read_excel(file_path, range = \"E6\", col_names = FALSE)[[1]]\n  time &lt;- read_excel(file_path, range = \"E7\", col_names = FALSE)[[1]]\n  \n  plate_concat$datetime &lt;- as.POSIXct(paste(date, time))\n  \n  # Conditions\n  plate_concat$condition &lt;- dplyr::recode(\n    plate_concat$row,\n    \"A\" = \"B\",\n    \"B\" = \"B+N\",\n    \"C\" = \"N\",\n    \"D\" = \"B+P+N\",\n    \"E\" = \"B+P\",\n    \"F\" = \"P+N\",\n    \"G\" = \"P\",\n    \"H\" = \"M9\"\n  )\n  \n  # Final tidy\n  plate_concat &lt;- plate_concat[, c(\"well\", \"datetime\", \"condition\", \"wavelength\", \"value\")]\n  \n  return(plate_concat)\n}\n\nApply to all files and concatenate.\n\nfiles &lt;- list.files(pattern = \"^013-.*\\\\.xlsx$\", recursive = TRUE)\n\nall_data &lt;- dplyr::bind_rows(lapply(files, process_plate))\n\n\n# all_data &lt;- docall(rbind(lapply(files, process_plate)))\n\n# elapsed time in hours (first value = 0)\nall_data$time &lt;- as.numeric(\n  difftime(all_data$datetime, all_data$datetime[1], units = \"hours\") )\n\nApply to only the ‘A’ or ‘B’ files independently, to produce dataset before/after media replenishment for each timepoint.\nWrite to .csv.\nCalculate summary statistics."
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#summary-statistics",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#summary-statistics",
+    "title": "013-BPN_48h-replenish",
+    "section": "Summary statistics",
+    "text": "Summary statistics\n\n\nCode\nsummary_df &lt;- all_data %&gt;% group_by(condition, wavelength, time) %&gt;% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = \"drop\" )\n\n\n\n\nCode\nsummary_B_df &lt;- df_B %&gt;%\n  group_by(condition, wavelength, time) %&gt;%\n  summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = \"drop\" )\n\n\n\n\nCode\nsummary_A_df &lt;- df_A %&gt;% \n  group_by(condition, wavelength, time) %&gt;% \n  summarise(\n    mean_value = mean(value, na.rm = TRUE), \n    sd = sd(value, na.rm = TRUE), \n    n = n(), \n    se = sd / sqrt(n), \n    .groups = \"drop\"\n    )"
+  },
+  {
+    "objectID": "SysBioModelingClass.html#aim-and-project-overview",
+    "href": "SysBioModelingClass.html#aim-and-project-overview",
+    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
+    "section": "2.1 Aim and project overview",
+    "text": "2.1 Aim and project overview\nThis is a project for the “Practical Course in Modelling and Systems Biology” (2026S 300332-1). The aim of the project is to implement a Lotka-Volterra model using the gauseR to model a three species interaction experiment in spatial microbiology.\nThe experiment consists of a co-culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity. The species used for co-culturing the two bacterial species Pseudomonas putida and Bacillus subtilis and the fungal species Trichoderma ssp (?). All species are commonly found and co-isolated from soil habitats and are therefore thought to be coexisting in those ecosystems.\n\nI originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with P. putida, B. subtilis and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with Trichoderma as the third species.\n\nThe overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.\nFrom the literature it is known, that P.p. and B.s. are frequently co-isolated from soils but cannot coexist in a well mixed environment under lab conditions. Prior experiments (not published) on microfluidic chips have shown that the introduction of a spatial structure allows for stable coexistence of these two species by niche differentiation.\nThe underlying question of these experiments specifically are if Trichoderma alters the interactions between P.p and B.s. facilitating or hindering coexistence, by suppression or support of one or either of the species.\nOn the broader scope of theoretical ecology the objective is to understand how community composition and (spatial) habitat complexity possibly facilitates coexistence allowing for the high diversity we can observe in nature. Micro-scale spatial structure is a key part of this framework since it is reducing interactions between (microbial) species (and organisms) and can thereby theoretically infinitely create niche differentiation overcoming potential fitness differences that would otherwise prohibit coexistence (Orr et al. 2025)\nIn this setup we are tackling two shortcomings of most experimental microbial ecology research: Most research is focused on two species interactions exclusively but it is unclear how these results translate into more complex communities, since higher order interactions might be leading to emergent properties of microbial communities. Secondly, most experiments are carried out in well-mixed liquid cultures, omitting the importance of spatial structure as outlined above.\nUnderrepresentation of these approaches might be one explanation to the unculturability problem that microbiological research faces since it’s very beginings.\nWith the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.\nThe Lotka-Volterra equation is while being a mathematically relatively straight forward model still a very powerful approach in ecology that can account for very complex and multi-layered network of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level.\nThis is the basic equation we are going to assume as Lotka-Volterra equation throughout is derived from Mühlbauer et al. (2020):\nDerived from Mühlbauer et al. (2020) the basic Lotka-Volterra equation we are employing throughout this study describes the changes per unit time in the abundance of species \\(N_{i}\\) as\n\\[\n\\frac{\\mathrm{d}N_{i}}{\\mathrm{d}t} = N_{i} (r_{i} + \\mathrm{a}_{ii} N_{i} + \\sum_{j} (\\mathrm{a}_{ij} N_{j}))\n\\tag{1}\\]\nwhere \\(r_{i}\\) is the intrinsic growh rate… This is a reference to ?@fig-gfp-f5 which would be inline or in parentheses (?@fig-gfp-f5). Moreover I already explained Equation 1 before.\nGeneralized LV:\n\\[\n\\frac{\\mathrm{d}x_{i}(\\mathbf{t})}{\\mathrm{d}\\mathbf{t}}=\\mathbf{x}_{i}(\\mathbf{t})\\left(\\mathbf{b}_{i}+\\sum_{j=1}^{n}\\mathbf{a}_{ij}x_{j}(\\mathbf{t})\\right)\\qquad{i}=1,\\ldots,n\n\\]"
+  },
+  {
+    "objectID": "SysBioModelingClass.html#experimental-methods",
+    "href": "SysBioModelingClass.html#experimental-methods",
+    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
+    "section": "3.1 Experimental methods",
+    "text": "3.1 Experimental methods\nVery brief and general."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#software-and-code",
+    "href": "SysBioModelingClass.html#software-and-code",
+    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
+    "section": "3.2 Software and Code",
+    "text": "3.2 Software and Code\n\ndata incl accession numbers+citation,\nsoftware incl version+non-default parameters+citation,\ndatabases incl release number or release date + citation,"
+  },
+  {
+    "objectID": "SysBioModelingClass.html#data-analysis-and-modeling-workflow",
+    "href": "SysBioModelingClass.html#data-analysis-and-modeling-workflow",
+    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
+    "section": "3.3 Data analysis and modeling workflow",
+    "text": "3.3 Data analysis and modeling workflow\n\nyour workflows; BUT: usually no command lines"
+  },
+  {
+    "objectID": "SysBioModelingClass.html#heatmap-of-interaction-coefficients",
+    "href": "SysBioModelingClass.html#heatmap-of-interaction-coefficients",
+    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
+    "section": "4.1 Heatmap of interaction coefficients",
+    "text": "4.1 Heatmap of interaction coefficients\n\n\n\n\n\n\n\n\nFigure 3: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows \\(R^2\\) of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#lotkavolterra-modeling-using-the-gauser-library",
+    "href": "SysBioModelingClass.html#lotkavolterra-modeling-using-the-gauser-library",
+    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
+    "section": "4.2 Lotka—Volterra modeling using the gauseR library",
+    "text": "4.2 Lotka—Volterra modeling using the gauseR library\n\n4.2.1 Parameterization and regression fit for Pseudomonas monoculture\nTime-lagged data was generated using the get_lag function and the obtained data was used to calculate the per-capita growth rate.\nThe per-capita growth rate for the logistic growth model was defined as:\n\\[ \\frac{\\mathrm{d}N}{\\mathrm{d}t} / N = r - a_{ii} N \\]\nwith \\(r\\) being the intrinsic growth rate, and \\(a_{ii}\\) the self-limitation in growth of the species.\nThe per-capita growth rate was plotted against the abundance and a linear regression was fitted to obtain the needed parameters \\(r\\) (read as the y-intercept) and \\(K\\) (read as the x-intercept). \\(a_{ii}\\) is the slope of the linear regression."
+  },
+  {
+    "objectID": "MM.html",
+    "href": "MM.html",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %\n\n\n\n\n\n\n\nM9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg\n\n\n\n\n\n\n\n\n\nFor 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg\n\n\n\n\n\n\n\n\n\nFor 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg"
+  },
+  {
+    "objectID": "MM.html#lb-stock",
+    "href": "MM.html#lb-stock",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %"
+  },
+  {
+    "objectID": "MM.html#m9-stock-solution",
+    "href": "MM.html#m9-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "M9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml"
+  },
+  {
+    "objectID": "MM.html#cacl2-stock-solution",
+    "href": "MM.html#cacl2-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "CaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg"
+  },
+  {
+    "objectID": "MM.html#fecl2-2.6-h2o-stock-solution",
+    "href": "MM.html#fecl2-2.6-h2o-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg"
+  },
+  {
+    "objectID": "MM.html#trace-element-solution-100x",
+    "href": "MM.html#trace-element-solution-100x",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg"
+  },
+  {
+    "objectID": "MM.html#bacillus-subtilis-pseudomonas-putida",
+    "href": "MM.html#bacillus-subtilis-pseudomonas-putida",
+    "title": "Materials and Methods",
+    "section": "Bacillus subtilis & Pseudomonas putida",
+    "text": "Bacillus subtilis & Pseudomonas putida"
+  },
+  {
+    "objectID": "MM.html#soil-natural-inoculum-ni",
+    "href": "MM.html#soil-natural-inoculum-ni",
+    "title": "Materials and Methods",
+    "section": "Soil Natural Inoculum (NI)",
+    "text": "Soil Natural Inoculum (NI)\n\nExtraction and Filtering of NI"
+  },
+  {
+    "objectID": "git-howto.html",
+    "href": "git-howto.html",
+    "title": "—",
+    "section": "",
+    "text": "title: “How to setup GitHub within R Studio” author: “Leander Kühne” format: revealjs: theme: blood —"
+  },
+  {
+    "objectID": "git-howto.html#footnotes",
+    "href": "git-howto.html#footnotes",
+    "title": "—",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA footnote↩︎"
   }
 ]

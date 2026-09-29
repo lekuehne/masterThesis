@@ -2,12 +2,14 @@
 title: "Introduction"
 bibliography: references.bib
 format:
-  revealjs:
-    progress-bar: false
-    menu: false
-    slide-number: 'c'
-    preview-links: auto
-    css: styles.css
+  html:
+    embed-resources: true
+    revealjs:
+      progress-bar: false
+      menu: false
+      slide-number: 'c'
+      preview-links: auto
+      css: styles.css
 ---
 
 

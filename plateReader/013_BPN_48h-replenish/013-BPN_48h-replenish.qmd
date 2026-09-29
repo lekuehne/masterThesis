@@ -1,0 +1,235 @@
+---
+title: "013-BPN_48h-replenish"
+format: 
+  html:
+    code-copy: true
+    code-fold: true
+    code-summary: "Show code"
+    output: false
+    echo: false
+execute:
+    cache: true
+itentifier: "013"
+alias: "013"
+lightbox: true
+---
+
+## Short description
+
+Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of *P. putida*, *B. subtilis* and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed.
+
+## Data import and processing
+
+Load dependencies.
+```{r}
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(ggnested)
+library(ggtext)
+#library(stringr)
+#library(patchwork)
+#library(RColorBrewer)
+#library(growthcurver)
+#library(data.table)
+```
+
+Process function for excel raw data from Tecan Spark plate reader (Toxic Lab):
+
+```{r}
+#| echo: true
+#| code-fold: false
+
+process_plate <- function(file_path) {
+  raw <- read_excel(file_path, col_names = FALSE)
+  
+  # Extract plate sections
+  OD600  <- raw[37:44, 2:13]
+  GFP70 <- raw[70:77, 2:13]
+  RFP85 <- raw[103:110, 2:13]
+  RFP90  <- raw[136:143, 2:13]
+  
+  # Convert to long format
+  to_long <- function(df, name) {
+    out <- as.data.frame(as.table(as.matrix(df)))
+    out$wavelength <- name
+    return(out)
+  }
+  
+  OD600  <- to_long(OD600,  "OD600")
+  GFP70 <- to_long(GFP70, "GFP70")
+  RFP85 <- to_long(RFP85, "RFP85")
+  RFP90  <- to_long(RFP90,  "RFP90")
+  
+  # Combine
+  plate_concat <- rbind(OD600, GFP70, RFP85, RFP90)
+  plate_concat <- setNames(
+    plate_concat,
+    c("row", "col", "value", "wavelength")
+    )
+  
+  plate_concat$value <- as.numeric(as.character(plate_concat$value))
+  plate_concat$well <- paste0(plate_concat$row, plate_concat$col)
+  
+  # Date + time from same file
+  date <- read_excel(file_path, range = "E6", col_names = FALSE)[[1]]
+  time <- read_excel(file_path, range = "E7", col_names = FALSE)[[1]]
+  
+  plate_concat$datetime <- as.POSIXct(paste(date, time))
+  
+  # Conditions
+  plate_concat$condition <- dplyr::recode(
+    plate_concat$row,
+    "A" = "B",
+    "B" = "B+N",
+    "C" = "N",
+    "D" = "B+P+N",
+    "E" = "B+P",
+    "F" = "P+N",
+    "G" = "P",
+    "H" = "M9"
+  )
+  
+  # Final tidy
+  plate_concat <- plate_concat[, c("well", "datetime", "condition", "wavelength", "value")]
+  
+  return(plate_concat)
+}
+```
+
+**Apply to all files and concatenate.**
+```{r}
+#| echo: true
+#| code-fold: false
+
+files <- list.files(pattern = "^013-.*\\.xlsx$", recursive = TRUE)
+
+all_data <- dplyr::bind_rows(lapply(files, process_plate))
+
+
+# all_data <- docall(rbind(lapply(files, process_plate)))
+
+# elapsed time in hours (first value = 0)
+all_data$time <- as.numeric(
+  difftime(all_data$datetime, all_data$datetime[1], units = "hours") )
+```
+Apply to only the 'A' or 'B' files independently, to produce dataset before/after media replenishment for each timepoint.
+```{r}
+
+A_files <- list.files(pattern = "^013-.*\\.A.*\\.xlsx$", recursive = TRUE)
+df_A <- dplyr::bind_rows(lapply(A_files, process_plate))
+
+# elapsed time in hours (first value = 0)
+df_A$time <- as.numeric(
+  difftime(df_A$datetime, df_A$datetime[1], units = "hours") )
+
+
+B_files <- list.files(pattern = "^013-.*\\.B.*\\.xlsx$", recursive = TRUE)
+df_B <- dplyr::bind_rows(lapply(B_files, process_plate))
+
+# elapsed time in hours (first value = 0)
+df_B$time <- as.numeric(
+  difftime(df_B$datetime, df_B$datetime[1], units = "hours") )
+```
+Write to `.csv`.
+```{r}
+write.csv(df_A, "df_before-dilution.csv", row.names = FALSE)
+#all_data <- read.csv ("all_data.csv") # Import CSV
+```
+Calculate summary statistics.
+```{r}
+#| output: true
+summary_df <- all_data %>% group_by(condition, wavelength, time) %>% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = "drop" )
+
+summary_B_df <- df_B %>%
+  group_by(condition, wavelength, time) %>%
+  summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = "drop" )
+
+summary_A_df <- df_A %>% 
+  group_by(condition, wavelength, time) %>% 
+  summarise(
+    mean_value = mean(value, na.rm = TRUE), 
+    sd = sd(value, na.rm = TRUE), 
+    n = n(), 
+    se = sd / sqrt(n), 
+    .groups = "drop"
+    )
+```
+
+# Data Visualization
+::: panel-tabset
+
+## OD$_{600}$
+
+```{r}
+#| output: true
+#| label: OD
+#| fig-cap: OD$_{600}$ of all conditions before dilution/media replenishment.
+#| lightbox:
+#|   group: tab
+
+OD <- summary_A_df %>% 
+  filter(wavelength %in% c("OD600")) %>% 
+  ggplot(aes(x = time, y = mean_value, color = condition)) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_minimal() +
+  labs(y=expression("OD"[600]), x="time [h]")
+
+OD
+```
+
+## GFP
+
+```{r}
+#| output: true
+#| label: GFP
+#| fig-cap: GFP of all conditions before media replenishment
+#| lightbox:
+#|   group: tab
+
+GFP <- summary_A_df %>% 
+  filter(wavelength %in% c("GFP70")) %>% 
+  ggplot(aes(x = time, y = mean_value, color = condition)) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() +
+  labs(y="GFP", x="time [h]")
+
+GFP
+```
+
+## RFP
+```{r}
+#| output: true
+#| label: RFP
+#| fig-cap: RFP of all conditions before media replenishment
+#| lightbox:
+#|   group: tab
+
+RFP <- summary_A_df %>% 
+  filter(wavelength %in% c("RFP90")) %>% 
+  ggplot(aes(x = time, y = mean_value, color = condition)) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + 
+  theme_classic() +
+  labs(y="RFP", x="time [h]")
+
+RFP
+```
+:::
+
+
+```{r}
+#| output: true
+#| lightbox:
+#|   group: all
+OD
+GFP
+RFP
+```
+
+
