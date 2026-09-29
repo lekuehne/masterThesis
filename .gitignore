@@ -8,4 +8,4 @@
 /.quarto/
 **/*.quarto_ipynb
 .positai
-**/*_cache/
+**/*_cache/**
