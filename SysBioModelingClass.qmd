@@ -1,8 +1,12 @@
 ---
-title: "Lotka-Volterra modeling three species interaction using the `gauseR` package"
+title: "Lotka—Volterra modeling of a three species microbial community with respect to spatial complexity"
 author: "Leander Kühne, BSc"
-date: "09/27/2026"
-format: pdf
+date: "09/30/2026"
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{multirow}
 toc: true
 toc-depth: 2
 number-sections: true
@@ -16,40 +20,32 @@ bibliography: references.bib
 
 # Abstract
 
+This project implements a Lotka—Volterra model to analyse time series growth data, derive interaction coefficients and explore how a three-species interaction can be modeled from limited growth data of only two of the three species framing the third species as a perturbation to the interaction of the others. Fluorescently labeled *Pseudomonas putida* and *Bacillus subtilis* bacteria were co-cultured with a non-labeled *Trichoderma viride* fungus in micro-scale mazes with different degrees of fractal complexity. The R package `gauseR` [@muhlbauerGauseRSimpleMethods2020] was employed to fit logistic growth curves to the experimental data and calculate interaction coefficients ($a_{ii}, a_{jj}, a_{ij}, a_{ji}$), growth rates ($r$) and carrying capacities ($K$).
 
 # Introduction
 
-- Introduction (mainly include new facts that you needed to learn for this project, mainly exclude general background)
+## Importance of community and habitat complexity in microbial ecology
 
-## Aim and project overview
+In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g. temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data generation driven "-omics" approach with limited reconnaissance for functional and mechanistic processes, or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to *in situ* complexity, neglecting the emergence of ecosystem properties and higher order interactions in interaction networks of complex communities .\
+Moreover, most of this culturing-technique based approaches is based entirely on well-mixed "on a shaker"-type conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation [@orrCoexistenceTheoryMicrobial2025]. This is especially limiting for the study of soil habitats, since they are characterized by a very high spatial complexity and thus habitat diversity. On a side-note, the underrepresentation of community complexity and spatial structure might be part of the explanation for the uncultureability-problem that experimental microbiological research is facing since it's very beginnings.\
+\
+*P. putida* and *B. subtilis* are often co-isoloated from soil samples and *T. viride* is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The underlying question of these experiments specifically are how *T. viride* affects the growth of *P. putida* and *B. subtilis* facilitating or hindering coexistence, by suppression or support of one or both of the species or by altering the interactions between the two.
 
-This is a project for the "Practical Course in Modelling and Systems Biology" (2026S 300332-1). The aim of the project is to implement a Lotka-Volterra model using the `gauseR` to model a three species interaction experiment in spatial microbiology.
+## Old but gold: The simple yet powerful framework of the Lotka—Volterra equation
 
-The experiment consists of a co-culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity. The species used for co-culturing the two bacterial species *Pseudomonas putida* and *Bacillus subtilis* and the fungal species *Trichoderma ssp (?)*. All species are commonly found and co-isolated from soil habitats and are therefore thought to be coexisting in those ecosystems.
-
-> I originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with *P. putida*, *B. subtilis* and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with *Trichoderma* as the third species.
-
-The overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.\
-From the literature it is known, that P.p. and B.s. are frequently co-isolated from soils but cannot coexist in a well mixed environment under lab conditions. Prior experiments (not published) on microfluidic chips have shown that the introduction of a spatial structure allows for stable coexistence of these two species by niche differentiation.\
-The underlying question of these experiments specifically are if *Trichoderma* alters the interactions between P.p and B.s. facilitating or hindering coexistence, by suppression or support of one or either of the species.\
-On the broader scope of theoretical ecology the objective is to understand how community composition and (spatial) habitat complexity possibly facilitates coexistence allowing for the high diversity we can observe in nature. Micro-scale spatial structure is a key part of this framework since it is reducing interactions between (microbial) species (and organisms) and can thereby theoretically infinitely create niche differentiation overcoming potential fitness differences that would otherwise prohibit coexistence [@orrCoexistenceTheoryMicrobial2025]
-
-In this setup we are tackling two shortcomings of most experimental microbial ecology research: Most research is focused on two species interactions exclusively but it is unclear how these results translate into more complex communities, since higher order interactions might be leading to emergent properties of microbial communities. Secondly, most experiments are carried out in well-mixed liquid cultures, omitting the importance of spatial structure as outlined above.\
-Underrepresentation of these approaches might be one explanation to the unculturability problem that microbiological research faces since it's very beginings.
-
-With the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.\
-The Lotka-Volterra equation is while being a mathematically relatively straight forward model still a very powerful approach in ecology that can account for very complex and multi-layered network of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level.
-
-This is the basic equation we are going to assume as Lotka-Volterra equation throughout is derived from @muhlbauerGauseRSimpleMethods2020:
-
-Derived from @muhlbauerGauseRSimpleMethods2020 the basic Lotka-Volterra equation we are employing throughout this study describes the changes per unit time in the abundance of species $N_{i}$ as
+The Lotka-Volterra equation is while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can account for very complex and multi-layered networks of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level. The canonical framework of\
+The basic Lotka—Volterra equation employed throughout this study describes the changes per unit time in the abundance of species $N_{i}$ as
 
 $$
 \frac{\mathrm{d}N_{i}}{\mathrm{d}t} = N_{i} (r_{i} + \mathrm{a}_{ii} N_{i} + \sum_{j} (\mathrm{a}_{ij} N_{j}))
 $$ {#eq-lv}
 
-where $r_{i}$ is the intrinsic growh rate... This is a reference to @fig-gfp-f5 which would be inline or in parentheses (@fig-gfp-f5). Moreover I already explained @eq-lv before.
+with $r_{i}$ as the intrinsic growth rate, $\mathrm{a}_{ii}$ being the intra-specific competition (i.e. the effect of species $i$ on itself, $\mathrm{a}_{ij}$ describing the effect of species $j$ on species $i$ and $N_{j}$ as the abundance of species $j$.
 
+With the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.
+
+In this experimental setup time series growth data is only available for two of the three species.\
+The overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.
 
 Generalized LV:
 
@@ -57,34 +53,37 @@ $$
 \frac{\mathrm{d}x_{i}(\mathbf{t})}{\mathrm{d}\mathbf{t}}=\mathbf{x}_{i}(\mathbf{t})\left(\mathbf{b}_{i}+\sum_{j=1}^{n}\mathbf{a}_{ij}x_{j}(\mathbf{t})\right)\qquad{i}=1,\ldots,n
 $$
 
-
-
 # Methods and Data
-- Methods and data (provides reproducibility: 
 
 ## Experimental methods
 
-Very brief and general.
+The wet lab experimental setup consists of a semi-continous culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design; @hilbertUeberStetigeAbbildung1935) and normalized internal volume. The chips consist of a culture/media inoculation area from where mazes branch off [@fig-chip].
+
+*P. putida* and *B. subtilis* have a genomically integrated expression cassette for green- and red-fluorescent protein (GFP/RFP) production respectively. Fluorescence intensity levels are used as a proxy for species abundance throughout this study.\
+Culturing experiments were carried out over 22 days with a 48 h media-replenishment cycle replicating close-to unlimited nutrient supply conditions (M9 minimal medium). In the same cycle the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals to approximate species abundance.
+
+![Fractal chip simulating microhabitats of different physical complexity. Figure kindly provided by @arellano-caicedoHabitatComplexityAffects2023.](chip_design.png){#fig-chip fig-align="center"}
 
 ## Software and Code
 
-- data incl accession numbers+citation, 
-- software incl version+non-default parameters+citation, 
-- databases incl release number or release date + citation, 
+The main analysis was carried out using R version 4.6.1. The Lotka—Volterra modeling was done using the `gauseR` package version 1.3. Additionally the following software was used for data wrangling,processing and report compiling: ImageJ 1.54 (raw TIFF microscopy image data processing), RStudio 2026.09.0 Build 174 (main IDE), quarto 1.10.18 (report writing and rendering), pandoc 3.7.0.2 (report pdf rendering), LuaHBTeX 1.24.0 (TeX Live 2026, as pandoc compiler).\
+Additional R packages used apart form R `base` were: `tidyverse`, `ggh4x`, `kableExtra`, `readxl`.
 
 ## Data analysis and modeling workflow
 
+Raw microscopy images were alingned and processed by background substraction using an ImageJ rolling ball algorithm with the rolling ball diameter matching the width of the maze channels.
+
 - your workflows; BUT: usually no command lines
 
-
 # Results
+
 ```{r}
 # Load dependencies
 
 library(tidyverse)
 library(gauseR)
 library(ggh4x)        # per-column coloured strips
-library(kableExtra)   # PDF tables (booktabs, multi-level headers)
+library(kableExtra)   # PDF tables
 library(readxl)
 
 options(knitr.kable.NA = "\u2013")   # missing values shown as "–"
@@ -367,7 +366,6 @@ summary_df %>%
        x ="time [days]")
 ```
 
-
 Second figure:
 
 ```{r}
@@ -438,40 +436,7 @@ p
 # ggsave("growth_curve_figure.pdf", p, width = 6.5, height = 7, units = "in")
 ```
 
-
-The table follows here. 
-
-```{r}
-#| label: tbl-lv-coeff
-#| output: true
-#| tbl-cap: "Estimated Lotka-Volterra interaction coefficients for cocultures of *P. putida* (1) and *B. subtilis* (2) on microfluidic chips with mazes of increasing fractal complexity (f0-f5). $a_{11}$ and $a_{22}$ are the intra-specific effects of *P. putida* and *B. subtilis*, respectively; $a_{12}$ and $a_{21}$ are the inter-specific effects of *B. subtilis* on *P. putida* and vice versa. Negative coefficients indicate competition/inhibition, positive coefficients promotion/enhancement."
-
-tab_long <- coefs |>
-  mutate(condition = factor(condition, levels = all_conditions),
-         col = paste(condition, parameter, sep = "|")) |>
-  arrange(condition, i != j, i, j)          # a11, a22, a12, a21 within each condition
-
-tab_wide <- tab_long |>
-  select(fractal, col, mu) |>
-  pivot_wider(names_from = col, values_from = mu) |>   # column order = order of appearance
-  arrange(fractal)
-
-col_meta <- tab_long |>
-  distinct(col, condition, parameter)
-col_meta <- col_meta[match(names(tab_wide)[-1], col_meta$col), ]   # same order as table columns
-
-grp <- count(col_meta, condition)                                  # columns per condition
-top <- c(" " = 1, set_names(grp$n, cond_full(as.character(grp$condition), "latex")))
-
-tab_wide |>
-  kbl(format = "latex", booktabs = TRUE, digits = 4, align = "c", escape = FALSE,
-      col.names = c("Fractal", sprintf("$a_{%s}$", str_sub(col_meta$parameter, 2)))) |>
-  add_header_above(top, line = TRUE, escape = FALSE) |>   # rule under each condition group
-  kable_styling(latex_options = "scale_down")
-```
-
-
-## Heatmap of interaction coefficients
+Heatmap of interaction coefficients
 
 ```{r}
 #| label: fig-heatmap
@@ -534,29 +499,6 @@ ggplot(heat, aes(x = parameter, y = fct_rev(fractal))) +
 
 ### Parameterization and regression fit for *Pseudomonas* monoculture
 
-```{r}
-#| eval: false
-##| output: true
-# Subset of df with Pseudomonas monoculture for fractal complexity = 5
-df_P <- subset(summary_df, species=="P" & ch=="G" & fractal=="5")
-
-# calculate time-lagged abundance
-lagged_data<-get_lag(x=df_P$mean_value, time = df_P$time)
-
-# calculate per-capita growth rate
-lagged_data$dNNdt <- percap_growth(x = lagged_data$x, laggedx = lagged_data$laggedx, dt = lagged_data$dt)
-
-# plot relationship
-plot(dNNdt~laggedx, lagged_data,
-     xlab="Lagged Abundance (N)",
-     ylab="Per-capita Growth Rate (dN/Ndt)")
-abline(h=0, v=0, lty=3)
-
-# fit model to relationship
-mod<-lm(dNNdt~laggedx, lagged_data)
-abline(mod, lwd=2, col=2)
-```
-
 Time-lagged data was generated using the `get_lag` function and the obtained data was used to calculate the per-capita growth rate.\
 The per-capita growth rate for the logistic growth model was defined as:
 
@@ -566,111 +508,15 @@ with $r$ being the intrinsic growth rate, and $a_{ii}$ the self-limitation in gr
 
 The per-capita growth rate was plotted against the abundance and a linear regression was fitted to obtain the needed parameters $r$ (read as the y-intercept) and $K$ (read as the x-intercept). $a_{ii}$ is the slope of the linear regression.
 
-
-
-```{r}
-#| eval: false
-
-# Eventually, $r$ and $K$ were used along with $N_{0}$ (abundance (fluorescence intensity) at time 0) to fit a logistic regression model using the `get logistic` function [@fig-P-mono-f5-logistic]. Coefficients were for the *P. putida* monoculture at maze fractal complexity of 5 are: $r =$ `{r} sprintf("%.3f", coef(mod)[1])`, $K =$ `{r} sprintf("%.3f",-coef(mod)[1]/coef(mod)[2])` and $N_{0} =$ `{r} sprintf("%.3f",print(df_P$mean_value)[1])`.
-
-
-# r: y-intercept
-r <- coef(mod)[1]
-
-# K: x-intercept computed as 
-K <- -coef(mod)[1]/coef(mod)[2]
-
-# N0: observed abundance value (GFP intensity) at time 0
-N0 <- print(df_P$mean_value)[1]
-
-# Test goodness of fit
-prediction_short<-get_logistic(time = df_P$time, N0 = (print(df_P$mean_value)[1]), r = (coef(mod)[1]), K= (-coef(mod)[1]/coef(mod)[2]))
-
-goodness <- test_goodness_of_fit(observed = df_P$mean_value, predicted = prediction_short)
-```
-
-```{r}
-#| eval: false
-##| output: true
-#| label: fig-P-mono-f5-logistic
-#| fig-cap: Logistic growth curve fitted from parameterization of per-capita growth rate. The plot shown here is exemplary and data is from *P. putida* monoculture at maze fractal complexity of 5. Parameters to fit the linear regression are $r$ is , $K =$  and $N_{0}$ is the observed abundance value (GFP intensity) at time 0:.
-
-# Logistic fit
-plot(mean_value~time, df_P, xlab="Day", ylab="GFP intensity of P. putida monoculture")
-
-timelst<-seq(0, 22, by=0.1) # sequence of time values to plot
-prediction<-get_logistic(time = timelst, N0 = (print(df_P$mean_value)[1]), r = (coef(mod)[1]), K= (-coef(mod)[1]/coef(mod)[2]))
-
-lines(timelst, prediction, lwd=2)
-```
-
-```{r}
-#| eval: false
-#| message: false
-# Extraction of interaction coefficients
-
-wide_df <- summary_df %>%
-  pivot_wider(names_from = ch, values_from = c(mean_value, sd, se), names_prefix = "N_")
-
-extract_interactions <- function(result, fractal) {
-  
-  result$parameter_intervals %>%
-    as.data.frame() %>%
-    tibble::rownames_to_column("parameter") %>%
-    filter(parameter %in% c("a11", "a12", "a21", "a22")) %>%
-    mutate(
-      fractal = fractal
-    ) %>%
-    select(fractal, parameter, lower_sd, mu, upper_sd)
-}
-
-
-interaction_results <- lapply(
-  names(gause_results),
-  \(f) extract_interactions(
-    gause_results[[f]],
-    f
-  )
-) %>%
-  bind_rows()
-
-interaction_table <- interaction_results %>%
-  select(fractal, parameter, mu) %>%
-  pivot_wider(
-    names_from = parameter,
-    values_from = mu
-  )
-
-```
-
-```{r}
-#| eval: false
-##| output: true
-#| label: tbl-coef-BP
-#| tbl-cap: Estimated Lotka-Volterra interaction coefficients for a coculture of *P. putida* (1) and *B. subtilis* (2) on microfluidic chips with mazes of incresing fractal complexity (f0-5). $a_{11}$, $a_{22}$ describe the intra-specific effect of *P. putida* and *B. subtilis* respectively. $a_{12}$ and $a_{21} describe the inter-specific effect of *B. subtilis* on *P. putida* and the other way around, respectively. Negative coefficients resemble competition/inhibition whereas positive coefficients resemble promotion/enhancement.
-
-# Interaction coefficients table
-knitr::kable(
-  interaction_table,
-  digits = 4,
-  col.names = c(
-    "Fractal",
-    "$a_{11}$",
-    "$a_{12}$",
-    "$a_{21}$",
-    "$a_{22}$"
-  ))
-```
-
 # Discussion
 
 - Discussion (did we succeed w.r.t. the project aims? did we make particular assumptions? do our methods have weaknesses? how do the results compare to previous expectations and previous work)
 
+# Statement of authorship, contributions and use of LLMs
 
-# Statement of authorship and use of AI and LLMs
+This report is submitted as the practical project for the class "Practial Course in Modelling and Systems Biology" (2026S 300332-1). I originally wanted to conduct the modeling analyses with my own masters thesis data from co-culturing experiments with *P. putida*, *B. subtilis* and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I was unable to have the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague Maryam Al-Jalahwee, BSc who conducted similar experiments with *Trichoderma viride* as the third interaction entity. All data arranging, sorting and subsequent analysis has been conducted by the author.
 
-This report is submitted as the practical project for the class "Practial Course in Modelling and Systems Biology" (2026S 300332-1). The used experimental data has been gathered and provided by Miryam Al-Jalahwee, BSc. All data arranging, sorting and subsequent analysis has been conducted by the author. 
-
+I used CLAUDE *Sonnet 5* and OpenAI GPT-5.6 *Luna* for generation and improvements of R code. In particular I used it for the building of functions to automate my data processing pipeline for all the different conditions and fractal levels I have in my data, for bug fixing, efficiency improvements on the code I provided and for configuring layout, design and arrangement of plots and tables. I also used it to help me better understand the functionality of the `gauseR::test_goodness_of_fit` functionality.
 
 # References
 
@@ -679,7 +525,46 @@ This report is submitted as the practical project for the class "Practial Course
 
 # Supplementary Material
 
-- Supplementary material: code and command lines (if needed)
+The complete code that contains all data handling and also compiles this report reproducibly can be found as a Quarto document [GitHub](https://github.com/lekuehne/masterThesis/blob/main/SysBioModelingClass.qmd).
+
+```{r}
+#| label: tbl-lv-coeff
+#| output: true
+#| tbl-pos: H
+#| tbl-cap: "Estimated Lotka-Volterra interaction coefficients for cocultures of *P. putida* (1) and *B. subtilis* (2) on microfluidic chips with mazes of increasing fractal complexity (f0-f5). $a_{11}$ and $a_{22}$ are the intra-specific effects of *P. putida* and *B. subtilis*, respectively; $a_{12}$ and $a_{21}$ are the inter-specific effects of *B. subtilis* on *P. putida* and vice versa. Negative coefficients indicate competition/inhibition, positive coefficients promotion/enhancement."
+
+tab_long <- coefs |>
+  mutate(condition = factor(condition, levels = all_conditions),
+         col = paste(condition, parameter, sep = "|")) |>
+  arrange(condition, i != j, i, j)          # a11, a22, a12, a21 within each condition
+
+tab_wide <- tab_long |>
+  select(fractal, col, mu) |>
+  pivot_wider(names_from = col, values_from = mu) |>   # column order = order of appearance
+  arrange(fractal)
+
+col_meta <- tab_long |>
+  distinct(col, condition, parameter)
+col_meta <- col_meta[match(names(tab_wide)[-1], col_meta$col), ]   # same order as table columns
+
+grp <- count(col_meta, condition)                                  # columns per condition
+top <- c(" " = 1, set_names(grp$n, cond_full(as.character(grp$condition), "latex")))
+
+tab <- tab_wide |>
+  kbl(format = "latex", booktabs = TRUE, digits = 4, align = "c", escape = FALSE,
+      col.names = c("Fractal", sprintf("$a_{%s}$", str_sub(col_meta$parameter, 2)))) |>
+  add_header_above(top, line = TRUE, escape = FALSE) #%>% # rule under each condition group
+  # kable_styling(latex_options = c("landscape", "scale_down", "HOLD_position"))
+
+knitr::asis_output(
+  paste0("\\centering\n",
+         "\\rotatebox{90}{\\resizebox{0.9\\textheight}{!}{",
+         tab,
+         "}}")
+)
+
+```
+
 ```{r}
 #| label: tbl-gof
 #| output: true
@@ -711,7 +596,6 @@ gof_wide |>
 
 ```{r}
 #| label: tbl-confidence
-#| output: true
 #| tbl-cap: "Parameter estimates with uncertainty for every fit. $r_i$: intrinsic growth rate of species $i$; $a_{ij}$: interaction coefficients (indices as in Table 1). SD is half the width of the ±1 SD interval returned by gauseR; the 95\\% interval is the normal approximation (estimate ± 1.96 SD). 'Excludes 0' indicates whether this interval excludes zero."
 
 param_out <- params |>
@@ -733,7 +617,7 @@ param_out <- params |>
   )
 
 param_out |>
-  kbl(format = "latex", booktabs = TRUE, longtable = TRUE, escape = FALSE,
+  kbl(format = "latex", booktabs = TRUE, digits = 3, longtable = TRUE, escape = FALSE,
       align = "llcrrrc", row.names = FALSE,
       col.names = c("Condition", "Fractal", "Parameter", "Estimate", "SD",
                     "95\\% interval", "Excludes 0")) |>

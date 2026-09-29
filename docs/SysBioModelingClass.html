@@ -231,10 +231,7 @@ window.Quarto = {
    
   <ul class="collapse">
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract"><span class="header-section-number">1</span> Abstract</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#aim-and-project-overview" id="toc-aim-and-project-overview" class="nav-link" data-scroll-target="#aim-and-project-overview"><span class="header-section-number">2.1</span> Aim and project overview</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a></li>
   <li><a href="#methods-and-data" id="toc-methods-and-data" class="nav-link" data-scroll-target="#methods-and-data"><span class="header-section-number">3</span> Methods and Data</a>
   <ul class="collapse">
   <li><a href="#experimental-methods" id="toc-experimental-methods" class="nav-link" data-scroll-target="#experimental-methods"><span class="header-section-number">3.1</span> Experimental methods</a></li>
@@ -289,19 +286,12 @@ window.Quarto = {
 
 <section id="abstract" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Abstract</h1>
+<p>This is a practical project for the “Practical Course in Modelling and Systems Biology” (2026S 300332-1). The aim of the project is to implement a Lotka—Volterra model to analyse time series growth data of microbial co-culturing experiments, derive interaction coefficients and explore how this three-species interaction can be modeled from limited growth data availiability. With growth data only available for two of the species the three-species interaction is tryied to be modeled as a two-species interaction being perturbed by the presence of the third species. The R package <code>gauseR</code> <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">(<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">Mühlbauer et al. 2020</a>)</span> was employed to fit logistic growth curves to the experimental data and calculate interaction coefficients (<span class="math inline">\(a_{ii}, a_{jj}, a_{ij}, a_{ji}\)</span>), growth rates (<span class="math inline">\(r\)</span>) and carrying capacities (<span class="math inline">\(K\)</span>).</p>
 </section>
 <section id="introduction" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
-<ul>
-<li>Introduction (mainly include new facts that you needed to learn for this project, mainly exclude general background)</li>
-</ul>
-<section id="aim-and-project-overview" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="aim-and-project-overview"><span class="header-section-number">2.1</span> Aim and project overview</h2>
-<p>This is a project for the “Practical Course in Modelling and Systems Biology” (2026S 300332-1). The aim of the project is to implement a Lotka-Volterra model using the <code>gauseR</code> to model a three species interaction experiment in spatial microbiology.</p>
-<p>The experiment consists of a co-culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity. The species used for co-culturing the two bacterial species <em>Pseudomonas putida</em> and <em>Bacillus subtilis</em> and the fungal species <em>Trichoderma ssp (?)</em>. All species are commonly found and co-isolated from soil habitats and are therefore thought to be coexisting in those ecosystems.</p>
-<blockquote class="blockquote">
-<p>I originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with <em>P. putida</em>, <em>B. subtilis</em> and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with <em>Trichoderma</em> as the third species.</p>
-</blockquote>
+<p><em>P. putida</em> and <em>B. subtilis</em> are often co-isoloated from soil samples and <em>T. viride</em> is also a common member of soil microbial communities. Therefore all three species therefore thought to be stably coexisting in (soil) habitats with high spatial complexity.</p>
+<p>The treatments, different microspatial structures, consist of dead-end mazes based on space filling Hilbert curves50 of four different fractal orders with a normalized internal volume.</p>
 <p>The overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.<br>
 From the literature it is known, that P.p. and B.s. are frequently co-isolated from soils but cannot coexist in a well mixed environment under lab conditions. Prior experiments (not published) on microfluidic chips have shown that the introduction of a spatial structure allows for stable coexistence of these two species by niche differentiation.<br>
 The underlying question of these experiments specifically are if <em>Trichoderma</em> alters the interactions between P.p and B.s. facilitating or hindering coexistence, by suppression or support of one or either of the species.<br>
@@ -315,24 +305,33 @@ The Lotka-Volterra equation is while being a mathematically relatively straight 
 <p><span id="eq-lv"><span class="math display">\[
 \frac{\mathrm{d}N_{i}}{\mathrm{d}t} = N_{i} (r_{i} + \mathrm{a}_{ii} N_{i} + \sum_{j} (\mathrm{a}_{ij} N_{j}))
 \tag{1}\]</span></span></p>
-<p>where <span class="math inline">\(r_{i}\)</span> is the intrinsic growh rate… This is a reference to <strong>?@fig-gfp-f5</strong> which would be inline or in parentheses (<strong>?@fig-gfp-f5</strong>). Moreover I already explained <a href="#eq-lv" class="quarto-xref">Equation&nbsp;1</a> before.</p>
 <p>Generalized LV:</p>
 <p><span class="math display">\[
 \frac{\mathrm{d}x_{i}(\mathbf{t})}{\mathrm{d}\mathbf{t}}=\mathbf{x}_{i}(\mathbf{t})\left(\mathbf{b}_{i}+\sum_{j=1}^{n}\mathbf{a}_{ij}x_{j}(\mathbf{t})\right)\qquad{i}=1,\ldots,n
 \]</span></p>
 </section>
-</section>
 <section id="methods-and-data" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Methods and Data</h1>
-<ul>
-<li>Methods and data (provides reproducibility:</li>
-</ul>
 <section id="experimental-methods" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="experimental-methods"><span class="header-section-number">3.1</span> Experimental methods</h2>
-<p>Very brief and general.</p>
+<p>The wet lab experimental setup consists of a semi-continous culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design <span class="citation" data-cites="hilbertUeberStetigeAbbildung1935">Hilbert (<a href="#ref-hilbertUeberStetigeAbbildung1935" role="doc-biblioref">1935</a>)</span>) and normalized internal volume. The chips consist of a culture/media inoculation area from where mazes branch off <a href="#fig-chip" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-chip" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chip_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Fractal chip simulating microhabitats of different physical complexity
+</figcaption>
+</figure>
+</div>
+<p>Fractal chip simulating microhabitats of different physical complexity</p>
+<p>The species used for co-culturing the two bacterial species <em>Pseudomonas putida</em> and <em>Bacillus subtilis</em> and the fungal species <em>Trichoderma viride</em>. <em>P. putida</em> and <em>B. subtilis</em> have a genomicly integrated expression cassette for green- and red-fluorescent protein (GFP/RFP) production respectively.</p>
+<p>Culturing experiments were carried out over 22 days with a 48 h media-replenishment cycle replicating close-to unlimited nutrient supply conditions. In the same cycle the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals to approximate species abundance.</p>
 </section>
 <section id="software-and-code" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="software-and-code"><span class="header-section-number">3.2</span> Software and Code</h2>
+<p>Raw microscopy images were processed by background correction</p>
 <ul>
 <li>data incl accession numbers+citation,</li>
 <li>software incl version+non-default parameters+citation,</li>
@@ -358,7 +357,7 @@ The Lotka-Volterra equation is while being a mathematically relatively straight 
 <img src="SysBioModelingClass_files/figure-html/fig-rfp-f5-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rfp-f5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: RFP (solid line) and GFP (dashed line) flourescence intensity on microfluidic mazes with fractal order 5.
+Figure&nbsp;2: RFP (solid line) and GFP (dashed line) flourescence intensity on microfluidic mazes with fractal order 5.
 </figcaption>
 </figure>
 </div>
@@ -373,7 +372,7 @@ Figure&nbsp;1: RFP (solid line) and GFP (dashed line) flourescence intensity on 
 <img src="SysBioModelingClass_files/figure-html/fig-growth-grid-1.png" class="img-fluid figure-img" width="768">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-growth-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Observed (points, ±SE) and predicted (lines) growth curves across fractal levels (rows) and conditions (columns).
+Figure&nbsp;3: Observed (points, ±SE) and predicted (lines) growth curves across fractal levels (rows) and conditions (columns).
 </figcaption>
 </figure>
 </div>
@@ -404,7 +403,7 @@ Table&nbsp;1: Estimated Lotka-Volterra interaction coefficients for cocultures o
 <img src="SysBioModelingClass_files/figure-html/fig-heatmap-1.png" class="img-fluid figure-img" width="624">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows <span class="math inline">\(R^2\)</span> of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values.
+Figure&nbsp;4: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows <span class="math inline">\(R^2\)</span> of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values.
 </figcaption>
 </figure>
 </div>
@@ -431,11 +430,17 @@ The per-capita growth rate for the logistic growth model was defined as:</p>
 </section>
 <section id="statement-of-authorship-and-use-of-ai-and-llms" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Statement of authorship and use of AI and LLMs</h1>
+<blockquote class="blockquote">
+<p>I originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with <em>P. putida</em>, <em>B. subtilis</em> and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with <em>Trichoderma</em> as the third species.</p>
+</blockquote>
 <p>This report is submitted as the practical project for the class “Practial Course in Modelling and Systems Biology” (2026S 300332-1). The used experimental data has been gathered and provided by Miryam Al-Jalahwee, BSc. All data arranging, sorting and subsequent analysis has been conducted by the author.</p>
 </section>
 <section id="references" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-hilbertUeberStetigeAbbildung1935" class="csl-entry" role="listitem">
+Hilbert, David. 1935. <span>“<span>Über die stetige Abbildung einer Linie auf ein Flächenstück</span>.”</span> In <em><span>Dritter Band: Analysis <span><span class="math inline">\(\cdot\)</span></span> Grundlagen der Mathematik <span><span class="math inline">\(\cdot\)</span></span> Physik Verschiedenes: Nebst Einer Lebensgeschichte</span></em>, edited by David Hilbert. Springer. <a href="https://doi.org/10.1007/978-3-662-38452-7_1">https://doi.org/10.1007/978-3-662-38452-7_1</a>.
+</div>
 <div id="ref-muhlbauerGauseRSimpleMethods2020" class="csl-entry" role="listitem">
 Mühlbauer, Lina K., Maximilienne Schulze, W. Stanley Harpole, and Adam T. Clark. 2020. <span>“<span class="nocase">gauseR</span>: <span>Simple</span> Methods for Fitting <span>Lotka-Volterra</span> Models Describing <span>Gause</span>’s <span>‘<span>Struggle</span> for <span>Existence</span>’</span>.”</span> <em>Ecology and Evolution</em> 10 (23): 13275–83. <a href="https://doi.org/10.1002/ece3.6926">https://doi.org/10.1002/ece3.6926</a>.
 </div>
