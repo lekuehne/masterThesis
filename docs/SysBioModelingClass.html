@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Leander Kühne, BSc">
-<meta name="dcterms.date" content="2026-09-27">
+<meta name="dcterms.date" content="2026-09-30">
 
-<title>Lotka-Volterra modeling three species interaction using the gauseR package – Master Thesis Results of Leander Kühne</title>
+<title>Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third – Thesis Results of Leander Kühne</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,6 +68,9 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6a9e8052864c13b4a6b29ea263082f64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -137,7 +140,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Master Thesis Results of Leander Kühne</span>
+    <span class="navbar-title">Thesis Results of Leander Kühne</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -150,60 +153,68 @@ window.Quarto = {
     <a class="nav-link" href="./masterThesis.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./MM.html"> 
-<span class="menu-text">Materials and Methods</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./NI enrichment and extraction.html"> 
-<span class="menu-text">NI enrichment and extraction</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-plate-reader" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Plate Reader</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-material--methods" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Material &amp; Methods</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-plate-reader">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-material--methods">    
         <li>
-    <a class="dropdown-item" href="./plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html">
- <span class="dropdown-text">001-all_conditions_same_OD</span></a>
+    <a class="dropdown-item" href="./MM.html">
+ <span class="dropdown-text">Materials and Methods</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html">
- <span class="dropdown-text">002-PP-BS-dil_series</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html">
- <span class="dropdown-text">003-NI-dil_series-media_test</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html">
- <span class="dropdown-text">004-BS_BSPP_dil_series</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./plateReader/008-Media_replenishment/008-Media_replenishment.html">
- <span class="dropdown-text">008-Media_replenishment</span></a>
+    <a class="dropdown-item" href="./NI enrichment and extraction.html">
+ <span class="dropdown-text">NI enrichment and extraction</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fractal-maze-chips" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Fractal Maze Chips</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-well-mixed" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Well-Mixed</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-fractal-maze-chips">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-well-mixed">    
+        <li class="dropdown-header">Experiments</li>
+        <li>
+    <a class="dropdown-item" href="./plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html">
+ <span class="dropdown-text">001 All Conditions Same OD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html">
+ <span class="dropdown-text">002 PP BS Dil Series</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html">
+ <span class="dropdown-text">003 NI Dil Series Media Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html">
+ <span class="dropdown-text">004 BS BSPP Dil Series</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plateReader/008-Media_replenishment/008-Media_replenishment.html">
+ <span class="dropdown-text">008 Media Replenishment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html">
+ <span class="dropdown-text">013 BPN 48h Replenish</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-spatially-structured" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Spatially Structured</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-spatially-structured">    
+        <li class="dropdown-header">Fractal Maze Chip Experiments</li>
         <li>
     <a class="dropdown-item" href="./mazeChips/experiment.html">
  <span class="dropdown-text">experiment</span></a>
   </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unstructured" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Unstructured</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-unstructured">    
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Analysis</li>
         <li>
-    <a class="dropdown-item" href="./plateReader/008-Media_replenishment/008-Media_replenishment.html">
- <span class="dropdown-text">008-Media_replenishment</span></a>
+    <a class="dropdown-item" href="//SysBioModelingClass.html">
+ <span class="dropdown-text"></span></a>
   </li>  
     </ul>
   </li>
@@ -231,20 +242,28 @@ window.Quarto = {
    
   <ul class="collapse">
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract"><span class="header-section-number">1</span> Abstract</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#importance-of-community-and-habitat-complexity-in-microbial-ecology" id="toc-importance-of-community-and-habitat-complexity-in-microbial-ecology" class="nav-link" data-scroll-target="#importance-of-community-and-habitat-complexity-in-microbial-ecology"><span class="header-section-number">2.1</span> Importance of community and habitat complexity in microbial ecology</a></li>
+  <li><a href="#the-simple-yet-powerful-framework-of-the-lotkavolterra-equation" id="toc-the-simple-yet-powerful-framework-of-the-lotkavolterra-equation" class="nav-link" data-scroll-target="#the-simple-yet-powerful-framework-of-the-lotkavolterra-equation"><span class="header-section-number">2.2</span> The simple yet powerful framework of the Lotka—Volterra equation</a></li>
+  </ul></li>
   <li><a href="#methods-and-data" id="toc-methods-and-data" class="nav-link" data-scroll-target="#methods-and-data"><span class="header-section-number">3</span> Methods and Data</a>
   <ul class="collapse">
   <li><a href="#experimental-methods" id="toc-experimental-methods" class="nav-link" data-scroll-target="#experimental-methods"><span class="header-section-number">3.1</span> Experimental methods</a></li>
-  <li><a href="#software-and-code" id="toc-software-and-code" class="nav-link" data-scroll-target="#software-and-code"><span class="header-section-number">3.2</span> Software and Code</a></li>
-  <li><a href="#data-analysis-and-modeling-workflow" id="toc-data-analysis-and-modeling-workflow" class="nav-link" data-scroll-target="#data-analysis-and-modeling-workflow"><span class="header-section-number">3.3</span> Data analysis and modeling workflow</a></li>
+  <li><a href="#sec-data-process" id="toc-sec-data-process" class="nav-link" data-scroll-target="#sec-data-process"><span class="header-section-number">3.2</span> Data processing and Lotka—Volterra parameter estimation</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software"><span class="header-section-number">3.3</span> Software</a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">4</span> Results</a>
   <ul class="collapse">
-  <li><a href="#heatmap-of-interaction-coefficients" id="toc-heatmap-of-interaction-coefficients" class="nav-link" data-scroll-target="#heatmap-of-interaction-coefficients"><span class="header-section-number">4.1</span> Heatmap of interaction coefficients</a></li>
-  <li><a href="#lotkavolterra-modeling-using-the-gauser-library" id="toc-lotkavolterra-modeling-using-the-gauser-library" class="nav-link" data-scroll-target="#lotkavolterra-modeling-using-the-gauser-library"><span class="header-section-number">4.2</span> Lotka—Volterra modeling using the <code>gauseR</code> library</a></li>
+  <li><a href="#p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride" id="toc-p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride" class="nav-link" data-scroll-target="#p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride"><span class="header-section-number">4.1</span> <em>P. putida</em> benefits from and outcompetes <em>B. subtilis</em> and is itself outcompeted by <em>T. viride</em></a></li>
+  <li><a href="#parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity" id="toc-parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity" class="nav-link" data-scroll-target="#parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity"><span class="header-section-number">4.2</span> Parametrization of Lotka—Volterra interaction coefficients suggests shift in intra- and inter-specific competition with increased spatial complexity</a></li>
   </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">5</span> Discussion</a></li>
-  <li><a href="#statement-of-authorship-and-use-of-ai-and-llms" id="toc-statement-of-authorship-and-use-of-ai-and-llms" class="nav-link" data-scroll-target="#statement-of-authorship-and-use-of-ai-and-llms"><span class="header-section-number">6</span> Statement of authorship and use of AI and LLMs</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">5</span> Discussion</a>
+  <ul class="collapse">
+  <li><a href="#poor-fit-of-the-b.-subtilis-monoculture" id="toc-poor-fit-of-the-b.-subtilis-monoculture" class="nav-link" data-scroll-target="#poor-fit-of-the-b.-subtilis-monoculture"><span class="header-section-number">5.1</span> Poor fit of the <em>B. subtilis</em> monoculture</a></li>
+  <li><a href="#interpretation-of-interaction-coefficients" id="toc-interpretation-of-interaction-coefficients" class="nav-link" data-scroll-target="#interpretation-of-interaction-coefficients"><span class="header-section-number">5.2</span> Interpretation of interaction coefficients</a></li>
+  </ul></li>
+  <li><a href="#statement-of-authorship-contributions-and-use-of-llms" id="toc-statement-of-authorship-contributions-and-use-of-llms" class="nav-link" data-scroll-target="#statement-of-authorship-contributions-and-use-of-llms"><span class="header-section-number">6</span> Statement of authorship, contributions and use of LLMs</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7</span> References</a></li>
   <li><a href="#supplementary-material" id="toc-supplementary-material" class="nav-link" data-scroll-target="#supplementary-material"><span class="header-section-number">8</span> Supplementary Material</a></li>
   </ul>
@@ -255,7 +274,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lotka-Volterra modeling three species interaction using the <code>gauseR</code> package</h1>
+<h1 class="title">Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third</h1>
 </div>
 
 
@@ -272,7 +291,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2026</p>
+      <p class="date">September 30, 2026</p>
     </div>
   </div>
   
@@ -286,101 +305,174 @@ window.Quarto = {
 
 <section id="abstract" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Abstract</h1>
-<p>This is a practical project for the “Practical Course in Modelling and Systems Biology” (2026S 300332-1). The aim of the project is to implement a Lotka—Volterra model to analyse time series growth data of microbial co-culturing experiments, derive interaction coefficients and explore how this three-species interaction can be modeled from limited growth data availiability. With growth data only available for two of the species the three-species interaction is tryied to be modeled as a two-species interaction being perturbed by the presence of the third species. The R package <code>gauseR</code> <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">(<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">Mühlbauer et al. 2020</a>)</span> was employed to fit logistic growth curves to the experimental data and calculate interaction coefficients (<span class="math inline">\(a_{ii}, a_{jj}, a_{ij}, a_{ji}\)</span>), growth rates (<span class="math inline">\(r\)</span>) and carrying capacities (<span class="math inline">\(K\)</span>).</p>
+<p>This project implements a Lotka—Volterra model to analyse time series growth data, derive interaction coefficients and explore how a three-species interaction can be modeled from limited growth data of only two of the three species framing the third species as a perturbation to the interaction of the others. Fluorescently labeled <em>Pseudomonas putida</em> and <em>Bacillus subtilis</em> bacteria were co-cultured with a non-labeled <em>Trichoderma viride</em> fungus in microfluidic mazes with different degrees of fractal complexity for 22 days. Logistic growth curves, growth rates (<span class="math inline">\(r\)</span>), carrying capacities (<span class="math inline">\(K\)</span>) and interaction coefficients (<span class="math inline">\(a_{ii}, a_{jj}, a_{ij}, a_{ji}\)</span>) were estimated with the R package <code>gauseR</code>. <em>B. subtilis</em> promoted and <em>T. viride</em> inhibited the growth of <em>P. putida</em>, while <em>B. subtilis</em> was strongly suppressed by both. The LV model fitted all conditions well except the <em>B. subtilis</em> monoculture . The promoting effect of B. subtilis on P. putida was reflected in the coefficients, and in the three-species culture this effect shifted from inhibitory to promoting at the highest spatial complexity. However, all coefficients were close to zero, the suppression of <em>B. subtilis</em> by <em>P. putida</em> and <em>T. viride</em> was not captured, and the effect of the unmeasured fungus is absorbed into effective coefficients of the two measured species. A simple Lotka—Volterra model thus reproduces the main growth patterns of <em>P. putida</em> but offers limited mechanistic insight into the three-species interactions.</p>
 </section>
 <section id="introduction" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
-<p><em>P. putida</em> and <em>B. subtilis</em> are often co-isoloated from soil samples and <em>T. viride</em> is also a common member of soil microbial communities. Therefore all three species therefore thought to be stably coexisting in (soil) habitats with high spatial complexity.</p>
-<p>The treatments, different microspatial structures, consist of dead-end mazes based on space filling Hilbert curves50 of four different fractal orders with a normalized internal volume.</p>
-<p>The overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.<br>
-From the literature it is known, that P.p. and B.s. are frequently co-isolated from soils but cannot coexist in a well mixed environment under lab conditions. Prior experiments (not published) on microfluidic chips have shown that the introduction of a spatial structure allows for stable coexistence of these two species by niche differentiation.<br>
-The underlying question of these experiments specifically are if <em>Trichoderma</em> alters the interactions between P.p and B.s. facilitating or hindering coexistence, by suppression or support of one or either of the species.<br>
-On the broader scope of theoretical ecology the objective is to understand how community composition and (spatial) habitat complexity possibly facilitates coexistence allowing for the high diversity we can observe in nature. Micro-scale spatial structure is a key part of this framework since it is reducing interactions between (microbial) species (and organisms) and can thereby theoretically infinitely create niche differentiation overcoming potential fitness differences that would otherwise prohibit coexistence <span class="citation" data-cites="orrCoexistenceTheoryMicrobial2025">(<a href="#ref-orrCoexistenceTheoryMicrobial2025" role="doc-biblioref">Orr et al. 2025</a>)</span></p>
-<p>In this setup we are tackling two shortcomings of most experimental microbial ecology research: Most research is focused on two species interactions exclusively but it is unclear how these results translate into more complex communities, since higher order interactions might be leading to emergent properties of microbial communities. Secondly, most experiments are carried out in well-mixed liquid cultures, omitting the importance of spatial structure as outlined above.<br>
-Underrepresentation of these approaches might be one explanation to the unculturability problem that microbiological research faces since it’s very beginings.</p>
-<p>With the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.<br>
-The Lotka-Volterra equation is while being a mathematically relatively straight forward model still a very powerful approach in ecology that can account for very complex and multi-layered network of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level.</p>
-<p>This is the basic equation we are going to assume as Lotka-Volterra equation throughout is derived from <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">Mühlbauer et al. (<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">2020</a>)</span>:</p>
-<p>Derived from <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">Mühlbauer et al. (<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">2020</a>)</span> the basic Lotka-Volterra equation we are employing throughout this study describes the changes per unit time in the abundance of species <span class="math inline">\(N_{i}\)</span> as</p>
+<section id="importance-of-community-and-habitat-complexity-in-microbial-ecology" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="importance-of-community-and-habitat-complexity-in-microbial-ecology"><span class="header-section-number">2.1</span> Importance of community and habitat complexity in microbial ecology</h2>
+<p>In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g.&nbsp;temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data-generation driven “-omics” approach with limited reconnaissance for functional and mechanistic processes <span class="citation" data-cites="faustMicrobialInteractionsNetworks2012">(<a href="#ref-faustMicrobialInteractionsNetworks2012" role="doc-biblioref">Faust and Raes 2012</a>)</span>, or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to <em>in situ</em> complexity, neglecting the emergence of ecosystem properties and higher order interactions in microbial interaction networks <span class="citation" data-cites="levineMechanismsCoexistence2017">(<a href="#ref-levineMechanismsCoexistence2017" role="doc-biblioref">Levine et al. 2017</a>)</span>.<br>
+Moreover, most of this culturing-technique based approaches is based entirely on well-mixed conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation <span class="citation" data-cites="orrCoexistenceTheoryMicrobial2025 nadellSpatialStructureCooperation2016">(<a href="#ref-orrCoexistenceTheoryMicrobial2025" role="doc-biblioref">Orr et al. 2025</a>; <a href="#ref-nadellSpatialStructureCooperation2016" role="doc-biblioref">Nadell et al. 2016</a>)</span>. This is especially limiting for the study of soil habitats, since their pore space is characterized by a very high spatial complexity and thus microhabtiat diversity.</p>
+<p><em>P. putida</em> and <em>B. subtilis</em> are frequently co-isoloated from soil samples and <em>T. viride</em> is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The central question of these experiments are how <em>T. viride</em> affects the growth of <em>P. putida</em> and <em>B. subtilis</em> facilitating or hindering coexistence, by suppressing or supporting one or both of the species or by altering the interactions between them.</p>
+</section>
+<section id="the-simple-yet-powerful-framework-of-the-lotkavolterra-equation" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-simple-yet-powerful-framework-of-the-lotkavolterra-equation"><span class="header-section-number">2.2</span> The simple yet powerful framework of the Lotka—Volterra equation</h2>
+<p>The Lotka-Volterra (LV) equations <span class="citation" data-cites="lotkaElementsPhysicalBiology1925 volterraFluctuationsAbundanceSpecies1926">(<a href="#ref-lotkaElementsPhysicalBiology1925" role="doc-biblioref">Lotka 1925</a>; <a href="#ref-volterraFluctuationsAbundanceSpecies1926" role="doc-biblioref">Volterra 1926</a>)</span> are while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can represent very complex, multi-layered interaction networks without requiring a complete mechanistic understanding of these interactions on a molecular level <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">(<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">Mühlbauer et al. 2020</a>)</span>. The basic LV equation employed throughout this study describes the changes per unit time in the abundance of species <span class="math inline">\(N_{i}\)</span> as</p>
 <p><span id="eq-lv"><span class="math display">\[
 \frac{\mathrm{d}N_{i}}{\mathrm{d}t} = N_{i} (r_{i} + \mathrm{a}_{ii} N_{i} + \sum_{j} (\mathrm{a}_{ij} N_{j}))
 \tag{1}\]</span></span></p>
-<p>Generalized LV:</p>
-<p><span class="math display">\[
-\frac{\mathrm{d}x_{i}(\mathbf{t})}{\mathrm{d}\mathbf{t}}=\mathbf{x}_{i}(\mathbf{t})\left(\mathbf{b}_{i}+\sum_{j=1}^{n}\mathbf{a}_{ij}x_{j}(\mathbf{t})\right)\qquad{i}=1,\ldots,n
-\]</span></p>
+<p>with <span class="math inline">\(r_{i}\)</span> as the intrinsic growth rate, <span class="math inline">\(\mathrm{a}_{ii}\)</span> being the intra-specific competition (i.e.&nbsp;the effect of species <span class="math inline">\(i\)</span> on itself, <span class="math inline">\(\mathrm{a}_{ij}\)</span> describing the effect of species <span class="math inline">\(j\)</span> on species <span class="math inline">\(i\)</span> and <span class="math inline">\(N_{j}\)</span> as the abundance of species <span class="math inline">\(j\)</span>.</p>
+<p>Here, the interaction dynamics of the three-species system are approximated with this simple model to test whether the experimental data can already be fitted satisfactorily at this level of complexity, or whether more sophisticated models are needed. Fitting an LV model can also indicate whether the interactions are consistent with simple pairwise competition or whether higher-order interactions are likely at work <span class="citation" data-cites="grilliHigherorderInteractionsStabilize2017">(<a href="#ref-grilliHigherorderInteractionsStabilize2017" role="doc-biblioref">Grilli et al. 2017</a>)</span>. In this experimental setup, time series growth data are available for only two of the three species. The overall aim is therefore to assess whether an LV model can represent the data adequately, and whether this approach is a viable way to gain mechanistic insight into a three-species system in a spatially structured habitat.</p>
+</section>
 </section>
 <section id="methods-and-data" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Methods and Data</h1>
 <section id="experimental-methods" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="experimental-methods"><span class="header-section-number">3.1</span> Experimental methods</h2>
-<p>The wet lab experimental setup consists of a semi-continous culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design <span class="citation" data-cites="hilbertUeberStetigeAbbildung1935">Hilbert (<a href="#ref-hilbertUeberStetigeAbbildung1935" role="doc-biblioref">1935</a>)</span>) and normalized internal volume. The chips consist of a culture/media inoculation area from where mazes branch off <a href="#fig-chip" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>The wet lab experiments consist of semi-continous culturing on microfluidic chips containing micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design, <span class="citation" data-cites="hilbertUeberStetigeAbbildung1935">Hilbert (<a href="#ref-hilbertUeberStetigeAbbildung1935" role="doc-biblioref">1935</a>)</span>) and normalized internal volume. Each chip comprises a culture/media inoculation area from where mazes branch off <a href="#fig-chip" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p><em>P. putida</em> and <em>B. subtilis</em> carry a genomically integrated expression cassette for green (GFP) and red (RFP) fluorescent protein, respectively. Fluorescence intensity levels are used as a proxy for species abundance throughout this study. Culturing experiments were maintained for over 22 days with a 48 h media-replenishment cycle approximating close-to unlimited nutrient supply (M9 minimal medium). In the same cycle, the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals. Sample size per time point was n = 28 for most conditions, n = 7 for the <em>B. subtilis</em>-only condition, and n = 35 for some time points of the <em>T. viride</em> + <em>P. putida</em> (TP) and three-species (TPB) conditions.</p>
 <div id="fig-chip" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-chip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="chip_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="chip_design.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Fractal chip simulating microhabitats of different physical complexity. Figure kindly provided by @arellano-caicedoHabitatComplexityAffects2023."><img src="chip_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Fractal chip simulating microhabitats of different physical complexity
+Figure&nbsp;1: Fractal chip simulating microhabitats of different physical complexity. Figure kindly provided by <span class="citation" data-cites="arellano-caicedoHabitatComplexityAffects2023">Arellano-Caicedo et al. (<a href="#ref-arellano-caicedoHabitatComplexityAffects2023" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
-<p>Fractal chip simulating microhabitats of different physical complexity</p>
-<p>The species used for co-culturing the two bacterial species <em>Pseudomonas putida</em> and <em>Bacillus subtilis</em> and the fungal species <em>Trichoderma viride</em>. <em>P. putida</em> and <em>B. subtilis</em> have a genomicly integrated expression cassette for green- and red-fluorescent protein (GFP/RFP) production respectively.</p>
-<p>Culturing experiments were carried out over 22 days with a 48 h media-replenishment cycle replicating close-to unlimited nutrient supply conditions. In the same cycle the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals to approximate species abundance.</p>
 </section>
-<section id="software-and-code" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="software-and-code"><span class="header-section-number">3.2</span> Software and Code</h2>
-<p>Raw microscopy images were processed by background correction</p>
-<ul>
-<li>data incl accession numbers+citation,</li>
-<li>software incl version+non-default parameters+citation,</li>
-<li>databases incl release number or release date + citation,</li>
-</ul>
+<section id="sec-data-process" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-data-process"><span class="header-section-number">3.2</span> Data processing and Lotka—Volterra parameter estimation</h2>
+<p>Raw microscopy images were aligned and background-subtracted in ImageJ using a rolling-ball algorithm with the ball diameter set to the channel width of the mazes. Fluorescence intensity was selectively measured from the maze areas only. A combined data frame across all time points and conditions was built in R, and means, standard deviations and standard errors were calculated per condition, fractal level, time point and fluorescence channel. Channels were assigned to species (GFP to <em>P. putida</em>, RFP to <em>B. subtilis</em>), and only the channel(s) of species actually present in a condition were retained. Sampling time points were converted to days after inoculation, and the data were arranged into a long format that allowed every condition × fractal level combination to be fitted automatically.</p>
+<p>Each combination was fitted with the <code>gause_wrapper</code> function of the <code>gauseR</code> library, which works in two steps. First, time-lagged abundances are generated with <code>get_lag</code> and used to calculate the per-capita growth rate. For a single species, the logistic model defines it as</p>
+<p><span id="eq-per-cap"><span class="math display">\[ \frac{\mathrm{d}N}{\mathrm{d}t} / N = r - a_{ii} N  \tag{2}\]</span></span></p>
+<p>with <span class="math inline">\(r\)</span> the intrinsic growth rate and <span class="math inline">\(a_{ii}\)</span> the self-limitation. Per-capita growth rate is regressed linearly against abundance (for several species, against the abundances of all species), so that <span class="math inline">\(r\)</span> is the y-intercept, <span class="math inline">\(a_{ii}\)</span> the slope, and the carrying capacity <span class="math inline">\(K\)</span> the x-intercept (i.e.&nbsp;<span class="math inline">\(K = -r / a_{ii}\)</span>). These linearized estimates serve as starting values. Second, the starting values (and initial abundances) are refined by a numerical optimizer (<code>optim</code>) that works in log-space, with parameter signs fixed to those of the linear estimates. The optimizer repeatedly solves the LV system with an ODE solver and minimizes the squared error between simulated and observed, standardized abundances. Rough parameter uncertainties (±1 SD) are derived from the Hessian of the optimization.</p>
+<p>Model fit was quantified per condition, fractal level and species. The fitted curve was interpolated at the observed time points, and goodness of fit was expressed as <span class="math inline">\(R^2 = 1 - SS_\mathrm{res}/SS_\mathrm{tot}\)</span> (which can become negative for fits worse than the mean) and as the root mean squared error (RMSE) in fluorescence units. Parameters were re-indexed to a fixed species order so that, for example, a <em>B. subtilis</em> monoculture reports <span class="math inline">\(a_{22}\)</span> rather than <span class="math inline">\(a_{11}\)</span>.</p>
 </section>
-<section id="data-analysis-and-modeling-workflow" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="data-analysis-and-modeling-workflow"><span class="header-section-number">3.3</span> Data analysis and modeling workflow</h2>
-<ul>
-<li>your workflows; BUT: usually no command lines</li>
-</ul>
+<section id="software" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="software"><span class="header-section-number">3.3</span> Software</h2>
+<p>Analyses were run in R 4.6.1 with <code>gauseR</code> 1.3. Data wrangling, plotting and table generation used <code>tidyverse</code>, <code>ggh4x</code>, <code>kableExtra</code> and <code>readxl</code>. Image processing was done in ImageJ 1.54, and the report was written in RStudio 2026.09.0 (Build 174) and rendered with Quarto 1.10.18, pandoc 3.7.0.2 and LuaHBTeX 1.24.0 (TeX Live 2026).</p>
 </section>
 </section>
 <section id="results" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Results</h1>
-<p>Here begins the text describing the results</p>
-<p>First figure:</p>
+<section id="p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride"><span class="header-section-number">4.1</span> <em>P. putida</em> benefits from and outcompetes <em>B. subtilis</em> and is itself outcompeted by <em>T. viride</em></h2>
+<p><a href="#fig-growth" class="quarto-xref">Figure&nbsp;2</a> shows the time series of fluorescence intensity, which serves as a proxy for species abundance, for all mono- and co-culture combinations in the f3 maze. No growth data exist for <em>T. viride</em>. The presence of <em>B. subtilis</em> promotes the growth of <em>P. putida</em>, whereas <em>T. viride</em> inhibits it. <em>B. subtilis</em>, in turn, is strongly inhibited by both <em>P. putida</em> and <em>T. viride</em>, but the inhibition by <em>T. viride</em> is stronger and leads to essentially no detectable growth of <em>B. subtilis</em>. Even so, co-inoculation with <em>B. subtilis</em> still enhances <em>P. putida</em> growth. In the three-species culture, the promoting effect of <em>B. subtilis</em> cannot compensate for the inhibition by <em>T. viride</em>, so the growth pattern resembles that of the <em>P. putida</em> + <em>T. viride</em> co-culture.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-rfp-f5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-growth" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rfp-f5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="SysBioModelingClass_files/figure-html/fig-rfp-f5-1.png" class="img-fluid figure-img" width="672">
+<div aria-describedby="fig-growth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="SysBioModelingClass_files/figure-html/fig-growth-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Time series growth data for all different mono/co-culturing combinations of B. subtilis (RFP), P. putida (GFP) and T. viride (no growth data) in a micro-scale maze with fractal complexity of f3 (Hilbert curve) on microfluidic chips. Solid lines indicate RFP signal, dashed lines indicate GFP signal."><img src="SysBioModelingClass_files/figure-html/fig-growth-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rfp-f5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: RFP (solid line) and GFP (dashed line) flourescence intensity on microfluidic mazes with fractal order 5.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-growth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Time series growth data for all different mono/co-culturing combinations of <em>B. subtilis</em> (RFP), <em>P. putida</em> (GFP) and <em>T. viride</em> (no growth data) in a micro-scale maze with fractal complexity of f3 (Hilbert curve) on microfluidic chips. Solid lines indicate RFP signal, dashed lines indicate GFP signal.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Second figure:</p>
+</section>
+<section id="parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity"><span class="header-section-number">4.2</span> Parametrization of Lotka—Volterra interaction coefficients suggests shift in intra- and inter-specific competition with increased spatial complexity</h2>
+<p>The parameters obtained from the per-capita growth regression and subsequent optimization (Methods, <a href="#sec-data-process" class="quarto-xref">3.2</a>) were used to predict growth curves for all conditions and fractal levels (<a href="#fig-lv-grid" class="quarto-xref">Figure&nbsp;3</a>). <em>P. putida</em> monocultures reach a clear carrying capacity, with slightly reduced growth at the highest fractal level (f5). When co-cultured with <em>T. viride</em>, <em>P. putida</em> shows a lagged onset of growth. In the presence of <em>B. subtilis</em>, <em>P. putida</em> has a prolonged logistic growth phase, and it is unclear whether the carrying capacity is reached within the experimental period. The predicted growth pattern of the three-species culture is similar to that of the <em>P. putida</em> + <em>T. viride</em> culture. The LV model fits the <em>B. subtilis</em> monoculture poorly (<span class="math inline">\(R^2\)</span> = 0.133—0.169, <a href="#tbl-gof" class="quarto-xref">Table&nbsp;2</a>), whereas all other conditions are fitted well (<span class="math inline">\(R^2\)</span> &gt; 0.83).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-growth-grid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-lv-grid" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-growth-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="SysBioModelingClass_files/figure-html/fig-growth-grid-1.png" class="img-fluid figure-img" width="768">
+<div aria-describedby="fig-lv-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="SysBioModelingClass_files/figure-html/fig-lv-grid-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Observed (points, ±SE) and Lotka—Volterra predicted (lines) growth curves across fractal levels (rows) and conditions (columns)."><img src="SysBioModelingClass_files/figure-html/fig-lv-grid-1.png" class="img-fluid figure-img" width="960"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-growth-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Observed (points, ±SE) and predicted (lines) growth curves across fractal levels (rows) and conditions (columns).
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lv-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Observed (points, ±SE) and Lotka—Volterra predicted (lines) growth curves across fractal levels (rows) and conditions (columns).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The table follows here.</p>
+<p>The interaction coefficients are summarized in a heatmap (<a href="#fig-heatmap" class="quarto-xref">Figure&nbsp;4</a>), where hue indicates the coefficient and color saturation the <span class="math inline">\(R^2\)</span> of the fit for the species whose growth equation contains the coefficient. Full <span class="math inline">\(R^2\)</span> values are given in the supplementary material (<a href="#tbl-gof" class="quarto-xref">Table&nbsp;2</a>). <em>B. subtilis</em> shows strong self-inhibition (<span class="math inline">\(a_{22}\)</span>) at higher fractal complexity in monoculture, which is mitigated when it is co-cultured with <em>P. putida</em>. Self-inhibition of <em>B. subtilis</em> is also substantially lower in co-culture with <em>T. viride</em>. In contrast, self-inhibition of <em>P. putida</em> (<span class="math inline">\(a_{11}\)</span>) changes little between monoculture and any of the co-cultures. The coefficients suggest a promoting effect of <em>B. subtilis</em> on <em>P. putida</em> in the two-species culture, which increases with spatial complexity. This effect shifts when <em>T. viride</em> is added: in the three-species system, <span class="math inline">\(a_{12}\)</span> tends to be negative (inhibitory) at low complexity and mediocre complexity, but changes to a positive effect on at the highest spatial complexity (f5).<br>
+Overall all interaction coefficients are values quite close to 0.</p>
 <div class="cell">
-<div id="tbl-lv-coeff" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display">
+<div id="fig-heatmap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="SysBioModelingClass_files/figure-html/fig-heatmap-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows R^2 of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values."><img src="SysBioModelingClass_files/figure-html/fig-heatmap-1.png" class="img-fluid figure-img" width="624"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows <span class="math inline">\(R^2\)</span> of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="discussion" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Discussion</h1>
+<p>The aim of this project was to test whether an LV model can describe growth data of a three-species community when only two species are measured and the third acts as a perturbation of their interaction. The model fitted most conditions well, but several results limit how far the coefficients can be interpreted mechanistically. The main points are discussed below, together with assumptions and weaknesses of the approach.</p>
+<section id="poor-fit-of-the-b.-subtilis-monoculture" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="poor-fit-of-the-b.-subtilis-monoculture"><span class="header-section-number">5.1</span> Poor fit of the <em>B. subtilis</em> monoculture</h2>
+<p>The optimizer could not fit the <em>B. subtilis</em> monoculture (<span class="math inline">\(R^2\)</span> = 0.13—0.17, <a href="#tbl-gof" class="quarto-xref">Table&nbsp;2</a>), which is the most notable failure of the model. A likely reason is that the growth curve deviates from the logistic shape assumed by the model, since the species abundance decreased after a peak and a death phase, or more general, a transient peak followed by decline, is not supported by the model which only fits single logistic curves. The poor reflection could also be aggravated by the comparable small sample size (n = 7) for the <em>B. subtilis</em> monocultures.<br>
+This also affects the reliability of the strong inter-specific competition (a<span class="math inline">\(_{22}\)</span>) found in the dataset (−0.018 at f3, versus way closer to 0 elsewhere) which might therfore rather be an artefact than reproducible biological effect.</p>
+</section>
+<section id="interpretation-of-interaction-coefficients" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="interpretation-of-interaction-coefficients"><span class="header-section-number">5.2</span> Interpretation of interaction coefficients</h2>
+<p>The promoting effect of <em>B. subtilis</em> on <em>P. putida</em> seen in the growth curves is well reflected by the interaction coefficients (a<span class="math inline">\(_{12}\)</span> in the PB condition, <a href="#fig-heatmap" class="quarto-xref">Figure&nbsp;4</a>). In contrast, the lowered self-inhibition of <em>B. subtilis</em> in co-culture with <em>T. viride</em> does not reflect the strong inhibitory effect of the fungus on <em>B. subtilis</em>. Modeling the two-species co-culture from the single-culture readout alone is therefore poor in this case.</p>
+<p>In the <em>T. viride</em> + <em>B. subtilis</em> condition, <em>B. subtilis</em> hardly grows, so its per-capita growth rate is flat and close to zero across the observed abundance range. A near-zero <span class="math inline">\(a_{22}\)</span> here then reflects the absence of growth, not release from self-limitation. The coefficient can only quantify self-limitation when growth occurs on a properly measurable range.<br>
+The effect of P. putida on B. subtilis (a<span class="math inline">\(_{21}\)</span>) is close to zero in all co-cultures, eventhough the observed growth data shows strong suppresion of B. subtilis by P. putida. This is poorly reflected by the choosen modeling approach.</p>
+<p>In the three-species condition, the fitted a<span class="math inline">\(_{12}\)</span> and a<span class="math inline">\(_{21}\)</span> are effective coefficients that combine direct effects with effects mediated by <em>T. viride</em>. They are not comparable to the coefficients from the two-species culture in a strict sense, and they cannot distinguish pairwise competition from higher-order interactions. This is illustrative for the general limitation of the approach: the effect of the unmeasured species cannot be simply assigned to an explicit interaction term and is folded into the parameters of the measured species.</p>
+<p>Reflecting on the modeling famework on a broader scope, the optimizer works in log-space and fixes the sign of every parameter to that of the initial linear estimate, so a wrongly signed starting value cannot be corrected. Poorly constrained, near-zero coefficients may therefore switch sign between fits without real biological meaning.</p>
+<p>As an outlook for further work the estimated parameters could be used to simulate the growth trajectories of the co-cultures over longer periods, to test whether stable coexistence or cycling patterns would occur.</p>
+</section>
+</section>
+<section id="statement-of-authorship-contributions-and-use-of-llms" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Statement of authorship, contributions and use of LLMs</h1>
+<p>This report is submitted as the practical project for the class “Practial Course in Modelling and Systems Biology” (2026S 300332-1). I originally wanted to conduct the modeling analyses with my own masters thesis data from co-culturing experiments with <em>P. putida</em>, <em>B. subtilis</em> and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I was unable to have the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague Maryam Al-Jalahwee, BSc who conducted similar experiments with <em>Trichoderma viride</em> as the third interaction entity. All data arranging, sorting and subsequent analysis has been conducted by the author.</p>
+<p>I used CLAUDE <em>Sonnet 5</em> and OpenAI GPT-5.6 <em>Luna</em> for generation and improvements of R code. In particular I used it for the building of functions to automate my data processing pipeline for all the different conditions and fractal levels I have in my data, for bug fixing, efficiency improvements on the code I provided and for configuring layout, design and arrangement of plots and tables. I also used it to help me better understand the mechanism of some functions I used.</p>
+</section>
+<section id="references" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-arellano-caicedoHabitatComplexityAffects2023" class="csl-entry" role="listitem">
+Arellano-Caicedo, Carlos, Pelle Ohlsson, Martin Bengtsson, Jason P. Beech, and Edith C. Hammer. 2023. <span>“Habitat Complexity Affects Microbial Growth in Fractal Maze.”</span> <em>Current Biology</em> 33 (8): 1448–1458.e4. <a href="https://doi.org/10.1016/j.cub.2023.02.064">https://doi.org/10.1016/j.cub.2023.02.064</a>.
+</div>
+<div id="ref-faustMicrobialInteractionsNetworks2012" class="csl-entry" role="listitem">
+Faust, Karoline, and Jeroen Raes. 2012. <span>“Microbial Interactions: From Networks to Models.”</span> <em>Nature Reviews Microbiology</em> 10: 538–50.
+</div>
+<div id="ref-grilliHigherorderInteractionsStabilize2017" class="csl-entry" role="listitem">
+Grilli, Jacopo, György Barabás, Matthew J. Michalska-Smith, and Stefano Allesina. 2017. <span>“Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.”</span> <em>Nature</em> 548: 210–13.
+</div>
+<div id="ref-hilbertUeberStetigeAbbildung1935" class="csl-entry" role="listitem">
+Hilbert, David. 1935. <span>“<span>Über die stetige Abbildung einer Linie auf ein Flächenstück</span>.”</span> In <em><span>Dritter Band: Analysis <span><span class="math inline">\(\cdot\)</span></span> Grundlagen der Mathematik <span><span class="math inline">\(\cdot\)</span></span> Physik Verschiedenes: Nebst Einer Lebensgeschichte</span></em>, edited by David Hilbert. Springer. <a href="https://doi.org/10.1007/978-3-662-38452-7_1">https://doi.org/10.1007/978-3-662-38452-7_1</a>.
+</div>
+<div id="ref-levineMechanismsCoexistence2017" class="csl-entry" role="listitem">
+Levine, Jonathan M., Jordi Bascompte, Peter B. Adler, and Stefano Allesina. 2017. <span>“Beyond Pairwise Mechanisms of Species Coexistence in Complex Communities.”</span> <em>Nature</em> 546: 56–64.
+</div>
+<div id="ref-lotkaElementsPhysicalBiology1925" class="csl-entry" role="listitem">
+Lotka, Alfred J. 1925. <em>Elements of Physical Biology</em>. Williams &amp; Wilkins.
+</div>
+<div id="ref-muhlbauerGauseRSimpleMethods2020" class="csl-entry" role="listitem">
+Mühlbauer, Lina K., Maximilienne Schulze, W. Stanley Harpole, and Adam T. Clark. 2020. <span>“<span class="nocase">gauseR</span>: <span>Simple</span> Methods for Fitting <span>Lotka-Volterra</span> Models Describing <span>Gause</span>’s <span>‘<span>Struggle</span> for <span>Existence</span>’</span>.”</span> <em>Ecology and Evolution</em> 10 (23): 13275–83. <a href="https://doi.org/10.1002/ece3.6926">https://doi.org/10.1002/ece3.6926</a>.
+</div>
+<div id="ref-nadellSpatialStructureCooperation2016" class="csl-entry" role="listitem">
+Nadell, Carey D., Knut Drescher, and Kevin R. Foster. 2016. <span>“Spatial Structure, Cooperation and Competition in Biofilms.”</span> <em>Nature Reviews Microbiology</em> 14: 589–600.
+</div>
+<div id="ref-orrCoexistenceTheoryMicrobial2025" class="csl-entry" role="listitem">
+Orr, James A., David W. Armitage, and Andrew D. Letten. 2025. <span>“Coexistence <span>Theory</span> for <span>Microbial Ecology</span>, and <span>Vice Versa</span>.”</span> <em>Environmental Microbiology</em> 27 (3): e70072. <a href="https://doi.org/10.1111/1462-2920.70072">https://doi.org/10.1111/1462-2920.70072</a>.
+</div>
+<div id="ref-volterraFluctuationsAbundanceSpecies1926" class="csl-entry" role="listitem">
+Volterra, Vito. 1926. <span>“Fluctuations in the Abundance of a Species Considered Mathematically.”</span> <em>Nature</em> 118: 558–60.
+</div>
+</div>
+</section>
+<section id="supplementary-material" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Supplementary Material</h1>
+<p>The complete code that contains all data handling and also compiles this report reproducibly can be found as a Quarto document <a href="https://github.com/lekuehne/masterThesis/blob/main/SysBioModelingClass.qmd">GitHub</a>.</p>
+<div class="cell" data-tbl-pos="H">
+<div id="tbl-lv-coeff" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lv-coeff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Estimated Lotka-Volterra interaction coefficients for cocultures of <em>P. putida</em> (1) and <em>B. subtilis</em> (2) on microfluidic chips with mazes of increasing fractal complexity (f0-f5). <span class="math inline">\(a_{11}\)</span> and <span class="math inline">\(a_{22}\)</span> are the intra-specific effects of <em>P. putida</em> and <em>B. subtilis</em>, respectively; <span class="math inline">\(a_{12}\)</span> and <span class="math inline">\(a_{21}\)</span> are the inter-specific effects of <em>B. subtilis</em> on <em>P. putida</em> and vice versa. Negative coefficients indicate competition/inhibition, positive coefficients promotion/enhancement.
@@ -393,67 +485,6 @@ Table&nbsp;1: Estimated Lotka-Volterra interaction coefficients for cocultures o
 </figure>
 </div>
 </div>
-<section id="heatmap-of-interaction-coefficients" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="heatmap-of-interaction-coefficients"><span class="header-section-number">4.1</span> Heatmap of interaction coefficients</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-heatmap" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="SysBioModelingClass_files/figure-html/fig-heatmap-1.png" class="img-fluid figure-img" width="624">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows <span class="math inline">\(R^2\)</span> of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="lotkavolterra-modeling-using-the-gauser-library" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="lotkavolterra-modeling-using-the-gauser-library"><span class="header-section-number">4.2</span> Lotka—Volterra modeling using the <code>gauseR</code> library</h2>
-<section id="parameterization-and-regression-fit-for-pseudomonas-monoculture" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="parameterization-and-regression-fit-for-pseudomonas-monoculture"><span class="header-section-number">4.2.1</span> Parameterization and regression fit for <em>Pseudomonas</em> monoculture</h3>
-<p>Time-lagged data was generated using the <code>get_lag</code> function and the obtained data was used to calculate the per-capita growth rate.<br>
-The per-capita growth rate for the logistic growth model was defined as:</p>
-<p><span class="math display">\[ \frac{\mathrm{d}N}{\mathrm{d}t} / N = r - a_{ii} N \]</span></p>
-<p>with <span class="math inline">\(r\)</span> being the intrinsic growth rate, and <span class="math inline">\(a_{ii}\)</span> the self-limitation in growth of the species.</p>
-<p>The per-capita growth rate was plotted against the abundance and a linear regression was fitted to obtain the needed parameters <span class="math inline">\(r\)</span> (read as the y-intercept) and <span class="math inline">\(K\)</span> (read as the x-intercept). <span class="math inline">\(a_{ii}\)</span> is the slope of the linear regression.</p>
-</section>
-</section>
-</section>
-<section id="discussion" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Discussion</h1>
-<ul>
-<li>Discussion (did we succeed w.r.t. the project aims? did we make particular assumptions? do our methods have weaknesses? how do the results compare to previous expectations and previous work)</li>
-</ul>
-</section>
-<section id="statement-of-authorship-and-use-of-ai-and-llms" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Statement of authorship and use of AI and LLMs</h1>
-<blockquote class="blockquote">
-<p>I originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with <em>P. putida</em>, <em>B. subtilis</em> and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with <em>Trichoderma</em> as the third species.</p>
-</blockquote>
-<p>This report is submitted as the practical project for the class “Practial Course in Modelling and Systems Biology” (2026S 300332-1). The used experimental data has been gathered and provided by Miryam Al-Jalahwee, BSc. All data arranging, sorting and subsequent analysis has been conducted by the author.</p>
-</section>
-<section id="references" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-hilbertUeberStetigeAbbildung1935" class="csl-entry" role="listitem">
-Hilbert, David. 1935. <span>“<span>Über die stetige Abbildung einer Linie auf ein Flächenstück</span>.”</span> In <em><span>Dritter Band: Analysis <span><span class="math inline">\(\cdot\)</span></span> Grundlagen der Mathematik <span><span class="math inline">\(\cdot\)</span></span> Physik Verschiedenes: Nebst Einer Lebensgeschichte</span></em>, edited by David Hilbert. Springer. <a href="https://doi.org/10.1007/978-3-662-38452-7_1">https://doi.org/10.1007/978-3-662-38452-7_1</a>.
-</div>
-<div id="ref-muhlbauerGauseRSimpleMethods2020" class="csl-entry" role="listitem">
-Mühlbauer, Lina K., Maximilienne Schulze, W. Stanley Harpole, and Adam T. Clark. 2020. <span>“<span class="nocase">gauseR</span>: <span>Simple</span> Methods for Fitting <span>Lotka-Volterra</span> Models Describing <span>Gause</span>’s <span>‘<span>Struggle</span> for <span>Existence</span>’</span>.”</span> <em>Ecology and Evolution</em> 10 (23): 13275–83. <a href="https://doi.org/10.1002/ece3.6926">https://doi.org/10.1002/ece3.6926</a>.
-</div>
-<div id="ref-orrCoexistenceTheoryMicrobial2025" class="csl-entry" role="listitem">
-Orr, James A., David W. Armitage, and Andrew D. Letten. 2025. <span>“Coexistence <span>Theory</span> for <span>Microbial Ecology</span>, and <span>Vice Versa</span>.”</span> <em>Environmental Microbiology</em> 27 (3): e70072. <a href="https://doi.org/10.1111/1462-2920.70072">https://doi.org/10.1111/1462-2920.70072</a>.
-</div>
-</div>
-</section>
-<section id="supplementary-material" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Supplementary Material</h1>
-<ul>
-<li>Supplementary material: code and command lines (if needed)</li>
-</ul>
 <div class="cell">
 <div id="tbl-gof" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -888,6 +919,38 @@ Table&nbsp;3: Parameter estimates with uncertainty for every fit. <span class="m
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

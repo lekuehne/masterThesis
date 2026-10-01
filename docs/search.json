@@ -1,52 +1,700 @@
 [
   {
-    "objectID": "git-howto.html#slide-with-speaker-notes",
-    "href": "git-howto.html#slide-with-speaker-notes",
-    "title": "—",
-    "section": "Slide with speaker notes",
-    "text": "Slide with speaker notes\nSlide content\n\nSpeaker notes go here."
-  },
-  {
-    "objectID": "git-howto.html#slide-title-1",
-    "href": "git-howto.html#slide-title-1",
-    "title": "—",
-    "section": "Slide Title",
-    "text": "Slide Title\nSlide content\n\n\nSome additional commentary of more peripheral interest."
-  },
-  {
-    "objectID": "git-howto.html#slide-title-2",
-    "href": "git-howto.html#slide-title-2",
-    "title": "—",
-    "section": "Slide Title",
-    "text": "Slide Title\n\nGreen 1\nBrown\nPurple\n\n\n\nSome additional commentary of more peripheral interest."
-  },
-  {
-    "objectID": "git-howto.html#footer-and-logo-in-yaml",
-    "href": "git-howto.html#footer-and-logo-in-yaml",
-    "title": "—",
-    "section": "Footer and Logo in YAML:",
-    "text": "Footer and Logo in YAML:\nformat:\n  revealjs:\n    logo: logo.png\n    footer: \"Footer text\"\n\nTabsets\nYou can add tabbed content to slides using the standard Quarto syntax for tabsets. For example:\n\nTab ATab B\n\n\nContent for Tab A\n\n\nContent for Tab B"
-  },
-  {
-    "objectID": "masterThesis.html#references",
-    "href": "masterThesis.html#references",
-    "title": "About",
+    "objectID": "SysBioModelingClass.html",
+    "href": "SysBioModelingClass.html",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
     "section": "",
-    "text": "This is a compiled report of my Master’s thesis data analysis and results. Work in progress. (Arellano-Caicedo et al. 2023).\n\n\n\n\nArellano-Caicedo, Carlos, Pelle Ohlsson, Martin Bengtsson, Jason P. Beech, and Edith C. Hammer. 2023. “Habitat Complexity Affects Microbial Growth in Fractal Maze.” Current Biology 33 (8): 1448–1458.e4. https://doi.org/10.1016/j.cub.2023.02.064."
+    "text": "This project implements a Lotka—Volterra model to analyse time series growth data, derive interaction coefficients and explore how a three-species interaction can be modeled from limited growth data of only two of the three species framing the third species as a perturbation to the interaction of the others. Fluorescently labeled Pseudomonas putida and Bacillus subtilis bacteria were co-cultured with a non-labeled Trichoderma viride fungus in microfluidic mazes with different degrees of fractal complexity for 22 days. Logistic growth curves, growth rates (\\(r\\)), carrying capacities (\\(K\\)) and interaction coefficients (\\(a_{ii}, a_{jj}, a_{ij}, a_{ji}\\)) were estimated with the R package gauseR. B. subtilis promoted and T. viride inhibited the growth of P. putida, while B. subtilis was strongly suppressed by both. The LV model fitted all conditions well except the B. subtilis monoculture . The promoting effect of B. subtilis on P. putida was reflected in the coefficients, and in the three-species culture this effect shifted from inhibitory to promoting at the highest spatial complexity. However, all coefficients were close to zero, the suppression of B. subtilis by P. putida and T. viride was not captured, and the effect of the unmeasured fungus is absorbed into effective coefficients of the two measured species. A simple Lotka—Volterra model thus reproduces the main growth patterns of P. putida but offers limited mechanistic insight into the three-species interactions."
   },
   {
-    "objectID": "masterThesis.html#how-microhabitat-complexity-and-community-context-shape-bacterial-interactions",
-    "href": "masterThesis.html#how-microhabitat-complexity-and-community-context-shape-bacterial-interactions",
-    "title": "Introduction",
-    "section": "How Microhabitat Complexity And Community Context Shape Bacterial Interactions",
-    "text": "How Microhabitat Complexity And Community Context Shape Bacterial Interactions"
+    "objectID": "SysBioModelingClass.html#importance-of-community-and-habitat-complexity-in-microbial-ecology",
+    "href": "SysBioModelingClass.html#importance-of-community-and-habitat-complexity-in-microbial-ecology",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "2.1 Importance of community and habitat complexity in microbial ecology",
+    "text": "2.1 Importance of community and habitat complexity in microbial ecology\nIn microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g. temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data-generation driven “-omics” approach with limited reconnaissance for functional and mechanistic processes (Faust and Raes 2012), or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to in situ complexity, neglecting the emergence of ecosystem properties and higher order interactions in microbial interaction networks (Levine et al. 2017).\nMoreover, most of this culturing-technique based approaches is based entirely on well-mixed conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation (Orr et al. 2025; Nadell et al. 2016). This is especially limiting for the study of soil habitats, since their pore space is characterized by a very high spatial complexity and thus microhabtiat diversity.\nP. putida and B. subtilis are frequently co-isoloated from soil samples and T. viride is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The central question of these experiments are how T. viride affects the growth of P. putida and B. subtilis facilitating or hindering coexistence, by suppressing or supporting one or both of the species or by altering the interactions between them."
   },
   {
-    "objectID": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy-1",
-    "href": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy-1",
+    "objectID": "SysBioModelingClass.html#the-simple-yet-powerful-framework-of-the-lotkavolterra-equation",
+    "href": "SysBioModelingClass.html#the-simple-yet-powerful-framework-of-the-lotkavolterra-equation",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "2.2 The simple yet powerful framework of the Lotka—Volterra equation",
+    "text": "2.2 The simple yet powerful framework of the Lotka—Volterra equation\nThe Lotka-Volterra (LV) equations (Lotka 1925; Volterra 1926) are while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can represent very complex, multi-layered interaction networks without requiring a complete mechanistic understanding of these interactions on a molecular level (Mühlbauer et al. 2020). The basic LV equation employed throughout this study describes the changes per unit time in the abundance of species \\(N_{i}\\) as\n\\[\n\\frac{\\mathrm{d}N_{i}}{\\mathrm{d}t} = N_{i} (r_{i} + \\mathrm{a}_{ii} N_{i} + \\sum_{j} (\\mathrm{a}_{ij} N_{j}))\n\\tag{1}\\]\nwith \\(r_{i}\\) as the intrinsic growth rate, \\(\\mathrm{a}_{ii}\\) being the intra-specific competition (i.e. the effect of species \\(i\\) on itself, \\(\\mathrm{a}_{ij}\\) describing the effect of species \\(j\\) on species \\(i\\) and \\(N_{j}\\) as the abundance of species \\(j\\).\nHere, the interaction dynamics of the three-species system are approximated with this simple model to test whether the experimental data can already be fitted satisfactorily at this level of complexity, or whether more sophisticated models are needed. Fitting an LV model can also indicate whether the interactions are consistent with simple pairwise competition or whether higher-order interactions are likely at work (Grilli et al. 2017). In this experimental setup, time series growth data are available for only two of the three species. The overall aim is therefore to assess whether an LV model can represent the data adequately, and whether this approach is a viable way to gain mechanistic insight into a three-species system in a spatially structured habitat."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#experimental-methods",
+    "href": "SysBioModelingClass.html#experimental-methods",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "3.1 Experimental methods",
+    "text": "3.1 Experimental methods\nThe wet lab experiments consist of semi-continous culturing on microfluidic chips containing micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design, Hilbert (1935)) and normalized internal volume. Each chip comprises a culture/media inoculation area from where mazes branch off Figure 1.\nP. putida and B. subtilis carry a genomically integrated expression cassette for green (GFP) and red (RFP) fluorescent protein, respectively. Fluorescence intensity levels are used as a proxy for species abundance throughout this study. Culturing experiments were maintained for over 22 days with a 48 h media-replenishment cycle approximating close-to unlimited nutrient supply (M9 minimal medium). In the same cycle, the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals. Sample size per time point was n = 28 for most conditions, n = 7 for the B. subtilis-only condition, and n = 35 for some time points of the T. viride + P. putida (TP) and three-species (TPB) conditions.\n\n\n\n\n\n\nFigure 1: Fractal chip simulating microhabitats of different physical complexity. Figure kindly provided by Arellano-Caicedo et al. (2023)."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#sec-data-process",
+    "href": "SysBioModelingClass.html#sec-data-process",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "3.2 Data processing and Lotka—Volterra parameter estimation",
+    "text": "3.2 Data processing and Lotka—Volterra parameter estimation\nRaw microscopy images were aligned and background-subtracted in ImageJ using a rolling-ball algorithm with the ball diameter set to the channel width of the mazes. Fluorescence intensity was selectively measured from the maze areas only. A combined data frame across all time points and conditions was built in R, and means, standard deviations and standard errors were calculated per condition, fractal level, time point and fluorescence channel. Channels were assigned to species (GFP to P. putida, RFP to B. subtilis), and only the channel(s) of species actually present in a condition were retained. Sampling time points were converted to days after inoculation, and the data were arranged into a long format that allowed every condition × fractal level combination to be fitted automatically.\nEach combination was fitted with the gause_wrapper function of the gauseR library, which works in two steps. First, time-lagged abundances are generated with get_lag and used to calculate the per-capita growth rate. For a single species, the logistic model defines it as\n\\[ \\frac{\\mathrm{d}N}{\\mathrm{d}t} / N = r - a_{ii} N  \\tag{2}\\]\nwith \\(r\\) the intrinsic growth rate and \\(a_{ii}\\) the self-limitation. Per-capita growth rate is regressed linearly against abundance (for several species, against the abundances of all species), so that \\(r\\) is the y-intercept, \\(a_{ii}\\) the slope, and the carrying capacity \\(K\\) the x-intercept (i.e. \\(K = -r / a_{ii}\\)). These linearized estimates serve as starting values. Second, the starting values (and initial abundances) are refined by a numerical optimizer (optim) that works in log-space, with parameter signs fixed to those of the linear estimates. The optimizer repeatedly solves the LV system with an ODE solver and minimizes the squared error between simulated and observed, standardized abundances. Rough parameter uncertainties (±1 SD) are derived from the Hessian of the optimization.\nModel fit was quantified per condition, fractal level and species. The fitted curve was interpolated at the observed time points, and goodness of fit was expressed as \\(R^2 = 1 - SS_\\mathrm{res}/SS_\\mathrm{tot}\\) (which can become negative for fits worse than the mean) and as the root mean squared error (RMSE) in fluorescence units. Parameters were re-indexed to a fixed species order so that, for example, a B. subtilis monoculture reports \\(a_{22}\\) rather than \\(a_{11}\\)."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#software",
+    "href": "SysBioModelingClass.html#software",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "3.3 Software",
+    "text": "3.3 Software\nAnalyses were run in R 4.6.1 with gauseR 1.3. Data wrangling, plotting and table generation used tidyverse, ggh4x, kableExtra and readxl. Image processing was done in ImageJ 1.54, and the report was written in RStudio 2026.09.0 (Build 174) and rendered with Quarto 1.10.18, pandoc 3.7.0.2 and LuaHBTeX 1.24.0 (TeX Live 2026)."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride",
+    "href": "SysBioModelingClass.html#p.-putida-benefits-from-and-outcompetes-b.-subtilis-and-is-itself-outcompeted-by-t.-viride",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "4.1 P. putida benefits from and outcompetes B. subtilis and is itself outcompeted by T. viride",
+    "text": "4.1 P. putida benefits from and outcompetes B. subtilis and is itself outcompeted by T. viride\nFigure 2 shows the time series of fluorescence intensity, which serves as a proxy for species abundance, for all mono- and co-culture combinations in the f3 maze. No growth data exist for T. viride. The presence of B. subtilis promotes the growth of P. putida, whereas T. viride inhibits it. B. subtilis, in turn, is strongly inhibited by both P. putida and T. viride, but the inhibition by T. viride is stronger and leads to essentially no detectable growth of B. subtilis. Even so, co-inoculation with B. subtilis still enhances P. putida growth. In the three-species culture, the promoting effect of B. subtilis cannot compensate for the inhibition by T. viride, so the growth pattern resembles that of the P. putida + T. viride co-culture.\n\n\n\n\n\n\n\n\nFigure 2: Time series growth data for all different mono/co-culturing combinations of B. subtilis (RFP), P. putida (GFP) and T. viride (no growth data) in a micro-scale maze with fractal complexity of f3 (Hilbert curve) on microfluidic chips. Solid lines indicate RFP signal, dashed lines indicate GFP signal."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity",
+    "href": "SysBioModelingClass.html#parametrization-of-lotkavolterra-interaction-coefficients-suggests-shift-in-intra--and-inter-specific-competition-with-increased-spatial-complexity",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "4.2 Parametrization of Lotka—Volterra interaction coefficients suggests shift in intra- and inter-specific competition with increased spatial complexity",
+    "text": "4.2 Parametrization of Lotka—Volterra interaction coefficients suggests shift in intra- and inter-specific competition with increased spatial complexity\nThe parameters obtained from the per-capita growth regression and subsequent optimization (Methods, 3.2) were used to predict growth curves for all conditions and fractal levels (Figure 3). P. putida monocultures reach a clear carrying capacity, with slightly reduced growth at the highest fractal level (f5). When co-cultured with T. viride, P. putida shows a lagged onset of growth. In the presence of B. subtilis, P. putida has a prolonged logistic growth phase, and it is unclear whether the carrying capacity is reached within the experimental period. The predicted growth pattern of the three-species culture is similar to that of the P. putida + T. viride culture. The LV model fits the B. subtilis monoculture poorly (\\(R^2\\) = 0.133—0.169, Table 2), whereas all other conditions are fitted well (\\(R^2\\) &gt; 0.83).\n\n\n\n\n\n\n\n\nFigure 3: Observed (points, ±SE) and Lotka—Volterra predicted (lines) growth curves across fractal levels (rows) and conditions (columns).\n\n\n\n\n\nThe interaction coefficients are summarized in a heatmap (Figure 4), where hue indicates the coefficient and color saturation the \\(R^2\\) of the fit for the species whose growth equation contains the coefficient. Full \\(R^2\\) values are given in the supplementary material (Table 2). B. subtilis shows strong self-inhibition (\\(a_{22}\\)) at higher fractal complexity in monoculture, which is mitigated when it is co-cultured with P. putida. Self-inhibition of B. subtilis is also substantially lower in co-culture with T. viride. In contrast, self-inhibition of P. putida (\\(a_{11}\\)) changes little between monoculture and any of the co-cultures. The coefficients suggest a promoting effect of B. subtilis on P. putida in the two-species culture, which increases with spatial complexity. This effect shifts when T. viride is added: in the three-species system, \\(a_{12}\\) tends to be negative (inhibitory) at low complexity and mediocre complexity, but changes to a positive effect on at the highest spatial complexity (f5).\nOverall all interaction coefficients are values quite close to 0.\n\n\n\n\n\n\n\n\nFigure 4: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows \\(R^2\\) of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#poor-fit-of-the-b.-subtilis-monoculture",
+    "href": "SysBioModelingClass.html#poor-fit-of-the-b.-subtilis-monoculture",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "5.1 Poor fit of the B. subtilis monoculture",
+    "text": "5.1 Poor fit of the B. subtilis monoculture\nThe optimizer could not fit the B. subtilis monoculture (\\(R^2\\) = 0.13—0.17, Table 2), which is the most notable failure of the model. A likely reason is that the growth curve deviates from the logistic shape assumed by the model, since the species abundance decreased after a peak and a death phase, or more general, a transient peak followed by decline, is not supported by the model which only fits single logistic curves. The poor reflection could also be aggravated by the comparable small sample size (n = 7) for the B. subtilis monocultures.\nThis also affects the reliability of the strong inter-specific competition (a\\(_{22}\\)) found in the dataset (−0.018 at f3, versus way closer to 0 elsewhere) which might therfore rather be an artefact than reproducible biological effect."
+  },
+  {
+    "objectID": "SysBioModelingClass.html#interpretation-of-interaction-coefficients",
+    "href": "SysBioModelingClass.html#interpretation-of-interaction-coefficients",
+    "title": "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third",
+    "section": "5.2 Interpretation of interaction coefficients",
+    "text": "5.2 Interpretation of interaction coefficients\nThe promoting effect of B. subtilis on P. putida seen in the growth curves is well reflected by the interaction coefficients (a\\(_{12}\\) in the PB condition, Figure 4). In contrast, the lowered self-inhibition of B. subtilis in co-culture with T. viride does not reflect the strong inhibitory effect of the fungus on B. subtilis. Modeling the two-species co-culture from the single-culture readout alone is therefore poor in this case.\nIn the T. viride + B. subtilis condition, B. subtilis hardly grows, so its per-capita growth rate is flat and close to zero across the observed abundance range. A near-zero \\(a_{22}\\) here then reflects the absence of growth, not release from self-limitation. The coefficient can only quantify self-limitation when growth occurs on a properly measurable range.\nThe effect of P. putida on B. subtilis (a\\(_{21}\\)) is close to zero in all co-cultures, eventhough the observed growth data shows strong suppresion of B. subtilis by P. putida. This is poorly reflected by the choosen modeling approach.\nIn the three-species condition, the fitted a\\(_{12}\\) and a\\(_{21}\\) are effective coefficients that combine direct effects with effects mediated by T. viride. They are not comparable to the coefficients from the two-species culture in a strict sense, and they cannot distinguish pairwise competition from higher-order interactions. This is illustrative for the general limitation of the approach: the effect of the unmeasured species cannot be simply assigned to an explicit interaction term and is folded into the parameters of the measured species.\nReflecting on the modeling famework on a broader scope, the optimizer works in log-space and fixes the sign of every parameter to that of the initial linear estimate, so a wrongly signed starting value cannot be corrected. Poorly constrained, near-zero coefficients may therefore switch sign between fits without real biological meaning.\nAs an outlook for further work the estimated parameters could be used to simulate the growth trajectories of the co-cultures over longer periods, to test whether stable coexistence or cycling patterns would occur."
+  },
+  {
+    "objectID": "MM.html",
+    "href": "MM.html",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %\n\n\n\n\n\n\n\nM9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg\n\n\n\n\n\n\n\n\n\nFor 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg\n\n\n\n\n\n\n\n\n\nFor 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#lb-stock",
+    "href": "MM.html#lb-stock",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#m9-stock-solution",
+    "href": "MM.html#m9-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "M9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#cacl2-stock-solution",
+    "href": "MM.html#cacl2-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "CaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#fecl2-2.6-h2o-stock-solution",
+    "href": "MM.html#fecl2-2.6-h2o-stock-solution",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#trace-element-solution-100x",
+    "href": "MM.html#trace-element-solution-100x",
+    "title": "Materials and Methods",
+    "section": "",
+    "text": "For 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#bacillus-subtilis-pseudomonas-putida",
+    "href": "MM.html#bacillus-subtilis-pseudomonas-putida",
+    "title": "Materials and Methods",
+    "section": "Bacillus subtilis & Pseudomonas putida",
+    "text": "Bacillus subtilis & Pseudomonas putida",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "MM.html#soil-natural-inoculum-ni",
+    "href": "MM.html#soil-natural-inoculum-ni",
+    "title": "Materials and Methods",
+    "section": "Soil Natural Inoculum (NI)",
+    "text": "Soil Natural Inoculum (NI)\n\nExtraction and Filtering of NI",
+    "crumbs": [
+      "Materials and Methods"
+    ]
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html",
+    "title": "013-BPN_48h-replenish",
+    "section": "",
+    "text": "Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed.",
+    "crumbs": [
+      "Experiments",
+      "013 BPN 48h Replenish",
+      "013-BPN_48h-replenish"
+    ]
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#short-description",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#short-description",
+    "title": "013-BPN_48h-replenish",
+    "section": "",
+    "text": "Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed.",
+    "crumbs": [
+      "Experiments",
+      "013 BPN 48h Replenish",
+      "013-BPN_48h-replenish"
+    ]
+  },
+  {
+    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#data-import-and-processing",
+    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#data-import-and-processing",
+    "title": "013-BPN_48h-replenish",
+    "section": "Data import and processing",
+    "text": "Data import and processing\nLoad dependencies.\nProcess function for excel raw data from Tecan Spark plate reader (Toxic Lab):\n\nprocess_plate &lt;- function(file_path) {\n  raw &lt;- read_excel(file_path, col_names = FALSE)\n  \n  # Extract plate sections\n  OD600  &lt;- raw[37:44, 2:13]\n  GFP70 &lt;- raw[70:77, 2:13]\n  RFP85 &lt;- raw[103:110, 2:13]\n  RFP90  &lt;- raw[136:143, 2:13]\n  \n  # Convert to long format\n  to_long &lt;- function(df, name) {\n    out &lt;- as.data.frame(as.table(as.matrix(df)))\n    out$wavelength &lt;- name\n    return(out)\n  }\n  \n  OD600  &lt;- to_long(OD600,  \"OD600\")\n  GFP70 &lt;- to_long(GFP70, \"GFP70\")\n  RFP85 &lt;- to_long(RFP85, \"RFP85\")\n  RFP90  &lt;- to_long(RFP90,  \"RFP90\")\n  \n  # Combine\n  plate_concat &lt;- rbind(OD600, GFP70, RFP85, RFP90)\n  plate_concat &lt;- setNames(\n    plate_concat,\n    c(\"row\", \"col\", \"value\", \"wavelength\")\n    )\n  \n  plate_concat$value &lt;- as.numeric(as.character(plate_concat$value))\n  plate_concat$well &lt;- paste0(plate_concat$row, plate_concat$col)\n  \n  # Date + time from same file\n  date &lt;- read_excel(file_path, range = \"E6\", col_names = FALSE)[[1]]\n  time &lt;- read_excel(file_path, range = \"E7\", col_names = FALSE)[[1]]\n  \n  plate_concat$datetime &lt;- as.POSIXct(paste(date, time))\n  \n  # Conditions\n  plate_concat$condition &lt;- dplyr::recode(\n    plate_concat$row,\n    \"A\" = \"B\",\n    \"B\" = \"B+N\",\n    \"C\" = \"N\",\n    \"D\" = \"B+P+N\",\n    \"E\" = \"B+P\",\n    \"F\" = \"P+N\",\n    \"G\" = \"P\",\n    \"H\" = \"M9\"\n  )\n  \n  # Final tidy\n  plate_concat &lt;- plate_concat[, c(\"well\", \"datetime\", \"condition\", \"wavelength\", \"value\")]\n  \n  return(plate_concat)\n}\n\nApply to all files and concatenate.\n\nfiles &lt;- list.files(pattern = \"^013-.*\\\\.xlsx$\", recursive = TRUE)\n\nall_data &lt;- dplyr::bind_rows(lapply(files, process_plate))\n\n\n# all_data &lt;- docall(rbind(lapply(files, process_plate)))\n\n# elapsed time in hours (first value = 0)\nall_data$time &lt;- as.numeric(\n  difftime(all_data$datetime, all_data$datetime[1], units = \"hours\") )\n\nApply to only the ‘A’ or ‘B’ files independently, to produce dataset before/after media replenishment for each timepoint.\nWrite to .csv.\nCalculate summary statistics.",
+    "crumbs": [
+      "Experiments",
+      "013 BPN 48h Replenish",
+      "013-BPN_48h-replenish"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html",
+    "title": "008-Media_replenishment",
+    "section": "",
+    "text": "In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the third cycle, cross-contamination between conditions and replicates was introduced and experiment was subsequently aborted.",
+    "crumbs": [
+      "Experiments",
+      "008 Media Replenishment",
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-od600-of-all-conditions-before-media-replenishment",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-od600-of-all-conditions-before-media-replenishment",
+    "title": "008-Media_replenishment",
+    "section": "Plot OD600 of all conditions BEFORE media replenishment",
+    "text": "Plot OD600 of all conditions BEFORE media replenishment",
+    "crumbs": [
+      "Experiments",
+      "008 Media Replenishment",
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-od600-of-all-conditions-after-media-replenishment",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-od600-of-all-conditions-after-media-replenishment",
+    "title": "008-Media_replenishment",
+    "section": "Plot OD600 of all conditions AFTER media replenishment",
+    "text": "Plot OD600 of all conditions AFTER media replenishment",
+    "crumbs": [
+      "Experiments",
+      "008 Media Replenishment",
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-gfp-of-all-conditions-after-media-replenishment",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-gfp-of-all-conditions-after-media-replenishment",
+    "title": "008-Media_replenishment",
+    "section": "Plot GFP of all conditions AFTER media replenishment",
+    "text": "Plot GFP of all conditions AFTER media replenishment",
+    "crumbs": [
+      "Experiments",
+      "008 Media Replenishment",
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-rfp-of-all-conditions-after-media-replenishment",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#plot-rfp-of-all-conditions-after-media-replenishment",
+    "title": "008-Media_replenishment",
+    "section": "Plot RFP of all conditions AFTER media replenishment",
+    "text": "Plot RFP of all conditions AFTER media replenishment",
+    "crumbs": [
+      "Experiments",
+      "008 Media Replenishment",
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/008-Media_replenishment/008-Media_replenishment.html#to-do",
+    "href": "plateReader/008-Media_replenishment/008-Media_replenishment.html#to-do",
+    "title": "008-Media_replenishment",
+    "section": "TO DO:",
+    "text": "TO DO:\n\nSubstract M9 mean from values to normalize\nCalculate RFP/GFP per OD and compare Pp alone vs. Pp+NI to see how much NI is contributing to the OD\n\n\nTab ATab B\n\n\nContent for Tab A\n\n\nContent for Tab B",
+    "crumbs": [
+      "Experiments",
+      "008 Media Replenishment",
+      "008-Media_replenishment"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html",
+    "title": "003-NI-dil_series-media_test",
+    "section": "",
+    "text": "This experiment tried to investigate in the effect of pre-culturing the soil samples in LB and M9 media, respectively on growth rates of subsequently isolated natural soil communities.\n1 g of soil was incubated overnight in either LB or M9. 4 soil replicates for each medium. After o/n culture media were vacuum filtered to obtain bacterial communities and serial dilutions ranging from 10-2 to 10-6 were incubated on 96-well-plates (8 technical replicates). For ~1.5 days.",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-2",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-2",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plate 2",
+    "text": "Plate 2",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-3",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-3",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plate 3",
+    "text": "Plate 3",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-4",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plate-4",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plate 4",
+    "text": "Plate 4",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#writeload-csv",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#writeload-csv",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Write/Load CSV",
+    "text": "Write/Load CSV\n\n# write.csv(df, \"df.csv\", row.names = FALSE)\n# write.csv(df_stat, \"df_stat.csv\", row.names = FALSE)\n# write.csv(media_stat, \"media_stat.csv\", row.names = FALSE)\n\nLoad df’s from CSV:\n\n# df &lt;- read.csv (\"df.csv\") \n# df_stat &lt;- read.csv(\"df_stat.csv\")\n# media_stat &lt;- read.csv (\"media_stat.csv\")",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-10-3-all-dilutions",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-10-3-all-dilutions",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD600 10-3 all dilutions",
+    "text": "OD600 10-3 all dilutions\n\ndf_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\") &\n           dilution %in% c(\"10^-3\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = sample)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" of all 10\"^\"-3\"*\" Dilutions\"))\n\n\n\n\n\n\n\n\n\ndf_stat %&gt;% filter(dilution == \"10^-3\" & wavelength == \"OD600\") %&gt;% \n  ggnested(\n    aes(x = elapsed_hours, y = mean_value, main_group = media, sub_group = sample), \n    legend_title = \"Starting Density\", \n    main_keys = T, \n    base_clr = \"darkgreen\", \n    gradient_type = \"tints\" ) +\n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) + \n  theme_minimal() + \n  labs(\n    y= expression(\"OD\"[600]), \n    x=\"Time [h]\", \n    title = \"OD&lt;sub&gt;600&lt;/sub&gt; Growth Curves by Media Type for 10&lt;sup&gt;-3&lt;/sup&gt; Starting Density\") + \n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-grouped-by-media",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-grouped-by-media",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD600 grouped by media",
+    "text": "OD600 grouped by media\n\nmedia_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = media)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  # scale_color_discrete(labels = parse(text = unique(df_stat$dilution))) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" of all Dilutions grouped by media type\")) +\n  theme(plot.caption = element_markdown()) +\n  facet_wrap(~dilution)",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-all-samples-facet-dilutions",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od600-all-samples-facet-dilutions",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD600 all samples, facet dilutions",
+    "text": "OD600 all samples, facet dilutions\n\ndf_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = sample)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" Of All Soil Samples At Different Starting Dilutions\")) +\n  facet_wrap(~ dilution)",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plotting-for-lb-and-m9",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#plotting-for-lb-and-m9",
+    "title": "003-NI-dil_series-media_test",
+    "section": "Plotting for LB and M9",
+    "text": "Plotting for LB and M9\n\nmedia_stat %&gt;% \n  filter(wavelength %in% c(\"OD600\")) %&gt;%\n  ggplot(aes(x = elapsed_hours, y = mean_value, color = media)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_value - se, ymax = mean_value + se),\n    width = 0.5 ) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time\", title = expression(\"OD\"[600]*\" Of All Soil Samples At Different Starting Dilutions\")) +\n  facet_wrap(~ dilution)",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od-all-grouped-by-media-and-dilution",
+    "href": "plateReader/003-NI-dil_series-media_test/003-NI-dil_series-media_test.html#od-all-grouped-by-media-and-dilution",
+    "title": "003-NI-dil_series-media_test",
+    "section": "OD all grouped by media and dilution",
+    "text": "OD all grouped by media and dilution\n\nmedia_stat %&gt;% filter(wavelength %in% c(\"OD600\")) %&gt;% \n  ggnested(\n    aes(x = elapsed_hours, y = mean_value, main_group = media, sub_group = dilution), \n    legend_title = \"Starting Density\", \n    main_keys = T, \n    base_clr = \"darkgreen\", \n    gradient_type = \"tints\" ) +\n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.2 ) + \n  theme_minimal() + \n  labs(y= expression(\"OD\"[600]*\" absorbance\"), x=\"Time [h]\", title = \"OD&lt;sub&gt;600&lt;/sub&gt; Growth Curves by Media Type and Serial Dilution of Starting Density\") + \n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "Experiments",
+      "003 NI Dil Series Media Test",
+      "003-NI-dil_series-media_test"
+    ]
+  },
+  {
+    "objectID": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html",
+    "href": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html",
+    "title": "001-all_conditions_same_OD",
+    "section": "",
+    "text": "This is the first 96-well-plate experiment. All combinations of monoculture, and 2/3 species co-culture were tested with an initial starting OD600 of 0.001. Total well volume was 250 µl. Master mixes (MM) with OD of 0.005 were set up from overnight pre-culture and 50 µl MM used per well. 12 replicates (columns on plate) per condition. Order of conditions as follows:\n\nRows of 96-well-plate\n\n\nA\nB.s.\n\n\nB\nB.s. + NI\n\n\nC\nNI\n\n\nD\nP.p + B.s. + NI\n\n\nE\nP.p + B.s.\n\n\nF\nP.p + NI\n\n\nG\nP.p\n\n\nH\ncontrol (M9)\n\n\n\nSoil Preparation for NI was done in H2O only. No Preculturing of natural inocoulum, no centrifugation. 1g soil (form TER lab course ’26) + 10ml H2O were vortexted for 10 min and subsequently vacuum filtered through filter paper. Yield was very low. Cells were pelleted and resuspended in 2 ml M9 media.",
+    "crumbs": [
+      "Experiments",
+      "001 All Conditions Same OD",
+      "001-all_conditions_same_OD"
+    ]
+  },
+  {
+    "objectID": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html#plot-od600",
+    "href": "plateReader/001-all_conditions_same_OD/001-all_conditions_same_OD.html#plot-od600",
+    "title": "001-all_conditions_same_OD",
+    "section": "Plot OD600",
+    "text": "Plot OD600\n\nsummary_df %&gt;% filter(wavelength %in% c(\"OD600\")) %&gt;% ggplot(aes(x = time, y = mean_value, color = condition)) + \n  geom_line() + \n  geom_point() + \n  geom_errorbar( aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.5 ) + \n  theme_classic() + \n  labs(y=\"OD 600\", x=\"Time\", title = \"OD 600 of all conditions\")",
+    "crumbs": [
+      "Experiments",
+      "001 All Conditions Same OD",
+      "001-all_conditions_same_OD"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#calculate-summary-statistics",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#calculate-summary-statistics",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "Calculate Summary statistics",
+    "text": "Calculate Summary statistics\n\nsummary_df &lt;- df %&gt;%\n  group_by(time, species, dilution) %&gt;%\n  summarise(\n    mean_OD = mean(OD600, na.rm = TRUE),\n    sd_OD   = sd(OD600, na.rm = TRUE),\n    n       = n(),\n    se_OD   = sd_OD / sqrt(n),\n    mean_G = mean(G, na.rm = TRUE),\n    sd_G   = sd(G, na.rm = TRUE),\n    se_G   = sd_G / sqrt(n),\n    mean_R = mean(R, na.rm = TRUE),\n    sd_R   = sd(R, na.rm = TRUE),\n    se_R   = sd_R / sqrt(n),\n    .groups = \"drop\"\n  )\n\nsummary_df &lt;- summary_df %&gt;%\n  mutate(condition = paste(species, dilution, sep = \" \"))\n\n# Make dilution a properly ordered factor\nsummary_df$dilution &lt;- factor(summary_df$dilution, levels = sort(unique(summary_df$dilution)))",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-all-facet",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-all-facet",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "OD all, facet",
+    "text": "OD all, facet\n\nOD.all &lt;- ggplot(summary_df, aes(\n  x = time, \n  y = mean_OD, \n  color = dilution,\n  #linetype = species\n  )) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() +\n  theme(plot.title = element_markdown()) +\n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\", title = \"OD&lt;sub&gt;600&lt;/sub&gt; of &lt;i&gt;P. putida&lt;/i&gt; (A) and &lt;i&gt;B. subtilis&lt;/i&gt; (B) for a serial dilution of &lt;i&gt;B.s.&lt;/i&gt; starting densities\") + \n  facet_wrap(~ species)\n\nggplotly(OD.all)",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-all-with-ggnested",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-all-with-ggnested",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "OD all, with ggnested",
+    "text": "OD all, with ggnested\n\n#(004-BS_BSPP_dil-series.ggnested)\nggnested(summary_df, aes(\n  x = time, \n  y = mean_OD, \n  main_group = species,\n  sub_group = dilution ), \n  legend_labeling = \"join\",\n  join_str = \": \",\n  legend_title = \"Species: Starting Frequencies\",\n  main_keys = F,\n  base_clr = \"green\",\n  gradient_type = \"shades\"\n  ) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +\n  #scale_colour_discrete(labels = scales::label_parse()) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\", title = \"OD&lt;sub&gt;600&lt;/sub&gt; of *B. subtilis* and *P. putida* growing together for different starting frequencies of *B.s*.\") +\n  # scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-bs",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-bs",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "OD BS",
+    "text": "OD BS\n\n#(004-BS_OD_dil-series)\nOD.BS &lt;- summary_df %&gt;% filter(species==\"B.subtilis\") %&gt;%\n  ggplot(aes(\n  x = time, \n  y = mean_OD, \n  color = dilution,\n  #linetype = species\n)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\", title = \"OD&lt;sub&gt;600&lt;/sub&gt; of a &lt;i&gt;B. subtilis&lt;/i&gt; serial dilution of starting densities\") + \n  theme(plot.title = element_markdown())\n\nggplotly(OD.BS)\n\nWarning in is.na(u): is.na() applied to non-(list or vector) of type\n'expression'",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#gfp-vs-rfp-bspp-facet",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#gfp-vs-rfp-bspp-facet",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "GFP vs RFP BS+PP, facet",
+    "text": "GFP vs RFP BS+PP, facet\n\n#(004-BS_BSPP_dil-series.facet)\nCo.GFP &lt;- summary_df %&gt;% \n  filter(species == \"B.s. + P. putida\") %&gt;%\nggplot(aes(\n  x = time, \n  y = mean_G, \n  color = dilution\n)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_G - se_G, ymax = mean_G + se_G), width = 0.2 ) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() +\n  labs(y= \"GFP\", x=\"Time [h]\") + \n  coord_cartesian(ylim = c(6000, 50000))\n\nCo.RFP &lt;- summary_df %&gt;% \n  filter(species == \"B.s. + P. putida\") %&gt;%\n  ggplot(aes(\n    x = time, \n    y = mean_R, \n    color = dilution\n  )) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_R - se_R, ymax = mean_R + se_R), width = 0.2 ) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() +\n  labs(y= \"RFP\", x=\"Time [h]\") + \n  coord_cartesian(ylim = c(6000, 50000))\n\nCo.GFP + Co.RFP + plot_annotation(\n  title = \"GFP and RFP of *P. putida* and *B. subtilis* co-culture for a serial dilution of starting densities of *B. subtilis*\", \n  tag_levels = \"A\") +\n  plot_layout(guides = 'collect') &\n  theme(\n    plot.title = element_markdown(),\n    legend.position = 'bottom') &\n  labs(color = expression(\"OD\"[600]*\" of B. subtilis at inoculation\"))",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#gfp-rfp-combined",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#gfp-rfp-combined",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "GFP & RFP combined",
+    "text": "GFP & RFP combined\n\nfluorescence &lt;- summary_df %&gt;% \n  filter(species == \"B.s. + P. putida\") %&gt;%\n  ggplot(aes(x = time, color = dilution)) +\n  \n  # GFP\n  geom_line(aes(y = mean_G)) +\n  geom_point(aes(y = mean_G)) +\n  geom_errorbar(\n    aes(ymin = mean_G - se_G, ymax = mean_G + se_G),\n    width = 0.2\n  ) +\n  # scale_color_manual(values=c(\"red4\",\"red3\",\"red2\",\"orange3\",\"orange2\",\"orange\")) +\n  \n  # RFP\n  geom_line(aes(y = mean_R), linetype = \"dashed\") +\n  geom_point(aes(y = mean_R), shape = 17) +\n  geom_errorbar(\n    aes(ymin = mean_R - se_R, ymax = mean_R + se_R),\n    width = 0.2\n  ) +\n  \n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() +\n  labs(y = \"GFP / RFP\", x = \"Time [h]\") +\n  coord_cartesian(ylim = c(6000, 50000))\n\nggplotly(fluorescence) \n\n\n\n\nfluorescence.ly &lt;- ggplotly(fluorescence)",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-and-fluorescence-facet",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#od-and-fluorescence-facet",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "OD and Fluorescence facet",
+    "text": "OD and Fluorescence facet\n\nOD.BSPP &lt;- summary_df %&gt;% filter(species==\"B.s. + P. putida\") %&gt;%\n  ggplot(aes(\n    x = time, \n    y = mean_OD, \n    color = dilution\n  )) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() +\n  # theme(legend.position = \"none\") +\n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\")\n\nOD.BSPP + fluorescence + plot_annotation(\n  title = \"Co-culture of *B. subtilis* and *P. putida* by OD&lt;sub&gt;600&lt;/sub&gt; turbidity (A) and GFP/RFP fluorsecence intensity (B) for different inoculation frequencies of *B. s.*\", \n  tag_levels = \"A\")  +\n  plot_layout(guides = 'collect') &\n  theme(\n    plot.title = element_markdown(),\n    legend.position = 'bottom'\n  )\n\n\n\n\n\n\n\nggplotly(OD.BSPP)\n\nWarning in is.na(u): is.na() applied to non-(list or vector) of type\n'expression'",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#growth-phases-shaded-regions",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#growth-phases-shaded-regions",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "Growth phases shaded regions",
+    "text": "Growth phases shaded regions\n\nsummary_df %&gt;% filter(species == \"B.subtilis\") %&gt;%\n  ggplot(aes(x=time, y=`GFP/OD`, colour = dilution)) + \n  geom_point() +\n  geom_line() +\n  theme_minimal() +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  labs(\n    x = \"Time [h]\",\n    y = expression(\"OD\"[600]/\"GFP\"),\n  ) +\n  # Add shaded regions\n  annotate(\"rect\", xmin = 0, xmax = 25, ymin = -Inf, ymax = Inf,\n           alpha = 0.2, fill = \"blue\") +\n  annotate(\"rect\", xmin = 25, xmax = 50, ymin = -Inf, ymax = Inf,\n           alpha = 0.2, fill = \"green\") +\n  annotate(\"rect\", xmin = 50, xmax = Inf, ymin = -Inf, ymax = Inf,\n           alpha = 0.2, fill = \"red\")",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#bs-gfpperod",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#bs-gfpperod",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "BS GFPperOD",
+    "text": "BS GFPperOD\n\nsummary_df %&gt;% filter(species == \"B.subtilis\") %&gt;%\n  ggplot(aes(x=time, y=`GFP/OD`, colour = dilution)) + \n  geom_point() +\n  geom_line() +\n  theme_minimal() +\n  theme(plot.title = element_markdown()) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  labs(\n    title = \"GFP fluorescence per cell density (OD&lt;sub&gt;600&lt;/sub&gt;) of a *B. subtilis* serial dilution\",\n    x = \"Time [h]\",\n    y = expression(\"GFP\"/\"OD\"[600]),\n    color = expression(\"Initial OD\"[600]),\n    subtitle = \"Growth phase indicators according to the 10^-3 dilution\"\n  ) +\n  # Growth phase indicators\n  geom_vline(xintercept = c(8, 28, 50), linetype = \"dashed\", color = \"#8C8C8C\") +\n  annotate(\"text\", x = 4, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(lag), color = \"#8C8C8C\") +\n  annotate(\"text\", x = 18, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(log), color = \"#8C8C8C\") +\n  annotate(\"text\", x = 39, y = min(summary_df$`GFP/OD`) * 1.1, label = \"stationary\", color = \"#8C8C8C\") +\n  annotate(\"text\", x = 59, y = min(summary_df$`GFP/OD`) * 1.1, label = \"death\", color = \"#8C8C8C\")",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#bs-rfpperod",
+    "href": "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series.html#bs-rfpperod",
+    "title": "004-BS_BSPP_dil_series",
+    "section": "BS RFPperOD",
+    "text": "BS RFPperOD\n\nsummary_df %&gt;% filter(species == \"B.subtilis\") %&gt;%\n  ggplot(aes(x=time, y=`RFP/OD`, colour = dilution)) + \n  geom_point() +\n  geom_line() +\n  theme_minimal() +\n  theme(plot.title = element_markdown()) +\n  scale_color_discrete(labels = function(x) parse(text = x)) +\n  labs(\n    title = \"RFP fluorescence per cell density (OD&lt;sub&gt;600&lt;/sub&gt;) of a *B. subtilis* serial dilution\",\n    x = \"Time [h]\",\n    y = expression(\"RFP\"/\"OD\"[600]),\n    color = expression(\"Initial OD\"[600]),\n    subtitle = \"Growth phase indicators according to the 10^-3 dilution\"\n  ) +\n  # Growth phase indicators\n  geom_vline(xintercept = c(8, 28, 50), linetype = \"dashed\", color = \"#8C8C8C\") +\n  annotate(\"text\", x = 4, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(lag), color = \"#8C8C8C\") +\n  annotate(\"text\", x = 18, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(log), color = \"#8C8C8C\") +\n  annotate(\"text\", x = 39, y = min(summary_df$`GFP/OD`) * 1.1, label = \"stationary\", color = \"#8C8C8C\") +\n  annotate(\"text\", x = 59, y = min(summary_df$`GFP/OD`) * 1.1, label = \"death\", color = \"#8C8C8C\")",
+    "crumbs": [
+      "Experiments",
+      "004 BS BSPP Dil Series",
+      "004-BS_BSPP_dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html",
+    "title": "002-PP-BS-dil_series",
+    "section": "",
+    "text": "This is a the batch culture well plate experiment, with serial dilutions of starting densities of B. subtilis and P. putida monocultures. Starting densities ranged from 10-1 to 10-6 and 10-2 to 10-7 OD600, respectively. Culturing was carried out on plate reader with continuous measurements (every 1h) for ~24 h.",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#summary-stats",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#summary-stats",
+    "title": "002-PP-BS-dil_series",
+    "section": "Summary stats",
+    "text": "Summary stats\n\nsummary_df &lt;- OD_long %&gt;%\n  group_by(time, species, dilution) %&gt;%\n  summarise(\n    mean_OD = mean(OD600, na.rm = TRUE),\n    sd_OD   = sd(OD600, na.rm = TRUE),\n    n       = n(),\n    se_OD   = sd_OD / sqrt(n),\n    mean_G = mean(G, na.rm = TRUE),\n    sd_G   = sd(G, na.rm = TRUE),\n    se_G   = sd_G / sqrt(n),\n    mean_R = mean(R, na.rm = TRUE),\n    sd_R   = sd(R, na.rm = TRUE),\n    se_R   = sd_R / sqrt(n),\n    .groups = \"drop\"\n  )\n\n# Make dilution a properly ordered factor (AGAIN)\nsummary_df$dilution &lt;- factor(summary_df$dilution, levels = sort(unique(summary_df$dilution)))",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#writeload-csv",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#writeload-csv",
+    "title": "002-PP-BS-dil_series",
+    "section": "Write/Load CSV",
+    "text": "Write/Load CSV\n\nwrite.csv(summary_df, \"summary_df.csv\", row.names = FALSE)\nwrite.csv(OD_long, \"df.csv\", row.names = FALSE)\n\nLoad df and summary_df from CSV:\n\ndf &lt;- read.csv (\"df.csv\") \nsummary_df &lt;- read.csv (\"summary_df.csv\")",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#od600",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#od600",
+    "title": "002-PP-BS-dil_series",
+    "section": "OD600",
+    "text": "OD600\n\nOD all, facetted\n\nggplot(summary_df, aes( x = time, y = mean_OD, color = dilution, linetype = species )) + \n  geom_line() +\n  geom_point() + \n  geom_errorbar( aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +\n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme_minimal() + \n  labs(\n  y=expression(\"OD\"[600]), \n  x=\"Time [h]\", \n  title = \"OD&lt;sub&gt;600&lt;/sub&gt; of *P. putida* and *B. subtilis* for a serial dilution of starting densities\") + \n  facet_wrap(~ species, scales = \"free_y\") +\n  theme(plot.title = element_markdown())\n\n\n\n\n\n\n\n\n\n\nOD selected dilutions\n\nsummary_df %&gt;% filter( (dilution %in% c(\"10^-6\") & species %in% c(\"Pp\")) | (dilution %in% c(\"10^-2\") &\nspecies %in% c(\"Bs\")) ) %&gt;% \n  ggplot(aes(x = time, y = mean_OD, color = dilution, linetype = species, group = interaction(species, dilution))) +\n  geom_line() + \n  geom_point() + \n  geom_errorbar(aes(ymin = mean_OD - se_OD,\nymax = mean_OD + se_OD), width = 0.2 ) + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme_minimal() + labs(\n    y= expression(\"OD\"[600]), \n    x=\"Time [h]\", \n    title = \"OD&lt;sub&gt;600&lt;/sub&gt; of *P. putida* and *B. subtilis* comparison for the biggest diference in starting densities\") +\n  theme(plot.title = element_markdown())\n\n\n\n\n\n\n\n\n\n\nOD all, with ggnested\n\nggnested(summary_df, aes( x = time, y = mean_OD, main_group = species, sub_group = dilution ),\n         #legend_labeling = \"join\", #join_str = \": \",\n         legend_title = \"Species: Starting Frequencies\", main_keys = F, base_clr = \"green\", gradient_type = \"shades\" ) + \n  geom_line() + \n  geom_point() +\n  geom_errorbar( aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) +\n  #scale_colour_discrete(labels = scales::label_parse()) +\n  # scale_color_discrete(labels = function(x) parse(text = x)) +\n  theme_minimal() + \n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\", \n       title = expression(\"OD\"[600]*\" of Pp and Bs for different starting frequencies\"))",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#pp-plot-calculations-for-different-wavelength",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#pp-plot-calculations-for-different-wavelength",
+    "title": "002-PP-BS-dil_series",
+    "section": "PP Plot calculations for different wavelength",
+    "text": "PP Plot calculations for different wavelength\n\nPPOD &lt;- summary_df %&gt;% filter(species == \"Pp\") %&gt;% \n  ggplot(aes(x = time, y = mean_OD, color = dilution)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar(aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) + \n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\") + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme(plot.title = element_markdown())\n\nPPG &lt;- summary_df %&gt;% filter(species == \"Pp\") %&gt;% \n  ggplot(aes(x = time, y = mean_G, color = dilution)) +\n  geom_line() +\n  geom_point() +\n  geom_errorbar( aes(ymin = mean_G - se_G, ymax = mean_G + se_G), width = 0.2 ) +\n  theme_minimal() + theme(legend.position = 'none') +\n  labs(y= \"GFP\", x=\"Time [h]\") + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme(plot.title = element_markdown())\n\nBSR &lt;- summary_df %&gt;% filter(species == \"Pp\") %&gt;% \n  ggplot(aes(x = time, y = mean_R, color = dilution)) + \n  geom_line() + \n  geom_point() +\n  geom_errorbar( aes(ymin = mean_R - se_R, ymax = mean_R + se_R), width = 0.2 ) + \n  theme_minimal() + \n  theme(legend.position = \"none\") + \n  labs(y= \"RFP\", x=\"Time [h]\") + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#bs-plot-calculations-for-different-wavelength",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#bs-plot-calculations-for-different-wavelength",
+    "title": "002-PP-BS-dil_series",
+    "section": "BS Plot calculations for different wavelength",
+    "text": "BS Plot calculations for different wavelength\n\nBSOD &lt;- summary_df %&gt;% filter(species == \"Bs\") %&gt;% \n  ggplot(aes(x = time, y = mean_OD, color = dilution)) + \n  geom_line() + \n  geom_point() +\n  geom_errorbar(aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD), width = 0.2 ) + \n  theme_minimal() +\n  labs(y= expression(\"OD\"[600]), x=\"Time [h]\") + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme(plot.title = element_markdown())\n\nBSR &lt;- summary_df %&gt;% filter(species == \"Bs\") %&gt;% \n  ggplot(aes(x = time, y = mean_R, color = dilution)) + \n  geom_line() + \n  geom_point() +\n  geom_errorbar( aes(ymin = mean_R - se_R, ymax = mean_R + se_R), width = 0.2 ) + \n  theme_minimal() + \n  theme(legend.position = \"none\") + \n  labs(y= \"RFP\", x=\"Time [h]\") + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme(plot.title = element_markdown())\n\nBSG &lt;- summary_df %&gt;% filter(species == \"Bs\") %&gt;% \n  ggplot(aes(x = time, y = mean_G, color = dilution)) + \n  geom_line() + \n  geom_point() + \n  theme_minimal() + \n  geom_errorbar( aes(ymin = mean_G - se_G, ymax = mean_G + se_G), width = 0.2 ) + \n  theme(legend.position = \"none\") + labs(y= \"GFP\", x=\"Time [h]\") + \n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  theme(plot.title = element_markdown())",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#p.-putida-od-gfp",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#p.-putida-od-gfp",
+    "title": "002-PP-BS-dil_series",
+    "section": "P. putida OD & GFP",
+    "text": "P. putida OD & GFP\n\nPPOD + PPG + \n  plot_annotation( title = \"Growth of *P. putida* by OD&lt;sub&gt;600&lt;/sub&gt; turbidity (A) and GFP intensity (B) for different inoculation frequencies\", tag_levels = \"A\") + \n  plot_layout(guides = 'collect') & \n  theme( plot.title = element_markdown(), legend.position = 'bottom') & labs(color = expression(\"OD\"[600]*\" at inoculation\"))\n\n\n\n\n\n\n\n\n\nB. subtilis OD & RFP\n\nBSOD + BSR + \n  plot_annotation( title = \"Growth of *B. subtilis* by OD&lt;sub&gt;600&lt;/sub&gt; turbidity (A) and RFP intensity (B) for different inoculation frequencies\", tag_levels = \"A\") + \n  plot_layout(guides = 'collect') & \n  theme( plot.title = element_markdown(), legend.position = 'bottom') & \n  guides(color = guide_legend(nrow = 1)) & \n  labs(color = expression(\"OD\"[600]*\" at inoculation\"))\n\n\n\n\n\n\n\n\n\n\nB. subtilis OD, RFP & GFP\n\nBSOD + BSR + BSG + \n  plot_annotation(\n  title = \"Growth of *B. subtilis* by OD&lt;sub&gt;600&lt;/sub&gt; turbidity (A), RFP (B) and GFP (C) intensity for different inoculation frequencies\", tag_levels = \"A\") +\n  plot_layout(guides = 'collect') & \n  theme( plot.title = element_markdown(), legend.position = 'bottom' )",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#fluorescence-per-od",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#fluorescence-per-od",
+    "title": "002-PP-BS-dil_series",
+    "section": "Fluorescence per OD",
+    "text": "Fluorescence per OD\nCalculate fluorescence per OD:\n\nsummary_df$`GFP/OD` &lt;- summary_df$mean_G / summary_df$mean_OD\nsummary_df$`RFP/OD` &lt;- summary_df$mean_R / summary_df$mean_OD\n\n\nP. putida GFP/OD with growth phase indicators\n\n#|label: 002-PP_GFP_per_OD\n\nsummary_df %&gt;% filter(species == \"Pp\") %&gt;% \n  ggplot(aes(x=time, y=`GFP/OD`, colour = dilution)) + \n  geom_point() + \n  geom_line() +\n  theme_minimal() + \n  theme(plot.title = element_markdown()) +\n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  labs( title = \"GFP fluorescence per cell density (OD&lt;sub&gt;600&lt;/sub&gt;) of a *P. putida* serial dilution\", subtitle = \"Growth phase indicators according to 10^-1 dilution\", \n        x = \"Time [h]\", y = expression(\"GFP\"/\"OD\"[600]), \n        color = expression(\"Initial OD\"[600]) ) + \n  \n  # Growth phase indicators\n  geom_vline(xintercept = c(4.5, 11), linetype = \"dashed\", color = \"#8C8C8C\") + annotate(\"text\", x = 2.25, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(lag), color = \"#8C8C8C\") +\n  annotate(\"text\", x = 8, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(log), color = \"#8C8C8C\") + \n  annotate(\"text\", x = 16, y = min(summary_df$`GFP/OD`) * 1.1, label = \"stationary\", color = \"#8C8C8C\")\n\n\n\n\n\n\n\n\n\n\nP. putida RFP/OD with growth phase indicators\n\nsummary_df %&gt;% filter(species == \"Pp\") %&gt;% \n  ggplot(aes(x=time, y=`RFP/OD`, colour = dilution)) + \n  geom_point() + \n  geom_line() +\n  theme_minimal() + \n  theme(plot.title = element_markdown()) +\n  scale_color_discrete(labels = function(x) parse(text = x)) + \n  labs(\n    title = \"RFP fluorescence per cell density (OD&lt;sub&gt;600&lt;/sub&gt;) of a *P. putida* serial dilution\",\n    subtitle = \"Growth phase indicators according to 10^-1 dilution\", \n    x = \"Time [h]\", y = expression(\"RFP\"/\"OD\"[600]), color = expression(\"Initial OD\"[600]) ) + \n  \n  # Growth phase indicators\n  geom_vline(xintercept = c(4.5, 11), linetype = \"dashed\", color = \"#8C8C8C\") + \n  annotate(\"text\", x = 2.25, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(lag), color = \"#8C8C8C\") +\n  annotate(\"text\", x = 8, y = min(summary_df$`GFP/OD`) * 1.1, label = expression(log), color = \"#8C8C8C\") + \n  annotate(\"text\", x = 16, y = min(summary_df$`GFP/OD`) * 1.1, label = \"stationary\", color = \"#8C8C8C\")",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#apply-per-group",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#apply-per-group",
+    "title": "002-PP-BS-dil_series",
+    "section": "Apply per group",
+    "text": "Apply per group\n\ngc_params &lt;- summary_df %&gt;%\n  group_by(species, dilution) %&gt;%\n  nest() %&gt;%\n  mutate(\n    gc = map(data, fit_gc),\n    t_mid = map_dbl(gc, ~ ifelse(is.null(.x), NA, .x$vals$t_mid)),\n    r     = map_dbl(gc, ~ ifelse(is.null(.x), NA, .x$vals$r)),\n    k     = map_dbl(gc, ~ ifelse(is.null(.x), NA, .x$vals$k))\n  ) %&gt;%\n  ungroup()\n\n\nbg_df &lt;- summary_df %&gt;%\n  group_by(species, dilution) %&gt;%\n  summarise(bg = min(mean_OD, na.rm = TRUE), .groups = \"drop\")\n\ngc_params &lt;- gc_params %&gt;%\n  left_join(bg_df, by = c(\"species\", \"dilution\"))",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#generate-smooth-fitted-curves",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#generate-smooth-fitted-curves",
+    "title": "002-PP-BS-dil_series",
+    "section": "Generate smooth fitted curves",
+    "text": "Generate smooth fitted curves\n\npredict_growth &lt;- function(species_name) {\n  gc_params %&gt;%\n    filter(species == species_name) %&gt;%\n    filter(!is.na(k), !is.na(r), !is.na(t_mid)) %&gt;%\n    rowwise() %&gt;%\n    mutate(\n      pred = list({\n        time_seq &lt;- seq(0, max(summary_df$time), length.out = 100)\n        pred_vals &lt;- k / (1 + exp(-r * (time_seq - t_mid)))\n        tibble(time = time_seq, pred_OD = pred_vals + bg)\n      })\n    ) %&gt;%\n    ungroup() %&gt;%\n    select(dilution, pred) %&gt;%\n    unnest(pred)\n}\n\nPP_pred &lt;- predict_growth(\"Pp\")\nBS_pred &lt;- predict_growth(\"Bs\")",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#plot-raw-data-fitted-curves",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#plot-raw-data-fitted-curves",
+    "title": "002-PP-BS-dil_series",
+    "section": "Plot: raw data + fitted curves",
+    "text": "Plot: raw data + fitted curves\n\nPP\n\nPPfit &lt;- summary_df %&gt;%\n  filter(species == \"Pp\") %&gt;%\n  ggplot(aes(x = time, y = mean_OD, color = dilution)) +\n  geom_line(alpha = 0.4) +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD),\n    width = 0.2\n  ) +\n  geom_line(\n    data = PP_pred,\n    aes(x = time, y = pred_OD, color = dilution),\n    # linetype = \"dashed\",\n    linewidth = 0.9\n  ) +\n  scale_color_discrete(labels = parse(text = unique(summary_df$dilution))) +\n  theme_minimal() +\n  labs(y = expression(\"OD\"[600]), \n       x = \"Time [h]\",\n       title = \"Logistic growth curve fit\"\n       ) +\n  theme(plot.title = element_markdown()) +\n  scale_color_discrete(labels = function(x) parse(text = x))\n\n\n\nBS\n\nBSfit &lt;- summary_df %&gt;%\n  filter(species == \"Bs\") %&gt;%\n  ggplot(aes(x = time, y = mean_OD, color = dilution)) +\n  geom_line(alpha = 0.4) +\n  geom_point() +\n  geom_errorbar(\n    aes(ymin = mean_OD - se_OD, ymax = mean_OD + se_OD),\n    width = 0.2\n  ) +\n  geom_line(\n    data = BS_pred,\n    aes(x = time, y = pred_OD, color = dilution),\n    # linetype = \"dashed\",\n    linewidth = 0.9\n  ) +\n  scale_color_discrete(labels = parse(text = unique(summary_df$dilution))) +\n  theme_minimal() +\n  labs(y = expression(\"OD\"[600]), \n       x = \"Time [h]\",\n       title = \"Logistic growth curve fit\"\n  ) +\n  theme(plot.title = element_markdown()) +\n  scale_color_discrete(labels = function(x) parse(text = x))",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#extract-time-of-max-growth-rate-t₀",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#extract-time-of-max-growth-rate-t₀",
+    "title": "002-PP-BS-dil_series",
+    "section": "Extract time of max growth rate (t₀)",
+    "text": "Extract time of max growth rate (t₀)\n\nanalysis_df &lt;- gc_params %&gt;%\n  select(species, dilution, t_mid) %&gt;%\n  rename(t0 = t_mid)   # optional: keep old naming if you like\n\nt0_points &lt;- gc_params %&gt;%\n  filter(species == \"Pp\") %&gt;%\n  filter(!is.na(k), !is.na(r), !is.na(t_mid)) %&gt;%\n  rowwise() %&gt;%\n  mutate(\n    OD_t0 = list({\n      # Predicted OD at t_mid\n      pred_OD &lt;- k / (1 + exp(-r * (t_mid - t_mid))) + bg\n      pred_OD\n    }),\n    start_OD_theoretical = 10^as.numeric(gsub(\"10\\\\^\", \"\", dilution))\n  ) %&gt;%\n  ungroup() %&gt;%\n  select(dilution, t_mid, OD_t0, start_OD_theoretical)\n\n# Get starting OD per group\nstart_od &lt;- summary_df %&gt;%\n  filter(time == 0) %&gt;%\n  select(species, dilution, start_OD = mean_OD)\n\n# Combine\nanalysis_df &lt;- analysis_df %&gt;%\n  left_join(start_od, by = c(\"species\", \"dilution\"))\n\n## Add theoretical calculated starting OD\nanalysis_df &lt;- analysis_df %&gt;%\n  mutate(\n    start_OD_theoretical = 10^as.numeric(gsub(\"10\\\\^\", \"\", dilution))\n  )",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#calculate-plots-and-linear-regression",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#calculate-plots-and-linear-regression",
+    "title": "002-PP-BS-dil_series",
+    "section": "Calculate plots and linear regression",
+    "text": "Calculate plots and linear regression\n\nPP\n\nPPtime &lt;- analysis_df %&gt;%\n  filter(species == \"Pp\") %&gt;%\n  ggplot(aes(x = start_OD_theoretical, y = t0, color = species)) +\n  geom_point(size = 3) +\n  geom_smooth(method = \"lm\", se = TRUE) +\n  scale_x_log10() +  # optional, since dilutions span orders of magnitude\n  labs(\n    y = \"Time [h] until max. growth rate\",\n    x = expression(\"Theoretical Starting OD\"[600]),\n    # title = \"*P. putida*\"\n    title = \"Growth timing for different starting density\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"none\", \n        plot.title = element_markdown()\n        ) +\n  scale_color_discrete(labels = function(x) parse(text = x))\n\n\n\nBS\n\nBStime &lt;- analysis_df %&gt;%\n  filter(species == \"Bs\", dilution != \"10^-7\") %&gt;%\n  ggplot(aes(x = t0, y = start_OD_theoretical, color = species)) +\n  geom_point(size = 3) +\n  geom_smooth(method = \"lm\", se = TRUE) +\n  scale_y_log10() +  # optional, since dilutions span orders of magnitude\n  labs(\n    x = \"Time [h] until max. growth rate\",\n    y = expression(\"Theoretical Starting OD\"[600]),\n    # title = \"*B. subtilis*\"\n    title = \"Growth timing for different starting density\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"none\",\n        plot.title = element_markdown()\n        ) +\n  scale_color_discrete(labels = function(x) parse(text = x))\n\nFit regression explicitly:\n\nlm_model &lt;- lm(t0 ~ start_OD_theoretical, data = analysis_df %&gt;% filter(species == \"Pp\"))\nsummary(lm_model)\n\n\nCall:\nlm(formula = t0 ~ start_OD_theoretical, data = analysis_df %&gt;% \n    filter(species == \"Pp\"))\n\nResiduals:\n      1       2       3       4       5       6 \n 0.4858 -4.5948 -2.6299 -0.2899  2.2757  4.7530 \n\nCoefficients:\n                     Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)            16.202      1.714   9.455 0.000698 ***\nstart_OD_theoretical  -91.921     41.764  -2.201 0.092553 .  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.746 on 4 degrees of freedom\nMultiple R-squared:  0.5477,    Adjusted R-squared:  0.4347 \nF-statistic: 4.844 on 1 and 4 DF,  p-value: 0.09255",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#plot-with-patchwork",
+    "href": "plateReader/002-PP-BS-dil_series/002-PP-BS-dil_series.html#plot-with-patchwork",
+    "title": "002-PP-BS-dil_series",
+    "section": "Plot with patchwork",
+    "text": "Plot with patchwork\n\nPPfit + PPtime + plot_annotation(\n  title = \"***P. putida***: Time until max. growth rate for serial dilution of strating density\", \n  tag_levels = \"A\") &\n  theme(\n    plot.title = element_markdown()\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\nBSfit + BStime + plot_annotation(\n  title = \"***B. subtilis*: Time until max. growth rate for serial dilution of starting density**\", \n  tag_levels = \"A\") &\n  theme(\n    plot.title = element_markdown()\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\nPPtime + BStime + plot_annotation(\n  title = \"**Time until max. growth rate for serial dilution of starting density**\", \n  tag_levels = \"A\") &\n  theme(\n    plot.title = element_markdown()\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Experiments",
+      "002 PP BS Dil Series",
+      "002-PP-BS-dil_series"
+    ]
+  },
+  {
+    "objectID": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
+    "href": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
     "title": "Introduction",
-    "section": "Microorganisms shape the foundation of ecosystems and macroecolgy [^1]",
-    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy [^1]\n\nInteractions drive functional properties of microbiomes\nDiversity maintains microbiome function — but how?\nEmergent properties of microbial communities\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat and therefore hard to simplify to ecological principles\n\n==Picture of different microbial systems (i.e. terrestrial, maritime, gut) maybe figure on functional & genomic diversity Figure on emergent properties==\n\n(Arellano-Caicedo et al. 2023), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
+    "section": "Microorganisms shape the foundation of ecosystems and macroecolgy",
+    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy\n\n\n\nInteractions drive functional properties of microbiomes\nEmergent properties of microbial communities\n\n\nPicture\n\nDiversity maintains microbiome function — but how?\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat — therefore hard to simplify to ecological principles\n\n\n\n\n(arellano-caicedo2023?), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
   },
   {
     "objectID": "masterThesis.html#the-dilemma-of-cooperation-and-diversity-2",
@@ -91,11 +739,46 @@
     "text": "Experimental Approach\n\nStepwise increase of complexity to get closer to modeling in situ conditions"
   },
   {
-    "objectID": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
-    "href": "masterThesis.html#microorganisms-shape-the-foundation-of-ecosystems-and-macroecolgy",
-    "title": "Introduction",
-    "section": "Microorganisms shape the foundation of ecosystems and macroecolgy",
-    "text": "Microorganisms shape the foundation of ecosystems and macroecolgy\n\n\n\nInteractions drive functional properties of microbiomes\nEmergent properties of microbial communities\n\n\nPicture\n\nDiversity maintains microbiome function — but how?\nMechanistic understanding helps to better predict, protect & preserve ecosystems\nSoil: most diverse and complex habitat — therefore hard to simplify to ecological principles\n\n\n\n\n(arellano-caicedo2023?), (chang2023?) Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021), Magnabosco et al. (2018), Tecon & Or (2017)\n\n\n\nMicrobes are everywhere\nMicrobes accounting for most biomass on earth\nDriver of a multitude of metabolic processes, nutrient cycling and symbiotic relationships with higher-organisms\nMetabolic backbone of ecosystems, shape the foundation of all ecosystem properties\nSoil microbes play intricate role in global carbon storage and turnover\nCommunity composition and interactions between microbes drive functional properties of microbiomes and subsequent macroecological processes\nFunctional microbiomes lead to functional ecosystems\nBetter understanding microbial interactions helps in translating to concepts like competition, cooperation, coexistence and also cross-feeding, keystone taxa and tipping points, which in turn help to predict, protect & preserve ecosystem function %% #### Applications\nUnderstanding communities better to predict, protect & preserve (from anthropogenic influnce)\ncould include\n\nBioremediation (degradation and neutralization of pollutants, like hydrocarbons, heavy metals and plastics)\nAgriculture (soil microbiome intervention for pathogen control, enhanced nutrient cycling) wastewater treatment, human and animal health (gastroenterology, probiotics, dermatology)\nTranslating ecological interaction into principles (competiton, cooperation, coexistance, syntrophy)\nCross-feeding, synthropic networks, quorum sensing, biofilm formation\nIdentification of keystone taxa\nTipping point prediction\nLinking microbial interactions to ecosystem resistance & stability %% #### Diversity & Emergent Properties\n\nDiversity is important to maintain microbiome functions\nChallenging to know how to preserve diversity when we don’t know how it’s mediated\nInterplay of microbial taxa gives rise to emergent properties of theses communities and networks - cannot be characterized fully by pairwise interactions (naming examples of functional properties of communites)\nSoil among most complex habitat found on earth in terms of functional & genomic diversity\nChallenging to study interactions in situ\n\nLimited visual access, cultureability\nTop down vs bottom up approach of characterizing communities without knowing their interactions (or if they interact at all)\n\nTop Down: Measuring metabolic activity and genomic diversity of entire communities, trying to identify patterns in response to environmental factors\nBottom up: Studying specific bacterial interactions in vitro and increasing complexity (environment, habitat, community). %% - But experimental reductionism fails to capture complexity of interactions%%\n\n\nPlant-microbe interactions studied a lot microbe-microbe not so much\nMost microbe-microbe studies focus on pairwise interactions"
+    "objectID": "git-howto.html",
+    "href": "git-howto.html",
+    "title": "—",
+    "section": "",
+    "text": "title: “How to setup GitHub within R Studio” author: “Leander Kühne” format: revealjs: theme: blood —"
+  },
+  {
+    "objectID": "git-howto.html#slide-with-speaker-notes",
+    "href": "git-howto.html#slide-with-speaker-notes",
+    "title": "—",
+    "section": "Slide with speaker notes",
+    "text": "Slide with speaker notes\nSlide content\n\nSpeaker notes go here."
+  },
+  {
+    "objectID": "git-howto.html#slide-title-1",
+    "href": "git-howto.html#slide-title-1",
+    "title": "—",
+    "section": "Slide Title",
+    "text": "Slide Title\nSlide content\n\n\nSome additional commentary of more peripheral interest."
+  },
+  {
+    "objectID": "git-howto.html#slide-title-2",
+    "href": "git-howto.html#slide-title-2",
+    "title": "—",
+    "section": "Slide Title",
+    "text": "Slide Title\n\nGreen 1\nBrown\nPurple\n\n\n\nSome additional commentary of more peripheral interest."
+  },
+  {
+    "objectID": "git-howto.html#footer-and-logo-in-yaml",
+    "href": "git-howto.html#footer-and-logo-in-yaml",
+    "title": "—",
+    "section": "Footer and Logo in YAML:",
+    "text": "Footer and Logo in YAML:\nformat:\n  revealjs:\n    logo: logo.png\n    footer: \"Footer text\"\n\nTabsets\nYou can add tabbed content to slides using the standard Quarto syntax for tabsets. For example:\n\nTab ATab B\n\n\nContent for Tab A\n\n\nContent for Tab B"
+  },
+  {
+    "objectID": "git-howto.html#footnotes",
+    "href": "git-howto.html#footnotes",
+    "title": "—",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA footnote↩︎"
   },
   {
     "objectID": "Git_HOWTO.html",
@@ -110,152 +793,5 @@
     "title": "How to setup GitHub within R Studio",
     "section": "Install git if needed:",
     "text": "Install git if needed:\nLinux: apt-get install git **Windows**: https://git-scm.com/install/windows  **Mac**: Install [homebrew](https://brew.sh/) if you don't already have it, then:$ brew install git`"
-  },
-  {
-    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html",
-    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html",
-    "title": "013-BPN_48h-replenish",
-    "section": "",
-    "text": "Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed."
-  },
-  {
-    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#short-description",
-    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#short-description",
-    "title": "013-BPN_48h-replenish",
-    "section": "",
-    "text": "Retry of experiment #008 with proper M9 media. In this experiment 7 different conditions — consisting of all possible combinations of P. putida, B. subtilis and a natural soil inoculum — were (co-)cultured in a well mixed environment (96-well-plate). Every 48 h the cultures were diluted 1:5 into fresh M9 media and further used as the new main culture. 12 biological replicates. After the fourth cycle cross contamination was observed."
-  },
-  {
-    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#data-import-and-processing",
-    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#data-import-and-processing",
-    "title": "013-BPN_48h-replenish",
-    "section": "Data import and processing",
-    "text": "Data import and processing\nLoad dependencies.\nProcess function for excel raw data from Tecan Spark plate reader (Toxic Lab):\n\nprocess_plate &lt;- function(file_path) {\n  raw &lt;- read_excel(file_path, col_names = FALSE)\n  \n  # Extract plate sections\n  OD600  &lt;- raw[37:44, 2:13]\n  GFP70 &lt;- raw[70:77, 2:13]\n  RFP85 &lt;- raw[103:110, 2:13]\n  RFP90  &lt;- raw[136:143, 2:13]\n  \n  # Convert to long format\n  to_long &lt;- function(df, name) {\n    out &lt;- as.data.frame(as.table(as.matrix(df)))\n    out$wavelength &lt;- name\n    return(out)\n  }\n  \n  OD600  &lt;- to_long(OD600,  \"OD600\")\n  GFP70 &lt;- to_long(GFP70, \"GFP70\")\n  RFP85 &lt;- to_long(RFP85, \"RFP85\")\n  RFP90  &lt;- to_long(RFP90,  \"RFP90\")\n  \n  # Combine\n  plate_concat &lt;- rbind(OD600, GFP70, RFP85, RFP90)\n  plate_concat &lt;- setNames(\n    plate_concat,\n    c(\"row\", \"col\", \"value\", \"wavelength\")\n    )\n  \n  plate_concat$value &lt;- as.numeric(as.character(plate_concat$value))\n  plate_concat$well &lt;- paste0(plate_concat$row, plate_concat$col)\n  \n  # Date + time from same file\n  date &lt;- read_excel(file_path, range = \"E6\", col_names = FALSE)[[1]]\n  time &lt;- read_excel(file_path, range = \"E7\", col_names = FALSE)[[1]]\n  \n  plate_concat$datetime &lt;- as.POSIXct(paste(date, time))\n  \n  # Conditions\n  plate_concat$condition &lt;- dplyr::recode(\n    plate_concat$row,\n    \"A\" = \"B\",\n    \"B\" = \"B+N\",\n    \"C\" = \"N\",\n    \"D\" = \"B+P+N\",\n    \"E\" = \"B+P\",\n    \"F\" = \"P+N\",\n    \"G\" = \"P\",\n    \"H\" = \"M9\"\n  )\n  \n  # Final tidy\n  plate_concat &lt;- plate_concat[, c(\"well\", \"datetime\", \"condition\", \"wavelength\", \"value\")]\n  \n  return(plate_concat)\n}\n\nApply to all files and concatenate.\n\nfiles &lt;- list.files(pattern = \"^013-.*\\\\.xlsx$\", recursive = TRUE)\n\nall_data &lt;- dplyr::bind_rows(lapply(files, process_plate))\n\n\n# all_data &lt;- docall(rbind(lapply(files, process_plate)))\n\n# elapsed time in hours (first value = 0)\nall_data$time &lt;- as.numeric(\n  difftime(all_data$datetime, all_data$datetime[1], units = \"hours\") )\n\nApply to only the ‘A’ or ‘B’ files independently, to produce dataset before/after media replenishment for each timepoint.\nWrite to .csv.\nCalculate summary statistics."
-  },
-  {
-    "objectID": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#summary-statistics",
-    "href": "plateReader/013_BPN_48h-replenish/013-BPN_48h-replenish.html#summary-statistics",
-    "title": "013-BPN_48h-replenish",
-    "section": "Summary statistics",
-    "text": "Summary statistics\n\n\nCode\nsummary_df &lt;- all_data %&gt;% group_by(condition, wavelength, time) %&gt;% summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = \"drop\" )\n\n\n\n\nCode\nsummary_B_df &lt;- df_B %&gt;%\n  group_by(condition, wavelength, time) %&gt;%\n  summarise( mean_value = mean(value, na.rm = TRUE), sd = sd(value, na.rm = TRUE), n = n(), se = sd / sqrt(n), .groups = \"drop\" )\n\n\n\n\nCode\nsummary_A_df &lt;- df_A %&gt;% \n  group_by(condition, wavelength, time) %&gt;% \n  summarise(\n    mean_value = mean(value, na.rm = TRUE), \n    sd = sd(value, na.rm = TRUE), \n    n = n(), \n    se = sd / sqrt(n), \n    .groups = \"drop\"\n    )"
-  },
-  {
-    "objectID": "SysBioModelingClass.html#aim-and-project-overview",
-    "href": "SysBioModelingClass.html#aim-and-project-overview",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "2.1 Aim and project overview",
-    "text": "2.1 Aim and project overview\nThis is a project for the “Practical Course in Modelling and Systems Biology” (2026S 300332-1). The aim of the project is to implement a Lotka-Volterra model using the gauseR to model a three species interaction experiment in spatial microbiology.\nThe experiment consists of a co-culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity. The species used for co-culturing the two bacterial species Pseudomonas putida and Bacillus subtilis and the fungal species Trichoderma ssp (?). All species are commonly found and co-isolated from soil habitats and are therefore thought to be coexisting in those ecosystems.\n\nI originally wanted to conduct the modeling analyses with my own data from co-culturing experiments with P. putida, B. subtilis and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I am not having the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague who conducted similar experiments with Trichoderma as the third species.\n\nThe overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.\nFrom the literature it is known, that P.p. and B.s. are frequently co-isolated from soils but cannot coexist in a well mixed environment under lab conditions. Prior experiments (not published) on microfluidic chips have shown that the introduction of a spatial structure allows for stable coexistence of these two species by niche differentiation.\nThe underlying question of these experiments specifically are if Trichoderma alters the interactions between P.p and B.s. facilitating or hindering coexistence, by suppression or support of one or either of the species.\nOn the broader scope of theoretical ecology the objective is to understand how community composition and (spatial) habitat complexity possibly facilitates coexistence allowing for the high diversity we can observe in nature. Micro-scale spatial structure is a key part of this framework since it is reducing interactions between (microbial) species (and organisms) and can thereby theoretically infinitely create niche differentiation overcoming potential fitness differences that would otherwise prohibit coexistence (Orr et al. 2025)\nIn this setup we are tackling two shortcomings of most experimental microbial ecology research: Most research is focused on two species interactions exclusively but it is unclear how these results translate into more complex communities, since higher order interactions might be leading to emergent properties of microbial communities. Secondly, most experiments are carried out in well-mixed liquid cultures, omitting the importance of spatial structure as outlined above.\nUnderrepresentation of these approaches might be one explanation to the unculturability problem that microbiological research faces since it’s very beginings.\nWith the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.\nThe Lotka-Volterra equation is while being a mathematically relatively straight forward model still a very powerful approach in ecology that can account for very complex and multi-layered network of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level.\nThis is the basic equation we are going to assume as Lotka-Volterra equation throughout is derived from Mühlbauer et al. (2020):\nDerived from Mühlbauer et al. (2020) the basic Lotka-Volterra equation we are employing throughout this study describes the changes per unit time in the abundance of species \\(N_{i}\\) as\n\\[\n\\frac{\\mathrm{d}N_{i}}{\\mathrm{d}t} = N_{i} (r_{i} + \\mathrm{a}_{ii} N_{i} + \\sum_{j} (\\mathrm{a}_{ij} N_{j}))\n\\tag{1}\\]\nwhere \\(r_{i}\\) is the intrinsic growh rate… This is a reference to ?@fig-gfp-f5 which would be inline or in parentheses (?@fig-gfp-f5). Moreover I already explained Equation 1 before.\nGeneralized LV:\n\\[\n\\frac{\\mathrm{d}x_{i}(\\mathbf{t})}{\\mathrm{d}\\mathbf{t}}=\\mathbf{x}_{i}(\\mathbf{t})\\left(\\mathbf{b}_{i}+\\sum_{j=1}^{n}\\mathbf{a}_{ij}x_{j}(\\mathbf{t})\\right)\\qquad{i}=1,\\ldots,n\n\\]"
-  },
-  {
-    "objectID": "SysBioModelingClass.html#experimental-methods",
-    "href": "SysBioModelingClass.html#experimental-methods",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "3.1 Experimental methods",
-    "text": "3.1 Experimental methods\nThe wet lab experimental setup consists of a semi-continous culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design Hilbert (1935)) and normalized internal volume. The chips consist of a culture/media inoculation area from where mazes branch off Figure 1.\n\n\n\n\n\n\nFigure 1: Fractal chip simulating microhabitats of different physical complexity\n\n\n\nFractal chip simulating microhabitats of different physical complexity\nThe species used for co-culturing the two bacterial species Pseudomonas putida and Bacillus subtilis and the fungal species Trichoderma viride. P. putida and B. subtilis have a genomicly integrated expression cassette for green- and red-fluorescent protein (GFP/RFP) production respectively.\nCulturing experiments were carried out over 22 days with a 48 h media-replenishment cycle replicating close-to unlimited nutrient supply conditions. In the same cycle the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals to approximate species abundance."
-  },
-  {
-    "objectID": "SysBioModelingClass.html#software-and-code",
-    "href": "SysBioModelingClass.html#software-and-code",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "3.2 Software and Code",
-    "text": "3.2 Software and Code\nRaw microscopy images were processed by background correction\n\ndata incl accession numbers+citation,\nsoftware incl version+non-default parameters+citation,\ndatabases incl release number or release date + citation,"
-  },
-  {
-    "objectID": "SysBioModelingClass.html#data-analysis-and-modeling-workflow",
-    "href": "SysBioModelingClass.html#data-analysis-and-modeling-workflow",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "3.3 Data analysis and modeling workflow",
-    "text": "3.3 Data analysis and modeling workflow\n\nyour workflows; BUT: usually no command lines"
-  },
-  {
-    "objectID": "SysBioModelingClass.html#heatmap-of-interaction-coefficients",
-    "href": "SysBioModelingClass.html#heatmap-of-interaction-coefficients",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "4.1 Heatmap of interaction coefficients",
-    "text": "4.1 Heatmap of interaction coefficients\n\n\n\n\n\n\n\n\nFigure 4: Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows \\(R^2\\) of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values."
-  },
-  {
-    "objectID": "SysBioModelingClass.html#lotkavolterra-modeling-using-the-gauser-library",
-    "href": "SysBioModelingClass.html#lotkavolterra-modeling-using-the-gauser-library",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "4.2 Lotka—Volterra modeling using the gauseR library",
-    "text": "4.2 Lotka—Volterra modeling using the gauseR library\n\n4.2.1 Parameterization and regression fit for Pseudomonas monoculture\nTime-lagged data was generated using the get_lag function and the obtained data was used to calculate the per-capita growth rate.\nThe per-capita growth rate for the logistic growth model was defined as:\n\\[ \\frac{\\mathrm{d}N}{\\mathrm{d}t} / N = r - a_{ii} N \\]\nwith \\(r\\) being the intrinsic growth rate, and \\(a_{ii}\\) the self-limitation in growth of the species.\nThe per-capita growth rate was plotted against the abundance and a linear regression was fitted to obtain the needed parameters \\(r\\) (read as the y-intercept) and \\(K\\) (read as the x-intercept). \\(a_{ii}\\) is the slope of the linear regression."
-  },
-  {
-    "objectID": "MM.html",
-    "href": "MM.html",
-    "title": "Materials and Methods",
-    "section": "",
-    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %\n\n\n\n\n\n\n\nM9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg\n\n\n\n\n\n\n\n\n\nFor 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg\n\n\n\n\n\n\n\n\n\nFor 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg"
-  },
-  {
-    "objectID": "MM.html#lb-stock",
-    "href": "MM.html#lb-stock",
-    "title": "Materials and Methods",
-    "section": "",
-    "text": "For 500 ml\n\nAutoclave for 20 min.\n\n\nCompound\nweight\nw/v\n\n\n\n\nPeptone\n5 g\n1 %\n\n\nNaCl\n5 g\n1 %\n\n\nYeast Extract\n2.5 g\n0.5 %\n\n\nAgar\n7.5 g\n1.5 %"
-  },
-  {
-    "objectID": "MM.html#m9-stock-solution",
-    "href": "MM.html#m9-stock-solution",
-    "title": "Materials and Methods",
-    "section": "",
-    "text": "M9. Adjust to pH 7.4.\n\n\n\n\n\n\n\nCompound\nFor 1x\nFor 2.5 x\n\n\n\n\nNa2HPO4.7H2O\n1.28 g\n6.4\n\n\nKH2PO4\n300 mg\n1.5 g\n\n\nNaCl\n50 mg\n250 mg\n\n\nNH4Cl\n100 mg\n500 mg\n\n\nMgSO4\n12 mg\n60 mg\n\n\nD-Glucose\n400 mg\n2 g\n\n\nCaCl2 Stock Solution\n1 ml\n5 ml (or 5.55 mg CaCl2)\n\n\nFeCl2 Stock Solution\n1 ml\n5 ml (or 6.75 mg FeCl2.6H2O)\n\n\nTrace Element Stock Solution 100x\n1 ml\n5 ml\n\n\nTotal Volume\n100 ml"
-  },
-  {
-    "objectID": "MM.html#cacl2-stock-solution",
-    "href": "MM.html#cacl2-stock-solution",
-    "title": "Materials and Methods",
-    "section": "",
-    "text": "CaCl2 Stock Solution for 10 ml.\n\n\nFor 10 ml stock:\n\n\n\nCaCl2\n11.1 mg"
-  },
-  {
-    "objectID": "MM.html#fecl2-2.6-h2o-stock-solution",
-    "href": "MM.html#fecl2-2.6-h2o-stock-solution",
-    "title": "Materials and Methods",
-    "section": "",
-    "text": "For 10 ml stock:\n\n\n\nFeCl2.6H2O\n13.5 mg"
-  },
-  {
-    "objectID": "MM.html#trace-element-solution-100x",
-    "href": "MM.html#trace-element-solution-100x",
-    "title": "Materials and Methods",
-    "section": "",
-    "text": "For 100 ml stock. Feeze in 1 ml aliquots.\n\n\n\nMgCl2.6H2O\n1.25 mg\n\n\nCaCl2\n55 mg\n\n\nMnCl2.4H2O\n10 mg\n\n\nZnCl2\n17 mg\n\n\nCuCl2.2H2O\n4.3 mg\n\n\nCoCl2.6H2O\n6 mg\n\n\nNa2MoO4.2H2O\n6 mg"
-  },
-  {
-    "objectID": "MM.html#bacillus-subtilis-pseudomonas-putida",
-    "href": "MM.html#bacillus-subtilis-pseudomonas-putida",
-    "title": "Materials and Methods",
-    "section": "Bacillus subtilis & Pseudomonas putida",
-    "text": "Bacillus subtilis & Pseudomonas putida"
-  },
-  {
-    "objectID": "MM.html#soil-natural-inoculum-ni",
-    "href": "MM.html#soil-natural-inoculum-ni",
-    "title": "Materials and Methods",
-    "section": "Soil Natural Inoculum (NI)",
-    "text": "Soil Natural Inoculum (NI)\n\nExtraction and Filtering of NI"
-  },
-  {
-    "objectID": "git-howto.html",
-    "href": "git-howto.html",
-    "title": "—",
-    "section": "",
-    "text": "title: “How to setup GitHub within R Studio” author: “Leander Kühne” format: revealjs: theme: blood —"
-  },
-  {
-    "objectID": "git-howto.html#footnotes",
-    "href": "git-howto.html#footnotes",
-    "title": "—",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nA footnote↩︎"
-  },
-  {
-    "objectID": "SysBioModelingClass.html",
-    "href": "SysBioModelingClass.html",
-    "title": "Lotka-Volterra modeling three species interaction using the gauseR package",
-    "section": "",
-    "text": "This is a practical project for the “Practical Course in Modelling and Systems Biology” (2026S 300332-1). The aim of the project is to implement a Lotka—Volterra model to analyse time series growth data of microbial co-culturing experiments, derive interaction coefficients and explore how this three-species interaction can be modeled from limited growth data availiability. With growth data only available for two of the species the three-species interaction is tryied to be modeled as a two-species interaction being perturbed by the presence of the third species. The R package gauseR (Mühlbauer et al. 2020) was employed to fit logistic growth curves to the experimental data and calculate interaction coefficients (\\(a_{ii}, a_{jj}, a_{ij}, a_{ji}\\)), growth rates (\\(r\\)) and carrying capacities (\\(K\\))."
   }
 ]

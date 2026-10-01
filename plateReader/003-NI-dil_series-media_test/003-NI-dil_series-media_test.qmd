@@ -3,6 +3,8 @@ title: "003-NI-dil_series-media_test"
 format: html
 identifier: "003"
 lightbox: true
+execute:
+  cache: true
 ---
 
 # Short Description

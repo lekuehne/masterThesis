@@ -3,6 +3,8 @@ title: "008-Media_replenishment"
 format: html
 identifier: "004"
 lightbox: true
+execute:
+  cache: true
 ---
 
 # Short description

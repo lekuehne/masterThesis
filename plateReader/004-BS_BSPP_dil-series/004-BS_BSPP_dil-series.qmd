@@ -3,6 +3,8 @@ title: "004-BS_BSPP_dil_series"
 format: html
 identifier: "004"
 lightbox: true
+execute:
+  cache: true
 ---
 
 # Short description

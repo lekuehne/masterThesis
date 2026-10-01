@@ -1,15 +1,17 @@
 ---
-title: "Lotka—Volterra modeling of a three species microbial community with respect to spatial complexity"
+title: "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third"
 author: "Leander Kühne, BSc"
 date: "09/30/2026"
 format:
-  pdf:
+  html: default
+  pdf: 
     include-in-header:
       text: |
         \usepackage{multirow}
 toc: true
 toc-depth: 2
 number-sections: true
+lightbox: true
 execute:
   echo: false
   output: false
@@ -20,21 +22,20 @@ bibliography: references.bib
 
 # Abstract
 
-This project implements a Lotka—Volterra model to analyse time series growth data, derive interaction coefficients and explore how a three-species interaction can be modeled from limited growth data of only two of the three species framing the third species as a perturbation to the interaction of the others. Fluorescently labeled *Pseudomonas putida* and *Bacillus subtilis* bacteria were co-cultured with a non-labeled *Trichoderma viride* fungus in micro-scale mazes with different degrees of fractal complexity. The R package `gauseR` [@muhlbauerGauseRSimpleMethods2020] was employed to fit logistic growth curves to the experimental data and calculate interaction coefficients ($a_{ii}, a_{jj}, a_{ij}, a_{ji}$), growth rates ($r$) and carrying capacities ($K$).
+This project implements a Lotka—Volterra model to analyse time series growth data, derive interaction coefficients and explore how a three-species interaction can be modeled from limited growth data of only two of the three species framing the third species as a perturbation to the interaction of the others. Fluorescently labeled *Pseudomonas putida* and *Bacillus subtilis* bacteria were co-cultured with a non-labeled *Trichoderma viride* fungus in microfluidic mazes with different degrees of fractal complexity for 22 days. Logistic growth curves, growth rates ($r$), carrying capacities ($K$) and interaction coefficients ($a_{ii}, a_{jj}, a_{ij}, a_{ji}$) were estimated with the R package `gauseR`. *B. subtilis* promoted and *T. viride* inhibited the growth of *P. putida*, while *B. subtilis* was strongly suppressed by both. The LV model fitted all conditions well except the *B. subtilis* monoculture . The promoting effect of B. subtilis on P. putida was reflected in the coefficients, and in the three-species culture this effect shifted from inhibitory to promoting at the highest spatial complexity. However, all coefficients were close to zero, the suppression of *B. subtilis* by *P. putida* and *T. viride* was not captured, and the effect of the unmeasured fungus is absorbed into effective coefficients of the two measured species. A simple Lotka—Volterra model thus reproduces the main growth patterns of *P. putida* but offers limited mechanistic insight into the three-species interactions.
 
 # Introduction
 
 ## Importance of community and habitat complexity in microbial ecology
 
-In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g. temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data generation driven "-omics" approach with limited reconnaissance for functional and mechanistic processes, or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to *in situ* complexity, neglecting the emergence of ecosystem properties and higher order interactions in interaction networks of complex communities .\
-Moreover, most of this culturing-technique based approaches is based entirely on well-mixed "on a shaker"-type conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation [@orrCoexistenceTheoryMicrobial2025]. This is especially limiting for the study of soil habitats, since they are characterized by a very high spatial complexity and thus habitat diversity. On a side-note, the underrepresentation of community complexity and spatial structure might be part of the explanation for the uncultureability-problem that experimental microbiological research is facing since it's very beginnings.\
-\
-*P. putida* and *B. subtilis* are often co-isoloated from soil samples and *T. viride* is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The underlying question of these experiments specifically are how *T. viride* affects the growth of *P. putida* and *B. subtilis* facilitating or hindering coexistence, by suppression or support of one or both of the species or by altering the interactions between the two.
+In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g. temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data-generation driven "-omics" approach with limited reconnaissance for functional and mechanistic processes [@faustMicrobialInteractionsNetworks2012], or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to *in situ* complexity, neglecting the emergence of ecosystem properties and higher order interactions in microbial interaction networks [@levineMechanismsCoexistence2017].\
+Moreover, most of this culturing-technique based approaches is based entirely on well-mixed conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation [@orrCoexistenceTheoryMicrobial2025; @nadellSpatialStructureCooperation2016]. This is especially limiting for the study of soil habitats, since their pore space is characterized by a very high spatial complexity and thus microhabtiat diversity.
 
-## Old but gold: The simple yet powerful framework of the Lotka—Volterra equation
+*P. putida* and *B. subtilis* are frequently co-isoloated from soil samples and *T. viride* is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The central question of these experiments are how *T. viride* affects the growth of *P. putida* and *B. subtilis* facilitating or hindering coexistence, by suppressing or supporting one or both of the species or by altering the interactions between them.
 
-The Lotka-Volterra equation is while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can account for very complex and multi-layered networks of interactions without the need to have a complete mechanistic understanding of these interactions on a molecular level. The canonical framework of\
-The basic Lotka—Volterra equation employed throughout this study describes the changes per unit time in the abundance of species $N_{i}$ as
+## The simple yet powerful framework of the Lotka—Volterra equation
+
+The Lotka-Volterra (LV) equations [@lotkaElementsPhysicalBiology1925; @volterraFluctuationsAbundanceSpecies1926] are while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can represent very complex, multi-layered interaction networks without requiring a complete mechanistic understanding of these interactions on a molecular level [@muhlbauerGauseRSimpleMethods2020]. The basic LV equation employed throughout this study describes the changes per unit time in the abundance of species $N_{i}$ as
 
 $$
 \frac{\mathrm{d}N_{i}}{\mathrm{d}t} = N_{i} (r_{i} + \mathrm{a}_{ii} N_{i} + \sum_{j} (\mathrm{a}_{ij} N_{j}))
@@ -42,38 +43,33 @@ $$ {#eq-lv}
 
 with $r_{i}$ as the intrinsic growth rate, $\mathrm{a}_{ii}$ being the intra-specific competition (i.e. the effect of species $i$ on itself, $\mathrm{a}_{ij}$ describing the effect of species $j$ on species $i$ and $N_{j}$ as the abundance of species $j$.
 
-With the approach to reflect the interaction dynamics of this three species system in a simple Lotka-Volterra model I am trying to approximate on the dynamics with a simple model approach to see whether experimental data can be fitted satisfyingly on this degree of complexity already or if more sophisticated models need to be employed. Also the attempt to model the data with a LV model can give insights if the interactions can be described by transient competition or if higher-order interactions are at work.
-
-In this experimental setup time series growth data is only available for two of the three species.\
-The overal aim is to see whether the experimental data can be properly represented by a Lotka-Voltera model and investigate if that approach is a viable method to narrow in on mechanistic insights to the interactions of this three species model in a spatially structured habitat.
-
-Generalized LV:
-
-$$
-\frac{\mathrm{d}x_{i}(\mathbf{t})}{\mathrm{d}\mathbf{t}}=\mathbf{x}_{i}(\mathbf{t})\left(\mathbf{b}_{i}+\sum_{j=1}^{n}\mathbf{a}_{ij}x_{j}(\mathbf{t})\right)\qquad{i}=1,\ldots,n
-$$
+Here, the interaction dynamics of the three-species system are approximated with this simple model to test whether the experimental data can already be fitted satisfactorily at this level of complexity, or whether more sophisticated models are needed. Fitting an LV model can also indicate whether the interactions are consistent with simple pairwise competition or whether higher-order interactions are likely at work [@grilliHigherorderInteractionsStabilize2017]. In this experimental setup, time series growth data are available for only two of the three species. The overall aim is therefore to assess whether an LV model can represent the data adequately, and whether this approach is a viable way to gain mechanistic insight into a three-species system in a spatially structured habitat.
 
 # Methods and Data
 
 ## Experimental methods
 
-The wet lab experimental setup consists of a semi-continous culturing experiment on microfluidic chips comprised with micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design; @hilbertUeberStetigeAbbildung1935) and normalized internal volume. The chips consist of a culture/media inoculation area from where mazes branch off [@fig-chip].
+The wet lab experiments consist of semi-continous culturing on microfluidic chips containing micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design, @hilbertUeberStetigeAbbildung1935) and normalized internal volume. Each chip comprises a culture/media inoculation area from where mazes branch off [@fig-chip].
 
-*P. putida* and *B. subtilis* have a genomically integrated expression cassette for green- and red-fluorescent protein (GFP/RFP) production respectively. Fluorescence intensity levels are used as a proxy for species abundance throughout this study.\
-Culturing experiments were carried out over 22 days with a 48 h media-replenishment cycle replicating close-to unlimited nutrient supply conditions (M9 minimal medium). In the same cycle the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals to approximate species abundance.
+*P. putida* and *B. subtilis* carry a genomically integrated expression cassette for green (GFP) and red (RFP) fluorescent protein, respectively. Fluorescence intensity levels are used as a proxy for species abundance throughout this study. Culturing experiments were maintained for over 22 days with a 48 h media-replenishment cycle approximating close-to unlimited nutrient supply (M9 minimal medium). In the same cycle, the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals. Sample size per time point was n = 28 for most conditions, n = 7 for the *B. subtilis*-only condition, and n = 35 for some time points of the *T. viride* + *P. putida* (TP) and three-species (TPB) conditions.
 
 ![Fractal chip simulating microhabitats of different physical complexity. Figure kindly provided by @arellano-caicedoHabitatComplexityAffects2023.](chip_design.png){#fig-chip fig-align="center"}
 
-## Software and Code
+## Data processing and Lotka—Volterra parameter estimation {#sec-data-process}
 
-The main analysis was carried out using R version 4.6.1. The Lotka—Volterra modeling was done using the `gauseR` package version 1.3. Additionally the following software was used for data wrangling,processing and report compiling: ImageJ 1.54 (raw TIFF microscopy image data processing), RStudio 2026.09.0 Build 174 (main IDE), quarto 1.10.18 (report writing and rendering), pandoc 3.7.0.2 (report pdf rendering), LuaHBTeX 1.24.0 (TeX Live 2026, as pandoc compiler).\
-Additional R packages used apart form R `base` were: `tidyverse`, `ggh4x`, `kableExtra`, `readxl`.
+Raw microscopy images were aligned and background-subtracted in ImageJ using a rolling-ball algorithm with the ball diameter set to the channel width of the mazes. Fluorescence intensity was selectively measured from the maze areas only. A combined data frame across all time points and conditions was built in R, and means, standard deviations and standard errors were calculated per condition, fractal level, time point and fluorescence channel. Channels were assigned to species (GFP to *P. putida*, RFP to *B. subtilis*), and only the channel(s) of species actually present in a condition were retained. Sampling time points were converted to days after inoculation, and the data were arranged into a long format that allowed every condition × fractal level combination to be fitted automatically.
 
-## Data analysis and modeling workflow
+Each combination was fitted with the `gause_wrapper` function of the `gauseR` library, which works in two steps. First, time-lagged abundances are generated with `get_lag` and used to calculate the per-capita growth rate. For a single species, the logistic model defines it as
 
-Raw microscopy images were alingned and processed by background substraction using an ImageJ rolling ball algorithm with the rolling ball diameter matching the width of the maze channels.
+$$ \frac{\mathrm{d}N}{\mathrm{d}t} / N = r - a_{ii} N $$ {#eq-per-cap}
 
-- your workflows; BUT: usually no command lines
+with $r$ the intrinsic growth rate and $a_{ii}$ the self-limitation. Per-capita growth rate is regressed linearly against abundance (for several species, against the abundances of all species), so that $r$ is the y-intercept, $a_{ii}$ the slope, and the carrying capacity $K$ the x-intercept (i.e. $K = -r / a_{ii}$). These linearized estimates serve as starting values. Second, the starting values (and initial abundances) are refined by a numerical optimizer (`optim`) that works in log-space, with parameter signs fixed to those of the linear estimates. The optimizer repeatedly solves the LV system with an ODE solver and minimizes the squared error between simulated and observed, standardized abundances. Rough parameter uncertainties (±1 SD) are derived from the Hessian of the optimization.
+
+Model fit was quantified per condition, fractal level and species. The fitted curve was interpolated at the observed time points, and goodness of fit was expressed as $R^2 = 1 - SS_\mathrm{res}/SS_\mathrm{tot}$ (which can become negative for fits worse than the mean) and as the root mean squared error (RMSE) in fluorescence units. Parameters were re-indexed to a fixed species order so that, for example, a *B. subtilis* monoculture reports $a_{22}$ rather than $a_{11}$.
+
+## Software
+
+Analyses were run in R 4.6.1 with `gauseR` 1.3. Data wrangling, plotting and table generation used `tidyverse`, `ggh4x`, `kableExtra` and `readxl`. Image processing was done in ImageJ 1.54, and the report was written in RStudio 2026.09.0 (Build 174) and rendered with Quarto 1.10.18, pandoc 3.7.0.2 and LuaHBTeX 1.24.0 (TeX Live 2026).
 
 # Results
 
@@ -175,16 +171,16 @@ species_info <- tribble(
   ~species, ~channel, ~name,          ~colour,   ~linetype, ~shape,
   "P",      "G",      "P. putida",    "#1B7837", "solid",   16,
   "B",      "R",      "B. subtilis",  "#762A83", "42",      17,
-  "T",      NA,       "T (name?)",    NA,        NA,        NA
+  "T",      NA,       "T. viride",    NA,        NA,        NA
 )
 
 # Which conditions appear as figure columns (in this order).
 # Everything is fitted and goes into the tables regardless.
-plot_conditions <- c("P", "B", "P+B", "T+P+B")
+plot_conditions <- c("P", "T+P", "B", "T+B", "P+B", "T+P+B")
 
 # Preferred order of conditions in the tables; conditions not listed are
 # appended alphabetically, listed-but-absent ones are ignored.
-condition_order <- c("P", "B", "P+B", "T+P", "T+B", "T+P+B")
+condition_order <- c("P", "T+P", "B", "T+B", "P+B", "T+P+B")
 
 # Column tints (recycled if you plot more conditions)
 bg_palette <- c("#9CC3E6", "#E8A99A", "#9FD6AE", "#EBCB7F", "#C9B5E0", "#9ED3D3")
@@ -344,36 +340,38 @@ gof <- observed |>
   ungroup()
 ```
 
-Here begins the text describing the results
+## *P. putida* benefits from and outcompetes *B. subtilis* and is itself outcompeted by *T. viride*
 
-First figure:
+@fig-growth shows the time series of fluorescence intensity, which serves as a proxy for species abundance, for all mono- and co-culture combinations in the f3 maze. No growth data exist for *T. viride*. The presence of *B. subtilis* promotes the growth of *P. putida*, whereas *T. viride* inhibits it. *B. subtilis*, in turn, is strongly inhibited by both *P. putida* and *T. viride*, but the inhibition by *T. viride* is stronger and leads to essentially no detectable growth of *B. subtilis*. Even so, co-inoculation with *B. subtilis* still enhances *P. putida* growth. In the three-species culture, the promoting effect of *B. subtilis* cannot compensate for the inhibition by *T. viride*, so the growth pattern resembles that of the *P. putida* + *T. viride* co-culture.
 
 ```{r}
 #| output: true
-#| label: fig-rfp-f5
-#| fig-cap: RFP (solid line) and GFP (dashed line) flourescence intensity on microfluidic mazes with fractal order 5.
+#| label: fig-growth
+#| fig-cap: Time series growth data for all different mono/co-culturing combinations of *B. subtilis* (RFP), *P. putida* (GFP) and *T. viride* (no growth data) in a micro-scale maze with fractal complexity of f3 (Hilbert curve) on microfluidic chips. Solid lines indicate RFP signal, dashed lines indicate GFP signal.
 
 
 summary_df %>%
   ggplot(aes(x = time, color = species)) + 
   #geom_line(data=subset(summary_df, ch =='R'), aes(y = mean_value)) +
-  geom_line(data=subset(summary_df, ch == 'G'& fractal == '5'), aes(y = mean_value), linetype = "dashed") +  
-  geom_line(data=subset(summary_df, ch == 'R'& fractal == '5'), aes(y = mean_value)) +
-  geom_errorbar(data=subset(summary_df, ch == 'G'& fractal == '5'), aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.3 ) + 
-  geom_errorbar(data=subset(summary_df, ch == 'R'& fractal == '5'), aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.3 ) + 
+  geom_line(data=subset(summary_df, ch == 'G'& fractal == '3'), aes(y = mean_value), linetype = "dashed") +  
+  geom_line(data=subset(summary_df, ch == 'R'& fractal == '3'), aes(y = mean_value)) +
+  geom_errorbar(data=subset(summary_df, ch == 'G'& fractal == '3'), aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.3 ) + 
+  geom_errorbar(data=subset(summary_df, ch == 'R'& fractal == '3'), aes(ymin = mean_value - se, ymax = mean_value + se), width = 0.3 ) + 
   theme_light() +
   labs(y = "RFP/GFP intensity",
        x ="time [days]")
 ```
 
-Second figure:
+## Parametrization of Lotka—Volterra interaction coefficients suggests shift in intra- and inter-specific competition with increased spatial complexity
+
+The parameters obtained from the per-capita growth regression and subsequent optimization (Methods, [-@sec-data-process]) were used to predict growth curves for all conditions and fractal levels (@fig-lv-grid). *P. putida* monocultures reach a clear carrying capacity, with slightly reduced growth at the highest fractal level (f5). When co-cultured with *T. viride*, *P. putida* shows a lagged onset of growth. In the presence of *B. subtilis*, *P. putida* has a prolonged logistic growth phase, and it is unclear whether the carrying capacity is reached within the experimental period. The predicted growth pattern of the three-species culture is similar to that of the *P. putida* + *T. viride* culture. The LV model fits the *B. subtilis* monoculture poorly ($R^2$ = 0.133—0.169, @tbl-gof), whereas all other conditions are fitted well ($R^2$ \> 0.83).
 
 ```{r}
-#| label: fig-growth-grid
+#| label: fig-lv-grid
 #| output: true
-#| fig-width: 8
+#| fig-width: 10
 #| fig-height: 7
-#| fig-cap: "Observed (points, ±SE) and predicted (lines) growth curves across fractal levels (rows) and conditions (columns)."
+#| fig-cap: "Observed (points, ±SE) and Lotka—Volterra predicted (lines) growth curves across fractal levels (rows) and conditions (columns)."
 
 col_levels <- cond_short(plot_conditions)
 bg <- set_names(rep_len(bg_palette, length(col_levels)), col_levels)
@@ -436,7 +434,8 @@ p
 # ggsave("growth_curve_figure.pdf", p, width = 6.5, height = 7, units = "in")
 ```
 
-Heatmap of interaction coefficients
+The interaction coefficients are summarized in a heatmap (@fig-heatmap), where hue indicates the coefficient and color saturation the $R^2$ of the fit for the species whose growth equation contains the coefficient. Full $R^2$ values are given in the supplementary material (@tbl-gof). *B. subtilis* shows strong self-inhibition ($a_{22}$) at higher fractal complexity in monoculture, which is mitigated when it is co-cultured with *P. putida*. Self-inhibition of *B. subtilis* is also substantially lower in co-culture with *T. viride*. In contrast, self-inhibition of *P. putida* ($a_{11}$) changes little between monoculture and any of the co-cultures. The coefficients suggest a promoting effect of *B. subtilis* on *P. putida* in the two-species culture, which increases with spatial complexity. This effect shifts when *T. viride* is added: in the three-species system, $a_{12}$ tends to be negative (inhibitory) at low complexity and mediocre complexity, but changes to a positive effect on at the highest spatial complexity (f5).\
+Overall all interaction coefficients are values quite close to 0.
 
 ```{r}
 #| label: fig-heatmap
@@ -495,28 +494,33 @@ ggplot(heat, aes(x = parameter, y = fct_rev(fractal))) +
   )
 ```
 
-## Lotka—Volterra modeling using the `gauseR` library
-
-### Parameterization and regression fit for *Pseudomonas* monoculture
-
-Time-lagged data was generated using the `get_lag` function and the obtained data was used to calculate the per-capita growth rate.\
-The per-capita growth rate for the logistic growth model was defined as:
-
-$$ \frac{\mathrm{d}N}{\mathrm{d}t} / N = r - a_{ii} N $$
-
-with $r$ being the intrinsic growth rate, and $a_{ii}$ the self-limitation in growth of the species.
-
-The per-capita growth rate was plotted against the abundance and a linear regression was fitted to obtain the needed parameters $r$ (read as the y-intercept) and $K$ (read as the x-intercept). $a_{ii}$ is the slope of the linear regression.
-
 # Discussion
 
-- Discussion (did we succeed w.r.t. the project aims? did we make particular assumptions? do our methods have weaknesses? how do the results compare to previous expectations and previous work)
+The aim of this project was to test whether an LV model can describe growth data of a three-species community when only two species are measured and the third acts as a perturbation of their interaction. The model fitted most conditions well, but several results limit how far the coefficients can be interpreted mechanistically. The main points are discussed below, together with assumptions and weaknesses of the approach.
+
+## Poor fit of the *B. subtilis* monoculture
+
+The optimizer could not fit the *B. subtilis* monoculture ($R^2$ = 0.13—0.17, @tbl-gof), which is the most notable failure of the model. A likely reason is that the growth curve deviates from the logistic shape assumed by the model, since the species abundance decreased after a peak and a death phase, or more general, a transient peak followed by decline, is not supported by the model which only fits single logistic curves. The poor reflection could also be aggravated by the comparable small sample size (n = 7) for the *B. subtilis* monocultures.\
+This also affects the reliability of the strong inter-specific competition (a$_{22}$) found in the dataset (−0.018 at f3, versus way closer to 0 elsewhere) which might therfore rather be an artefact than reproducible biological effect.
+
+## Interpretation of interaction coefficients
+
+The promoting effect of *B. subtilis* on *P. putida* seen in the growth curves is well reflected by the interaction coefficients (a$_{12}$ in the PB condition, @fig-heatmap). In contrast, the lowered self-inhibition of *B. subtilis* in co-culture with *T. viride* does not reflect the strong inhibitory effect of the fungus on *B. subtilis*. Modeling the two-species co-culture from the single-culture readout alone is therefore poor in this case.
+
+In the *T. viride* + *B. subtilis* condition, *B. subtilis* hardly grows, so its per-capita growth rate is flat and close to zero across the observed abundance range. A near-zero $a_{22}$ here then reflects the absence of growth, not release from self-limitation. The coefficient can only quantify self-limitation when growth occurs on a properly measurable range.\
+The effect of P. putida on B. subtilis (a$_{21}$) is close to zero in all co-cultures, eventhough the observed growth data shows strong suppresion of B. subtilis by P. putida. This is poorly reflected by the choosen modeling approach.
+
+In the three-species condition, the fitted a$_{12}$ and a$_{21}$ are effective coefficients that combine direct effects with effects mediated by *T. viride*. They are not comparable to the coefficients from the two-species culture in a strict sense, and they cannot distinguish pairwise competition from higher-order interactions. This is illustrative for the general limitation of the approach: the effect of the unmeasured species cannot be simply assigned to an explicit interaction term and is folded into the parameters of the measured species.
+
+Reflecting on the modeling famework on a broader scope, the optimizer works in log-space and fixes the sign of every parameter to that of the initial linear estimate, so a wrongly signed starting value cannot be corrected. Poorly constrained, near-zero coefficients may therefore switch sign between fits without real biological meaning.
+
+As an outlook for further work the estimated parameters could be used to simulate the growth trajectories of the co-cultures over longer periods, to test whether stable coexistence or cycling patterns would occur.
 
 # Statement of authorship, contributions and use of LLMs
 
 This report is submitted as the practical project for the class "Practial Course in Modelling and Systems Biology" (2026S 300332-1). I originally wanted to conduct the modeling analyses with my own masters thesis data from co-culturing experiments with *P. putida*, *B. subtilis* and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I was unable to have the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague Maryam Al-Jalahwee, BSc who conducted similar experiments with *Trichoderma viride* as the third interaction entity. All data arranging, sorting and subsequent analysis has been conducted by the author.
 
-I used CLAUDE *Sonnet 5* and OpenAI GPT-5.6 *Luna* for generation and improvements of R code. In particular I used it for the building of functions to automate my data processing pipeline for all the different conditions and fractal levels I have in my data, for bug fixing, efficiency improvements on the code I provided and for configuring layout, design and arrangement of plots and tables. I also used it to help me better understand the functionality of the `gauseR::test_goodness_of_fit` functionality.
+I used CLAUDE *Sonnet 5* and OpenAI GPT-5.6 *Luna* for generation and improvements of R code. In particular I used it for the building of functions to automate my data processing pipeline for all the different conditions and fractal levels I have in my data, for bug fixing, efficiency improvements on the code I provided and for configuring layout, design and arrangement of plots and tables. I also used it to help me better understand the mechanism of some functions I used.
 
 # References
 
@@ -596,7 +600,9 @@ gof_wide |>
 
 ```{r}
 #| label: tbl-confidence
+#| output: true
 #| tbl-cap: "Parameter estimates with uncertainty for every fit. $r_i$: intrinsic growth rate of species $i$; $a_{ij}$: interaction coefficients (indices as in Table 1). SD is half the width of the ±1 SD interval returned by gauseR; the 95\\% interval is the normal approximation (estimate ± 1.96 SD). 'Excludes 0' indicates whether this interval excludes zero."
+
 
 param_out <- params |>
   mutate(
@@ -611,13 +617,13 @@ param_out <- params |>
     Fractal   = as.character(fractal),
     Parameter = sprintf("$%s_{%s}$", str_sub(parameter, 1, 1), str_sub(parameter, 2)),
     Estimate  = sprintf("%.4f", mu),
-    SD        = sprintf("%.4f", sd),
-    Interval  = sprintf("[%.4f, %.4f]", lo, hi),
+    SD        = sprintf("%.2g", sd),
+    Interval  = sprintf("%.2g, %.2g", lo, hi),
     Excl0     = if_else(lo > 0 | hi < 0, "yes", "no")
   )
 
 param_out |>
-  kbl(format = "latex", booktabs = TRUE, digits = 3, longtable = TRUE, escape = FALSE,
+  kbl(format = "latex", booktabs = TRUE, longtable = TRUE, escape = FALSE,
       align = "llcrrrc", row.names = FALSE,
       col.names = c("Condition", "Fractal", "Parameter", "Estimate", "SD",
                     "95\\% interval", "Excludes 0")) |>
