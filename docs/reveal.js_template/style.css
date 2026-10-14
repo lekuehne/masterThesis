@@ -1,0 +1,125 @@
+/* ===== Palette (overridden by YAML `colors:` via tpl-config.lua) ===== */
+:root {
+  --primary: #1f3a5f;
+  --secondary: #e6ebf2;
+  --text: #1b1f24;
+  --bg: #ffffff;
+  --muted: #5b6573;
+  --body-h: 820px;
+}
+html.dark {
+  --bg: #12161c;
+  --text: #e8ecf1;
+  --secondary: #1f2a3a;
+  --muted: #9aa5b4;
+}
+html.dark .reveal h1, html.dark .reveal h2 { color: #cfe0f5; }
+html.dark #tpl-footer img { filter: brightness(.9); }
+
+/* ===== Base ===== */
+html, body, .reveal, .reveal-viewport { background: var(--bg) !important; color: var(--text); }
+.reveal { font-size: 36px; font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; }
+.reveal .slides section { text-align: left; overflow-wrap: break-word; hyphens: auto; }
+.reveal h1, .reveal h2 { color: var(--primary); text-transform: none; font-weight: 600; }
+
+/* hide all reveal UI */
+.reveal .controls, .reveal .progress, .reveal .slide-number,
+.slide-menu-button, .reveal .slide-menu-button { display: none !important; }
+
+/* ===== Title slide ===== */
+#title-slide { text-align: center !important; padding: 0 160px; box-sizing: border-box; }
+#title-slide h1.title { font-size: 84px; color: var(--primary); margin-bottom: .2em; }
+#title-slide .subtitle { font-size: 44px; color: var(--muted); }
+#title-slide .author, #title-slide .date { font-size: 32px; color: var(--muted); }
+#title-slide .title-img { display: block; margin: 40px auto 0; max-height: 300px; max-width: 70%; }
+
+/* ===== Section slide: left panel (primary) + right image ===== */
+.reveal .slides section.level1:not(#title-slide) {
+  top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; padding: 0; margin: 0;
+}
+.reveal section.level1:not(#title-slide) > h1 {
+  position: absolute; left: 0; top: 0; width: 50%; height: 100%; margin: 0; box-sizing: border-box;
+  padding: 0 140px; display: flex; align-items: center; justify-content: center;
+  text-align: center; font-size: 76px; background: var(--primary); color: #fff;
+}
+.reveal section.level1:not(#title-slide) > :not(h1) {
+  position: absolute; right: 0; top: 0; width: 50%; height: 100%; margin: 0; box-sizing: border-box;
+  padding: 80px; display: flex; align-items: center; justify-content: center;
+}
+.reveal section.level1:not(#title-slide) img {
+  max-width: 100%; max-height: 100%; object-fit: contain; margin: 0;
+}
+
+/* ===== Content slides (single column / two column / image) ===== */
+.reveal .slides section.level2 {
+  top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
+  padding: 0; margin: 0;
+}
+.reveal section.level2 > h2 {
+  position: absolute; top: 0; left: 0; right: 0; margin: 0; box-sizing: border-box;
+  padding: 34px 80px; background: var(--secondary); text-align: left; font-size: 52px; line-height: 1.15;
+}
+.reveal section.level2 > .body {
+  position: absolute; top: 170px; left: 80px; right: 80px; height: var(--body-h);
+  overflow: hidden; display: flex; flex-direction: column; text-align: left; hyphens: auto;
+}
+.body > * { flex: 0 0 auto; max-width: 100%; }
+.body ul, .body ol { margin-left: 1em; max-width: 100%; }
+.body li { margin: .25em 0; }
+.body table { table-layout: fixed; width: 100%; }
+.body pre { max-width: 100%; width: 100%; box-shadow: none; }
+.body pre code { white-space: pre-wrap; word-break: break-word; max-height: none; }
+.body .cites, .cites { display: none !important; }
+
+/* images: left-aligned, padded, never overflow */
+.body img { max-width: 100%; max-height: 700px; padding: 16px; box-sizing: border-box; margin: 0; }
+.body .quarto-figure, .body figure { text-align: left !important; justify-content: flex-start !important; margin: 0; }
+.body figcaption { font-size: .65em; color: var(--muted); text-align: left; }
+
+/* columns: fixed 50/50 by default */
+.body > .columns { flex: 1 1 0; min-height: 0; display: flex; gap: 60px; width: 100%; }
+.columns > .column {
+  flex: 1 1 0; min-width: 0; width: auto !important; min-height: 0; max-width: 100%;
+  display: flex; flex-direction: column;
+}
+.column > * { flex: 0 0 auto; max-width: 100%; }
+
+/* two-column "auto": column with an image is as wide as the image */
+.cols-auto .column:has(img) { flex: 0 1 auto; max-width: 62%; }
+.cols-auto .column:not(:has(img)) { flex: 1 1 0; }
+.cols-auto img.fit { width: auto; height: 100%; }
+
+/* .fit: image fills the available box, aspect ratio kept */
+.fit-chain { display: flex !important; flex-direction: column; flex: 1 1 0 !important; min-height: 0; margin: 0 !important; }
+img.fit { flex: 1 1 0; min-height: 0; width: 100%; height: 100%; max-height: none; object-fit: contain; }
+
+/* image slide: centered image, caption below */
+.image-slide .body { align-items: center; justify-content: center; text-align: center; }
+.image-slide .body > .fit-chain { width: 100%; }
+.image-slide .body figcaption { text-align: center; margin-top: .3em; flex: 0 0 auto; }
+.image-slide .body figure, .image-slide .body .quarto-figure { text-align: center !important; }
+
+/* references */
+#refs { column-count: 2; column-gap: 60px; font-size: 26px; }
+#refs .csl-entry { margin-bottom: .5em; padding-left: 1.5em; text-indent: -1.5em; break-inside: avoid; }
+
+/* ===== Footer ===== */
+#tpl-footer {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 90px; box-sizing: border-box;
+  padding: 0 80px 28px; display: flex; align-items: flex-end; justify-content: space-between;
+  font-size: 24px; line-height: 1; color: var(--muted); z-index: 20; pointer-events: none;
+}
+#tpl-footer .f-left { display: flex; align-items: center; gap: 0; max-width: 38%; white-space: nowrap; overflow: hidden; }
+#tpl-footer .f-left img { height: 34px; width: auto; }
+#tpl-footer .f-right { display: flex; justify-content: flex-end; align-items: baseline; max-width: 58%; min-width: 0; }
+#tpl-footer .f-cites { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+#tpl-footer .sep { margin: 0 .7em; opacity: .5; }
+#tpl-footer .f-num { min-width: 1.6em; text-align: right; flex: 0 0 auto; }
+
+/* ===== Laser pointer (key L) ===== */
+#laser {
+  display: none; position: fixed; left: -14px; top: -14px; width: 28px; height: 28px; border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  background: radial-gradient(circle, #ff2a2a 0 28%, rgba(255,42,42,.55) 45%, rgba(255,42,42,0) 72%);
+}
+body.laser, body.laser * { cursor: none !important; }

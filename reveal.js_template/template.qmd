@@ -1,0 +1,146 @@
+---
+title: "Presentation title"
+subtitle: "Subtitle goes here"
+author: "Firstname Lastname"
+date: today
+
+# ---- Template settings ---------------------------------------------
+footer-author: "F. Lastname"      # shown in footer (bottom left)
+logo: Uni_Logo_2016.png           # university / company logo (leave out for none)
+title-image: ""                   # optional image below title, e.g. title.png
+colors:
+  primary: "#1f3a5f"              # dark navy: headings, section panel
+  secondary: "#e6ebf2"            # light gray-blue: title bars
+  text: "#1b1f24"                 # body text
+  background: "#ffffff"
+# ---------------------------------------------------------------------
+
+bibliography: ../references.bib      # export from Zotero (Better BibTeX auto-export)
+csl: apa.csl                      # APA 7: "et al." for 3+ authors (download from zotero.org/styles)
+filters: [tpl-config.lua]
+resources: [Uni_Logo_2016.png]             # make sure the logo is copied with the output
+
+format:
+  revealjs:
+    css: style.css
+    include-after-body: footer.html
+    width: 1920
+    height: 1080
+    margin: 0
+    center: false
+    theme: default
+    incremental: true             # list items appear one by one automatically
+    controls: false
+    progress: false
+    menu: false
+    slide-number: false
+    transition: fade
+    transition-speed: fast
+    link-citations: false
+    embed-resources: false
+---
+
+# Section one
+
+![](chip_design.png)
+
+## Single column {.smaller}
+
+- Bullet points appear one by one (`incremental: true`)
+- Text wraps automatically and shrinks slightly if it would overflow
+- Images are left-aligned: `![](img.png){width=50%}`
+
+::: cites
+@arellano-caicedo_2021 @orrCoexistenceTheoryMicrobial2025
+:::
+
+## Writing slides
+
+- `# Heading` makes a section slide. Add `![](img.png)` right after it for the image on the right.
+- `## Heading` makes a single-column slide.
+- For two columns, use the `.columns` and `.column` divs. The default is a fixed 50/50 split, and `{.cols-auto}` on the heading lets the image column adapt to the image.
+- `## Heading {.image-slide}` centers the image with the caption below it.
+- Put citations in a div at the end of each slide, written as `@key1 @key2`. The footer shows them as "Author et al. (2026), …", and the page number stays fixed at the right edge. Slides without citations show only the number.
+- The `## References` slide with `::: {#refs}` fills in automatically.
+
+## Resizing images
+
+- `![](img.png){width=60%}` sets the size relative to the column or slide.
+- `{height=500px}` sets a fixed height.
+- `{.fit}` fills the available box and keeps the aspect ratio.
+- `{fig-align="center"}` centers one figure. Images are left-aligned by default, and centered on image slides.
+- Whatever you set, images are capped so they can't leave the slide.
+
+## Things to know
+
+- The overflow control shrinks the font in steps down to 55%. If a slide still doesn't fit, split it.
+- The two-column "auto" mode uses CSS :has(), so you need a recent Chrome, Edge, Safari or Firefox.
+- The logo and title image are loaded by the script, so Quarto doesn't copy them automatically. Keep them next to the output HTML and list them under `resources:`.
+
+## Two columns (fixed 50/50)
+
+::::: columns
+::: column
+- Text on the left
+- Long lines wrap inside the column
+:::
+
+::: column
+![](chip_design.png){.fit}
+:::
+:::::
+
+::: cites
+@smith2026
+:::
+
+## Two columns (width adapts to image) {.cols-auto}
+
+::::: columns
+::: column
+- The text column takes the remaining space
+- The image column is as wide as the image allows
+:::
+
+::: column
+![](chip_design.png){.fit}
+:::
+:::::
+
+::: cites
+@lee2025 @miller2024
+:::
+
+## Image slide {.image-slide}
+
+![Caption below the image](chip_design.png)
+
+::: cites
+@miller2024
+:::
+
+## References {.smaller}
+
+::: {#refs}
+:::
+
+```{=html}
+<!--
+RESIZING IMAGES
+  ![](img.png){width=60%}        relative to the column / slide
+  ![](img.png){height=500px}     fixed height
+  ![](img.png){.fit}             fill the available box (keeps aspect ratio)
+  ![](img.png){fig-align="center"}  alignment (default: left; centered on image slides)
+
+SHORTCUTS (during the presentation)
+  L  laser pointer on/off      D  light/dark toggle
+
+SLIDE TYPES
+  (title)                      generated from the YAML header
+  # Heading                    section slide (add ![](img.png) for right-hand image)
+  ## Heading                   single-column slide
+  ## Heading {.cols-auto}      two-column slide with image-adaptive widths
+  ## Heading {.image-slide}    centered image + caption
+  ::: {.cites} @key1 @key2 ::: slide citations (footer, bottom right)
+-->
+```

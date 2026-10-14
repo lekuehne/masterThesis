@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -57,6 +92,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./mazeChips/experiment.html" rel="prev">
 <link href="./favmonster.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -64,7 +100,7 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6a9e8052864c13b4a6b29ea263082f64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -213,8 +249,8 @@ window.Quarto = {
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Analysis</li>
         <li>
-    <a class="dropdown-item" href="//SysBioModelingClass.html">
- <span class="dropdown-text"></span></a>
+    <a class="dropdown-item" href="./SysBioModelingClass.html">
+ <span class="dropdown-text">Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third</span></a>
   </li>  
     </ul>
   </li>
@@ -272,9 +308,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SysBioModelingClass.html">Analysis</a></li><li class="breadcrumb-item"><a href="./SysBioModelingClass.html">Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third</h1>
+<div class="quarto-title-block"><div><h1 class="title">Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -311,13 +347,13 @@ window.Quarto = {
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
 <section id="importance-of-community-and-habitat-complexity-in-microbial-ecology" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="importance-of-community-and-habitat-complexity-in-microbial-ecology"><span class="header-section-number">2.1</span> Importance of community and habitat complexity in microbial ecology</h2>
-<p>In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g.&nbsp;temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data-generation driven “-omics” approach with limited reconnaissance for functional and mechanistic processes <span class="citation" data-cites="faustMicrobialInteractionsNetworks2012">(<a href="#ref-faustMicrobialInteractionsNetworks2012" role="doc-biblioref">Faust and Raes 2012</a>)</span>, or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to <em>in situ</em> complexity, neglecting the emergence of ecosystem properties and higher order interactions in microbial interaction networks <span class="citation" data-cites="levineMechanismsCoexistence2017">(<a href="#ref-levineMechanismsCoexistence2017" role="doc-biblioref">Levine et al. 2017</a>)</span>.<br>
+<p>In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g.&nbsp;temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data-generation driven “-omics” approach with limited reconnaissance for functional and mechanistic processes <span class="citation" data-cites="faustMicrobialInteractionsNetworks2012">(<a href="#ref-faustMicrobialInteractionsNetworks2012" role="doc-biblioref">Faust and Raes 2012</a>)</span>, or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to <em>in situ</em> complexity, neglecting the emergence of ecosystem properties and higher order interactions in microbial interaction networks <span class="citation" data-cites="levineMechanismsCoexistence2017">(<a href="#ref-levineMechanismsCoexistence2017" role="doc-biblioref"><strong>levineMechanismsCoexistence2017?</strong></a>)</span>.<br>
 Moreover, most of this culturing-technique based approaches is based entirely on well-mixed conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation <span class="citation" data-cites="orrCoexistenceTheoryMicrobial2025 nadellSpatialStructureCooperation2016">(<a href="#ref-orrCoexistenceTheoryMicrobial2025" role="doc-biblioref">Orr et al. 2025</a>; <a href="#ref-nadellSpatialStructureCooperation2016" role="doc-biblioref">Nadell et al. 2016</a>)</span>. This is especially limiting for the study of soil habitats, since their pore space is characterized by a very high spatial complexity and thus microhabtiat diversity.</p>
 <p><em>P. putida</em> and <em>B. subtilis</em> are frequently co-isoloated from soil samples and <em>T. viride</em> is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The central question of these experiments are how <em>T. viride</em> affects the growth of <em>P. putida</em> and <em>B. subtilis</em> facilitating or hindering coexistence, by suppressing or supporting one or both of the species or by altering the interactions between them.</p>
 </section>
 <section id="the-simple-yet-powerful-framework-of-the-lotkavolterra-equation" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="the-simple-yet-powerful-framework-of-the-lotkavolterra-equation"><span class="header-section-number">2.2</span> The simple yet powerful framework of the Lotka—Volterra equation</h2>
-<p>The Lotka-Volterra (LV) equations <span class="citation" data-cites="lotkaElementsPhysicalBiology1925 volterraFluctuationsAbundanceSpecies1926">(<a href="#ref-lotkaElementsPhysicalBiology1925" role="doc-biblioref">Lotka 1925</a>; <a href="#ref-volterraFluctuationsAbundanceSpecies1926" role="doc-biblioref">Volterra 1926</a>)</span> are while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can represent very complex, multi-layered interaction networks without requiring a complete mechanistic understanding of these interactions on a molecular level <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">(<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">Mühlbauer et al. 2020</a>)</span>. The basic LV equation employed throughout this study describes the changes per unit time in the abundance of species <span class="math inline">\(N_{i}\)</span> as</p>
+<p>The Lotka-Volterra (LV) equations <span class="citation" data-cites="lotkaElementsPhysicalBiology1925 volterraFluctuationsAbundanceSpecies1926">(<a href="#ref-lotkaElementsPhysicalBiology1925" role="doc-biblioref">Lotka 1925</a>; <a href="#ref-volterraFluctuationsAbundanceSpecies1926" role="doc-biblioref"><strong>volterraFluctuationsAbundanceSpecies1926?</strong></a>)</span> are while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can represent very complex, multi-layered interaction networks without requiring a complete mechanistic understanding of these interactions on a molecular level <span class="citation" data-cites="muhlbauerGauseRSimpleMethods2020">(<a href="#ref-muhlbauerGauseRSimpleMethods2020" role="doc-biblioref">Mühlbauer et al. 2020</a>)</span>. The basic LV equation employed throughout this study describes the changes per unit time in the abundance of species <span class="math inline">\(N_{i}\)</span> as</p>
 <p><span id="eq-lv"><span class="math display">\[
 \frac{\mathrm{d}N_{i}}{\mathrm{d}t} = N_{i} (r_{i} + \mathrm{a}_{ii} N_{i} + \sum_{j} (\mathrm{a}_{ij} N_{j}))
 \tag{1}\]</span></span></p>
@@ -440,31 +476,25 @@ The effect of P. putida on B. subtilis (a<span class="math inline">\(_{21}\)</sp
 Arellano-Caicedo, Carlos, Pelle Ohlsson, Martin Bengtsson, Jason P. Beech, and Edith C. Hammer. 2023. <span>“Habitat Complexity Affects Microbial Growth in Fractal Maze.”</span> <em>Current Biology</em> 33 (8): 1448–1458.e4. <a href="https://doi.org/10.1016/j.cub.2023.02.064">https://doi.org/10.1016/j.cub.2023.02.064</a>.
 </div>
 <div id="ref-faustMicrobialInteractionsNetworks2012" class="csl-entry" role="listitem">
-Faust, Karoline, and Jeroen Raes. 2012. <span>“Microbial Interactions: From Networks to Models.”</span> <em>Nature Reviews Microbiology</em> 10: 538–50.
+Faust, Karoline, and Jeroen Raes. 2012. <span>“Microbial Interactions: From Networks to Models.”</span> <em>Nature Reviews Microbiology</em> 10 (8): 538–50. <a href="https://doi.org/10.1038/nrmicro2832">https://doi.org/10.1038/nrmicro2832</a>.
 </div>
 <div id="ref-grilliHigherorderInteractionsStabilize2017" class="csl-entry" role="listitem">
-Grilli, Jacopo, György Barabás, Matthew J. Michalska-Smith, and Stefano Allesina. 2017. <span>“Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.”</span> <em>Nature</em> 548: 210–13.
+Grilli, Jacopo, György Barabás, Matthew J. Michalska-Smith, and Stefano Allesina. 2017. <span>“Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.”</span> <em>Nature</em> 548 (7666): 210–13. <a href="https://doi.org/10.1038/nature23273">https://doi.org/10.1038/nature23273</a>.
 </div>
 <div id="ref-hilbertUeberStetigeAbbildung1935" class="csl-entry" role="listitem">
 Hilbert, David. 1935. <span>“<span>Über die stetige Abbildung einer Linie auf ein Flächenstück</span>.”</span> In <em><span>Dritter Band: Analysis <span><span class="math inline">\(\cdot\)</span></span> Grundlagen der Mathematik <span><span class="math inline">\(\cdot\)</span></span> Physik Verschiedenes: Nebst Einer Lebensgeschichte</span></em>, edited by David Hilbert. Springer. <a href="https://doi.org/10.1007/978-3-662-38452-7_1">https://doi.org/10.1007/978-3-662-38452-7_1</a>.
 </div>
-<div id="ref-levineMechanismsCoexistence2017" class="csl-entry" role="listitem">
-Levine, Jonathan M., Jordi Bascompte, Peter B. Adler, and Stefano Allesina. 2017. <span>“Beyond Pairwise Mechanisms of Species Coexistence in Complex Communities.”</span> <em>Nature</em> 546: 56–64.
-</div>
 <div id="ref-lotkaElementsPhysicalBiology1925" class="csl-entry" role="listitem">
-Lotka, Alfred J. 1925. <em>Elements of Physical Biology</em>. Williams &amp; Wilkins.
+Lotka, Alfred J. 1925. <span>“Elements of <span>Physical Biology</span>.”</span> <em>Nature</em> 116 (2917): 461–61. <a href="https://doi.org/10.1038/116461b0">https://doi.org/10.1038/116461b0</a>.
 </div>
 <div id="ref-muhlbauerGauseRSimpleMethods2020" class="csl-entry" role="listitem">
 Mühlbauer, Lina K., Maximilienne Schulze, W. Stanley Harpole, and Adam T. Clark. 2020. <span>“<span class="nocase">gauseR</span>: <span>Simple</span> Methods for Fitting <span>Lotka-Volterra</span> Models Describing <span>Gause</span>’s <span>‘<span>Struggle</span> for <span>Existence</span>’</span>.”</span> <em>Ecology and Evolution</em> 10 (23): 13275–83. <a href="https://doi.org/10.1002/ece3.6926">https://doi.org/10.1002/ece3.6926</a>.
 </div>
 <div id="ref-nadellSpatialStructureCooperation2016" class="csl-entry" role="listitem">
-Nadell, Carey D., Knut Drescher, and Kevin R. Foster. 2016. <span>“Spatial Structure, Cooperation and Competition in Biofilms.”</span> <em>Nature Reviews Microbiology</em> 14: 589–600.
+Nadell, Carey D., Knut Drescher, and Kevin R. Foster. 2016. <span>“Spatial Structure, Cooperation and Competition in Biofilms.”</span> <em>Nature Reviews Microbiology</em> 14 (9): 589–600. <a href="https://doi.org/10.1038/nrmicro.2016.84">https://doi.org/10.1038/nrmicro.2016.84</a>.
 </div>
 <div id="ref-orrCoexistenceTheoryMicrobial2025" class="csl-entry" role="listitem">
 Orr, James A., David W. Armitage, and Andrew D. Letten. 2025. <span>“Coexistence <span>Theory</span> for <span>Microbial Ecology</span>, and <span>Vice Versa</span>.”</span> <em>Environmental Microbiology</em> 27 (3): e70072. <a href="https://doi.org/10.1111/1462-2920.70072">https://doi.org/10.1111/1462-2920.70072</a>.
-</div>
-<div id="ref-volterraFluctuationsAbundanceSpecies1926" class="csl-entry" role="listitem">
-Volterra, Vito. 1926. <span>“Fluctuations in the Abundance of a Species Considered Mathematically.”</span> <em>Nature</em> 118: 558–60.
 </div>
 </div>
 </section>
@@ -514,6 +544,8 @@ Table&nbsp;3: Parameter estimates with uncertainty for every fit. <span class="m
 </div>
 </div>
 
+
+<!-- -->
 
 </section>
 
@@ -588,6 +620,57 @@ Table&nbsp;3: Parameter estimates with uncertainty for every fit. <span class="m
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -918,6 +1001,654 @@ Table&nbsp;3: Parameter estimates with uncertainty for every fit. <span class="m
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./mazeChips/experiment.html" class="pagination-link" aria-label="experiment">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">experiment</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Lotka—Volterra modeling of a spatially informed three-species microbial community as a two-species co-culture perturbed by the third"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Leander Kühne, BSc"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "09/30/2026"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    include-in-header:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">      text: |</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        \usepackage{multirow}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="an">toc-depth:</span><span class="co"> 2</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="an">lightbox:</span><span class="co"> true</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="an">sidebar:</span><span class="co"> false</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: false</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">  output: false</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">  cache: true</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Abstract</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>This project implements a Lotka—Volterra model to analyse time series growth data, derive interaction coefficients and explore how a three-species interaction can be modeled from limited growth data of only two of the three species framing the third species as a perturbation to the interaction of the others. Fluorescently labeled *Pseudomonas putida* and *Bacillus subtilis* bacteria were co-cultured with a non-labeled *Trichoderma viride* fungus in microfluidic mazes with different degrees of fractal complexity for 22 days. Logistic growth curves, growth rates ($r$), carrying capacities ($K$) and interaction coefficients ($a_{ii}, a_{jj}, a_{ij}, a_{ji}$) were estimated with the R package `gauseR`. *B. subtilis* promoted and *T. viride* inhibited the growth of *P. putida*, while *B. subtilis* was strongly suppressed by both. The LV model fitted all conditions well except the *B. subtilis* monoculture . The promoting effect of B. subtilis on P. putida was reflected in the coefficients, and in the three-species culture this effect shifted from inhibitory to promoting at the highest spatial complexity. However, all coefficients were close to zero, the suppression of *B. subtilis* by *P. putida* and *T. viride* was not captured, and the effect of the unmeasured fungus is absorbed into effective coefficients of the two measured species. A simple Lotka—Volterra model thus reproduces the main growth patterns of *P. putida* but offers limited mechanistic insight into the three-species interactions.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importance of community and habitat complexity in microbial ecology</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>In microbial ecology, most experimental research is focused on either community response to a generalized change in ecosystem properties (e.g. temperature, pH, nutrient availability, toxins) by characterizing communities on a very broad and data-generation driven "-omics" approach with limited reconnaissance for functional and mechanistic processes <span class="co">[</span><span class="ot">@faustMicrobialInteractionsNetworks2012</span><span class="co">]</span>, or it focuses on two species interactions — of oftentimes synthetic consortia — with limited transferability to *in situ* complexity, neglecting the emergence of ecosystem properties and higher order interactions in microbial interaction networks <span class="co">[</span><span class="ot">@levineMechanismsCoexistence2017</span><span class="co">]</span>.\</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Moreover, most of this culturing-technique based approaches is based entirely on well-mixed conditions. This poses great challenges for the study of community driven effects with relevance of the spatial arrangement like biofilm formation, quorum sensing or niche differentiation <span class="co">[</span><span class="ot">@orrCoexistenceTheoryMicrobial2025; @nadellSpatialStructureCooperation2016</span><span class="co">]</span>. This is especially limiting for the study of soil habitats, since their pore space is characterized by a very high spatial complexity and thus microhabtiat diversity.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>*P. putida* and *B. subtilis* are frequently co-isoloated from soil samples and *T. viride* is also a common member of soil microbial communities. Therefore all three species are thought to be stably coexisting in soil habitats under natural conditions. The central question of these experiments are how *T. viride* affects the growth of *P. putida* and *B. subtilis* facilitating or hindering coexistence, by suppressing or supporting one or both of the species or by altering the interactions between them.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## The simple yet powerful framework of the Lotka—Volterra equation</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>The Lotka-Volterra (LV) equations <span class="co">[</span><span class="ot">@lotkaElementsPhysicalBiology1925; @volterraFluctuationsAbundanceSpecies1926</span><span class="co">]</span> are while being a mathematically relatively simple differential equation still a very powerful approach in ecology that can represent very complex, multi-layered interaction networks without requiring a complete mechanistic understanding of these interactions on a molecular level <span class="co">[</span><span class="ot">@muhlbauerGauseRSimpleMethods2020</span><span class="co">]</span>. The basic LV equation employed throughout this study describes the changes per unit time in the abundance of species $N_{i}$ as</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>\frac{\mathrm{d}N_{i}}{\mathrm{d}t} = N_{i} (r_{i} + \mathrm{a}_{ii} N_{i} + \sum_{j} (\mathrm{a}_{ij} N_{j}))</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>$$ {#eq-lv}</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>with $r_{i}$ as the intrinsic growth rate, $\mathrm{a}_{ii}$ being the intra-specific competition (i.e. the effect of species $i$ on itself, $\mathrm{a}_{ij}$ describing the effect of species $j$ on species $i$ and $N_{j}$ as the abundance of species $j$.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>Here, the interaction dynamics of the three-species system are approximated with this simple model to test whether the experimental data can already be fitted satisfactorily at this level of complexity, or whether more sophisticated models are needed. Fitting an LV model can also indicate whether the interactions are consistent with simple pairwise competition or whether higher-order interactions are likely at work <span class="co">[</span><span class="ot">@grilliHigherorderInteractionsStabilize2017</span><span class="co">]</span>. In this experimental setup, time series growth data are available for only two of the three species. The overall aim is therefore to assess whether an LV model can represent the data adequately, and whether this approach is a viable way to gain mechanistic insight into a three-species system in a spatially structured habitat.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu"># Methods and Data</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Experimental methods</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>The wet lab experiments consist of semi-continous culturing on microfluidic chips containing micro-scale mazes of different fractal complexity (f0-f5, Hilbert curve space filling design, @hilbertUeberStetigeAbbildung1935) and normalized internal volume. Each chip comprises a culture/media inoculation area from where mazes branch off <span class="co">[</span><span class="ot">@fig-chip</span><span class="co">]</span>.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>*P. putida* and *B. subtilis* carry a genomically integrated expression cassette for green (GFP) and red (RFP) fluorescent protein, respectively. Fluorescence intensity levels are used as a proxy for species abundance throughout this study. Culturing experiments were maintained for over 22 days with a 48 h media-replenishment cycle approximating close-to unlimited nutrient supply (M9 minimal medium). In the same cycle, the mazes were imaged by epi-fluorescence microscopy collecting spatially resolved GFP and RFP signals. Sample size per time point was n = 28 for most conditions, n = 7 for the *B. subtilis*-only condition, and n = 35 for some time points of the *T. viride* + *P. putida* (TP) and three-species (TPB) conditions.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="al">![Fractal chip simulating microhabitats of different physical complexity. Figure kindly provided by @arellano-caicedoHabitatComplexityAffects2023.](chip_design.png)</span>{#fig-chip fig-align="center"}</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data processing and Lotka—Volterra parameter estimation {#sec-data-process}</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Raw microscopy images were aligned and background-subtracted in ImageJ using a rolling-ball algorithm with the ball diameter set to the channel width of the mazes. Fluorescence intensity was selectively measured from the maze areas only. A combined data frame across all time points and conditions was built in R, and means, standard deviations and standard errors were calculated per condition, fractal level, time point and fluorescence channel. Channels were assigned to species (GFP to *P. putida*, RFP to *B. subtilis*), and only the channel(s) of species actually present in a condition were retained. Sampling time points were converted to days after inoculation, and the data were arranged into a long format that allowed every condition × fractal level combination to be fitted automatically.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Each combination was fitted with the <span class="in">`gause_wrapper`</span> function of the <span class="in">`gauseR`</span> library, which works in two steps. First, time-lagged abundances are generated with <span class="in">`get_lag`</span> and used to calculate the per-capita growth rate. For a single species, the logistic model defines it as</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>$$ \frac{\mathrm{d}N}{\mathrm{d}t} / N = r - a_{ii} N $$ {#eq-per-cap}</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>with $r$ the intrinsic growth rate and $a_{ii}$ the self-limitation. Per-capita growth rate is regressed linearly against abundance (for several species, against the abundances of all species), so that $r$ is the y-intercept, $a_{ii}$ the slope, and the carrying capacity $K$ the x-intercept (i.e. $K = -r / a_{ii}$). These linearized estimates serve as starting values. Second, the starting values (and initial abundances) are refined by a numerical optimizer (<span class="in">`optim`</span>) that works in log-space, with parameter signs fixed to those of the linear estimates. The optimizer repeatedly solves the LV system with an ODE solver and minimizes the squared error between simulated and observed, standardized abundances. Rough parameter uncertainties (±1 SD) are derived from the Hessian of the optimization.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>Model fit was quantified per condition, fractal level and species. The fitted curve was interpolated at the observed time points, and goodness of fit was expressed as $R^2 = 1 - SS_\mathrm{res}/SS_\mathrm{tot}$ (which can become negative for fits worse than the mean) and as the root mean squared error (RMSE) in fluorescence units. Parameters were re-indexed to a fixed species order so that, for example, a *B. subtilis* monoculture reports $a_{22}$ rather than $a_{11}$.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Software</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>Analyses were run in R 4.6.1 with <span class="in">`gauseR`</span> 1.3. Data wrangling, plotting and table generation used <span class="in">`tidyverse`</span>, <span class="in">`ggh4x`</span>, <span class="in">`kableExtra`</span> and <span class="in">`readxl`</span>. Image processing was done in ImageJ 1.54, and the report was written in RStudio 2026.09.0 (Build 174) and rendered with Quarto 1.10.18, pandoc 3.7.0.2 and LuaHBTeX 1.24.0 (TeX Live 2026).</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="fu"># Results</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dependencies</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gauseR)</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggh4x)        <span class="co"># per-column coloured strips</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)   <span class="co"># PDF tables</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">knitr.kable.NA =</span> <span class="st">"\u2013"</span>)   <span class="co"># missing values shown as "–"</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># `summary_df` is assumed to be loaded already</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="co"># (columns: ch, time, fractal, species [= condition], mean_value, sd, n, se)</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Import raw data and process</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"~/Documents/MSc_MMEI/MA/data/maryam_data"</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(path, <span class="at">pattern =</span> <span class="st">"^rep</span><span class="sc">\\</span><span class="st">d+</span><span class="sc">\\</span><span class="st">.xlsx$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(file) {</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file)</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>rep <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">"rep(</span><span class="sc">\\</span><span class="st">d+)</span><span class="sc">\\</span><span class="st">.xlsx"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, <span class="fu">basename</span>(file)))</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    data</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">|&gt;</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">setNames</span>(df, <span class="fu">c</span>(<span class="st">"position"</span>, <span class="st">"area"</span>, <span class="st">"mean"</span>, <span class="st">"min"</span>, <span class="st">"max"</span>, <span class="st">"ch"</span>, <span class="st">"time"</span>, <span class="st">"chip"</span>, <span class="st">"fractal"</span>, <span class="st">"rep"</span>))</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert timepoints to days after inoculation</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> df<span class="sc">$</span>time<span class="sc">*</span><span class="dv">2</span> </span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Conditions</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>species <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>chip,</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>  <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"T+B"</span>,</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"T+P"</span>,</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>  <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"T+P+B"</span>,</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>  <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"B"</span>,</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>  <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"P"</span>,</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"6"</span> <span class="ot">=</span> <span class="st">"P+B"</span>,</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>  <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"T+B"</span>,</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>  <span class="st">"8"</span> <span class="ot">=</span> <span class="st">"T+P"</span>,</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>  <span class="st">"9"</span> <span class="ot">=</span> <span class="st">"T+P+B"</span>,</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>  <span class="st">"10"</span> <span class="ot">=</span> <span class="st">"B"</span>,</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"11"</span> <span class="ot">=</span> <span class="st">"P"</span>,</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"12"</span> <span class="ot">=</span> <span class="st">"P+B"</span>,</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"13"</span> <span class="ot">=</span> <span class="st">"P+B"</span>,</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"14"</span> <span class="ot">=</span> <span class="st">"B"</span>,</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>  <span class="st">"15"</span> <span class="ot">=</span> <span class="st">"T+B"</span>,</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>  <span class="st">"16"</span> <span class="ot">=</span> <span class="st">"P"</span>,</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">"17"</span> <span class="ot">=</span> <span class="st">"T+P"</span>,</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"18"</span> <span class="ot">=</span> <span class="st">"P+B"</span>,</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"19"</span> <span class="ot">=</span> <span class="st">"T+P+B"</span>,</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>  <span class="st">"20"</span> <span class="ot">=</span> <span class="st">"B"</span>,</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"21"</span> <span class="ot">=</span> <span class="st">"T+B"</span>,</span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>  <span class="st">"22"</span> <span class="ot">=</span> <span class="st">"P"</span>,</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="st">"23"</span> <span class="ot">=</span> <span class="st">"T+P"</span>,</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  <span class="st">"24"</span> <span class="ot">=</span> <span class="st">"P+B"</span>,</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">"25"</span> <span class="ot">=</span> <span class="st">"T+P+B"</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="co"># Import CFU dataset</span></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="co"># CFU &lt;- read_excel("~/Documents/MSc_MMEI/MA/data/maryam_data/CFU.xlsx")</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary statistics.</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ch, time, fractal, species) <span class="sc">%&gt;%</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">mean_value =</span> <span class="fu">mean</span>(mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> <span class="fu">sd</span>(mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n =</span> <span class="fu">n</span>(), <span class="at">se =</span> sd <span class="sc">/</span> <span class="fu">sqrt</span>(n), <span class="at">.groups =</span> <span class="st">"drop"</span> </span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to csv. Future analyses can be carried out starting by importing the csv from below.</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">"df_chips_maryam.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(summary_df, <span class="st">"df_chips_maryam.stat.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Import CSV</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span> (<span class="st">"df_chips_maryam.csv"</span>)</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span> (<span class="st">"df_chips_maryam.stat.csv"</span>)</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: config</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Experimental Setup Configuration</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="co">#---------------------------------</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="co"># One row per species code that can occur in a condition string ("T+P+B").</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="co">#  - channel = NA  -&gt; species is part of the community but NOT measured (T)</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="co">#  - name          -&gt; used in legend and table headers</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>species_info <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>species, <span class="sc">~</span>channel, <span class="sc">~</span>name,          <span class="sc">~</span>colour,   <span class="sc">~</span>linetype, <span class="sc">~</span>shape,</span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P"</span>,      <span class="st">"G"</span>,      <span class="st">"P. putida"</span>,    <span class="st">"#1B7837"</span>, <span class="st">"solid"</span>,   <span class="dv">16</span>,</span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>  <span class="st">"B"</span>,      <span class="st">"R"</span>,      <span class="st">"B. subtilis"</span>,  <span class="st">"#762A83"</span>, <span class="st">"42"</span>,      <span class="dv">17</span>,</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>  <span class="st">"T"</span>,      <span class="cn">NA</span>,       <span class="st">"T. viride"</span>,    <span class="cn">NA</span>,        <span class="cn">NA</span>,        <span class="cn">NA</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Which conditions appear as figure columns (in this order).</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Everything is fitted and goes into the tables regardless.</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>plot_conditions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"P"</span>, <span class="st">"T+P"</span>, <span class="st">"B"</span>, <span class="st">"T+B"</span>, <span class="st">"P+B"</span>, <span class="st">"T+P+B"</span>)</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Preferred order of conditions in the tables; conditions not listed are</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="co"># appended alphabetically, listed-but-absent ones are ignored.</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>condition_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"P"</span>, <span class="st">"T+P"</span>, <span class="st">"B"</span>, <span class="st">"T+B"</span>, <span class="st">"P+B"</span>, <span class="st">"T+P+B"</span>)</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Column tints (recycled if you plot more conditions)</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>bg_palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#9CC3E6"</span>, <span class="st">"#E8A99A"</span>, <span class="st">"#9FD6AE"</span>, <span class="st">"#EBCB7F"</span>, <span class="st">"#C9B5E0"</span>, <span class="st">"#9ED3D3"</span>)</span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- derived helpers (no edits needed) -------------------------------------</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>tr             <span class="ot">&lt;-</span> species_info <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(channel))</span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>tracked        <span class="ot">&lt;-</span> tr<span class="sc">$</span>species                       <span class="co"># fixed a_ij / r_i index order</span></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>species_colors <span class="ot">&lt;-</span> <span class="fu">set_names</span>(tr<span class="sc">$</span>colour,   tr<span class="sc">$</span>species)</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>species_ltys   <span class="ot">&lt;-</span> <span class="fu">set_names</span>(tr<span class="sc">$</span>linetype, tr<span class="sc">$</span>species)</span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>species_shapes <span class="ot">&lt;-</span> <span class="fu">set_names</span>(tr<span class="sc">$</span>shape,    tr<span class="sc">$</span>species)</span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>species_names  <span class="ot">&lt;-</span> <span class="fu">set_names</span>(tr<span class="sc">$</span>name,     tr<span class="sc">$</span>species)</span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>split_cond <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">strsplit</span>(x, <span class="st">"+"</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>cond_short <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">str_remove_all</span>(x, <span class="st">"</span><span class="sc">\\</span><span class="st">+"</span>)                 <span class="co"># "T+P+B" -&gt; "TPB"</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>cond_full  <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">fmt =</span> <span class="fu">c</span>(<span class="st">"plain"</span>, <span class="st">"latex"</span>)) {             <span class="co"># "P+B" -&gt; "P. putida + B. subtilis"</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>  fmt <span class="ot">&lt;-</span> <span class="fu">match.arg</span>(fmt)</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_chr</span>(x, \(cnd) {</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>    codes <span class="ot">&lt;-</span> <span class="fu">split_cond</span>(cnd)</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>    nm <span class="ot">&lt;-</span> <span class="fu">coalesce</span>(species_info<span class="sc">$</span>name[<span class="fu">match</span>(codes, species_info<span class="sc">$</span>species)], codes)</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (fmt <span class="sc">==</span> <span class="st">"latex"</span>) nm <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">textit{"</span>, nm, <span class="st">"}"</span>)</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(nm, <span class="at">collapse =</span> <span class="st">" + "</span>)</span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: canonical</span></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Canonical long layout</span></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------</span></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Every downstream step relies on this layout:</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="co"># `condition | fractal | time | species | mean_value | sd | se | n`</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="co"># (one row per condition x fractal x time x *measured* species).</span></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>canonical <span class="ot">&lt;-</span> summary_df <span class="sc">|&gt;</span></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">condition =</span> species) <span class="sc">|&gt;</span>                                  <span class="co"># your "species" column holds the condition</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(tr <span class="sc">|&gt;</span> <span class="fu">select</span>(species, channel), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ch"</span> <span class="ot">=</span> <span class="st">"channel"</span>)) <span class="sc">|&gt;</span>  <span class="co"># channel -&gt; species</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep only the channel(s) that belong to the species present in that condition</span></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">map2_lgl</span>(species, condition, \(s, cnd) s <span class="sc">%in%</span> <span class="fu">split_cond</span>(cnd))) <span class="sc">|&gt;</span></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fractal =</span> <span class="fu">factor</span>(<span class="fu">paste0</span>(<span class="st">"f"</span>, fractal),</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>                          <span class="at">levels =</span> <span class="fu">paste0</span>(<span class="st">"f"</span>, <span class="fu">sort</span>(<span class="fu">unique</span>(fractal))))) <span class="sc">|&gt;</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(condition, fractal, time, species, mean_value, sd, se, n) <span class="sc">|&gt;</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(condition, fractal, species, time)</span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">anyDuplicated</span>(canonical[<span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"fractal"</span>, <span class="st">"time"</span>, <span class="st">"species"</span>)]))</span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>all_conditions <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">union</span>(condition_order, <span class="fu">sort</span>(<span class="fu">unique</span>(canonical<span class="sc">$</span>condition))),</span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">unique</span>(canonical<span class="sc">$</span>condition))</span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="do">## 2. Fit every condition x fractal</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------------------------</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit one condition x fractal. Species columns are ordered like `tracked`,</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="co"># so the fitted index -&gt; global index mapping is stable.</span></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>fit_gause <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>  wide <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(time, species, mean_value) <span class="sc">|&gt;</span></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> species, <span class="at">values_from =</span> mean_value) <span class="sc">|&gt;</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(time)</span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a>  sp <span class="ot">&lt;-</span> tracked[tracked <span class="sc">%in%</span> <span class="fu">names</span>(wide)]</span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gause_wrapper</span>(<span class="at">time =</span> wide<span class="sc">$</span>time, <span class="at">species =</span> <span class="fu">as.data.frame</span>(wide[sp]), <span class="at">doplot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>fits <span class="ot">&lt;-</span> canonical <span class="sc">|&gt;</span></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition, fractal) <span class="sc">|&gt;</span></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>    <span class="at">sp  =</span> <span class="fu">map</span>(data, \(d) tracked[tracked <span class="sc">%in%</span> d<span class="sc">$</span>species]),</span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>    <span class="at">res =</span> <span class="fu">map</span>(data, <span class="fu">safely</span>(fit_gause)),</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>    <span class="at">fit =</span> <span class="fu">map</span>(res, <span class="st">"result"</span>),</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>    <span class="at">err =</span> <span class="fu">map_chr</span>(res, \(r) <span class="cf">if</span> (<span class="fu">is.null</span>(r<span class="sc">$</span>error)) <span class="cn">NA_character_</span> <span class="cf">else</span> <span class="fu">conditionMessage</span>(r<span class="sc">$</span>error))</span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>failed <span class="ot">&lt;-</span> <span class="fu">filter</span>(fits, <span class="sc">!</span><span class="fu">is.na</span>(err))</span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(failed)) {</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">warning</span>(<span class="st">"Fits failed for: "</span>,</span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a>          <span class="fu">paste</span>(failed<span class="sc">$</span>condition, failed<span class="sc">$</span>fractal, <span class="at">sep =</span> <span class="st">"/"</span>, <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>          <span class="fu">paste</span>(<span class="fu">unique</span>(failed<span class="sc">$</span>err), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a>fits_ok <span class="ot">&lt;-</span> <span class="fu">filter</span>(fits, <span class="fu">is.na</span>(err))</span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic if something looks off (run interactively):</span></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="co"># str(fits_ok$fit[[1]], max.level = 1); fits_ok$fit[[1]]$parameter_intervals</span></span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: extract</span></span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Extract predictions, parameters and goodness of fit</span></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="co">#--------------------------------------------------------</span></span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>extract_predicted <span class="ot">&lt;-</span> <span class="cf">function</span>(fit, sp) {</span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fit<span class="sc">$</span>out)</span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> out[<span class="fu">c</span>(<span class="st">"time"</span>, <span class="fu">setdiff</span>(<span class="fu">names</span>(out), <span class="st">"time"</span>))]</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">ncol</span>(out) <span class="sc">==</span> <span class="fu">length</span>(sp) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"time"</span>, sp)                      <span class="co"># species order as passed to the fit</span></span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(out, <span class="sc">-</span>time, <span class="at">names_to =</span> <span class="st">"species"</span>, <span class="at">values_to =</span> <span class="st">"N"</span>)</span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="co"># ALL parameters (r_i and a_ij), re-indexed from "position within this fit"</span></span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a><span class="co"># to the GLOBAL species index, so a B monoculture reports a22 / r2 (not a11 / r1).</span></span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a>extract_params <span class="ot">&lt;-</span> <span class="cf">function</span>(fit, sp) {</span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">match</span>(sp, tracked)</span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>  <span class="co"># local index (position in this fit) -&gt; global index, one name at a time</span></span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (scalar logic: no vector recycling that could go wrong)</span></span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>  reindex <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">str_detect</span>(p, <span class="st">"^r[0-9]$"</span>) <span class="sc">||</span> <span class="fu">str_detect</span>(p, <span class="st">"^a[0-9]{2}$"</span>)) {</span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a>      d <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">str_extract_all</span>(p, <span class="st">"[0-9]"</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="fu">str_sub</span>(p, <span class="dv">1</span>, <span class="dv">1</span>), <span class="fu">paste</span>(idx[d], <span class="at">collapse =</span> <span class="st">""</span>))</span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> p                                             <span class="co"># unknown names pass through unchanged</span></span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a>  fit<span class="sc">$</span>parameter_intervals <span class="sc">|&gt;</span></span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>(<span class="st">"parameter"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">parameter =</span> <span class="fu">map_chr</span>(parameter, reindex),</span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a>           <span class="at">i =</span> <span class="fu">suppressWarnings</span>(<span class="fu">as.integer</span>(<span class="fu">str_sub</span>(parameter, <span class="dv">2</span>, <span class="dv">2</span>))),   <span class="co"># NA for non r/a names</span></span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a>           <span class="at">j =</span> <span class="fu">suppressWarnings</span>(<span class="fu">as.integer</span>(<span class="fu">str_sub</span>(parameter, <span class="dv">3</span>, <span class="dv">3</span>)))) <span class="sc">|&gt;</span>  <span class="co"># NA for r_i</span></span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(parameter, i, j, lower_sd, mu, upper_sd)</span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> fits_ok <span class="sc">|&gt;</span></span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred =</span> <span class="fu">map2</span>(fit, sp, extract_predicted)) <span class="sc">|&gt;</span></span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(condition, fractal, pred) <span class="sc">|&gt;</span></span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(pred)</span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> fits_ok <span class="sc">|&gt;</span></span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">par =</span> <span class="fu">map2</span>(fit, sp, extract_params)) <span class="sc">|&gt;</span></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(condition, fractal, par) <span class="sc">|&gt;</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(par)</span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">filter</span>(params, <span class="fu">str_starts</span>(parameter, <span class="st">"a"</span>))   <span class="co"># interaction coefficients only (table 1)</span></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">&lt;-</span> canonical   <span class="co"># already in the right shape (incl. se for error bars)</span></span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Goodness of fit per condition x fractal x species: predicted curve is</span></span>
+<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a><span class="co"># interpolated at the observed time points and compared with the observed means.</span></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a>gof <span class="ot">&lt;-</span> observed <span class="sc">|&gt;</span></span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(fits_ok, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"fractal"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition, fractal, species) <span class="sc">|&gt;</span></span>
+<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(\(d, key) {</span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>    pr   <span class="ot">&lt;-</span> <span class="fu">filter</span>(predicted, condition <span class="sc">==</span> key<span class="sc">$</span>condition,</span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a>                   fractal <span class="sc">==</span> key<span class="sc">$</span>fractal, species <span class="sc">==</span> key<span class="sc">$</span>species)</span>
+<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a>    yhat <span class="ot">&lt;-</span> <span class="fu">approx</span>(pr<span class="sc">$</span>time, pr<span class="sc">$</span>N, <span class="at">xout =</span> d<span class="sc">$</span>time)<span class="sc">$</span>y</span>
+<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a>    ok   <span class="ot">&lt;-</span> <span class="fu">is.finite</span>(yhat)</span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a>    res  <span class="ot">&lt;-</span> d<span class="sc">$</span>mean_value[ok] <span class="sc">-</span> yhat[ok]</span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">n_obs =</span> <span class="fu">sum</span>(ok),</span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a>           <span class="at">rmse  =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(res<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a>           <span class="at">r2    =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(res<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">sum</span>((d<span class="sc">$</span>mean_value[ok] <span class="sc">-</span> <span class="fu">mean</span>(d<span class="sc">$</span>mean_value[ok]))<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">|&gt;</span></span>
+<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a><span class="fu">## *P. putida* benefits from and outcompetes *B. subtilis* and is itself outcompeted by *T. viride*</span></span>
+<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a>@fig-growth shows the time series of fluorescence intensity, which serves as a proxy for species abundance, for all mono- and co-culture combinations in the f3 maze. No growth data exist for *T. viride*. The presence of *B. subtilis* promotes the growth of *P. putida*, whereas *T. viride* inhibits it. *B. subtilis*, in turn, is strongly inhibited by both *P. putida* and *T. viride*, but the inhibition by *T. viride* is stronger and leads to essentially no detectable growth of *B. subtilis*. Even so, co-inoculation with *B. subtilis* still enhances *P. putida* growth. In the three-species culture, the promoting effect of *B. subtilis* cannot compensate for the inhibition by *T. viride*, so the growth pattern resembles that of the *P. putida* + *T. viride* co-culture.</span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-growth</span></span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Time series growth data for all different mono/co-culturing combinations of *B. subtilis* (RFP), *P. putida* (GFP) and *T. viride* (no growth data) in a micro-scale maze with fractal complexity of f3 (Hilbert curve) on microfluidic chips. Solid lines indicate RFP signal, dashed lines indicate GFP signal.</span></span>
+<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a>summary_df <span class="sc">%&gt;%</span></span>
+<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_line(data=subset(summary_df, ch =='R'), aes(y = mean_value)) +</span></span>
+<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span><span class="fu">subset</span>(summary_df, ch <span class="sc">==</span> <span class="st">'G'</span><span class="sc">&amp;</span> fractal <span class="sc">==</span> <span class="st">'3'</span>), <span class="fu">aes</span>(<span class="at">y =</span> mean_value), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span>  </span>
+<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span><span class="fu">subset</span>(summary_df, ch <span class="sc">==</span> <span class="st">'R'</span><span class="sc">&amp;</span> fractal <span class="sc">==</span> <span class="st">'3'</span>), <span class="fu">aes</span>(<span class="at">y =</span> mean_value)) <span class="sc">+</span></span>
+<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">data=</span><span class="fu">subset</span>(summary_df, ch <span class="sc">==</span> <span class="st">'G'</span><span class="sc">&amp;</span> fractal <span class="sc">==</span> <span class="st">'3'</span>), <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.3</span> ) <span class="sc">+</span> </span>
+<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">data=</span><span class="fu">subset</span>(summary_df, ch <span class="sc">==</span> <span class="st">'R'</span><span class="sc">&amp;</span> fractal <span class="sc">==</span> <span class="st">'3'</span>), <span class="fu">aes</span>(<span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se), <span class="at">width =</span> <span class="fl">0.3</span> ) <span class="sc">+</span> </span>
+<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"RFP/GFP intensity"</span>,</span>
+<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span><span class="st">"time [days]"</span>)</span>
+<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a><span class="fu">## Parametrization of Lotka—Volterra interaction coefficients suggests shift in intra- and inter-specific competition with increased spatial complexity</span></span>
+<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a>The parameters obtained from the per-capita growth regression and subsequent optimization (Methods, <span class="co">[</span><span class="ot">-@sec-data-process</span><span class="co">]</span>) were used to predict growth curves for all conditions and fractal levels (@fig-lv-grid). *P. putida* monocultures reach a clear carrying capacity, with slightly reduced growth at the highest fractal level (f5). When co-cultured with *T. viride*, *P. putida* shows a lagged onset of growth. In the presence of *B. subtilis*, *P. putida* has a prolonged logistic growth phase, and it is unclear whether the carrying capacity is reached within the experimental period. The predicted growth pattern of the three-species culture is similar to that of the *P. putida* + *T. viride* culture. The LV model fits the *B. subtilis* monoculture poorly ($R^2$ = 0.133—0.169, @tbl-gof), whereas all other conditions are fitted well ($R^2$ <span class="sc">\&gt;</span> 0.83).</span>
+<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-392"><a href="#cb1-392" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-lv-grid</span></span>
+<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Observed (points, ±SE) and Lotka—Volterra predicted (lines) growth curves across fractal levels (rows) and conditions (columns)."</span></span>
+<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a>col_levels <span class="ot">&lt;-</span> <span class="fu">cond_short</span>(plot_conditions)</span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a>bg <span class="ot">&lt;-</span> <span class="fu">set_names</span>(<span class="fu">rep_len</span>(bg_palette, <span class="fu">length</span>(col_levels)), col_levels)</span>
+<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a>prep_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(condition <span class="sc">%in%</span> plot_conditions) <span class="sc">|&gt;</span></span>
+<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">condition_label =</span> <span class="fu">factor</span>(<span class="fu">cond_short</span>(condition), <span class="at">levels =</span> col_levels))</span>
+<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>predicted_p <span class="ot">&lt;-</span> <span class="fu">prep_plot</span>(predicted)</span>
+<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>observed_p  <span class="ot">&lt;-</span> <span class="fu">prep_plot</span>(observed)</span>
+<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a>  <span class="co"># column background; no `fractal` column -&gt; recycled into every row</span></span>
+<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(</span>
+<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">condition_label =</span> <span class="fu">factor</span>(col_levels, <span class="at">levels =</span> col_levels)),</span>
+<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>, <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> condition_label),</span>
+<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> predicted_p,</span>
+<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(time, N, <span class="at">colour =</span> species, <span class="at">linetype =</span> species), <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="at">data =</span> observed_p,</span>
+<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(time, <span class="at">ymin =</span> mean_value <span class="sc">-</span> se, <span class="at">ymax =</span> mean_value <span class="sc">+</span> se, <span class="at">colour =</span> species),</span>
+<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a>                 <span class="at">linewidth =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> observed_p,</span>
+<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(time, mean_value, <span class="at">colour =</span> species, <span class="at">shape =</span> species), <span class="at">size =</span> <span class="fl">1.6</span>) <span class="sc">+</span></span>
+<span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a>  ggh4x<span class="sc">::</span><span class="fu">facet_grid2</span>(</span>
+<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a>    fractal <span class="sc">~</span> condition_label,</span>
+<span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip =</span> ggh4x<span class="sc">::</span><span class="fu">strip_themed</span>(</span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a>      <span class="at">background_x =</span> ggh4x<span class="sc">::</span><span class="fu">elem_list_rect</span>(<span class="at">fill =</span> scales<span class="sc">::</span><span class="fu">alpha</span>(<span class="fu">unname</span>(bg), <span class="fl">0.5</span>)),</span>
+<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a>      <span class="at">background_y =</span> ggh4x<span class="sc">::</span><span class="fu">elem_list_rect</span>(<span class="at">fill =</span> <span class="st">"grey20"</span>),</span>
+<span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a>      <span class="at">text_x =</span> ggh4x<span class="sc">::</span><span class="fu">elem_list_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">colour =</span> <span class="st">"grey15"</span>),</span>
+<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a>      <span class="at">text_y =</span> ggh4x<span class="sc">::</span><span class="fu">elem_list_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">colour =</span> <span class="st">"white"</span>)</span>
+<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> bg, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> species_colors,  <span class="at">labels =</span> species_names, <span class="at">limits =</span> tracked, <span class="at">name =</span> <span class="st">"Species"</span>) <span class="sc">+</span></span>
+<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> species_ltys,  <span class="at">labels =</span> species_names, <span class="at">limits =</span> tracked, <span class="at">name =</span> <span class="st">"Species"</span>) <span class="sc">+</span></span>
+<span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> species_shapes,   <span class="at">labels =</span> species_names, <span class="at">limits =</span> tracked, <span class="at">name =</span> <span class="st">"Species"</span>) <span class="sc">+</span></span>
+<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">n.breaks =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time [days]"</span>, <span class="at">y =</span> <span class="st">"Population size N [fluorescence intensity]"</span>) <span class="sc">+</span></span>
+<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"grey88"</span>, <span class="at">linewidth =</span> <span class="fl">0.25</span>),</span>
+<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.spacing.x  =</span> <span class="fu">unit</span>(<span class="dv">10</span>, <span class="st">"pt"</span>),</span>
+<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.spacing.y  =</span> <span class="fu">unit</span>(<span class="dv">3</span>,  <span class="st">"pt"</span>),</span>
+<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.placement  =</span> <span class="st">"outside"</span>,</span>
+<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text        =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>, <span class="at">colour =</span> <span class="st">"grey30"</span>),</span>
+<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title       =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="fl">9.5</span>),</span>
+<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks       =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"grey70"</span>, <span class="at">linewidth =</span> <span class="fl">0.25</span>),</span>
+<span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position  =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title     =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text      =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin      =</span> <span class="fu">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("growth_curve_figure.pdf", p, width = 6.5, height = 7, units = "in")</span></span>
+<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a>The interaction coefficients are summarized in a heatmap (@fig-heatmap), where hue indicates the coefficient and color saturation the $R^2$ of the fit for the species whose growth equation contains the coefficient. Full $R^2$ values are given in the supplementary material (@tbl-gof). *B. subtilis* shows strong self-inhibition ($a_{22}$) at higher fractal complexity in monoculture, which is mitigated when it is co-cultured with *P. putida*. Self-inhibition of *B. subtilis* is also substantially lower in co-culture with *T. viride*. In contrast, self-inhibition of *P. putida* ($a_{11}$) changes little between monoculture and any of the co-cultures. The coefficients suggest a promoting effect of *B. subtilis* on *P. putida* in the two-species culture, which increases with spatial complexity. This effect shifts when *T. viride* is added: in the three-species system, $a_{12}$ tends to be negative (inhibitory) at low complexity and mediocre complexity, but changes to a positive effect on at the highest spatial complexity (f5).\</span>
+<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a>Overall all interaction coefficients are values quite close to 0.</span>
+<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-heatmap</span></span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6.5</span></span>
+<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3.6</span></span>
+<span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Interaction coefficients per fractal level (rows) and condition (columns). Tile colour shows the estimated coefficient (blue: positive, red: negative); colour saturation shows $R^2$ of the fit of the species whose growth equation contains the coefficient (faint = poor fit). Numbers are the coefficient values."</span></span>
+<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditions shown (default: all, like the table; e.g. use plot_conditions to restrict)</span></span>
+<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a>hm_conditions <span class="ot">&lt;-</span> all_conditions</span>
+<span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a><span class="co"># column order within a condition, same as the table: a11, a22, a12, a21</span></span>
+<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a>coef_levels <span class="ot">&lt;-</span> coefs <span class="sc">|&gt;</span></span>
+<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(parameter, i, j) <span class="sc">|&gt;</span></span>
+<span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(i <span class="sc">!=</span> j, i, j) <span class="sc">|&gt;</span></span>
+<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(parameter)</span>
+<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a>heat <span class="ot">&lt;-</span> coefs <span class="sc">|&gt;</span></span>
+<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> tracked[i]) <span class="sc">|&gt;</span>              <span class="co"># a_ij belongs to the growth equation of species i</span></span>
+<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(gof, condition, fractal, species, r2),</span>
+<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"fractal"</span>, <span class="st">"species"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-485"><a href="#cb1-485" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(condition <span class="sc">%in%</span> hm_conditions) <span class="sc">|&gt;</span></span>
+<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition_label =</span> <span class="fu">factor</span>(<span class="fu">cond_short</span>(condition), <span class="at">levels =</span> <span class="fu">cond_short</span>(hm_conditions)),</span>
+<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a>         <span class="at">parameter =</span> <span class="fu">factor</span>(parameter, <span class="at">levels =</span> coef_levels),</span>
+<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a>         <span class="at">r2_clamped =</span> <span class="fu">pmin</span>(<span class="fu">pmax</span>(r2, <span class="dv">0</span>), <span class="dv">1</span>),      <span class="co"># negative R2 -&gt; 0 (faintest)</span></span>
+<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a>         <span class="at">label =</span> <span class="fu">formatC</span>(mu, <span class="at">format =</span> <span class="st">"g"</span>, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb1-490"><a href="#cb1-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-491"><a href="#cb1-491" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">abs</span>(heat<span class="sc">$</span>mu), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)             <span class="co"># symmetric limits: white = 0</span></span>
+<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">abs</span>(heat<span class="sc">$</span>mu), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(heat, <span class="fu">aes</span>(<span class="at">x =</span> parameter, <span class="at">y =</span> <span class="fu">fct_rev</span>(fractal))) <span class="sc">+</span></span>
+<span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mu, <span class="at">alpha =</span> r2_clamped), <span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">colour =</span> <span class="st">"grey15"</span>) <span class="sc">+</span></span>
+<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> condition_label, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">space =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"#B2182B"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"#2166AC"</span>,</span>
+<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span>m, m), <span class="at">name =</span> <span class="st">"Coefficient"</span>,</span>
+<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a>    <span class="at">transform =</span> scales<span class="sc">::</span><span class="fu">pseudo_log_trans</span>(<span class="at">sigma =</span> sigma)) <span class="sc">+</span></span>
+<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">name =</span> <span class="fu">expression</span>(R<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">position =</span> <span class="st">"top"</span>,</span>
+<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> \(x) <span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">sprintf</span>(<span class="st">"italic(a)[%s]"</span>, <span class="fu">str_sub</span>(x, <span class="dv">2</span>)))) <span class="sc">+</span></span>
+<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">alpha =</span> <span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="st">"grey30"</span>))) <span class="sc">+</span></span>
+<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-510"><a href="#cb1-510" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid      =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.placement =</span> <span class="st">"outside"</span>,                   <span class="co"># condition strip above the coefficient labels</span></span>
+<span id="cb1-512"><a href="#cb1-512" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"grey92"</span>, <span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text      =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">colour =</span> <span class="st">"grey15"</span>),</span>
+<span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.spacing.x =</span> <span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"pt"</span>),</span>
+<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text       =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="st">"grey25"</span>),</span>
+<span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title    =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text     =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)</span>
+<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a><span class="fu"># Discussion</span></span>
+<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-524"><a href="#cb1-524" aria-hidden="true" tabindex="-1"></a>The aim of this project was to test whether an LV model can describe growth data of a three-species community when only two species are measured and the third acts as a perturbation of their interaction. The model fitted most conditions well, but several results limit how far the coefficients can be interpreted mechanistically. The main points are discussed below, together with assumptions and weaknesses of the approach.</span>
+<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-526"><a href="#cb1-526" aria-hidden="true" tabindex="-1"></a><span class="fu">## Poor fit of the *B. subtilis* monoculture</span></span>
+<span id="cb1-527"><a href="#cb1-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-528"><a href="#cb1-528" aria-hidden="true" tabindex="-1"></a>The optimizer could not fit the *B. subtilis* monoculture ($R^2$ = 0.13—0.17, @tbl-gof), which is the most notable failure of the model. A likely reason is that the growth curve deviates from the logistic shape assumed by the model, since the species abundance decreased after a peak and a death phase, or more general, a transient peak followed by decline, is not supported by the model which only fits single logistic curves. The poor reflection could also be aggravated by the comparable small sample size (n = 7) for the *B. subtilis* monocultures.\</span>
+<span id="cb1-529"><a href="#cb1-529" aria-hidden="true" tabindex="-1"></a>This also affects the reliability of the strong inter-specific competition (a$_{22}$) found in the dataset (−0.018 at f3, versus way closer to 0 elsewhere) which might therfore rather be an artefact than reproducible biological effect.</span>
+<span id="cb1-530"><a href="#cb1-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation of interaction coefficients</span></span>
+<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a>The promoting effect of *B. subtilis* on *P. putida* seen in the growth curves is well reflected by the interaction coefficients (a$_{12}$ in the PB condition, @fig-heatmap). In contrast, the lowered self-inhibition of *B. subtilis* in co-culture with *T. viride* does not reflect the strong inhibitory effect of the fungus on *B. subtilis*. Modeling the two-species co-culture from the single-culture readout alone is therefore poor in this case.</span>
+<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a>In the *T. viride* + *B. subtilis* condition, *B. subtilis* hardly grows, so its per-capita growth rate is flat and close to zero across the observed abundance range. A near-zero $a_{22}$ here then reflects the absence of growth, not release from self-limitation. The coefficient can only quantify self-limitation when growth occurs on a properly measurable range.\</span>
+<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a>The effect of P. putida on B. subtilis (a$_{21}$) is close to zero in all co-cultures, eventhough the observed growth data shows strong suppresion of B. subtilis by P. putida. This is poorly reflected by the choosen modeling approach.</span>
+<span id="cb1-537"><a href="#cb1-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-538"><a href="#cb1-538" aria-hidden="true" tabindex="-1"></a>In the three-species condition, the fitted a$_{12}$ and a$_{21}$ are effective coefficients that combine direct effects with effects mediated by *T. viride*. They are not comparable to the coefficients from the two-species culture in a strict sense, and they cannot distinguish pairwise competition from higher-order interactions. This is illustrative for the general limitation of the approach: the effect of the unmeasured species cannot be simply assigned to an explicit interaction term and is folded into the parameters of the measured species.</span>
+<span id="cb1-539"><a href="#cb1-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-540"><a href="#cb1-540" aria-hidden="true" tabindex="-1"></a>Reflecting on the modeling famework on a broader scope, the optimizer works in log-space and fixes the sign of every parameter to that of the initial linear estimate, so a wrongly signed starting value cannot be corrected. Poorly constrained, near-zero coefficients may therefore switch sign between fits without real biological meaning.</span>
+<span id="cb1-541"><a href="#cb1-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-542"><a href="#cb1-542" aria-hidden="true" tabindex="-1"></a>As an outlook for further work the estimated parameters could be used to simulate the growth trajectories of the co-cultures over longer periods, to test whether stable coexistence or cycling patterns would occur.</span>
+<span id="cb1-543"><a href="#cb1-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-544"><a href="#cb1-544" aria-hidden="true" tabindex="-1"></a><span class="fu"># Statement of authorship, contributions and use of LLMs</span></span>
+<span id="cb1-545"><a href="#cb1-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-546"><a href="#cb1-546" aria-hidden="true" tabindex="-1"></a>This report is submitted as the practical project for the class "Practial Course in Modelling and Systems Biology" (2026S 300332-1). I originally wanted to conduct the modeling analyses with my own masters thesis data from co-culturing experiments with *P. putida*, *B. subtilis* and a complex soil bacterial community isolated from soil samples as a natural inoculum. However, since I was unable to have the necessary experimental data ready in time for the due date of this report I herein use the data of my colleague Maryam Al-Jalahwee, BSc who conducted similar experiments with *Trichoderma viride* as the third interaction entity. All data arranging, sorting and subsequent analysis has been conducted by the author.</span>
+<span id="cb1-547"><a href="#cb1-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a>I used CLAUDE *Sonnet 5* and OpenAI GPT-5.6 *Luna* for generation and improvements of R code. In particular I used it for the building of functions to automate my data processing pipeline for all the different conditions and fractal levels I have in my data, for bug fixing, efficiency improvements on the code I provided and for configuring layout, design and arrangement of plots and tables. I also used it to help me better understand the mechanism of some functions I used.</span>
+<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-552"><a href="#cb1-552" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb1-553"><a href="#cb1-553" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-554"><a href="#cb1-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-555"><a href="#cb1-555" aria-hidden="true" tabindex="-1"></a><span class="fu"># Supplementary Material</span></span>
+<span id="cb1-556"><a href="#cb1-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-557"><a href="#cb1-557" aria-hidden="true" tabindex="-1"></a>The complete code that contains all data handling and also compiles this report reproducibly can be found as a Quarto document <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/lekuehne/masterThesis/blob/main/SysBioModelingClass.qmd)</span>.</span>
+<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-561"><a href="#cb1-561" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-562"><a href="#cb1-562" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-lv-coeff</span></span>
+<span id="cb1-563"><a href="#cb1-563" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb1-564"><a href="#cb1-564" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-pos: H</span></span>
+<span id="cb1-565"><a href="#cb1-565" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Estimated Lotka-Volterra interaction coefficients for cocultures of *P. putida* (1) and *B. subtilis* (2) on microfluidic chips with mazes of increasing fractal complexity (f0-f5). $a_{11}$ and $a_{22}$ are the intra-specific effects of *P. putida* and *B. subtilis*, respectively; $a_{12}$ and $a_{21}$ are the inter-specific effects of *B. subtilis* on *P. putida* and vice versa. Negative coefficients indicate competition/inhibition, positive coefficients promotion/enhancement."</span></span>
+<span id="cb1-566"><a href="#cb1-566" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-567"><a href="#cb1-567" aria-hidden="true" tabindex="-1"></a>tab_long <span class="ot">&lt;-</span> coefs <span class="sc">|&gt;</span></span>
+<span id="cb1-568"><a href="#cb1-568" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">factor</span>(condition, <span class="at">levels =</span> all_conditions),</span>
+<span id="cb1-569"><a href="#cb1-569" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">paste</span>(condition, parameter, <span class="at">sep =</span> <span class="st">"|"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-570"><a href="#cb1-570" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(condition, i <span class="sc">!=</span> j, i, j)          <span class="co"># a11, a22, a12, a21 within each condition</span></span>
+<span id="cb1-571"><a href="#cb1-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-572"><a href="#cb1-572" aria-hidden="true" tabindex="-1"></a>tab_wide <span class="ot">&lt;-</span> tab_long <span class="sc">|&gt;</span></span>
+<span id="cb1-573"><a href="#cb1-573" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(fractal, col, mu) <span class="sc">|&gt;</span></span>
+<span id="cb1-574"><a href="#cb1-574" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> col, <span class="at">values_from =</span> mu) <span class="sc">|&gt;</span>   <span class="co"># column order = order of appearance</span></span>
+<span id="cb1-575"><a href="#cb1-575" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(fractal)</span>
+<span id="cb1-576"><a href="#cb1-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-577"><a href="#cb1-577" aria-hidden="true" tabindex="-1"></a>col_meta <span class="ot">&lt;-</span> tab_long <span class="sc">|&gt;</span></span>
+<span id="cb1-578"><a href="#cb1-578" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(col, condition, parameter)</span>
+<span id="cb1-579"><a href="#cb1-579" aria-hidden="true" tabindex="-1"></a>col_meta <span class="ot">&lt;-</span> col_meta[<span class="fu">match</span>(<span class="fu">names</span>(tab_wide)[<span class="sc">-</span><span class="dv">1</span>], col_meta<span class="sc">$</span>col), ]   <span class="co"># same order as table columns</span></span>
+<span id="cb1-580"><a href="#cb1-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-581"><a href="#cb1-581" aria-hidden="true" tabindex="-1"></a>grp <span class="ot">&lt;-</span> <span class="fu">count</span>(col_meta, condition)                                  <span class="co"># columns per condition</span></span>
+<span id="cb1-582"><a href="#cb1-582" aria-hidden="true" tabindex="-1"></a>top <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="fu">set_names</span>(grp<span class="sc">$</span>n, <span class="fu">cond_full</span>(<span class="fu">as.character</span>(grp<span class="sc">$</span>condition), <span class="st">"latex"</span>)))</span>
+<span id="cb1-583"><a href="#cb1-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-584"><a href="#cb1-584" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> tab_wide <span class="sc">|&gt;</span></span>
+<span id="cb1-585"><a href="#cb1-585" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">format =</span> <span class="st">"latex"</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-586"><a href="#cb1-586" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Fractal"</span>, <span class="fu">sprintf</span>(<span class="st">"$a_{%s}$"</span>, <span class="fu">str_sub</span>(col_meta<span class="sc">$</span>parameter, <span class="dv">2</span>)))) <span class="sc">|&gt;</span></span>
+<span id="cb1-587"><a href="#cb1-587" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(top, <span class="at">line =</span> <span class="cn">TRUE</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="co">#%&gt;% # rule under each condition group</span></span>
+<span id="cb1-588"><a href="#cb1-588" aria-hidden="true" tabindex="-1"></a>  <span class="co"># kable_styling(latex_options = c("landscape", "scale_down", "HOLD_position"))</span></span>
+<span id="cb1-589"><a href="#cb1-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-590"><a href="#cb1-590" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">asis_output</span>(</span>
+<span id="cb1-591"><a href="#cb1-591" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">centering</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb1-592"><a href="#cb1-592" aria-hidden="true" tabindex="-1"></a>         <span class="st">"</span><span class="sc">\\</span><span class="st">rotatebox{90}{</span><span class="sc">\\</span><span class="st">resizebox{0.9</span><span class="sc">\\</span><span class="st">textheight}{!}{"</span>,</span>
+<span id="cb1-593"><a href="#cb1-593" aria-hidden="true" tabindex="-1"></a>         tab,</span>
+<span id="cb1-594"><a href="#cb1-594" aria-hidden="true" tabindex="-1"></a>         <span class="st">"}}"</span>)</span>
+<span id="cb1-595"><a href="#cb1-595" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-596"><a href="#cb1-596" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-597"><a href="#cb1-597" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-598"><a href="#cb1-598" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-601"><a href="#cb1-601" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-602"><a href="#cb1-602" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-gof</span></span>
+<span id="cb1-603"><a href="#cb1-603" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb1-604"><a href="#cb1-604" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Goodness of fit of the fitted growth curves against the observed means, per species. $R^2 = 1 - SS_\\mathrm{res}/SS_\\mathrm{tot}$ (can be negative for fits worse than the mean); RMSE in the units of $N$ (fluorescence intensity). Model predictions were interpolated at the observed time points."</span></span>
+<span id="cb1-605"><a href="#cb1-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-606"><a href="#cb1-606" aria-hidden="true" tabindex="-1"></a>sp_present <span class="ot">&lt;-</span> tracked[tracked <span class="sc">%in%</span> gof<span class="sc">$</span>species]</span>
+<span id="cb1-607"><a href="#cb1-607" aria-hidden="true" tabindex="-1"></a>gof_cols   <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">outer</span>(sp_present, <span class="fu">c</span>(<span class="st">"r2"</span>, <span class="st">"rmse"</span>), paste, <span class="at">sep =</span> <span class="st">"|"</span>)))</span>
+<span id="cb1-608"><a href="#cb1-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-609"><a href="#cb1-609" aria-hidden="true" tabindex="-1"></a>gof_wide <span class="ot">&lt;-</span> gof <span class="sc">|&gt;</span></span>
+<span id="cb1-610"><a href="#cb1-610" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">factor</span>(condition, <span class="at">levels =</span> all_conditions),</span>
+<span id="cb1-611"><a href="#cb1-611" aria-hidden="true" tabindex="-1"></a>         <span class="at">species   =</span> <span class="fu">factor</span>(species, <span class="at">levels =</span> sp_present)) <span class="sc">|&gt;</span></span>
+<span id="cb1-612"><a href="#cb1-612" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(condition, fractal) <span class="sc">|&gt;</span></span>
+<span id="cb1-613"><a href="#cb1-613" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="fu">c</span>(condition, fractal), <span class="at">names_from =</span> species,</span>
+<span id="cb1-614"><a href="#cb1-614" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="fu">c</span>(r2, rmse), <span class="at">names_glue =</span> <span class="st">"{species}|{.value}"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-615"><a href="#cb1-615" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(condition, fractal, <span class="fu">all_of</span>(gof_cols)) <span class="sc">|&gt;</span></span>
+<span id="cb1-616"><a href="#cb1-616" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">cond_full</span>(<span class="fu">as.character</span>(condition), <span class="st">"latex"</span>),</span>
+<span id="cb1-617"><a href="#cb1-617" aria-hidden="true" tabindex="-1"></a>         <span class="at">fractal   =</span> <span class="fu">as.character</span>(fractal))</span>
+<span id="cb1-618"><a href="#cb1-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-619"><a href="#cb1-619" aria-hidden="true" tabindex="-1"></a>gof_wide <span class="sc">|&gt;</span></span>
+<span id="cb1-620"><a href="#cb1-620" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">format =</span> <span class="st">"latex"</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">align =</span> <span class="st">"llcccc"</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-621"><a href="#cb1-621" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Fractal"</span>, <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"$R^2$"</span>, <span class="st">"RMSE"</span>), <span class="fu">length</span>(sp_present)))) <span class="sc">|&gt;</span></span>
+<span id="cb1-622"><a href="#cb1-622" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
+<span id="cb1-623"><a href="#cb1-623" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">set_names</span>(<span class="fu">rep</span>(<span class="dv">2</span>, <span class="fu">length</span>(sp_present)),</span>
+<span id="cb1-624"><a href="#cb1-624" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">textit{"</span>, species_names[sp_present], <span class="st">"}"</span>))),</span>
+<span id="cb1-625"><a href="#cb1-625" aria-hidden="true" tabindex="-1"></a>                   <span class="at">line =</span> <span class="cn">TRUE</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-626"><a href="#cb1-626" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collapse_rows</span>(<span class="at">columns =</span> <span class="dv">1</span>, <span class="at">latex_hline =</span> <span class="st">"major"</span>, <span class="at">valign =</span> <span class="st">"top"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-627"><a href="#cb1-627" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">9</span>)</span>
+<span id="cb1-628"><a href="#cb1-628" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-629"><a href="#cb1-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-632"><a href="#cb1-632" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-633"><a href="#cb1-633" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-confidence</span></span>
+<span id="cb1-634"><a href="#cb1-634" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb1-635"><a href="#cb1-635" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Parameter estimates with uncertainty for every fit. $r_i$: intrinsic growth rate of species $i$; $a_{ij}$: interaction coefficients (indices as in Table 1). SD is half the width of the ±1 SD interval returned by gauseR; the 95\\% interval is the normal approximation (estimate ± 1.96 SD). 'Excludes 0' indicates whether this interval excludes zero."</span></span>
+<span id="cb1-636"><a href="#cb1-636" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-637"><a href="#cb1-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-638"><a href="#cb1-638" aria-hidden="true" tabindex="-1"></a>param_out <span class="ot">&lt;-</span> params <span class="sc">|&gt;</span></span>
+<span id="cb1-639"><a href="#cb1-639" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-640"><a href="#cb1-640" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">factor</span>(condition, <span class="at">levels =</span> all_conditions),</span>
+<span id="cb1-641"><a href="#cb1-641" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">abs</span>(upper_sd <span class="sc">-</span> lower_sd) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb1-642"><a href="#cb1-642" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo =</span> mu <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> sd,</span>
+<span id="cb1-643"><a href="#cb1-643" aria-hidden="true" tabindex="-1"></a>    <span class="at">hi =</span> mu <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> sd</span>
+<span id="cb1-644"><a href="#cb1-644" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-645"><a href="#cb1-645" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(condition, fractal, <span class="fu">str_starts</span>(parameter, <span class="st">"a"</span>), <span class="fu">coalesce</span>(i <span class="sc">!=</span> j, <span class="cn">FALSE</span>), parameter) <span class="sc">|&gt;</span></span>
+<span id="cb1-646"><a href="#cb1-646" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb1-647"><a href="#cb1-647" aria-hidden="true" tabindex="-1"></a>    <span class="at">Condition =</span> <span class="fu">cond_full</span>(<span class="fu">as.character</span>(condition), <span class="st">"latex"</span>),</span>
+<span id="cb1-648"><a href="#cb1-648" aria-hidden="true" tabindex="-1"></a>    <span class="at">Fractal   =</span> <span class="fu">as.character</span>(fractal),</span>
+<span id="cb1-649"><a href="#cb1-649" aria-hidden="true" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="fu">sprintf</span>(<span class="st">"$%s_{%s}$"</span>, <span class="fu">str_sub</span>(parameter, <span class="dv">1</span>, <span class="dv">1</span>), <span class="fu">str_sub</span>(parameter, <span class="dv">2</span>)),</span>
+<span id="cb1-650"><a href="#cb1-650" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimate  =</span> <span class="fu">sprintf</span>(<span class="st">"%.4f"</span>, mu),</span>
+<span id="cb1-651"><a href="#cb1-651" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD        =</span> <span class="fu">sprintf</span>(<span class="st">"%.2g"</span>, sd),</span>
+<span id="cb1-652"><a href="#cb1-652" aria-hidden="true" tabindex="-1"></a>    <span class="at">Interval  =</span> <span class="fu">sprintf</span>(<span class="st">"%.2g, %.2g"</span>, lo, hi),</span>
+<span id="cb1-653"><a href="#cb1-653" aria-hidden="true" tabindex="-1"></a>    <span class="at">Excl0     =</span> <span class="fu">if_else</span>(lo <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> hi <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>)</span>
+<span id="cb1-654"><a href="#cb1-654" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-655"><a href="#cb1-655" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-656"><a href="#cb1-656" aria-hidden="true" tabindex="-1"></a>param_out <span class="sc">|&gt;</span></span>
+<span id="cb1-657"><a href="#cb1-657" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">format =</span> <span class="st">"latex"</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">longtable =</span> <span class="cn">TRUE</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-658"><a href="#cb1-658" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">"llcrrrc"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-659"><a href="#cb1-659" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Fractal"</span>, <span class="st">"Parameter"</span>, <span class="st">"Estimate"</span>, <span class="st">"SD"</span>,</span>
+<span id="cb1-660"><a href="#cb1-660" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"95</span><span class="sc">\\</span><span class="st">% interval"</span>, <span class="st">"Excludes 0"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-661"><a href="#cb1-661" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collapse_rows</span>(<span class="at">columns =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">latex_hline =</span> <span class="st">"major"</span>, <span class="at">valign =</span> <span class="st">"top"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-662"><a href="#cb1-662" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"repeat_header"</span>, <span class="at">font_size =</span> <span class="dv">8</span>)</span>
+<span id="cb1-663"><a href="#cb1-663" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {

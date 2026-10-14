@@ -40,7 +40,8 @@ website:
         - section: "Fractal Maze Chip Experiments"
           contents: mazeChips/**/*.qmd
         - section: "Analysis"
-          contents: SysBioModelingClass.qmd
+          contents: 
+            - SysBioModelingClass.qmd
         
     - id: MM
       title: "Material & Methods"

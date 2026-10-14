@@ -3,7 +3,11 @@ title: "Lotka—Volterra modeling of a spatially informed three-species microbia
 author: "Leander Kühne, BSc"
 date: "09/30/2026"
 format:
-  html: default
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+    toc-depth: 2
   pdf: 
     include-in-header:
       text: |
@@ -12,6 +16,7 @@ toc: true
 toc-depth: 2
 number-sections: true
 lightbox: true
+sidebar: false
 execute:
   echo: false
   output: false

@@ -2,22 +2,23 @@
 title: "Introduction"
 bibliography: references.bib
 format:
-  html:
-    embed-resources: true
-    revealjs:
-      progress-bar: false
-      menu: false
-      slide-number: 'c'
-      preview-links: auto
-      css: styles.css
+  revealjs:
+    progress-bar: false
+    menu: false
+    slide-number: 'c'
+    preview-links: auto
+    css: styles.css
+sidebar: false
+execute:
+  cache: true
 ---
 
 
 # When strangers join the party... 
-## How Microhabitat Complexity And Community Context Shape Bacterial Interactions
+How Microhabitat Complexity And Community Context Shape Bacterial Interactions
 
 
-# Why bother? {.center}
+# Why bother?
 
 ## Microorganisms shape the foundation of ecosystems and macroecolgy {.smaller}
 :::: columns
@@ -132,12 +133,16 @@ Arellano-Caicedo et al. (2023), Chang et al. (2023), Mafla-Endara et al. (2021),
 
 ---
 
+
+
 ## Spatial structure allows coexistence between B. subtilis and P. putida
 - We don’t know if it applies to more complex community   
 - How meaningful/translatable are the results   
 - Reflection of in situ??
 
----
+## References
+::: {#refs}
+:::
 
 ## Research questions
 - How is the growth rate and spatial distribution (in a fractal maze) of B. subtilis & P. putida affected by an increase in community complexity from monoculture to pairwise co-culture to co-culture with a complex soil community?

@@ -1,0 +1,109 @@
+<script>
+(function () {
+  var T = window.TPL || {};
+  var wait = setInterval(function () {
+    if (window.Reveal && Reveal.isReady && Reveal.isReady()) { clearInterval(wait); start(); }
+  }, 50);
+
+  function start() {
+    var slidesEl = document.querySelector('.reveal .slides');
+    var secs = Array.prototype.slice.call(slidesEl.querySelectorAll(':scope > section'));
+
+    // Title image (optional)
+    var ts = document.getElementById('title-slide');
+    if (ts && T.titleImage) {
+      var ti = document.createElement('img');
+      ti.className = 'title-img'; ti.src = T.titleImage;
+      ti.onload = function () { Reveal.layout(); };
+      ts.appendChild(ti);
+    }
+
+    secs.forEach(function (sec) {
+      // collect slide-level citations -> data attribute, hide the div
+      var cites = [];
+      sec.querySelectorAll('.cites .citation').forEach(function (c) {
+        cites.push(c.textContent.trim().replace(/\s+and\s+/, ' & '));
+      });
+      sec.dataset.cites = cites.join(', ');
+
+      if (!sec.classList.contains('level2')) return;
+
+      // wrap content in .body (overflow-controlled area)
+      var body = document.createElement('div');
+      body.className = 'body';
+      Array.prototype.slice.call(sec.children).forEach(function (ch) {
+        if (/^H2$/.test(ch.tagName) || ch.classList.contains('cites') || ch.matches('aside.notes')) return;
+        body.appendChild(ch);
+      });
+      sec.appendChild(body);
+
+      // .fit images: make every ancestor up to .body/.column a flex chain
+      body.querySelectorAll('img').forEach(function (img) {
+        if (img.classList.contains('fit') || img.closest('.fit') || sec.classList.contains('image-slide')) {
+          img.classList.add('fit');
+          for (var p = img.parentElement; p && p !== body && !p.classList.contains('column'); p = p.parentElement)
+            p.classList.add('fit-chain');
+          img.addEventListener('load', function () { fitBody(Reveal.getCurrentSlide()); });
+        }
+      });
+    });
+
+    // Footer
+    var f = document.createElement('div');
+    f.id = 'tpl-footer';
+    var logo = T.logo ? '<img src="' + T.logo + '" alt="">' : '';
+    var left = [logo, T.author ? '<span>' + T.author + '</span>' : ''].filter(Boolean).join('<span class="sep">|</span>');
+    f.innerHTML = '<div class="f-left">' + left + '</div>' +
+      '<div class="f-right"><span class="f-cites"></span><span class="sep f-sep">|</span><span class="f-num"></span></div>';
+    slidesEl.appendChild(f);
+
+    function update() {
+      var s = Reveal.getCurrentSlide();
+      if (!s) return;
+      var hide = s.id === 'title-slide' || s.classList.contains('level1');
+      f.style.display = hide ? 'none' : 'flex';
+      var c = s.dataset.cites || '';
+      var cEl = f.querySelector('.f-cites');
+      cEl.textContent = c; cEl.title = c;
+      f.querySelector('.f-sep').style.display = c ? '' : 'none';
+      f.querySelector('.f-num').textContent = Reveal.getSlidePastCount() + 1;
+      fitBody(s);
+    }
+
+    Reveal.on('slidechanged', update);
+    Reveal.on('resize', update);
+    Reveal.sync();
+    update();
+
+    // Overflow control: shrink font until content fits (min 55%)
+    // (defined as a function declaration below)
+
+    // Laser pointer (L) and light/dark (D)
+    var dot = document.createElement('div');
+    dot.id = 'laser'; document.body.appendChild(dot);
+    document.addEventListener('mousemove', function (e) {
+      dot.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
+    });
+    Reveal.addKeyBinding({ keyCode: 76, key: 'L', description: 'Laser pointer on/off' }, function () {
+      var on = document.body.classList.toggle('laser');
+      dot.style.display = on ? 'block' : 'none';
+    });
+    Reveal.addKeyBinding({ keyCode: 68, key: 'D', description: 'Light/dark theme' }, function () {
+      var d = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('tpl-dark', d ? '1' : '0'); } catch (e) {}
+    });
+    try { if (localStorage.getItem('tpl-dark') === '1') document.documentElement.classList.add('dark'); } catch (e) {}
+  }
+
+  function fitBody(sec) {
+    if (!sec) return;
+    var b = sec.querySelector(':scope > .body');
+    if (!b) return;
+    b.style.fontSize = '';
+    var base = parseFloat(getComputedStyle(b).fontSize), k = 1;
+    while ((b.scrollHeight > b.clientHeight + 1 || b.scrollWidth > b.clientWidth + 1) && k > 0.55) {
+      k -= 0.05; b.style.fontSize = (base * k) + 'px';
+    }
+  }
+})();
+</script>
