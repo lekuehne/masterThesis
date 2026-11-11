@@ -21,8 +21,24 @@
               "icon": "lucide-file",
               "title": "Git_HOWTO"
             }
+          },
+          {
+            "id": "158a609a5e0c0adc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "imageJ-macros/README.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,8 +97,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "95fddba02608bd9d",
@@ -230,10 +245,10 @@
       "slides-extended:Show slide preview": false
     }
   },
-  "active": "473f14ab9fbc7135",
+  "active": "158a609a5e0c0adc",
   "lastOpenFiles": [
-    "git-howto.quarto_ipynb",
     "Git_HOWTO.md",
+    "git-howto.quarto_ipynb",
     "masterThesis.qmd",
     "site_libs/quarto-html/tippy.umd.min.js",
     "site_libs/quarto-html/tippy.css",
@@ -243,7 +258,6 @@
     "site_libs/quarto-html/light-border.css",
     "site_libs/quarto-html",
     "site_libs/clipboard/clipboard.min.js",
-    "site_libs/clipboard",
     "README.md",
     "imageJ_pipeline/README.md",
     "plateReader/004-BS_BSPP_dil-series/004-BS_BSPP_dil-series_files/figure-html/unnamed-chunk-11-1.png",

@@ -1,5 +1,5 @@
 {
-  "quartoPath": "/usr/local/bin/quarto",
+  "quartoPath": "/usr/bin/quarto",
   "enableQmdLinking": true,
   "quartoTypst": "",
   "emitCompilationLogs": true

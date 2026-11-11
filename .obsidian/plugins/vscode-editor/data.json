@@ -17,9 +17,9 @@
     "tex",
     "sty",
     "html",
-    "qmd",
     "r",
-    "rmd"
+    "rmd",
+    "sh"
   ],
   "folding": true,
   "lineNumbers": true,
