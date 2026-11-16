@@ -48,6 +48,10 @@ Each macro also runs from the Fiji GUI (edit the defaults at the top of the file
 `Subtract Background... rolling=<r>` on every file in `aligned/`, written to `bg_subtracted/`. Runs headless by default (`--gui` to disable).
 
 ### Step 3 – measure
+For each channel set the windows open non-blocking, so you can zoom and edit the ROIs. Adjustments apply to all channels of the set and never change `RoiSet.zip`.
+Hotkeys (image window in focus): **F2** next ROI, **F1** previous ROI. A key press stores your last move, selects the next ROI and zooms to it; move it with the arrow keys. To shift all ROIs at once use ROI Manager → More » Translate. Keys can be changed at the top of `3_measure_roi.ijm`.
+Re-running step 3 on a finished folder also rebuilds the metadata columns of an existing CSV.
+
 For each image the ROIs are overlaid and you choose **Measure**, **Skip**, **Flag re-align** or **Abort** (results so far are saved).
 
 **Re-aligning flagged files**
@@ -72,12 +76,13 @@ By default, work that is already done is omitted, so an aborted or crashed run i
 
 One row per image × ROI.
 
-| Column | Source |
+| Column | Source (file name `012-t1_TileScan 6_19_ch01.tif`) |
 |--------|--------|
-| `Experiment` | base folder `012-t3` → `012` |
-| `Time` | base folder `012-t3` → `3` |
-| `Chip` | file `7_ch00.tif` → `7` |
-| `Channel` | file `7_ch00.tif` → `00` |
+| `Experiment` | `012` |
+| `Timepoint` | `1` |
+| `TileScan` | `6` (space after "TileScan" optional) |
+| `Chip` | `19`; any text without `_` works, e.g. `B`, `PB` |
+| `Channel` | `01` |
 | `File`, `Subfolder`, `ROI_index` | traceability |
 | `Label`, `Area`, `Mean`, `StdDev`, `Min`, `Max`, `IntDen`, `Median` | ImageJ measurements |
 

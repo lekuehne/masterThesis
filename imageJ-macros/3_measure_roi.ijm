@@ -6,10 +6,14 @@
 //          File, Subfolder, ROI_index, Experiment, Timepoint, TileScan,
 //          Chip, Channel plus the standard ImageJ measurements.
 //
-//  Metadata (all from the FILE NAME, numeric part only):
-//    <experiment>-t<timepoint>_TileScan <no>_<chip>_ch<channel>.tif
-//    e.g. 012-t1_TileScan 6_19_ch01.tif
-//      -> Experiment 012, Timepoint 1, TileScan 6, Chip 19, Channel 01
+//  Metadata (all from the FILE NAME):
+//    <experiment>-t<timepoint>_TileScan<no>_<chip>_ch<channel>.tif
+//    e.g. 012-t1_TileScan 6_19_ch01.tif -> Experiment 012, Timepoint 1,
+//                                          TileScan 6, Chip 19, Channel 01
+//         011-t0_TileScan 4_PB_ch00.tif -> ... TileScan 4, Chip PB, Channel 00
+//    - Chip may be any text without an underscore (19, B, PB, 3a, ...)
+//    - the space in "TileScan 4" is optional ("TileScan4" also works)
+//    - underscores separate the properties; upper/lower case is ignored
 //
 //  Args ("key=value|key=value"):
 //    input_dir   base folder (e.g. .../012-t3)
@@ -26,9 +30,17 @@
 //  and ONE decision applies to the whole set.
 //
 //  ADJUSTING ROIs: for every set you can move the ROIs (ROI Manager:
-//  select ROI, drag it on the image, click "Update"). The adjusted ROIs
+//  select ROI, drag it on the image, click "Update"; or use the hotkeys
+//  below). The adjusted ROIs
 //  are used for ALL channels of the current set only. RoiSet.zip is never
 //  modified; every new set starts again from the original RoiSet.zip.
+//
+//  HOTKEYS (work while an image window has focus; installed automatically):
+//    F2 = next ROI, F1 = previous ROI. The key press stores the position of
+//    the ROI you just moved, selects the next/previous ROI, and zooms/centres
+//    on it. Move it with the arrow keys (or drag), press F2 again.
+//    Stay in the SAME image window while stepping (use the clearest channel).
+//    Change the keys in KEY_NEXT / KEY_PREV below.
 //
 //  Per set you choose: Measure / Adjust ROIs again / Skip / Flag for
 //  re-align / Abort.
@@ -44,6 +56,8 @@ output_csv = "";
 only_list  = "";
 do_quit    = false;
 overwrite  = false;
+KEY_NEXT   = "F2";       // hotkey: next ROI
+KEY_PREV   = "F1";       // hotkey: previous ROI
 
 arg = getArgument();
 if (arg != "") {
@@ -71,8 +85,11 @@ n = files.length;
 if (n == 0) exit("No TIFF files found in: " + bg_dir);
 
 // ── File name pattern: <exp>-t<time>_TileScan <no>_<chip>_ch<channel>.tif ─
-fn_pat  = "[0-9]+-t[0-9]+_tile ?scan[ _]?[0-9]+_[0-9]+_ch[0-9]+\\.tiff?";
-cap_pat = "^([0-9]+)-t([0-9]+)_tile ?scan[ _]?([0-9]+)_([0-9]+)_ch([0-9]+)\\.tiff?$";
+// (?i) = ignore case. Chip = anything except "_" (so letters work too).
+fn_pat  = "(?i)[0-9]+-t[0-9]+_tile ?scan[ _]?[0-9]+_[^_]+_ch[0-9]+\\.tiff?";
+cap_pat = "(?i)^([0-9]+)-t([0-9]+)_tile ?scan[ _]?([0-9]+)_([^_]+)_ch([0-9]+)\\.tiff?$";
+
+installHotkeys(KEY_NEXT, KEY_PREV);
 
 print("=== STEP 3: ROI measurement ===");
 print("Input     : " + bg_dir);
@@ -99,11 +116,14 @@ if (resume) {
         relold = fn;
         if (sb != "") relold = sb + "/" + fn;
         done_txt = done_txt + relold + "\n";
-        // re-set text columns: ImageJ reads "012"/"00" back as numbers
-        lnold = toLowerCase(fn);
-        if (matches(lnold, fn_pat)) {
-            setResult("Experiment", r, replace(lnold, cap_pat, "$1"));
-            setResult("Channel", r, replace(lnold, cap_pat, "$5"));
+        // (re)build metadata columns from the file name; as text, so that
+        // "012"/"00" survive and old 'NA' rows are repaired without re-measuring
+        if (matches(fn, fn_pat)) {
+            setResult("Experiment", r, replace(fn, cap_pat, "$1"));
+            setResult("Timepoint",  r, replace(fn, cap_pat, "$2"));
+            setResult("TileScan",   r, replace(fn, cap_pat, "$3"));
+            setResult("Chip",       r, replace(fn, cap_pat, "$4"));
+            setResult("Channel",    r, replace(fn, cap_pat, "$5"));
         }
     }
     updateResults();
@@ -160,12 +180,18 @@ for (i = 0; i < n && !abort; i++) {
         waitForUser("Inspect / adjust ROIs  [set " + n_sets + "]",
             "Files in this set:" + list_txt + "\n\n" +
             "- Zoom and scroll freely in the image windows.\n" +
-            "- To MOVE a ROI: select it in the ROI Manager, drag it on the\n" +
-            "  image, then click 'Update' in the ROI Manager.\n" +
-            "- To shift ALL ROIs: ROI Manager > More >> Translate...\n" +
+            "- " + KEY_NEXT + " / " + KEY_PREV + " (image window in focus) = next / previous ROI:\n" +
+            "  stores your move, selects the next ROI, zooms to it.\n" +
+            "  Move the selected ROI with the ARROW KEYS or by dragging.\n" +
+            "  Stay in the same image window while stepping.\n" +
+            "- Alternative: select a ROI in the ROI Manager, drag, click 'Update'.\n" +
+            "- Shift ALL ROIs at once: ROI Manager > More >> Translate...\n" +
             "- Changes apply to ALL channels of this set only;\n" +
             "  RoiSet.zip is not modified.\n\n" +
             "Click OK when finished (OK without changes keeps the original ROIs).");
+
+        // store the move of the ROI that is still being edited
+        if (roiManager("index") >= 0 && selectionType() >= 0) roiManager("update");
 
         // Phase 2: show the (possibly adjusted) ROIs on every channel + decide
         roiManager("Deselect");
@@ -192,15 +218,14 @@ for (i = 0; i < n && !abort; i++) {
             sub   = "";
             if (indexOf(rel, "/") >= 0) sub = substring(rel, 0, lastIndexOf(rel, "/"));
 
-            // Metadata from file name (numeric parts only)
-            ln = toLowerCase(fname);
+            // Metadata from the file name (all stored as text: keeps "012", "00", "PB")
             experiment = "NA";  tp = "NA";  tilescan = "NA";  chip = "NA";  channel = "NA";
-            if (matches(ln, fn_pat)) {
-                experiment = replace(ln, cap_pat, "$1");              // text: keeps "012"
-                tp         = parseInt(replace(ln, cap_pat, "$2"));
-                tilescan   = parseInt(replace(ln, cap_pat, "$3"));
-                chip       = parseInt(replace(ln, cap_pat, "$4"));
-                channel    = replace(ln, cap_pat, "$5");              // text: keeps "00"
+            if (matches(fname, fn_pat)) {
+                experiment = replace(fname, cap_pat, "$1");
+                tp         = replace(fname, cap_pat, "$2");
+                tilescan   = replace(fname, cap_pat, "$3");
+                chip       = replace(fname, cap_pat, "$4");
+                channel    = replace(fname, cap_pat, "$5");
             } else {
                 print("  WARNING: file name does not match <exp>-t<n>_TileScan <n>_<chip>_ch<nn>.tif : " + fname);
             }
@@ -214,11 +239,11 @@ for (i = 0; i < n && !abort; i++) {
                 setResult("File", r, fname);
                 setResult("Subfolder", r, sub);
                 setResult("ROI_index", r, r - first + 1);
-                setResult("Experiment", r, experiment);   // string -> keeps leading zeros
+                setResult("Experiment", r, experiment);
                 setResult("Timepoint", r, tp);
                 setResult("TileScan", r, tilescan);
                 setResult("Chip", r, chip);
-                setResult("Channel", r, channel);         // string -> "00"
+                setResult("Channel", r, channel);
             }
             print("[set " + n_sets + "] measured " + (nResults - first) + " ROIs: " + rel);
         }
@@ -242,6 +267,33 @@ print("");
 print("=== Step 3 complete: " + nResults + " rows saved to " + output_csv + " ===");
 if (File.exists(realign_file)) print("Files flagged for re-alignment: " + realign_file);
 if (do_quit) { run("Close All"); run("Clear Results"); run("Quit"); }
+
+// Write a small macro file with the hotkeys and install it (Plugins > Macros > Install)
+function installHotkeys(kn, kp) {
+    t = "macro \"Next ROI [" + kn + "]\" { stepRoi(1); }\n" +
+        "macro \"Previous ROI [" + kp + "]\" { stepRoi(-1); }\n" +
+        "function stepRoi(d) {\n" +
+        "  n = roiManager(\"count\");\n" +
+        "  if (n == 0) return;\n" +
+        "  id = getImageID();\n" +
+        "  idx = roiManager(\"index\");\n" +
+        "  if (idx >= 0 && selectionType() >= 0) roiManager(\"update\");\n" +
+        "  if (idx < 0) { idx = 0; if (d < 0) idx = n - 1; }\n" +
+        "  else idx = idx + d;\n" +
+        "  if (idx < 0) idx = 0;\n" +
+        "  if (idx > n - 1) idx = n - 1;\n" +
+        "  roiManager(\"select\", idx);\n" +
+        "  selectImage(id);\n" +
+        "  run(\"To Selection\");\n" +
+        "  run(\"Out [-]\");\n" +
+        "  run(\"Out [-]\");\n" +
+        "  selectWindow(getTitle());\n" +
+        "  showStatus(\"ROI \" + (idx + 1) + \" / \" + n);\n" +
+        "}\n";
+    path = getDirectory("temp") + "roi_hotkeys.ijm";
+    File.saveString(t, path);
+    run("Install...", "install=[" + path + "]");
+}
 
 // Live display of the ROI Manager's ROIs on every image (no static overlay)
 function showLive(ids) {
