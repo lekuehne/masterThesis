@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>experiment – Thesis Results of Leander Kühne</title>
+<title>012-BPN_48h_replenish – Thesis Results of Leander Kühne</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -40,14 +40,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="../favmonster.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a9e8052864c13b4a6b29ea263082f64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b00bbc5d18641909010dc7baa7b302ee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,24 +79,34 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../site_libs/bootstrap-grid-3.4.1/bootstrap-grid.min.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Thesis Results of Leander Kühne</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -156,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="dropdown-header">Fractal Maze Chip Experiments</li>
         <li>
     <a class="dropdown-item" href="../mazeChips/experiment.html">
- <span class="dropdown-text">experiment</span></a>
+ <span class="dropdown-text">012-BPN_48h_replenish</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Analysis</li>
@@ -177,15 +191,16 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">Fractal Maze Chip Experiments</a></li><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">experiment</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">Fractal Maze Chip Experiments</a></li><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">012-BPN_48h_replenish</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -193,35 +208,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Fractal Maze Chip Experiments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Fractal Maze Chip Experiments</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mazeChips/experiment.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">experiment</span></a>
+ <span class="menu-text">012-BPN_48h_replenish</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Analysis</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../SysBioModelingClass.html" class="sidebar-item-text sidebar-link">
@@ -235,15 +244,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#visualize" id="toc-visualize" class="nav-link active" data-scroll-target="#visualize">Visualize</a>
+  <ul class="collapse">
+  <li><a href="#gfp-across-all-fractals" id="toc-gfp-across-all-fractals" class="nav-link" data-scroll-target="#gfp-across-all-fractals">GFP across all fractals:</a></li>
+  <li><a href="#rfp-across-all-fractals" id="toc-rfp-across-all-fractals" class="nav-link" data-scroll-target="#rfp-across-all-fractals">RFP across all fractals:</a></li>
+  <li><a href="#gfp-for-p.-putida-per-fractal" id="toc-gfp-for-p.-putida-per-fractal" class="nav-link" data-scroll-target="#gfp-for-p.-putida-per-fractal">GFP for <em>P. putida</em> per fractal:</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">Fractal Maze Chip Experiments</a></li><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">experiment</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">Fractal Maze Chip Experiments</a></li><li class="breadcrumb-item"><a href="../mazeChips/experiment.html">012-BPN_48h_replenish</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">experiment</h1>
+<h1 class="title">012-BPN_48h_replenish</h1>
 </div>
 
 
@@ -260,8 +280,141 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="visualize" class="level2">
+<h2 class="anchored" data-anchor-id="visualize">Visualize</h2>
+<section id="gfp-across-all-fractals" class="level3">
+<h3 class="anchored" data-anchor-id="gfp-across-all-fractals">GFP across all fractals:</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="experiment_files/figure-html/GFP-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="GFP intensity of all conditions averaged across all levels of fractal complexity."><img src="experiment_files/figure-html/GFP-1.png" class="img-fluid figure-img" width="672" alt="GFP intensity of all conditions averaged across all levels of fractal complexity."></a></p>
+<figcaption>GFP intensity of all conditions averaged across all levels of fractal complexity.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="rfp-across-all-fractals" class="level3">
+<h3 class="anchored" data-anchor-id="rfp-across-all-fractals">RFP across all fractals:</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="experiment_files/figure-html/RFP-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="RFP intensity of all conditions averaged across all levels of fractal complexity."><img src="experiment_files/figure-html/RFP-1.png" class="img-fluid figure-img" width="672" alt="RFP intensity of all conditions averaged across all levels of fractal complexity."></a></p>
+<figcaption>RFP intensity of all conditions averaged across all levels of fractal complexity.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gfp-for-p.-putida-per-fractal" class="level3">
+<h3 class="anchored" data-anchor-id="gfp-for-p.-putida-per-fractal">GFP for <em>P. putida</em> per fractal:</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="experiment_files/figure-html/GFP_f-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="GFP intensity of all conditions per level of fractal complexity."><img src="experiment_files/figure-html/GFP_f-1.png" class="img-fluid figure-img" width="672" alt="GFP intensity of all conditions per level of fractal complexity."></a></p>
+<figcaption>GFP intensity of all conditions per level of fractal complexity.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="container-fluid crosstalk-bscols">
+<div class="row">
+<div class="col-xs-2">
+<div id="cond" class="form-group crosstalk-input-checkboxgroup crosstalk-input">
+<label class="control-label" for="cond">Condition</label>
+<div class="crosstalk-options-group">
+<div class="checkbox">
+<label>
+<input type="checkbox" name="cond" value="BP">
+<span>BP</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="cond" value="BPN">
+<span>BPN</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="cond" value="P">
+<span>P</span>
+</label>
+</div>
+</div>
+<script type="application/json" data-for="cond">{
+  "map": {
+    "BP": ["1", "2", "3", "4", "9", "10", "11", "12", "21", "22", "23", "24", "33", "34", "35", "36", "45", "46", "47", "48", "57", "58", "59", "60", "69", "70", "71", "72", "81", "82", "83", "84", "93", "94", "95", "96", "105", "106", "107", "108", "117", "118", "119", "120", "125", "126", "127", "128", "133", "134", "135", "136", "141", "143", "146", "149", "152", "155", "158", "161", "164", "167", "170", "172", "174"],
+    "BPN": ["13", "14", "15", "16", "25", "26", "27", "28", "37", "38", "39", "40", "49", "50", "51", "52", "61", "62", "63", "64", "73", "74", "75", "76", "85", "86", "87", "88", "97", "98", "99", "100", "109", "110", "111", "112", "144", "147", "150", "153", "156", "159", "162", "165", "168"],
+    "P": ["5", "6", "7", "8", "17", "18", "19", "20", "29", "30", "31", "32", "41", "42", "43", "44", "53", "54", "55", "56", "65", "66", "67", "68", "77", "78", "79", "80", "89", "90", "91", "92", "101", "102", "103", "104", "113", "114", "115", "116", "121", "122", "123", "124", "129", "130", "131", "132", "137", "138", "139", "140", "142", "145", "148", "151", "154", "157", "160", "163", "166", "169", "171", "173", "175"]
+  },
+  "group": ["SharedDatac7b05210"]
+}</script>
+</div>
+<div id="frac" class="form-group crosstalk-input-checkboxgroup crosstalk-input">
+<label class="control-label" for="frac">Fractal</label>
+<div class="crosstalk-options-group">
+<div class="checkbox">
+<label>
+<input type="checkbox" name="frac" value="0">
+<span>0</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="frac" value="1">
+<span>1</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="frac" value="3">
+<span>3</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="frac" value="5">
+<span>5</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="frac" value="Mean">
+<span>Mean</span>
+</label>
+</div>
+</div>
+<script type="application/json" data-for="frac">{
+  "map": {
+    "0": ["1", "5", "9", "13", "17", "21", "25", "29", "33", "37", "41", "45", "49", "53", "57", "61", "65", "69", "73", "77", "81", "85", "89", "93", "97", "101", "105", "109", "113", "117", "121", "125", "129", "133", "137"],
+    "1": ["2", "6", "10", "14", "18", "22", "26", "30", "34", "38", "42", "46", "50", "54", "58", "62", "66", "70", "74", "78", "82", "86", "90", "94", "98", "102", "106", "110", "114", "118", "122", "126", "130", "134", "138"],
+    "3": ["3", "7", "11", "15", "19", "23", "27", "31", "35", "39", "43", "47", "51", "55", "59", "63", "67", "71", "75", "79", "83", "87", "91", "95", "99", "103", "107", "111", "115", "119", "123", "127", "131", "135", "139"],
+    "5": ["4", "8", "12", "16", "20", "24", "28", "32", "36", "40", "44", "48", "52", "56", "60", "64", "68", "72", "76", "80", "84", "88", "92", "96", "100", "104", "108", "112", "116", "120", "124", "128", "132", "136", "140"],
+    "Mean": ["141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175"]
+  },
+  "group": ["SharedDatac7b05210"]
+}</script>
+</div>
+</div>
+<div class="col-xs-10">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-a8c50ab7f34461fbc0e3" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-a8c50ab7f34461fbc0e3">{"x":{"visdat":{"1791b49680ecf":["function () ","plotlyVisDat"]},"cur_data":"1791b49680ecf","attrs":{"1791b49680ecf":{"x":{},"y":{},"mode":"lines+markers","error_y":{},"text":{},"hoverinfo":"text+x+y","color":{},"colors":["#1B9E77","#41AE8D","#67BEA4","#8DCEBB","#B3DED1","#D95F02","#DF792C","#E59456","#ECAF80","#F2C9AA","#7570B3","#8C87BF","#A39FCC","#BAB7D9","#D1CFE5"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"time [d]"},"yaxis":{"domain":[0,1],"automargin":true,"title":"GFP"},"legend":{"title":{"text":"condition_fractal"}},"dragmode":"zoom","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2,4,6,8,10,12,14,16,18],"y":[3625847052.2042823,3820525490.7185035,4034874510.8589859,4127559512.6534929,4518905763.9641247,5035057629.8700142,5899019692.7893076,6040912661.8496141,6242691270.1355391],"mode":"lines+markers","error_y":{"color":"rgba(117,112,179,1)","array":[7849574.0497245593,9470927.6312807966,11036709.269664697,13056541.532997169,15589871.378309339,11209770.565605532,4476158.2921605064,31779055.777462725,275633318.09553796],"thickness":1,"width":4},"text":["condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0","condition: BPN<br>fractal: 0"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["13","25","37","49","61","73","85","97","109"],"set":"SharedDatac7b05210","name":"BPN_0","marker":{"color":"rgba(117,112,179,1)","line":{"color":"rgba(117,112,179,1)"}},"textfont":{"color":"rgba(117,112,179,1)"},"error_x":{"color":"rgba(117,112,179,1)"},"line":{"color":"rgba(117,112,179,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2,4,6,8,10,12,14,16,18],"y":[3795379338.8749356,4039364330.8820605,4903145870.3036861,5033750929.5649462,5528340783.1347075,6731947009.1700039,8216388581.8087606,8843385966.7788353,9136946103.359539],"mode":"lines+markers","error_y":{"color":"rgba(140,135,191,1)","array":[265947663.08513692,277730200.17740029,279996836.03465199,16043325.482195759,39766236.756663375,32851449.373904057,44344843.431504756,584542674.32906973,403199486.88438237],"thickness":1,"width":4},"text":["condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1","condition: BPN<br>fractal: 1"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["14","26","38","50","62","74","86","98","110"],"set":"SharedDatac7b05210","name":"BPN_1","marker":{"color":"rgba(140,135,191,1)","line":{"color":"rgba(140,135,191,1)"}},"textfont":{"color":"rgba(140,135,191,1)"},"error_x":{"color":"rgba(140,135,191,1)"},"line":{"color":"rgba(140,135,191,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2,4,6,8,10,12,14,16,18],"y":[3836801113.013793,3983612455.3716145,4580821572.3653326,4878093085.4360533,5570091701.3091249,6981580625.7408752,8203411733.6766644,9025185345.1639786,9104866842.1865215],"mode":"lines+markers","error_y":{"color":"rgba(163,159,204,1)","array":[438755226.96129096,518881241.8039785,423087616.48903555,311919870.1817441,397216342.85802132,346498933.26248956,103728416.71024886,110928502.43326339,95066082.752679646],"thickness":1,"width":4},"text":["condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3","condition: BPN<br>fractal: 3"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["15","27","39","51","63","75","87","99","111"],"set":"SharedDatac7b05210","name":"BPN_3","marker":{"color":"rgba(163,159,204,1)","line":{"color":"rgba(163,159,204,1)"}},"textfont":{"color":"rgba(163,159,204,1)"},"error_x":{"color":"rgba(163,159,204,1)"},"line":{"color":"rgba(163,159,204,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2,4,6,8,10,12,14,16,18],"y":[3781588018.2419214,4000363573.3313036,4437349592.2466745,4670540038.8424215,5764668003.3314648,7176481907.4686499,9165908562.0453854,10052551152.89044,10257556314.07889],"mode":"lines+markers","error_y":{"color":"rgba(186,183,217,1)","array":[105089344.9988891,1222481196.1485598,481998077.32610494,696351169.177894,748563703.87209201,670463972.44037914,517296181.6641553,767330490.7307663,467583912.80478686],"thickness":1,"width":4},"text":["condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5","condition: BPN<br>fractal: 5"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["16","28","40","52","64","76","88","100","112"],"set":"SharedDatac7b05210","name":"BPN_5","marker":{"color":"rgba(186,183,217,1)","line":{"color":"rgba(186,183,217,1)"}},"textfont":{"color":"rgba(186,183,217,1)"},"error_x":{"color":"rgba(186,183,217,1)"},"line":{"color":"rgba(186,183,217,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2,4,6,8,10,12,14,16,18],"y":[3759903880.5837331,3960966462.5758705,4489047886.4436693,4677485891.6242285,5345501562.9348555,6481266793.0623856,7871182142.5800295,8490508781.6707172,8685515132.4401226],"mode":"lines+markers","error_y":{"color":"rgba(209,207,229,1)","array":[234025116.12344417,508549982.87355185,241218908.26297277,214643917.12957191,547100415.59095263,411046923.09061641,444925539.89147478,285620476.67041659,618947722.50668788],"thickness":1,"width":4},"text":["condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean","condition: BPN<br>fractal: Mean"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["144","147","150","153","156","159","162","165","168"],"set":"SharedDatac7b05210","name":"BPN_Mean","marker":{"color":"rgba(209,207,229,1)","line":{"color":"rgba(209,207,229,1)"}},"textfont":{"color":"rgba(209,207,229,1)"},"error_x":{"color":"rgba(209,207,229,1)"},"line":{"color":"rgba(209,207,229,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[691111776.73102856,4287088663.3486314,5261340595.1635256,5752255876.3203497,5629596685.5118341,6260677428.1015234,8176961681.6537828,11186007172.785526,12070978443.58919,14055610255.956026,27666890160.143688,32607157810.739971,27878078458.135258],"mode":"lines+markers","error_y":{"color":"rgba(217,95,2,1)","array":[542674731.94925141,774959944.68383634,433969591.15283865,278927332.03856111,422037167.66889834,293021992.98898041,324026451.28597152,607209442.78248882,435565075.10948652,391661554.71372563,475500236.48344004,692771711.31043851,757063434.11024535],"thickness":1,"width":4},"text":["condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0","condition: BP<br>fractal: 0"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["1","9","21","33","45","57","69","81","93","105","117","125","133"],"set":"SharedDatac7b05210","name":"BP_0","marker":{"color":"rgba(217,95,2,1)","line":{"color":"rgba(217,95,2,1)"}},"textfont":{"color":"rgba(217,95,2,1)"},"error_x":{"color":"rgba(217,95,2,1)"},"line":{"color":"rgba(217,95,2,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[666485442.44309998,4292241338.2762141,4829970633.5118713,5132758859.8765678,5230035149.5878258,6452052495.6002712,9343770544.2543106,13333931824.25584,14669286913.562834,17639972487.061069,34430935792.249443,37703606310.138512,30648662616.700298],"mode":"lines+markers","error_y":{"color":"rgba(223,121,44,1)","array":[903050268.53437054,711708866.15168822,165841506.18384737,378058285.90891421,324139561.7689935,655614320.89938843,716714664.54553008,590948318.97811723,495937733.72402638,501610180.9924255,1022608885.4573292,1174778901.3927038,2156186561.9017067],"thickness":1,"width":4},"text":["condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1","condition: BP<br>fractal: 1"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["2","10","22","34","46","58","70","82","94","106","118","126","134"],"set":"SharedDatac7b05210","name":"BP_1","marker":{"color":"rgba(223,121,44,1)","line":{"color":"rgba(223,121,44,1)"}},"textfont":{"color":"rgba(223,121,44,1)"},"error_x":{"color":"rgba(223,121,44,1)"},"line":{"color":"rgba(223,121,44,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[695449369.98901427,4419911342.4206457,5122540534.0887547,6434465555.7091894,6525193669.193634,7470292586.9622545,12581357974.855358,18427785342.449379,18874806390.658737,22369049958.721935,42651980052.549202,43691340633.785316,38848469231.976845],"mode":"lines+markers","error_y":{"color":"rgba(229,148,86,1)","array":[1524531664.7847018,200422186.0466136,658006024.68241954,504383735.43697095,780261467.07684267,790403418.37430656,985348265.70221043,967894491.82637644,1161043241.1681781,1524398389.0309165,1414467228.3337476,2948641506.9468298,1814197508.5140555],"thickness":1,"width":4},"text":["condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3","condition: BP<br>fractal: 3"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["3","11","23","35","47","59","71","83","95","107","119","127","135"],"set":"SharedDatac7b05210","name":"BP_3","marker":{"color":"rgba(229,148,86,1)","line":{"color":"rgba(229,148,86,1)"}},"textfont":{"color":"rgba(229,148,86,1)"},"error_x":{"color":"rgba(229,148,86,1)"},"line":{"color":"rgba(229,148,86,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[663694582.73112857,4329193507.0941887,5100608879.9108229,5621205439.4895,5487104849.1922255,7082747646.0391998,11048381548.304819,16421143080.890556,17541483039.937187,18755099511.024014,25639681193.690113,25408496950.385887,20517365275.270828],"mode":"lines+markers","error_y":{"color":"rgba(236,175,128,1)","array":[242908749.00637856,799282835.62133467,641423290.51566172,910233773.28010976,1543269792.6058052,1737431445.7748125,1834024846.008055,1809308723.8199832,1464767200.6345966,1443614715.0209439,2717189120.7365084,1975763642.846586,232305189.12764594],"thickness":1,"width":4},"text":["condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5","condition: BP<br>fractal: 5"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["4","12","24","36","48","60","72","84","96","108","120","128","136"],"set":"SharedDatac7b05210","name":"BP_5","marker":{"color":"rgba(236,175,128,1)","line":{"color":"rgba(236,175,128,1)"}},"textfont":{"color":"rgba(236,175,128,1)"},"error_x":{"color":"rgba(236,175,128,1)"},"line":{"color":"rgba(236,175,128,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[679185292.97356784,4332108712.7849197,5078615160.6687431,5735171432.8489017,5717982588.3713799,6816442539.1758118,10287617937.267067,14842216855.095325,15789138696.936987,18204933053.190762,32597371799.658112,34852650426.262421,29473143895.520809],"mode":"lines+markers","error_y":{"color":"rgba(242,201,170,1)","array":[836136946.37239194,591420288.00446236,1067300912.7332348,2134129440.0754354,2451668246.3928323,1734187255.1886783,1581567677.8283513,1347844423.0609879,1355211715.2408719,2451850335.3499479,1534940180.2691784,261963400.51088509,985854482.18201244],"thickness":1,"width":4},"text":["condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean","condition: BP<br>fractal: Mean"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["141","143","146","149","152","155","158","161","164","167","170","172","174"],"set":"SharedDatac7b05210","name":"BP_Mean","marker":{"color":"rgba(242,201,170,1)","line":{"color":"rgba(242,201,170,1)"}},"textfont":{"color":"rgba(242,201,170,1)"},"error_x":{"color":"rgba(242,201,170,1)"},"line":{"color":"rgba(242,201,170,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[690355276.22485709,5154867058.2324572,7223589447.0870037,5572878373.2212429,6490082242.2583246,7443413326.5098219,10878658396.017172,15818126660.532839,18457609439.480186,19071700294.09798,18992868939.959244,17984793563.926899,17577158952.039116],"mode":"lines+markers","error_y":{"color":"rgba(27,158,119,1)","array":[627083059.4303472,1032261612.0341899,1918129223.3285978,3158383754.1855731,2210811248.3600411,1537066532.3950899,2826623625.4756827,1933462212.4291282,3379896441.7077222,2732431748.0808268,5062539659.4841051,9253625681.2170868,6535857643.3554859],"thickness":1,"width":4},"text":["condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0","condition: P<br>fractal: 0"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["5","17","29","41","53","65","77","89","101","113","121","129","137"],"set":"SharedDatac7b05210","name":"P_0","marker":{"color":"rgba(27,158,119,1)","line":{"color":"rgba(27,158,119,1)"}},"textfont":{"color":"rgba(27,158,119,1)"},"error_x":{"color":"rgba(27,158,119,1)"},"line":{"color":"rgba(27,158,119,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[704562139.03385711,4630929208.7543497,5391837568.4336538,4486531038.2670479,5519833366.6272326,6672454981.7153568,10603984867.139868,15973911948.461725,20205495895.19276,22206424984.158592,32600620566.123043,29647668241.199684,28311799135.231842],"mode":"lines+markers","error_y":{"color":"rgba(65,174,141,1)","array":[3620338535.6871567,3223999471.9702868,2055100283.6157601,3338890931.1283536,2664243833.2208729,3715712588.1428781,7838266235.4781799,5649604802.5370531,3840146610.182466,905546351.00710559,1656381475.7107601,2114172125.0058272,2057818630.3645833],"thickness":1,"width":4},"text":["condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1","condition: P<br>fractal: 1"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["6","18","30","42","54","66","78","90","102","114","122","130","138"],"set":"SharedDatac7b05210","name":"P_1","marker":{"color":"rgba(65,174,141,1)","line":{"color":"rgba(65,174,141,1)"}},"textfont":{"color":"rgba(65,174,141,1)"},"error_x":{"color":"rgba(65,174,141,1)"},"line":{"color":"rgba(65,174,141,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[748180237.20387137,5016256962.1151218,5994077823.8087034,4684293654.5765858,5414144752.5461216,6459941736.493268,10676037722.133196,16955643456.927967,20193948703.531269,21791556387.657207,27755576441.803814,25148748765.694157,23747812254.083599],"mode":"lines+markers","error_y":{"color":"rgba(103,190,164,1)","array":[3261514741.0432549,7210939051.4849472,5203776040.9920797,3900435305.5329733,5667964.3864402045,11160480.363427727,136023273.89354694,18833827.364871267,243186606.16253889,184558426.15629482,51833025.209686302,415517616.03159815,307664814.61906761],"thickness":1,"width":4},"text":["condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3","condition: P<br>fractal: 3"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["7","19","31","43","55","67","79","91","103","115","123","131","139"],"set":"SharedDatac7b05210","name":"P_3","marker":{"color":"rgba(103,190,164,1)","line":{"color":"rgba(103,190,164,1)"}},"textfont":{"color":"rgba(103,190,164,1)"},"error_x":{"color":"rgba(103,190,164,1)"},"line":{"color":"rgba(103,190,164,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[780134823.49752855,5129068463.3437538,6509958892.8345852,4814132432.4379139,6324453712.6020575,7373600292.2981215,12850471841.328632,16004434305.232439,16266050554.520565,16584446202.379597,14419817481.272671,15158484315.448029,15189511611.996401],"mode":"lines+markers","error_y":{"color":"rgba(141,206,187,1)","array":[162090647.72347343,216999698.11516371,302303143.04383057,168006652.24761412,243044003.59061894,383316018.97663754,212167544.98336831,290491607.05298138,771289632.56634533,296258578.58616912,493697622.25450945,1026223214.1684645,361790081.92861074],"thickness":1,"width":4},"text":["condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5","condition: P<br>fractal: 5"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["8","20","32","44","56","68","80","92","104","116","124","132","140"],"set":"SharedDatac7b05210","name":"P_5","marker":{"color":"rgba(141,206,187,1)","line":{"color":"rgba(141,206,187,1)"}},"textfont":{"color":"rgba(141,206,187,1)"},"error_x":{"color":"rgba(141,206,187,1)"},"line":{"color":"rgba(141,206,187,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[0,2,4,6,8,10,12,14,16,18,20,22,24],"y":[730808118.99002862,4982780423.1114206,6279865933.040987,4889458874.6256981,5937128518.5084343,6987352584.2541418,11252288206.654716,16188029092.788742,18780776148.181194,19913531967.073345,23442220857.289692,21984923721.567192,21206570488.337738],"mode":"lines+markers","error_y":{"color":"rgba(179,222,209,1)","array":[856638983.39451396,999303617.67098057,395312898.84219217,1000508592.1896775,893510814.70241416,414544922.79965329,1147860574.3180394,1827982024.8160427,3341906905.4455066,1870008545.5872746,2826440876.2305064,1508115405.7786644,2610318938.694078],"thickness":1,"width":4},"text":["condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean","condition: P<br>fractal: Mean"],"hoverinfo":["text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y","text+x+y"],"type":"scatter","key":["142","145","148","151","154","157","160","163","166","169","171","173","175"],"set":"SharedDatac7b05210","name":"P_Mean","marker":{"color":"rgba(179,222,209,1)","line":{"color":"rgba(179,222,209,1)"}},"textfont":{"color":"rgba(179,222,209,1)"},"error_x":{"color":"rgba(179,222,209,1)"},"line":{"color":"rgba(179,222,209,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedDatac7b05210"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<p>Interactive plot of fluorescence intensity of all conditions per levels of fractal complexity.</p>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -342,7 +495,8 @@ ul.task-list li input[type="checkbox"] {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -351,8 +505,69 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -366,6 +581,7 @@ ul.task-list li input[type="checkbox"] {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -528,44 +744,54 @@ ul.task-list li input[type="checkbox"] {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -664,7 +890,10 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
@@ -674,6 +903,38 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

@@ -1,5 +1,239 @@
 ---
-title: "experiment"
-format: html
+title: "012-BPN_48h_replenish"
+format: 
+  html:
+    code-copy: true
+    code-fold: true
+    code-summary: "Show code"
+    output: false
+    echo: false
+execute:
+    cache: true
+itentifier: "012"
+alias: "012"
+lightbox: true
 ---
 
+```{r}
+# Load dependencies. 
+library(tidyverse)
+library(dplyr)
+library(plotly)
+library(ggnested)
+library(ggtext)
+
+df <- read.csv("results.csv") # Import raw data
+```
+
+```{r}
+# Lookup tables for chip no to condition and ROI to fractal maze complexity assignment
+fractal_map <- c(
+  setNames(rep(0, 7), c(4, 6, 9, 12, 13, 16, 19)),
+  setNames(rep(1, 7), c(2, 10, 15, 20, 22, 24, 25)),
+  setNames(rep(3, 7), c(7, 8, 17, 18, 21, 23, 27)),
+  setNames(rep(5, 7), c(1, 3, 5, 11, 14, 26, 28))
+)
+
+condition_map <- c(
+  "P" = "P",
+  "B" = "B",
+  "BP" = "BP",
+  "PB" = "BP",
+  "1" = "B",
+  "2" = "BN",
+  "3" = "BPN",
+  "4" = "BP",
+  "5" = "PN",
+  "6" = "P",
+  "7" = "B",
+  "8" = "BN",
+  "9" = "BPN",
+  "10" = "BP",
+  "11" = "PN",
+  "12" = "P",
+  "13" = "B",
+  "14" = "BN",
+  "15" = "BPN",
+  "16" = "BP",
+  "17" = "PN",
+  "18" = "P",
+  "19" = "B",
+  "20" = "BN",
+  "21" = "BPN",
+  "22" = "BP",
+  "23" = "PN"
+)
+
+df_arranged <- df %>%
+  mutate(
+    fractal   = unname(fractal_map[as.character(ROI_index)]),
+    condition = unname(condition_map[as.character(Chip)]),
+    time      = 2 * Timepoint
+  ) %>%
+  rename(ch = Channel) %>%
+  mutate(ch = case_when(ch == 0 ~ "G",
+                        ch == 1 ~ "R",
+                        TRUE    ~ NA_character_))
+
+
+df_sum_fractal <- df_arranged %>% group_by(time, condition, fractal, ch) %>% summarise(
+    n      = sum(!is.na(IntDen)),
+    mean   = mean(IntDen, na.rm = TRUE),
+    sd     = sd(IntDen, na.rm = TRUE),
+    sem    = sd / sqrt(n),
+    median = median(IntDen, na.rm = TRUE),
+    min    = min(IntDen, na.rm = TRUE),
+    max    = max(IntDen, na.rm = TRUE),
+    .groups = "drop"
+)
+
+df_sum <- df_arranged %>% group_by(time, condition, ch) %>% summarise(
+    n      = sum(!is.na(IntDen)),
+    mean   = mean(IntDen, na.rm = TRUE),
+    sd     = sd(IntDen, na.rm = TRUE),
+    sem    = sd / sqrt(n),
+    median = median(IntDen, na.rm = TRUE),
+    min    = min(IntDen, na.rm = TRUE),
+    max    = max(IntDen, na.rm = TRUE),
+    .groups = "drop"
+)
+
+df_combined <- bind_rows(
+  df_sum_fractal %>% mutate(fractal = as.character(fractal)),
+  df_sum %>% mutate(fractal = "Mean")
+)
+```
+
+## Visualize
+
+### GFP across all fractals:
+
+```{r}
+#| output: true
+#| label: GFP
+#| fig-cap: GFP intensity of all conditions averaged across all levels of fractal complexity.
+
+GFP <- df_sum %>% 
+  filter(ch == "G") %>% 
+  ggplot(aes(x = time, y = mean, color = condition)) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean - sem, ymax = mean + sem), width = 0.5 ) + 
+  theme_classic() +
+  labs(y="GFP", x="time [d]")
+
+GFP
+
+```
+
+### RFP across all fractals:
+
+```{r}
+#| output: true
+#| label: RFP
+#| fig-cap: RFP intensity of all conditions averaged across all levels of fractal complexity.
+
+RFP <- df_sum %>% 
+  filter(ch == "R") %>% 
+  ggplot(aes(x = time, y = mean, color = condition)) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean - sem, ymax = mean + sem), width = 0.5 ) + 
+  theme_classic() +
+  labs(y="RFP", x="time [d]")
+
+RFP
+```
+
+### GFP for *P. putida* per fractal:
+
+```{r}
+#| output: true
+#| label: GFP_f
+#| fig-cap: GFP intensity of all conditions per level of fractal complexity.
+GFP_f <- df_sum_fractal %>% 
+  filter(ch == "G") %>% filter(condition %in% c("P", "BP", "BPN")) %>% 
+  ggnested(aes(x = time, y = mean, main_group = condition, sub_group = fractal)) +
+  geom_line() + 
+  geom_point() + 
+  geom_errorbar( aes(ymin = mean - sem, ymax = mean + sem), width = 0.5 ) + 
+  theme_classic() +
+  labs(y="GFP", x="time [d]")
+
+GFP_f
+```
+
+### Interactive Plot
+```{r}
+d <- df_sum_fractal %>%
+  filter(ch == "G", condition %in% c("P", "BP", "BPN")) %>%
+  mutate(group = paste(condition, fractal, sep = "_"))
+
+plot_ly(
+  d,
+  x = ~time, y = ~mean,
+  color = ~group,
+  type = "scatter", mode = "lines+markers",
+  error_y = ~list(array = sem, thickness = 1, width = 4)
+) %>%
+  layout(
+    xaxis = list(title = "time [d]"),
+    yaxis = list(title = "GFP"),
+    legend = list(title = list(text = "condition_fractal"))
+  )
+```
+
+```{r}
+#| output: true
+#| label: interact
+#| fig-cap: Interactive plot of fluorescence intensity of all conditions per levels of fractal complexity.
+
+library(crosstalk)
+
+# 1. Data: one row per point, plus a combined group for coloring
+d <- df_combined %>%
+  filter(ch == "G", condition %in% c("P", "BP", "BPN")) %>%
+  mutate(
+    fractal = factor(fractal),
+    group   = paste(condition, fractal, sep = "_")
+  )
+
+# 2. Nested palette: one hue per condition, shades per fractal
+#    (mimics what ggnested does)
+base <- c(P = "#1b9e77", BP = "#d95f02", BPN = "#7570b3")
+n_fr <- nlevels(d$fractal)
+
+pal <- unlist(lapply(names(base), function(cn) {
+  cols <- colorRampPalette(c(base[[cn]], "white"))(n_fr + 2)[1:n_fr]
+  setNames(cols, paste(cn, levels(d$fractal), sep = "_"))
+}))
+
+# 3. Shared data for the checkboxes
+sd <- SharedData$new(d)
+
+# 4. Plot (plot_ly is more reliable with crosstalk than ggplotly)
+p <- plot_ly(
+  sd,
+  x = ~time, y = ~mean,
+  color = ~group, colors = pal,
+  type = "scatter", mode = "lines+markers",
+  error_y = ~list(array = sem, thickness = 1, width = 4),
+  text = ~paste0("condition: ", condition, "<br>fractal: ", fractal),
+  hoverinfo = "text+x+y"
+) %>%
+  layout(
+    xaxis = list(title = "time [d]"),
+    yaxis = list(title = "GFP"),
+    legend = list(title = list(text = "condition_fractal"))
+  )
+
+# 5. Checkboxes next to the plot
+bscols(
+  widths = c(2, 10),
+  list(
+    filter_checkbox("cond", "Condition", sd, ~condition, inline = FALSE),
+    filter_checkbox("frac", "Fractal",   sd, ~fractal,   inline = FALSE)
+  ),
+  p
+)
+```

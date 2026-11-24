@@ -1,6 +1,11 @@
-# ---
-
-title: "How to setup GitHub within R Studio" author: "Leander Kühne" format: revealjs: theme: blood ---
+---
+title: "How to setup GitHub within R Studio"
+format: 
+  revealjs: 
+    theme: blood 
+execute:
+  enabled: false
+---
 
 # Steps
 
@@ -56,7 +61,7 @@ Some additional commentary of more peripheral interest.
 
 ## Footer and Logo in YAML:
 
-```{qmd}
+```{yaml}
 format:
   revealjs:
     logo: logo.png
